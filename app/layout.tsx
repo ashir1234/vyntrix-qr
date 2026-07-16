@@ -2,6 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
+import {
+  organizationJsonLd,
+  softwareAppJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 import { CookieConsent } from "@/components/site/CookieConsent";
 
 const geistSans = Geist({
@@ -17,30 +22,34 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Free 3D QR Code Generator`,
+    default: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.name }],
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   category: "technology",
   alternates: {
     canonical: "/",
+    languages: {
+      "en": siteConfig.url,
+      "x-default": siteConfig.url,
+    },
   },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Free 3D QR Code Generator`,
+    title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Free 3D QR Code Generator`,
+    title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
     description: siteConfig.description,
     creator: siteConfig.twitter,
   },
@@ -73,33 +82,16 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  description: siteConfig.description,
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "Any (Web)",
-  browserRequirements: "Requires JavaScript and WebGL",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "1280",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const adsClient = siteConfig.adsenseClient;
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [organizationJsonLd(), websiteJsonLd(), softwareAppJsonLd()],
+  };
 
   return (
     <html
@@ -109,7 +101,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
         {adsClient && (
           <>

@@ -22,6 +22,12 @@ export function Nav() {
             Gallery
           </Link>
           <Link
+            href="/guides"
+            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-white"
+          >
+            Guides
+          </Link>
+          <Link
             href="/studio"
             className="btn-primary ml-1 rounded-lg px-3.5 py-1.5 font-medium"
           >

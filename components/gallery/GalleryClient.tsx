@@ -24,7 +24,7 @@ const baseStyle: QrStyle = {
 
 const SAMPLES = PRESETS.map((p, i) => ({
   preset: p,
-  data: `https://vyntrixqr.com/design/${p.id}`,
+  data: `https://vyntrixqr.app/design/${p.id}`,
   likes: 42 + i * 17,
 }));
 

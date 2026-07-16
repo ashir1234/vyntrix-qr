@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="mx-auto mt-16 w-[min(1100px,94vw)] border-t border-[var(--border)] py-10 text-sm text-[var(--muted)]">
-      <div className="grid gap-8 sm:grid-cols-[1.5fr_1fr_1fr]">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2.5">
             <LogoMark size={28} />
@@ -14,8 +14,8 @@ export function Footer() {
             </span>
           </div>
           <p className="mt-3 max-w-xs">
-            The free, immersive 3D QR code generator. Design branded codes with
-            logos, colors, and gradients — right in your browser.
+            Free online QR code generator with logo, colors, 3D preview, and
+            optional dynamic links — available worldwide.
           </p>
         </div>
         <div>
@@ -29,6 +29,48 @@ export function Footer() {
             <li>
               <Link href="/gallery" className="transition hover:text-white">
                 Gallery
+              </Link>
+            </li>
+            <li>
+              <Link href="/guides" className="transition hover:text-white">
+                Guides
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p className="mb-3 font-medium text-[var(--foreground)]">Guides</p>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                href="/guides/wifi-qr-code"
+                className="transition hover:text-white"
+              >
+                WiFi QR code
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guides/qr-code-with-logo"
+                className="transition hover:text-white"
+              >
+                QR with logo
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guides/dynamic-qr-code"
+                className="transition hover:text-white"
+              >
+                Dynamic QR
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guides/vcard-qr-code"
+                className="transition hover:text-white"
+              >
+                vCard QR
               </Link>
             </li>
           </ul>
@@ -45,6 +87,14 @@ export function Footer() {
               <Link href="/terms" className="transition hover:text-white">
                 Terms of Use
               </Link>
+            </li>
+            <li>
+              <a
+                href="/llms.txt"
+                className="transition hover:text-white"
+              >
+                llms.txt
+              </a>
             </li>
           </ul>
         </div>

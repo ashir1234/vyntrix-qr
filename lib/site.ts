@@ -11,17 +11,23 @@ export const siteConfig = {
     "https://vyntrixqr.app",
   tagline: "Immersive 3D QR Code Generator",
   description:
-    "Create free, custom QR codes in seconds. Add logos, gradients, and colors, then preview and share them on a stunning real-time 3D tile. No sign-up required.",
+    "Free online QR code generator with logo, colors, gradients, and live 3D preview. Create URL, WiFi, vCard, email, and SMS QR codes. Download PNG/SVG — no sign-up, no watermark.",
+  /** Short answer-first blurb for AI / generative search engines (GEO). */
+  geoSummary:
+    "Vyntrix QR is a free web-based QR code generator at vyntrixqr.app. Users can create custom QR codes (URL, WiFi, vCard, email, SMS, phone, text), add logos and brand colors, preview designs in 3D, export PNG/SVG, and optionally create dynamic editable QR codes with scan analytics. No account is required. Generation runs in the browser for privacy.",
   keywords: [
     "QR code generator",
-    "free QR code",
+    "free QR code generator",
+    "online QR code maker",
     "custom QR code",
     "QR code with logo",
     "3D QR code",
-    "WiFi QR code",
+    "WiFi QR code generator",
     "vCard QR code",
-    "QR code maker",
+    "dynamic QR code",
     "QR code with color",
+    "branded QR code",
+    "PNG SVG QR code",
     "Vyntrix QR",
   ],
   locale: "en_US",
