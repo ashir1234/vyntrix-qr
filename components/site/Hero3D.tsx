@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import { QRPreview } from "@/components/studio/QRPreview";
+import { PRESETS, useQrStore } from "@/lib/store";
 
 const QRScene = dynamic(() => import("@/components/three/QRScene"), {
   ssr: false,
@@ -12,7 +14,20 @@ const QRScene = dynamic(() => import("@/components/three/QRScene"), {
   ),
 });
 
+const STARLIGHT = PRESETS.find((p) => p.id === "starlight")!;
+
 export function Hero3D() {
+  const applyPreset = useQrStore((s) => s.applyPreset);
+  const setField = useQrStore((s) => s.setField);
+
+  useEffect(() => {
+    applyPreset(STARLIGHT);
+    // Demo payload only when empty so the hero QR is visible.
+    if (!useQrStore.getState().fields.url.trim()) {
+      setField("url", "https://vyntrixqr.app");
+    }
+  }, [applyPreset, setField]);
+
   return (
     <div className="relative aspect-square w-full">
       <div className="absolute inset-0">

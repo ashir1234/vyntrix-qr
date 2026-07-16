@@ -15,7 +15,45 @@ export type DotType =
   | "classy"
   | "classy-rounded"
   | "square"
-  | "extra-rounded";
+  | "extra-rounded"
+  | "heart"
+  | "diamond"
+  | "star"
+  | "cross"
+  | "triangle"
+  | "hexagon"
+  | "leaf"
+  | "soft";
+
+/** Decorative download/print frames around the QR. */
+export type FrameKind =
+  | "none"
+  | "thick"
+  | "thin"
+  | "open"
+  | "caption"
+  | "pill"
+  | "bubble"
+  | "ticket"
+  | "boxed"
+  | "rounded"
+  | "arrow"
+  | "hands"
+  | "bag"
+  | "gift"
+  | "ribbon"
+  | "envelope"
+  | "scooter"
+  | "tray"
+  | "coffee"
+  | "phone"
+  | "chef"
+  | "mug"
+  | "badge"
+  | "poster"
+  | "polaroid"
+  | "heartFrame"
+  | "cloud";
 
 export type CornerSquareType = "dot" | "square" | "extra-rounded";
 export type CornerDotType = "dot" | "square";

@@ -1,4 +1,5 @@
 import type { Options } from "qr-code-styling";
+import { isCustomDotType } from "./patternCanvas";
 import type { QrStyle } from "./types";
 
 export interface BuildOptionsArgs {
@@ -27,6 +28,8 @@ export function buildQrOptions({
       }
     : undefined;
 
+  const dotsType = isCustomDotType(style.dotType) ? "dots" : style.dotType;
+
   return {
     width: size,
     height: size,
@@ -45,7 +48,7 @@ export function buildQrOptions({
     },
     dotsOptions: {
       color: dotsColor,
-      type: style.dotType,
+      type: dotsType,
       gradient,
     },
     cornersSquareOptions: {

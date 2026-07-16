@@ -107,7 +107,7 @@ export function Segmented<T extends string>({
     <div
       role="radiogroup"
       aria-label={ariaLabel}
-      className="grid grid-cols-2 gap-1 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-1 sm:grid-cols-3"
+      className="grid grid-cols-2 gap-1 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-1 sm:grid-cols-3 md:grid-cols-4"
     >
       {options.map((opt) => {
         const active = opt.value === value;

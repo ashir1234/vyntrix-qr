@@ -8,6 +8,7 @@ import type {
   QrStyle,
   SceneMode,
   View2dMode,
+  FrameKind,
 } from "./qr/types";
 
 export interface DynamicResult {
@@ -28,7 +29,7 @@ const defaultFields: QrFields = {
   vcFirstName: "Ada",
   vcLastName: "Lovelace",
   vcOrg: "Analytical Engines",
-  vcTitle: "Founder",
+  vcTitle: "Founder", 
   vcPhone: "+1 555 0100",
   vcEmail: "ada@example.com",
   vcUrl: "https://example.com",
@@ -45,12 +46,12 @@ const defaultFields: QrFields = {
 };
 
 const defaultStyle: QrStyle = {
-  fgColor: "#10b981",
-  bgColor: "#ffffff",
+  fgColor: "#f59e0b",
+  bgColor: "#fffbeb",
   useGradient: true,
-  gradientColor: "#38bdf8",
+  gradientColor: "#fbbf24",
   gradientType: "linear",
-  dotType: "rounded",
+  dotType: "star",
   cornerSquareType: "extra-rounded",
   cornerDotType: "dot",
   errorCorrection: "Q",
@@ -152,6 +153,46 @@ export const PRESETS: QrPreset[] = [
       cornerSquareType: "extra-rounded",
     },
   },
+  {
+    id: "heart",
+    name: "Heart",
+    material: "matte",
+    style: {
+      fgColor: "#e11d48",
+      gradientColor: "#fb7185",
+      bgColor: "#fff1f2",
+      useGradient: true,
+      dotType: "heart",
+      cornerSquareType: "extra-rounded",
+      cornerDotType: "dot",
+    },
+  },
+  {
+    id: "diamond",
+    name: "Diamond",
+    material: "metallic",
+    style: {
+      fgColor: "#0ea5e9",
+      gradientColor: "#38bdf8",
+      bgColor: "#f0f9ff",
+      useGradient: true,
+      dotType: "diamond",
+      cornerSquareType: "extra-rounded",
+    },
+  },
+  {
+    id: "starlight",
+    name: "Starlight",
+    material: "holographic",
+    style: {
+      fgColor: "#f59e0b",
+      gradientColor: "#fbbf24",
+      bgColor: "#fffbeb",
+      useGradient: true,
+      dotType: "star",
+      cornerSquareType: "extra-rounded",
+    },
+  },
 ];
 
 interface Settings {
@@ -167,6 +208,8 @@ interface QrStore {
   material: MaterialKind;
   sceneMode: SceneMode;
   view2dMode: View2dMode;
+  frame: FrameKind;
+  frameLabel: string;
   settings: Settings;
   qrDataUrl: string | null;
   generations: number;
@@ -179,6 +222,8 @@ interface QrStore {
   setMaterial: (m: MaterialKind) => void;
   setSceneMode: (m: SceneMode) => void;
   setView2dMode: (m: View2dMode) => void;
+  setFrame: (f: FrameKind) => void;
+  setFrameLabel: (label: string) => void;
   applyPreset: (preset: QrPreset) => void;
   setLogo: (dataUrl: string | null) => void;
   setQrDataUrl: (url: string | null) => void;
@@ -205,6 +250,8 @@ export const useQrStore = create<QrStore>((set) => ({
   material: "holographic",
   sceneMode: "showcase",
   view2dMode: "clean",
+  frame: "none",
+  frameLabel: "Scan Me!",
   settings: { soundEnabled: false, reducedMotion: false, autoRotate: true },
   qrDataUrl: null,
   generations: 0,
@@ -219,6 +266,8 @@ export const useQrStore = create<QrStore>((set) => ({
   setMaterial: (material) => set({ material }),
   setSceneMode: (sceneMode) => set({ sceneMode }),
   setView2dMode: (view2dMode) => set({ view2dMode }),
+  setFrame: (frame) => set({ frame }),
+  setFrameLabel: (frameLabel) => set({ frameLabel }),
   applyPreset: (preset) =>
     set((s) => ({
       style: { ...s.style, ...preset.style },

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import {
@@ -9,6 +10,7 @@ import {
 } from "@/lib/seo";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { AdSenseScript } from "@/components/ads/AdSenseScript";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -101,30 +103,21 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* JSON-LD is static + identical on server and client, safe in head */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
-        {/* Google Consent Mode v2 defaults: deny ad/analytics storage until the
-            visitor accepts via the cookie banner. Runs before GA/AdSense load. */}
-        {usesConsent && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
-            }}
-          />
-        )}
-        {adsClient && (
-          /* Plain <script> in the initial HTML so AdSense's crawler can
-             verify without executing client-side JS. */
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`}
-            crossOrigin="anonymous"
-          />
-        )}
       </head>
       <body className="min-h-full flex flex-col">
+        {/* Google Consent Mode v2 defaults: deny ad/analytics storage until the
+            visitor accepts via the cookie banner. Must run before GA/AdSense. */}
+        {usesConsent && (
+          <Script id="consent-mode-default" strategy="beforeInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`}
+          </Script>
+        )}
+        {adsClient && <AdSenseScript />}
         {children}
         <GoogleAnalytics />
         <CookieConsent />

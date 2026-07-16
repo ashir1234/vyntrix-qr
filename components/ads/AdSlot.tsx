@@ -11,8 +11,7 @@ declare global {
 
 /**
  * Google AdSense display unit. Renders nothing until you set
- * NEXT_PUBLIC_ADSENSE_CLIENT (and pass a real `slot` id from your AdSense
- * dashboard), so the layout never shows an empty ad box before approval.
+ * NEXT_PUBLIC_ADSENSE_CLIENT and a real `slot` id.
  */
 export function AdSlot({
   slot,
@@ -28,17 +27,27 @@ export function AdSlot({
   style?: React.CSSProperties;
 }) {
   const client = siteConfig.adsenseClient;
-  const pushed = useRef(false);
+  const insRef = useRef<HTMLModElement>(null);
 
   useEffect(() => {
-    if (!client || pushed.current) return;
+    if (!client || !slot) return;
+    const el = insRef.current;
+    if (!el) return;
+
+    // Already filled (React Strict Mode remount, or Auto ads got there first).
+    if (
+      el.getAttribute("data-adsbygoogle-status") ||
+      el.getAttribute("data-ad-status")
+    ) {
+      return;
+    }
+
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
-      pushed.current = true;
     } catch {
-      /* ad blocker or script not loaded yet */
+      /* ad blocker / script not ready / already filled */
     }
-  }, [client]);
+  }, [client, slot]);
 
   if (!client || !slot) return null;
 
@@ -48,6 +57,7 @@ export function AdSlot({
         Advertisement
       </p>
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={{ display: "block", ...style }}
         data-ad-client={client}

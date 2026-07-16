@@ -8,6 +8,7 @@ import type { MaterialKind, QrContentType, SceneMode, View2dMode } from "@/lib/q
 import { selectEncodedData, useQrStore } from "@/lib/store";
 import { QRPreview, downloadQr } from "./QRPreview";
 import { Preview2DFun } from "./Preview2DFun";
+import { FramedPreview } from "./FramedPreview";
 import { ContentForm } from "./ContentForm";
 import { StyleControls } from "./StyleControls";
 import { DynamicPanel } from "./DynamicPanel";
@@ -158,6 +159,8 @@ export function Studio() {
   const setSceneMode = useQrStore((s) => s.setSceneMode);
   const view2dMode = useQrStore((s) => s.view2dMode);
   const setView2dMode = useQrStore((s) => s.setView2dMode);
+  const frame = useQrStore((s) => s.frame);
+  const frameLabel = useQrStore((s) => s.frameLabel);
   const settings = useQrStore((s) => s.settings);
   const setSetting = useQrStore((s) => s.setSetting);
   const bumpGeneration = useQrStore((s) => s.bumpGeneration);
@@ -354,7 +357,9 @@ export function Studio() {
               style={{ transformStyle: "preserve-3d" }}
             >
               <Preview2DFun>
-                <QRPreview />
+                <FramedPreview>
+                  <QRPreview />
+                </FramedPreview>
               </Preview2DFun>
               <AnimatePresence>
                 {scanning && (
@@ -479,16 +484,16 @@ export function Studio() {
           </button>
           <div className="ml-auto flex gap-2">
             <button
-              onClick={() => downloadQr("png", style, data)}
+              onClick={() => downloadQr("png", style, data, frame, frameLabel)}
               className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--brand)]"
             >
-              PNG
+              PNG{frame !== "none" ? " + frame" : ""}
             </button>
             <button
-              onClick={() => downloadQr("svg", style, data)}
+              onClick={() => downloadQr("svg", style, data, frame, frameLabel)}
               className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--brand)]"
             >
-              SVG
+              SVG{frame !== "none" ? " + frame" : ""}
             </button>
           </div>
         </div>

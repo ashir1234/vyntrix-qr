@@ -16,6 +16,7 @@ import {
   Slider,
   Toggle,
 } from "@/components/ui/controls";
+import { FramePicker } from "./FramePicker";
 
 export function StyleControls() {
   const style = useQrStore((s) => s.style);
@@ -110,6 +111,14 @@ export function StyleControls() {
             { value: "classy-rounded", label: "Classy+" },
             { value: "square", label: "Square" },
             { value: "extra-rounded", label: "Extra" },
+            { value: "heart", label: "Heart" },
+            { value: "diamond", label: "Diamond" },
+            { value: "star", label: "Star" },
+            { value: "cross", label: "Cross" },
+            { value: "triangle", label: "Triangle" },
+            { value: "hexagon", label: "Hexagon" },
+            { value: "leaf", label: "Leaf" },
+            { value: "soft", label: "Soft" },
           ]}
         />
       </Field>
@@ -204,6 +213,10 @@ export function StyleControls() {
             />
           </Field>
         )}
+      </div>
+
+      <div className="border-t border-[var(--border)] pt-4">
+        <FramePicker />
       </div>
     </div>
   );
