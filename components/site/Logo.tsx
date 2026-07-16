@@ -64,11 +64,17 @@ export function LogoMark({
   );
 }
 
-export function Logo({ size = 32 }: { size?: number }) {
+export function Logo({
+  size = 32,
+  className,
+}: {
+  size?: number;
+  className?: string;
+}) {
   return (
-    <span className="flex items-center gap-2.5">
-      <LogoMark size={size} />
-      <span className="text-lg font-semibold tracking-tight">
+    <span className={`flex min-w-0 items-center gap-2 sm:gap-2.5 ${className ?? ""}`}>
+      <LogoMark size={size} className="shrink-0" />
+      <span className="truncate text-base font-semibold tracking-tight sm:text-lg">
         Vyntrix<span className="gradient-text"> QR</span>
       </span>
     </span>

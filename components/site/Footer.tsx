@@ -100,14 +100,6 @@ export function Footer() {
                 Terms of Use
               </Link>
             </li>
-            <li>
-              <a
-                href="/llms.txt"
-                className="transition hover:text-[var(--foreground)]"
-              >
-                llms.txt
-              </a>
-            </li>
           </ul>
         </div>
       </div>
