@@ -48,6 +48,7 @@ export const siteConfig = {
     home: process.env.NEXT_PUBLIC_ADSENSE_SLOT_HOME ?? "",
     gallery: process.env.NEXT_PUBLIC_ADSENSE_SLOT_GALLERY ?? "",
     studio: process.env.NEXT_PUBLIC_ADSENSE_SLOT_STUDIO ?? "",
+    guides: process.env.NEXT_PUBLIC_ADSENSE_SLOT_GUIDES ?? "",
   },
 } as const;
 

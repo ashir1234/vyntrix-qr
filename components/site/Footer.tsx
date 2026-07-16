@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { LogoMark } from "./Logo";
 import { siteConfig } from "@/lib/site";
+import { guides } from "@/lib/seo";
+
+// A curated subset of guides for the footer (the full list lives at /guides).
+const footerGuides = guides.slice(0, 6);
 
 export function Footer() {
   return (
@@ -48,41 +52,32 @@ export function Footer() {
                 Guides
               </Link>
             </li>
+            <li>
+              <Link href="/pricing" className="transition hover:text-[var(--foreground)]">
+                Pricing
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
           <p className="mb-3 font-medium text-[var(--foreground)]">Guides</p>
           <ul className="space-y-2">
+            {footerGuides.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={`/guides/${g.slug}`}
+                  className="transition hover:text-[var(--foreground)]"
+                >
+                  {g.short}
+                </Link>
+              </li>
+            ))}
             <li>
               <Link
-                href="/guides/wifi-qr-code"
-                className="transition hover:text-[var(--foreground)]"
+                href="/guides"
+                className="text-[var(--brand-2)] transition hover:text-[var(--foreground)]"
               >
-                WiFi QR code
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/guides/qr-code-with-logo"
-                className="transition hover:text-[var(--foreground)]"
-              >
-                QR with logo
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/guides/dynamic-qr-code"
-                className="transition hover:text-[var(--foreground)]"
-              >
-                Dynamic QR
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/guides/vcard-qr-code"
-                className="transition hover:text-[var(--foreground)]"
-              >
-                vCard QR
+                All guides →
               </Link>
             </li>
           </ul>

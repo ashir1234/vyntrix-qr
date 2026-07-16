@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useQrStore, type DynamicResult } from "@/lib/store";
 import { Toggle } from "@/components/ui/controls";
+import { trackEvent } from "@/lib/analytics";
 
 function saveCodeLocally(r: DynamicResult) {
   try {
@@ -56,11 +58,13 @@ export function DynamicPanel() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorCode, setErrorCode] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
 
   const create = async () => {
     setLoading(true);
     setError(null);
+    setErrorCode(null);
     try {
       const res = await fetch("/api/qr", {
         method: "POST",
@@ -68,7 +72,10 @@ export function DynamicPanel() {
         body: JSON.stringify({ destination: url }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Failed to create link.");
+      if (!res.ok) {
+        setErrorCode(json.code ?? null);
+        throw new Error(json.error ?? "Failed to create link.");
+      }
       const result: DynamicResult = {
         slug: json.slug,
         shortUrl: json.shortUrl,
@@ -78,6 +85,7 @@ export function DynamicPanel() {
       };
       setDynamic(result);
       saveCodeLocally(result);
+      trackEvent("dynamic_create", { slug: result.slug });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
@@ -196,7 +204,27 @@ export function DynamicPanel() {
             </>
           )}
 
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {error && (
+            <div className="space-y-2">
+              <p className="text-xs text-red-400">{error}</p>
+              {errorCode === "auth_required" && (
+                <Link
+                  href="/sign-in"
+                  className="btn-primary inline-block rounded-lg px-3.5 py-1.5 text-xs font-semibold"
+                >
+                  Sign in to continue
+                </Link>
+              )}
+              {errorCode === "quota_exceeded" && (
+                <Link
+                  href="/pricing"
+                  className="btn-primary inline-block rounded-lg px-3.5 py-1.5 text-xs font-semibold"
+                >
+                  Upgrade to Pro
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

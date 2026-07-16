@@ -11,6 +11,8 @@ import {
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { AdSenseScript } from "@/components/ads/AdSenseScript";
+import { ClerkProvider } from "@clerk/nextjs";
+import { authEnabled } from "@/lib/authFlags";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,9 +120,30 @@ export default function RootLayout({
           </Script>
         )}
         {adsClient && <AdSenseScript />}
-        {children}
-        <GoogleAnalytics />
-        <CookieConsent />
+        {authEnabled ? (
+          <ClerkProvider
+            afterSignOutUrl="/"
+            appearance={{
+              variables: {
+                colorPrimary: "#10b981",
+                colorBackground: "#0c1613",
+                colorForeground: "#eef4f1",
+                colorInput: "#15241f",
+                borderRadius: "0.75rem",
+              },
+            }}
+          >
+            {children}
+            <GoogleAnalytics />
+            <CookieConsent />
+          </ClerkProvider>
+        ) : (
+          <>
+            {children}
+            <GoogleAnalytics />
+            <CookieConsent />
+          </>
+        )}
       </body>
     </html>
   );

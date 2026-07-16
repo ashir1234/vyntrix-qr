@@ -14,6 +14,7 @@ export const guides = [
       "share WiFi password QR",
     ],
     h1: "How to Create a Free WiFi QR Code",
+    short: "WiFi QR code",
   },
   {
     slug: "qr-code-with-logo",
@@ -27,6 +28,7 @@ export const guides = [
       "QR code generator with logo",
     ],
     h1: "How to Make a QR Code with Your Logo",
+    short: "QR with logo",
   },
   {
     slug: "dynamic-qr-code",
@@ -40,6 +42,7 @@ export const guides = [
       "change QR code URL",
     ],
     h1: "What Is a Dynamic QR Code?",
+    short: "Dynamic QR",
   },
   {
     slug: "vcard-qr-code",
@@ -53,6 +56,147 @@ export const guides = [
       "QR code for contact",
     ],
     h1: "How to Create a Free vCard QR Code",
+    short: "vCard QR",
+  },
+  {
+    slug: "qr-code-for-restaurant-menu",
+    title: "How to Make a QR Code Menu for Your Restaurant",
+    description:
+      "Create a free QR code menu so diners can view your menu on their phone. Link to a PDF or web menu and update it anytime with a dynamic QR code.",
+    keywords: [
+      "QR code menu",
+      "restaurant QR code",
+      "QR code for menu",
+      "digital menu QR code",
+    ],
+    h1: "How to Make a QR Code Menu for Your Restaurant",
+    short: "Restaurant menu",
+  },
+  {
+    slug: "qr-code-for-instagram",
+    title: "How to Create an Instagram QR Code",
+    description:
+      "Make a free QR code for your Instagram profile so people can follow you with one scan. Perfect for posters, packaging, and business cards.",
+    keywords: [
+      "Instagram QR code",
+      "QR code for Instagram",
+      "Instagram profile QR code",
+      "social media QR code",
+    ],
+    h1: "How to Create an Instagram QR Code",
+    short: "Instagram QR",
+  },
+  {
+    slug: "qr-code-for-whatsapp",
+    title: "How to Create a WhatsApp QR Code (Click to Chat)",
+    description:
+      "Generate a free WhatsApp QR code that opens a chat with your number and a pre-filled message. Great for support, sales, and lead generation.",
+    keywords: [
+      "WhatsApp QR code",
+      "QR code for WhatsApp",
+      "click to chat QR code",
+      "WhatsApp business QR code",
+    ],
+    h1: "How to Create a WhatsApp QR Code",
+    short: "WhatsApp QR",
+  },
+  {
+    slug: "qr-code-for-google-reviews",
+    title: "How to Make a Google Review QR Code",
+    description:
+      "Create a free QR code that sends customers straight to your Google review page. Get more reviews with a scan on receipts, tables, and flyers.",
+    keywords: [
+      "Google review QR code",
+      "QR code for reviews",
+      "review QR code",
+      "get more Google reviews",
+    ],
+    h1: "How to Make a Google Review QR Code",
+    short: "Google reviews QR",
+  },
+  {
+    slug: "qr-code-for-pdf",
+    title: "How to Create a QR Code for a PDF",
+    description:
+      "Turn any PDF into a scannable QR code. Host the file, link it, and update the document later with a dynamic QR code — no reprinting required.",
+    keywords: [
+      "QR code for PDF",
+      "PDF QR code",
+      "QR code to PDF file",
+      "link PDF QR code",
+    ],
+    h1: "How to Create a QR Code for a PDF",
+    short: "PDF QR",
+  },
+  {
+    slug: "qr-code-for-business-card",
+    title: "How to Add a QR Code to Your Business Card",
+    description:
+      "Add a QR code to your business card so contacts save your details instantly. Compare vCard and dynamic link options and download print-ready files.",
+    keywords: [
+      "business card QR code",
+      "QR code for business card",
+      "digital business card QR",
+      "networking QR code",
+    ],
+    h1: "How to Add a QR Code to Your Business Card",
+    short: "Business card QR",
+  },
+  {
+    slug: "qr-code-size-for-print",
+    title: "QR Code Size for Print: The Complete Guide",
+    description:
+      "Learn the right QR code size for print — from business cards to billboards. Use the 10:1 distance rule, quiet zone, and DPI tips for reliable scans.",
+    keywords: [
+      "QR code size",
+      "QR code size for print",
+      "how big should a QR code be",
+      "QR code print resolution",
+    ],
+    h1: "QR Code Size for Print: The Complete Guide",
+    short: "QR size for print",
+  },
+  {
+    slug: "qr-code-for-youtube",
+    title: "How to Create a QR Code for a YouTube Video or Channel",
+    description:
+      "Make a free QR code that opens your YouTube video or channel. Perfect for thumbnails, packaging, and events — track scans with a dynamic QR code.",
+    keywords: [
+      "YouTube QR code",
+      "QR code for YouTube",
+      "QR code for video",
+      "YouTube channel QR code",
+    ],
+    h1: "How to Create a QR Code for YouTube",
+    short: "YouTube QR",
+  },
+  {
+    slug: "qr-code-for-event-tickets",
+    title: "How to Use QR Codes for Event Tickets",
+    description:
+      "Add QR codes to event tickets for fast, contactless check-in. Learn how to link tickets, track entries, and design scannable codes that always work.",
+    keywords: [
+      "QR code for event tickets",
+      "event ticket QR code",
+      "QR code check-in",
+      "ticket QR code generator",
+    ],
+    h1: "How to Use QR Codes for Event Tickets",
+    short: "Event ticket QR",
+  },
+  {
+    slug: "static-vs-dynamic-qr-code",
+    title: "Static vs Dynamic QR Codes: Which Should You Use?",
+    description:
+      "Understand the difference between static and dynamic QR codes — editability, scan analytics, and cost — so you pick the right one for your project.",
+    keywords: [
+      "static vs dynamic QR code",
+      "difference static dynamic QR",
+      "dynamic QR code vs static",
+      "which QR code to use",
+    ],
+    h1: "Static vs Dynamic QR Codes: Which Should You Use?",
+    short: "Static vs dynamic",
   },
 ] as const;
 

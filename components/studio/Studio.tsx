@@ -13,6 +13,7 @@ import { ContentForm } from "./ContentForm";
 import { StyleControls } from "./StyleControls";
 import { DynamicPanel } from "./DynamicPanel";
 import { Toggle } from "@/components/ui/controls";
+import { trackEvent } from "@/lib/analytics";
 
 const QRScene = dynamic(() => import("@/components/three/QRScene"), {
   ssr: false,
@@ -177,6 +178,7 @@ export function Studio() {
     } catch {
       setShowHint(true);
     }
+    trackEvent("studio_start");
   }, []);
 
   const dismissHint = () => {
@@ -484,13 +486,19 @@ export function Studio() {
           </button>
           <div className="ml-auto flex gap-2">
             <button
-              onClick={() => downloadQr("png", style, data, frame, frameLabel)}
+              onClick={() => {
+                trackEvent("qr_download", { format: "png", type });
+                downloadQr("png", style, data, frame, frameLabel);
+              }}
               className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--brand)]"
             >
               PNG{frame !== "none" ? " + frame" : ""}
             </button>
             <button
-              onClick={() => downloadQr("svg", style, data, frame, frameLabel)}
+              onClick={() => {
+                trackEvent("qr_download", { format: "svg", type });
+                downloadQr("svg", style, data, frame, frameLabel);
+              }}
               className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--brand)]"
             >
               SVG{frame !== "none" ? " + frame" : ""}

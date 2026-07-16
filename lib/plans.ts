@@ -1,0 +1,81 @@
+/**
+ * Single source of truth for Free vs Pro. Consumed by quota checks (API),
+ * the dashboard, the pricing page, and analytics gating.
+ */
+
+export type PlanId = "free" | "pro";
+
+export interface PlanLimits {
+  id: PlanId;
+  name: string;
+  /** Display price, e.g. "$0" or "$9". */
+  price: string;
+  priceSuffix: string;
+  tagline: string;
+  /** Max number of dynamic QR codes a user may own. null = unlimited. */
+  maxDynamicCodes: number | null;
+  /** Trailing days of scan analytics visible. null = full history. */
+  analyticsWindowDays: number | null;
+  /** Whether the plan can export scans as CSV. */
+  csvExport: boolean;
+  /** Whether the plan can set a custom slug. */
+  customSlug: boolean;
+  /** Whether ads are shown to this plan. */
+  ads: boolean;
+  /** Bullet points for the pricing page. */
+  features: string[];
+}
+
+export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
+  free: {
+    id: "free",
+    name: "Free",
+    price: "$0",
+    priceSuffix: "forever",
+    tagline: "Everything you need to make and share QR codes.",
+    maxDynamicCodes: 3,
+    analyticsWindowDays: 7,
+    csvExport: false,
+    customSlug: false,
+    ads: true,
+    features: [
+      "Unlimited static QR codes",
+      "Logos, colors, gradients & frames",
+      "3D live preview",
+      "PNG & SVG downloads",
+      "Up to 3 dynamic (editable) QR codes",
+      "7-day scan analytics",
+    ],
+  },
+  pro: {
+    id: "pro",
+    name: "Pro",
+    price: "$9",
+    priceSuffix: "/month",
+    tagline: "For creators and businesses that live on their links.",
+    maxDynamicCodes: null,
+    analyticsWindowDays: null,
+    csvExport: true,
+    customSlug: true,
+    ads: false,
+    features: [
+      "Everything in Free",
+      "Unlimited dynamic QR codes",
+      "Full scan history + analytics",
+      "CSV export of every scan",
+      "Custom short-link slugs",
+      "No ads",
+      "Priority support",
+    ],
+  },
+};
+
+export function planLimits(plan: PlanId): PlanLimits {
+  return PLAN_LIMITS[plan];
+}
+
+/** True when the plan may create another dynamic code given current usage. */
+export function canCreateDynamic(plan: PlanId, currentCount: number): boolean {
+  const max = PLAN_LIMITS[plan].maxDynamicCodes;
+  return max === null || currentCount < max;
+}

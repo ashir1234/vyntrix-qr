@@ -30,6 +30,9 @@ interface Analytics {
   title: string | null;
   destination: string;
   createdAt: number;
+  plan?: "free" | "pro";
+  analyticsWindowDays?: number | null;
+  csvExport?: boolean;
   total: number;
   byDay: { date: string; count: number }[];
   byDevice: Bucket[];
@@ -172,6 +175,32 @@ export function ManageClient({
         {stat("Top browser", data.byBrowser[0]?.name ?? "—")}
       </div>
 
+      {/* Plan-aware toolbar: retention notice (free) / CSV export (pro) */}
+      {data.plan === "free" && data.analyticsWindowDays ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-3 text-sm">
+          <span className="text-[var(--muted)]">
+            Showing the last {data.analyticsWindowDays} days. Upgrade to Pro for
+            full history and CSV export.
+          </span>
+          <a
+            href="/pricing"
+            className="btn-primary shrink-0 rounded-lg px-4 py-1.5 text-xs font-semibold"
+          >
+            Upgrade to Pro
+          </a>
+        </div>
+      ) : null}
+      {data.csvExport ? (
+        <div className="flex justify-end">
+          <a
+            href={`/api/qr/${slug}/export?token=${encodeURIComponent(token)}`}
+            className="rounded-lg border border-[var(--border)] px-4 py-1.5 text-xs font-medium transition hover:border-[var(--brand)]"
+          >
+            Export CSV
+          </a>
+        </div>
+      ) : null}
+
       {/* Editable destination */}
       <div className="glass rounded-2xl p-5">
         <h2 className="font-semibold">Destination URL</h2>
@@ -198,7 +227,9 @@ export function ManageClient({
 
       {/* Scans over time */}
       <div className="glass rounded-2xl p-5">
-        <h2 className="mb-3 font-semibold">Scans over time (30 days)</h2>
+        <h2 className="mb-3 font-semibold">
+          Scans over time ({data.byDay.length} days)
+        </h2>
         <ResponsiveContainer width="100%" height={260}>
           <AreaChart data={data.byDay}>
             <defs>

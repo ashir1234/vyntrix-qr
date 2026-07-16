@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
+import { GuideAd } from "@/components/ads/GuideAd";
 
 export function GuideLayout({
   breadcrumbs,
@@ -42,6 +43,7 @@ export function GuideLayout({
           </ol>
         </nav>
         {children}
+        <GuideAd />
       </main>
       <Footer />
     </>

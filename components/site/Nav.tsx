@@ -4,11 +4,18 @@ import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
+import { authEnabled } from "@/lib/authFlags";
+import {
+  NavAuthDesktop,
+  NavAuthMobileLink,
+  NavUserButton,
+} from "./NavAuth";
 
 const LINKS = [
   { href: "/studio", label: "Studio" },
   { href: "/gallery", label: "Gallery" },
   { href: "/guides", label: "Guides" },
+  { href: "/pricing", label: "Pricing" },
 ] as const;
 
 export function Nav() {
@@ -53,16 +60,23 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
+            {authEnabled && <NavAuthDesktop />}
             <Link
               href="/studio"
               className="btn-primary ml-1 rounded-lg px-3.5 py-1.5 font-medium"
             >
               Create QR
             </Link>
+            {authEnabled && (
+              <div className="ml-1.5 flex items-center">
+                <NavUserButton />
+              </div>
+            )}
           </div>
 
           {/* Mobile actions */}
           <div className="flex items-center gap-1.5 md:hidden">
+            {authEnabled && <NavUserButton />}
             <Link
               href="/studio"
               className="btn-primary rounded-lg px-2.5 py-1.5 text-sm font-medium"
@@ -123,6 +137,9 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
+            {authEnabled && (
+              <NavAuthMobileLink onNavigate={() => setOpen(false)} />
+            )}
           </div>
         </div>
       </nav>
