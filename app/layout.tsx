@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
-import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { CookieConsent } from "@/components/site/CookieConsent";
 
 const geistSans = Geist({
@@ -64,6 +63,9 @@ export const metadata: Metadata = {
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
+  other: siteConfig.adsenseClient
+    ? { "google-adsense-account": siteConfig.adsenseClient }
+    : undefined,
 };
 
 export const viewport: Viewport = {
@@ -111,9 +113,13 @@ export default function RootLayout({
         />
         {adsClient && (
           <>
-            <meta name="google-adsense-account" content={adsClient} />
-            {/* Google Consent Mode v2: deny ad/analytics storage until the
-                visitor accepts via the cookie banner. */}
+            {/* Plain <script> in the initial HTML so AdSense's crawler can
+                verify without executing client-side JS. */}
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`}
+              crossOrigin="anonymous"
+            />
             <script
               dangerouslySetInnerHTML={{
                 __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
@@ -125,7 +131,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <CookieConsent />
-        <AdSenseScript />
       </body>
     </html>
   );
