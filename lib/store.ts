@@ -19,7 +19,7 @@ export interface DynamicResult {
 }
 
 const defaultFields: QrFields = {
-  url: "https://vyntrixqr.app",
+  url: "",
   text: "Hello from Vyntrix QR ✨",
   wifiSsid: "MyNetwork",
   wifiPassword: "supersecret",
