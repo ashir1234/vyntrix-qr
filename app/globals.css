@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060713;
-  --surface: #0d1024;
-  --surface-2: #141834;
-  --border: #23284d;
-  --foreground: #eef0ff;
-  --muted: #9aa0c7;
-  --brand: #7c5cff;
-  --brand-2: #21d4fd;
-  --accent: #ff5cf0;
+  --background: #08030f;
+  --surface: #150a2b;
+  --surface-2: #1f1140;
+  --border: #34215f;
+  --foreground: #f6f2ff;
+  --muted: #b3a6dd;
+  --brand: #9d3bff;
+  --brand-2: #12e6ff;
+  --accent: #ff2d95;
 }
 
 @theme inline {
@@ -39,9 +39,9 @@ body {
 
 body {
   background-image:
-    radial-gradient(60rem 60rem at 10% -10%, rgba(124, 92, 255, 0.18), transparent 60%),
-    radial-gradient(50rem 50rem at 110% 10%, rgba(33, 212, 253, 0.14), transparent 55%),
-    radial-gradient(40rem 40rem at 50% 120%, rgba(255, 92, 240, 0.1), transparent 55%);
+    radial-gradient(55rem 55rem at 8% -12%, rgba(157, 59, 255, 0.35), transparent 58%),
+    radial-gradient(50rem 50rem at 112% 4%, rgba(18, 230, 255, 0.28), transparent 55%),
+    radial-gradient(45rem 45rem at 50% 118%, rgba(255, 45, 149, 0.24), transparent 55%);
   background-attachment: fixed;
 }
 
@@ -59,9 +59,17 @@ body {
 
 .gradient-text {
   background: linear-gradient(100deg, var(--brand-2), var(--brand) 45%, var(--accent));
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradient-pan 6s linear infinite;
+}
+
+@keyframes gradient-pan {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .glass {
@@ -72,18 +80,23 @@ body {
 
 .glow {
   box-shadow:
-    0 0 0 1px rgba(124, 92, 255, 0.25),
-    0 12px 40px -12px rgba(124, 92, 255, 0.55);
+    0 0 0 1px rgba(157, 59, 255, 0.35),
+    0 18px 60px -14px rgba(157, 59, 255, 0.75),
+    0 8px 40px -18px rgba(18, 230, 255, 0.5);
 }
 
 .btn-primary {
-  background: linear-gradient(100deg, var(--brand), var(--accent));
+  background: linear-gradient(100deg, var(--brand-2), var(--brand) 55%, var(--accent));
+  background-size: 160% auto;
   color: white;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-position 0.35s ease, filter 0.15s ease;
 }
 .btn-primary:hover {
-  filter: brightness(1.08);
-  box-shadow: 0 10px 30px -8px rgba(124, 92, 255, 0.7);
+  filter: brightness(1.1) saturate(1.1);
+  background-position: right center;
+  box-shadow:
+    0 10px 34px -8px rgba(157, 59, 255, 0.8),
+    0 6px 24px -10px rgba(18, 230, 255, 0.6);
 }
 .btn-primary:active {
   transform: translateY(1px) scale(0.99);

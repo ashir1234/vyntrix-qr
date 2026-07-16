@@ -5,10 +5,10 @@
 export const siteConfig = {
   name: "Vyntrix QR",
   shortName: "Vyntrix",
-  domain: "vyntrixqr.com",
+  domain: "vyntrixqr.app",
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "https://vyntrixqr.com",
+    "https://vyntrixqr.app",
   tagline: "Immersive 3D QR Code Generator",
   description:
     "Create free, custom QR codes in seconds. Add logos, gradients, and colors, then preview and share them on a stunning real-time 3D tile. No sign-up required.",

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDb, type QrCodeRow } from "@/lib/db";
+import { getQrCode, insertScan } from "@/lib/db";
 import { parseUa } from "@/lib/ua";
 
 export const runtime = "nodejs";
@@ -9,18 +9,13 @@ type Ctx = { params: Promise<{ slug: string }> };
 
 export async function GET(req: Request, { params }: Ctx) {
   const { slug } = await params;
-  const db = getDb();
-
-  const row = db
-    .prepare("SELECT * FROM qr_codes WHERE slug = ?")
-    .get(slug) as QrCodeRow | undefined;
+  const row = await getQrCode(slug);
 
   if (!row) {
     return NextResponse.redirect(new URL("/", req.url), { status: 307 });
   }
 
-  const ua = req.headers.get("user-agent");
-  const { device, os, browser } = parseUa(ua);
+  const { device, os, browser } = parseUa(req.headers.get("user-agent"));
   const referer = req.headers.get("referer");
   const country =
     req.headers.get("x-vercel-ip-country") ??
@@ -28,10 +23,15 @@ export async function GET(req: Request, { params }: Ctx) {
     null;
 
   try {
-    db.prepare(
-      `INSERT INTO scans (slug, ts, device, os, browser, referer, country)
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
-    ).run(slug, Date.now(), device, os, browser, referer, country);
+    await insertScan({
+      slug,
+      ts: Date.now(),
+      device,
+      os,
+      browser,
+      referer,
+      country,
+    });
   } catch {
     /* never block the redirect on a logging failure */
   }

@@ -17,8 +17,8 @@ export default function OgImage() {
           justifyContent: "center",
           padding: "80px",
           background:
-            "radial-gradient(1000px 600px at 15% -10%, rgba(124,92,255,0.55), transparent 60%), radial-gradient(900px 500px at 110% 10%, rgba(33,212,253,0.45), transparent 55%), #060713",
-          color: "#eef0ff",
+            "radial-gradient(1000px 600px at 12% -10%, rgba(157,59,255,0.65), transparent 60%), radial-gradient(900px 500px at 112% 8%, rgba(18,230,255,0.5), transparent 55%), radial-gradient(700px 500px at 60% 120%, rgba(255,45,149,0.45), transparent 55%), #08030f",
+          color: "#f6f2ff",
           fontFamily: "sans-serif",
         }}
       >
@@ -29,13 +29,13 @@ export default function OgImage() {
               height: 96,
               borderRadius: 26,
               background: "#0b0c18",
-              border: "3px solid rgba(124,92,255,0.6)",
+              border: "3px solid rgba(157,59,255,0.7)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 52,
               fontWeight: 800,
-              color: "#7c5cff",
+              color: "#ff2d95",
             }}
           >
             V

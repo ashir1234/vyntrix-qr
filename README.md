@@ -43,22 +43,37 @@ npm run build && npm start   # production
 | `DELETE /api/qr/[slug]?token=` | Delete a code |
 | `GET /api/qr/[slug]/analytics?token=` | Scan analytics (requires `editToken`) |
 
-## Dynamic QR codes + analytics (SQLite)
+## Dynamic QR codes + analytics (libSQL / SQLite)
 
 Enable the **Dynamic QR** toggle in the studio (URL type) to mint a short link
 that you can re-point anytime without reprinting, plus scan analytics (count over
-time, device/browser/OS breakdown, recent feed). Data is stored in a local
-**SQLite** database via `better-sqlite3` (`lib/db.ts`), at `./data/vyntrix.db` by
-default (override with `DATABASE_PATH`).
+time, device/browser/OS breakdown, recent feed). Storage uses **libSQL**
+(`@libsql/client` in `lib/db.ts`) — the same SQLite SQL, with a connection that
+adapts to your environment:
+
+- **Local dev / persistent host:** a SQLite file at `./data/vyntrix.db` (override
+  with `DATABASE_PATH`). Nothing to configure.
+- **Serverless (Vercel):** set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN` to use
+  **Turso** (hosted libSQL). When these are set, the file path is ignored.
 
 Access is secured with a per-code **edit token** returned at creation — no
 accounts needed. Keep it safe; it's the only key to edit a code or view its stats.
 
-> Serverless note: Vercel's filesystem is ephemeral, so a local SQLite file won't
-> persist there. For production dynamic features, deploy on a persistent host
-> (Fly.io, Railway, a VPS) with a mounted volume, or swap `lib/db.ts` for
-> **Turso/libSQL** (same SQL, hosted, serverless-friendly). Static QR generation,
-> SEO, and ads work fine on Vercel regardless.
+### Deploying dynamic features to Vercel (Turso)
+
+Vercel has an **ephemeral filesystem**, so a local SQLite file won't persist —
+use Turso (free tier is plenty to start):
+
+```bash
+# one-time setup with the Turso CLI (or use the turso.tech dashboard)
+turso db create vyntrix-qr
+turso db show vyntrix-qr --url        # -> TURSO_DATABASE_URL
+turso db tokens create vyntrix-qr     # -> TURSO_AUTH_TOKEN
+```
+
+Add both values in Vercel → Project Settings → Environment Variables, then
+redeploy. The schema is created automatically on first use. Static QR generation,
+SEO, and ads work on Vercel regardless of the database.
 
 ## Environment variables
 

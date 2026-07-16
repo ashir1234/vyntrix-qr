@@ -39,10 +39,10 @@ const defaultFields: QrFields = {
 };
 
 const defaultStyle: QrStyle = {
-  fgColor: "#7c5cff",
-  bgColor: "#0d1024",
+  fgColor: "#ff2d95",
+  bgColor: "#0a0518",
   useGradient: true,
-  gradientColor: "#21d4fd",
+  gradientColor: "#12e6ff",
   gradientType: "linear",
   dotType: "rounded",
   cornerSquareType: "extra-rounded",
@@ -59,11 +59,24 @@ export const PRESETS: QrPreset[] = [
     name: "Neon",
     material: "holographic",
     style: {
-      fgColor: "#7c5cff",
-      gradientColor: "#21d4fd",
-      bgColor: "#060713",
+      fgColor: "#ff2d95",
+      gradientColor: "#12e6ff",
+      bgColor: "#0a0518",
       useGradient: true,
       dotType: "rounded",
+      cornerSquareType: "extra-rounded",
+    },
+  },
+  {
+    id: "electric",
+    name: "Electric",
+    material: "holographic",
+    style: {
+      fgColor: "#9d3bff",
+      gradientColor: "#12e6ff",
+      bgColor: "#08030f",
+      useGradient: true,
+      dotType: "extra-rounded",
       cornerSquareType: "extra-rounded",
     },
   },

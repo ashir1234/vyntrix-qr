@@ -171,7 +171,7 @@ function Burst() {
       </bufferGeometry>
       <pointsMaterial
         size={0.09}
-        color="#21d4fd"
+        color="#12e6ff"
         transparent
         depthWrite={false}
         blending={THREE.AdditiveBlending}
@@ -189,7 +189,8 @@ export default function QRScene() {
     >
       <ambientLight intensity={0.6} />
       <directionalLight position={[4, 6, 5]} intensity={1.3} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.5} color="#21d4fd" />
+      <directionalLight position={[-5, -2, -3]} intensity={0.6} color="#12e6ff" />
+      <pointLight position={[3, -3, 4]} intensity={30} color="#ff2d95" />
       <QrTile />
       <Burst />
       <Environment resolution={256}>
@@ -200,16 +201,22 @@ export default function QRScene() {
           color="#ffffff"
         />
         <Lightformer
-          intensity={1.6}
+          intensity={1.8}
           position={[-4, 1, 2]}
           scale={[3, 5, 1]}
-          color="#7c5cff"
+          color="#9d3bff"
         />
         <Lightformer
-          intensity={1.6}
+          intensity={1.8}
           position={[4, -1, 2]}
           scale={[3, 5, 1]}
-          color="#21d4fd"
+          color="#12e6ff"
+        />
+        <Lightformer
+          intensity={1.4}
+          position={[0, -3, 2]}
+          scale={[5, 2, 1]}
+          color="#ff2d95"
         />
       </Environment>
       <OrbitControls

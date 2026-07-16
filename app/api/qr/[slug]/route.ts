@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDb, type QrCodeRow } from "@/lib/db";
+import { deleteQrCode, getQrCode, updateQrCode } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,15 +17,10 @@ type Ctx = { params: Promise<{ slug: string }> };
 
 export async function GET(_req: Request, { params }: Ctx) {
   const { slug } = await params;
-  const db = getDb();
-  const row = db
-    .prepare("SELECT * FROM qr_codes WHERE slug = ?")
-    .get(slug) as QrCodeRow | undefined;
-
+  const row = await getQrCode(slug);
   if (!row) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
-
   return NextResponse.json({
     slug: row.slug,
     destination: row.destination,
@@ -44,11 +39,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const db = getDb();
-  const row = db
-    .prepare("SELECT * FROM qr_codes WHERE slug = ?")
-    .get(slug) as QrCodeRow | undefined;
-
+  const row = await getQrCode(slug);
   if (!row) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
@@ -69,28 +60,20 @@ export async function PATCH(req: Request, { params }: Ctx) {
       ? body.title.trim().slice(0, 120) || null
       : row.title;
 
-  db.prepare(
-    "UPDATE qr_codes SET destination = ?, title = ?, updated_at = ? WHERE slug = ?",
-  ).run(destination, title, Date.now(), slug);
-
+  await updateQrCode(slug, destination, title);
   return NextResponse.json({ slug, destination, title });
 }
 
 export async function DELETE(req: Request, { params }: Ctx) {
   const { slug } = await params;
   const token = new URL(req.url).searchParams.get("token");
-  const db = getDb();
-  const row = db
-    .prepare("SELECT edit_token FROM qr_codes WHERE slug = ?")
-    .get(slug) as Pick<QrCodeRow, "edit_token"> | undefined;
-
+  const row = await getQrCode(slug);
   if (!row) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
   if (!token || token !== row.edit_token) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
-
-  db.prepare("DELETE FROM qr_codes WHERE slug = ?").run(slug);
+  await deleteQrCode(slug);
   return NextResponse.json({ ok: true });
 }

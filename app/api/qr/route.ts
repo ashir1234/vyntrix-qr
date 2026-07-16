@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
+import { createQrCode, slugExists } from "@/lib/db";
 import { generateEditToken, generateSlug } from "@/lib/ids";
 import { getBaseUrl } from "@/lib/baseUrl";
 import { getClientIp, rateLimit } from "@/lib/ratelimit";
@@ -43,23 +43,14 @@ export async function POST(req: Request) {
     );
   }
 
-  const db = getDb();
   const editToken = generateEditToken();
-  const now = Date.now();
-
   let slug = generateSlug();
   for (let attempt = 0; attempt < 5; attempt++) {
-    const exists = db
-      .prepare("SELECT 1 FROM qr_codes WHERE slug = ?")
-      .get(slug);
-    if (!exists) break;
+    if (!(await slugExists(slug))) break;
     slug = generateSlug();
   }
 
-  db.prepare(
-    `INSERT INTO qr_codes (slug, destination, title, edit_token, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?)`,
-  ).run(slug, destination, title, editToken, now, now);
+  await createQrCode({ slug, destination, title, editToken });
 
   const base = getBaseUrl(req);
   return NextResponse.json(
