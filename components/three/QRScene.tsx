@@ -178,7 +178,46 @@ function RunawayScene() {
   );
 }
 
-/** Simple cute character holding the QR. */
+/** Soft toon materials for chibi characters. */
+function ToonSkin({ color = "#ffd7b5" }: { color?: string }) {
+  return (
+    <meshStandardMaterial
+      color={color}
+      roughness={0.55}
+      metalness={0}
+      envMapIntensity={0.35}
+    />
+  );
+}
+
+function CartoonEye({
+  position,
+}: {
+  position: [number, number, number];
+}) {
+  return (
+    <group position={position}>
+      <mesh scale={[1, 1.15, 0.7]}>
+        <sphereGeometry args={[0.09, 20, 20]} />
+        <meshStandardMaterial color="#ffffff" roughness={0.25} />
+      </mesh>
+      <mesh position={[0.01, 0, 0.055]}>
+        <sphereGeometry args={[0.045, 16, 16]} />
+        <meshStandardMaterial color="#1a3a4a" roughness={0.2} />
+      </mesh>
+      <mesh position={[0.025, 0.02, 0.085]}>
+        <sphereGeometry args={[0.018, 10, 10]} />
+        <meshStandardMaterial
+          color="#ffffff"
+          emissive="#ffffff"
+          emissiveIntensity={0.4}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+/** Chibi cartoon buddy holding the QR — not a stick-figure of capsules. */
 function BuddyScene() {
   const body = useRef<THREE.Group>(null);
   const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
@@ -187,57 +226,150 @@ function BuddyScene() {
   useFrame(({ clock }) => {
     if (!body.current || reducedMotion) return;
     const t = clock.getElapsedTime();
-    body.current.position.y = Math.sin(t * 2.2) * 0.08;
-    body.current.rotation.y = Math.sin(t * 0.8) * 0.12;
+    body.current.position.y = Math.sin(t * 2.1) * 0.06 - 0.55;
+    body.current.rotation.y = Math.sin(t * 0.7) * 0.1;
   });
 
   return (
-    <group ref={body} position={[0, -0.6, 0]}>
+    <group ref={body} position={[0, -0.55, 0]}>
+      {/* shoes */}
+      <mesh position={[-0.22, -0.72, 0.08]} scale={[1.15, 0.55, 1.35]}>
+        <sphereGeometry args={[0.16, 18, 18]} />
+        <meshStandardMaterial color="#0f1c18" roughness={0.7} />
+      </mesh>
+      <mesh position={[0.22, -0.72, 0.08]} scale={[1.15, 0.55, 1.35]}>
+        <sphereGeometry args={[0.16, 18, 18]} />
+        <meshStandardMaterial color="#0f1c18" roughness={0.7} />
+      </mesh>
+
       {/* legs */}
-      <mesh position={[-0.28, -0.55, 0]}>
-        <capsuleGeometry args={[0.14, 0.35, 6, 12]} />
-        <meshStandardMaterial color="#2a1a4a" roughness={0.6} />
+      <mesh position={[-0.2, -0.42, 0]}>
+        <capsuleGeometry args={[0.11, 0.28, 8, 14]} />
+        <meshStandardMaterial color="#1e3a32" roughness={0.65} />
       </mesh>
-      <mesh position={[0.28, -0.55, 0]}>
-        <capsuleGeometry args={[0.14, 0.35, 6, 12]} />
-        <meshStandardMaterial color="#2a1a4a" roughness={0.6} />
+      <mesh position={[0.2, -0.42, 0]}>
+        <capsuleGeometry args={[0.11, 0.28, 8, 14]} />
+        <meshStandardMaterial color="#1e3a32" roughness={0.65} />
       </mesh>
-      {/* torso */}
-      <mesh position={[0, 0.15, 0]}>
-        <capsuleGeometry args={[0.42, 0.55, 8, 16]} />
-        <meshStandardMaterial color={accent} metalness={0.3} roughness={0.4} />
+
+      {/* hoodie torso */}
+      <mesh position={[0, 0.12, 0]} scale={[1, 1.05, 0.9]}>
+        <sphereGeometry args={[0.48, 28, 28]} />
+        <meshStandardMaterial
+          color={accent}
+          roughness={0.55}
+          metalness={0.08}
+        />
       </mesh>
-      {/* head */}
-      <mesh position={[0, 1.05, 0]}>
-        <sphereGeometry args={[0.38, 24, 24]} />
-        <meshStandardMaterial color="#f2e9ff" roughness={0.45} />
+      {/* hoodie pocket */}
+      <mesh position={[0, -0.02, 0.38]} scale={[1.1, 0.7, 0.35]}>
+        <sphereGeometry args={[0.18, 16, 16]} />
+        <meshStandardMaterial color={accent} roughness={0.6} metalness={0.05} />
       </mesh>
-      {/* eyes */}
-      <mesh position={[-0.12, 1.1, 0.32]}>
+      {/* hoodie hood fluff */}
+      <mesh position={[0, 0.55, -0.05]} scale={[1.15, 0.55, 0.9]}>
+        <sphereGeometry args={[0.32, 20, 20]} />
+        <meshStandardMaterial color={accent} roughness={0.6} />
+      </mesh>
+
+      {/* neck */}
+      <mesh position={[0, 0.58, 0.05]}>
+        <cylinderGeometry args={[0.12, 0.14, 0.12, 16]} />
+        <ToonSkin />
+      </mesh>
+
+      {/* oversized chibi head */}
+      <mesh position={[0, 0.95, 0.05]} scale={[1, 1.05, 0.95]}>
+        <sphereGeometry args={[0.48, 36, 36]} />
+        <ToonSkin />
+      </mesh>
+
+      {/* soft hair volume */}
+      <mesh position={[0, 1.18, -0.05]} scale={[1.05, 0.7, 1]}>
+        <sphereGeometry args={[0.42, 28, 28]} />
+        <meshStandardMaterial color="#1a2e28" roughness={0.85} />
+      </mesh>
+      <mesh position={[-0.28, 1.15, 0.15]} scale={[0.7, 0.55, 0.65]}>
+        <sphereGeometry args={[0.22, 18, 18]} />
+        <meshStandardMaterial color="#1a2e28" roughness={0.85} />
+      </mesh>
+      <mesh position={[0.28, 1.15, 0.15]} scale={[0.7, 0.55, 0.65]}>
+        <sphereGeometry args={[0.22, 18, 18]} />
+        <meshStandardMaterial color="#1a2e28" roughness={0.85} />
+      </mesh>
+      {/* front bang */}
+      <mesh position={[0, 1.22, 0.28]} scale={[1.2, 0.45, 0.5]}>
+        <sphereGeometry args={[0.2, 16, 16]} />
+        <meshStandardMaterial color="#1a2e28" roughness={0.85} />
+      </mesh>
+
+      {/* ears */}
+      <mesh position={[-0.42, 0.98, 0]}>
+        <sphereGeometry args={[0.09, 14, 14]} />
+        <ToonSkin />
+      </mesh>
+      <mesh position={[0.42, 0.98, 0]}>
+        <sphereGeometry args={[0.09, 14, 14]} />
+        <ToonSkin />
+      </mesh>
+
+      <CartoonEye position={[-0.15, 0.98, 0.4]} />
+      <CartoonEye position={[0.15, 0.98, 0.4]} />
+
+      {/* blush */}
+      <mesh position={[-0.28, 0.86, 0.36]} scale={[1.2, 0.7, 0.4]}>
         <sphereGeometry args={[0.06, 12, 12]} />
-        <meshStandardMaterial color="#0c1824" />
+        <meshStandardMaterial
+          color="#ff8fab"
+          transparent
+          opacity={0.45}
+          roughness={1}
+        />
       </mesh>
-      <mesh position={[0.12, 1.1, 0.32]}>
+      <mesh position={[0.28, 0.86, 0.36]} scale={[1.2, 0.7, 0.4]}>
         <sphereGeometry args={[0.06, 12, 12]} />
-        <meshStandardMaterial color="#0c1824" />
+        <meshStandardMaterial
+          color="#ff8fab"
+          transparent
+          opacity={0.45}
+          roughness={1}
+        />
       </mesh>
+
+      {/* nose */}
+      <mesh position={[0, 0.9, 0.46]} scale={[0.7, 0.55, 0.5]}>
+        <sphereGeometry args={[0.035, 10, 10]} />
+        <ToonSkin color="#f0c09a" />
+      </mesh>
+
       {/* smile */}
-      <mesh position={[0, 0.96, 0.34]} rotation={[0.2, 0, 0]}>
-        <torusGeometry args={[0.1, 0.02, 8, 16, Math.PI]} />
-        <meshStandardMaterial color="#0c1824" />
+      <mesh position={[0, 0.78, 0.42]} rotation={[0.35, 0, 0]}>
+        <torusGeometry args={[0.08, 0.016, 10, 20, Math.PI]} />
+        <meshStandardMaterial color="#c45c6a" roughness={0.4} />
       </mesh>
-      {/* arms holding QR */}
-      <mesh position={[-0.75, 0.35, 0.35]} rotation={[0.4, 0, 0.5]}>
-        <capsuleGeometry args={[0.1, 0.45, 6, 10]} />
-        <meshStandardMaterial color="#f2e9ff" roughness={0.5} />
+
+      {/* arms */}
+      <mesh position={[-0.58, 0.22, 0.25]} rotation={[0.55, 0.1, 0.85]}>
+        <capsuleGeometry args={[0.1, 0.42, 8, 14]} />
+        <ToonSkin />
       </mesh>
-      <mesh position={[0.75, 0.35, 0.35]} rotation={[0.4, 0, -0.5]}>
-        <capsuleGeometry args={[0.1, 0.45, 6, 10]} />
-        <meshStandardMaterial color="#f2e9ff" roughness={0.5} />
+      <mesh position={[0.58, 0.22, 0.25]} rotation={[0.55, -0.1, -0.85]}>
+        <capsuleGeometry args={[0.1, 0.42, 8, 14]} />
+        <ToonSkin />
       </mesh>
-      {/* QR in hands */}
-      <group position={[0, 0.55, 0.95]} rotation={[-0.15, 0, 0]}>
-        <QrTile scale={0.42} autoSpin={false} doubleSided={false} />
+      {/* hands */}
+      <mesh position={[-0.42, 0.42, 0.72]}>
+        <sphereGeometry args={[0.12, 14, 14]} />
+        <ToonSkin />
+      </mesh>
+      <mesh position={[0.42, 0.42, 0.72]}>
+        <sphereGeometry args={[0.12, 14, 14]} />
+        <ToonSkin />
+      </mesh>
+
+      {/* QR held out front */}
+      <group position={[0, 0.55, 0.95]} rotation={[-0.12, 0, 0]}>
+        <QrTile scale={0.4} autoSpin={false} doubleSided={false} />
       </group>
     </group>
   );
@@ -437,44 +569,109 @@ function StickyScene() {
 
 function BounceScene() {
   const qr = useRef<THREE.Group>(null);
+  const mat = useRef<THREE.Mesh>(null);
   const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
 
   useFrame(({ clock }) => {
-    if (!qr.current || reducedMotion) return;
+    if (reducedMotion) return;
     const t = clock.getElapsedTime();
     // Bounce curve: abs(sin) with squash
     const b = Math.abs(Math.sin(t * 3.2));
-    qr.current.position.y = b * 1.8 - 0.4;
-    const squash = 1 + (1 - b) * 0.25;
-    qr.current.scale.set(squash, 1 / squash, squash);
-    qr.current.rotation.y = t * 0.6;
+    const impact = 1 - b; // 1 when on the mat
+
+    if (qr.current) {
+      qr.current.position.y = b * 1.85 - 0.15;
+      const squash = 1 + impact * 0.28;
+      qr.current.scale.set(squash, 1 / squash, squash);
+      qr.current.rotation.y = t * 0.55;
+    }
+    if (mat.current) {
+      // Mat dips when the QR lands
+      mat.current.scale.y = 1 - impact * 0.45;
+      mat.current.position.y = -1.18 - impact * 0.08;
+    }
   });
+
+  const legPositions: [number, number][] = [
+    [-1.15, -1.15],
+    [1.15, -1.15],
+    [-1.15, 1.15],
+    [1.15, 1.15],
+  ];
 
   return (
     <group>
-      {/* trampoline */}
-      <mesh position={[0, -1.35, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[1.6, 32]} />
-        <meshStandardMaterial color={C.amber} metalness={0.2} roughness={0.5} />
+      {/* floor shadow disc */}
+      <mesh position={[0, -1.92, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[1.9, 40]} />
+        <meshStandardMaterial
+          color="#061210"
+          transparent
+          opacity={0.45}
+          roughness={1}
+        />
       </mesh>
-      <mesh position={[0, -1.45, 0]}>
-        <torusGeometry args={[1.6, 0.12, 12, 32]} />
-        <meshStandardMaterial color={C.sky} metalness={0.4} roughness={0.3} />
+
+      {/* padded outer frame */}
+      <mesh position={[0, -1.22, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.55, 0.18, 18, 48]} />
+        <meshStandardMaterial color="#0ea5e9" roughness={0.35} metalness={0.15} />
       </mesh>
-      {/* legs */}
-      {[
-        [-1.1, -1.1],
-        [1.1, -1.1],
-        [-1.1, 1.1],
-        [1.1, 1.1],
-      ].map(([x, z], i) => (
-        <mesh key={i} position={[x, -1.7, z]}>
-          <cylinderGeometry args={[0.08, 0.08, 0.55, 8]} />
-          <meshStandardMaterial color="#2a1a4a" />
-        </mesh>
+      {/* soft safety pad stripe on frame */}
+      <mesh position={[0, -1.12, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.55, 0.1, 12, 48]} />
+        <meshStandardMaterial color="#38bdf8" roughness={0.45} metalness={0.05} />
+      </mesh>
+
+      {/* bouncing fabric mat */}
+      <mesh ref={mat} position={[0, -1.18, 0]} scale={[1, 0.22, 1]}>
+        <sphereGeometry args={[1.35, 40, 24, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <meshStandardMaterial
+          color="#f59e0b"
+          roughness={0.55}
+          metalness={0.05}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {/* mat center stitch / logo ring */}
+      <mesh position={[0, -1.05, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.35, 0.48, 32]} />
+        <meshStandardMaterial color="#d97706" roughness={0.6} />
+      </mesh>
+
+      {/* springs around the rim */}
+      {Array.from({ length: 12 }).map((_, i) => {
+        const a = (i / 12) * Math.PI * 2;
+        const x = Math.cos(a) * 1.42;
+        const z = Math.sin(a) * 1.42;
+        return (
+          <mesh key={`spring-${i}`} position={[x, -1.28, z]}>
+            <cylinderGeometry args={[0.04, 0.04, 0.28, 8]} />
+            <meshStandardMaterial
+              color="#cbd5e1"
+              metalness={0.85}
+              roughness={0.25}
+            />
+          </mesh>
+        );
+      })}
+
+      {/* legs + feet */}
+      {legPositions.map(([x, z], i) => (
+        <group key={`leg-${i}`} position={[x, 0, z]}>
+          <mesh position={[0, -1.58, 0]}>
+            <cylinderGeometry args={[0.07, 0.09, 0.7, 10]} />
+            <meshStandardMaterial color="#334155" metalness={0.4} roughness={0.4} />
+          </mesh>
+          <mesh position={[0, -1.9, 0]} scale={[1.4, 0.35, 1.4]}>
+            <sphereGeometry args={[0.14, 14, 14]} />
+            <meshStandardMaterial color="#1e293b" roughness={0.7} />
+          </mesh>
+        </group>
       ))}
+
       <group ref={qr}>
-        <QrTile autoSpin={false} scale={0.55} />
+        <QrTile autoSpin={false} scale={0.52} />
       </group>
     </group>
   );
@@ -681,55 +878,155 @@ function DiscoScene() {
 
 function SandwichScene() {
   const stack = useRef<THREE.Group>(null);
+  const lid = useRef<THREE.Group>(null);
   const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
 
   useFrame(({ clock }) => {
-    if (!stack.current || reducedMotion) return;
+    if (reducedMotion) return;
     const t = clock.getElapsedTime();
-    stack.current.rotation.y = Math.sin(t * 0.6) * 0.25;
-    stack.current.position.y = Math.sin(t * 1.5) * 0.05;
+    if (stack.current) {
+      stack.current.rotation.y = Math.sin(t * 0.55) * 0.2;
+      stack.current.position.y = Math.sin(t * 1.4) * 0.04 - 0.15;
+    }
+    if (lid.current) {
+      // Soft “open sandwich” bob so the QR peeks out
+      lid.current.position.y = 0.02 + Math.sin(t * 1.8) * 0.04;
+      lid.current.rotation.x = -0.08 + Math.sin(t * 1.2) * 0.03;
+    }
   });
 
+  const sesame: [number, number, number][] = [
+    [0.35, 0.08, 0.25],
+    [-0.4, 0.1, 0.15],
+    [0.1, 0.14, -0.35],
+    [-0.2, 0.12, -0.2],
+    [0.45, 0.06, -0.15],
+    [-0.45, 0.07, 0.35],
+    [0.0, 0.16, 0.05],
+    [0.25, 0.09, 0.45],
+    [-0.15, 0.11, 0.4],
+  ];
+
   return (
-    <group ref={stack} position={[0, -0.2, 0]}>
-      {/* bottom bun */}
+    <group ref={stack} position={[0, -0.15, 0]}>
+      {/* bottom bun — soft rounded loaf */}
+      <mesh position={[0, -0.72, 0]} scale={[1, 0.55, 1]}>
+        <sphereGeometry args={[1.15, 32, 24]} />
+        <meshStandardMaterial color="#e8c48a" roughness={0.85} />
+      </mesh>
       <mesh position={[0, -0.55, 0]}>
-        <cylinderGeometry args={[1.3, 1.35, 0.35, 24]} />
-        <meshStandardMaterial color="#e8b86d" roughness={0.8} />
+        <cylinderGeometry args={[1.15, 1.18, 0.22, 32]} />
+        <meshStandardMaterial color="#f0d4a0" roughness={0.8} />
       </mesh>
-      {/* lettuce */}
-      <mesh position={[0, -0.28, 0]}>
-        <cylinderGeometry args={[1.25, 1.25, 0.08, 24]} />
-        <meshStandardMaterial color="#4caf50" roughness={0.7} />
+      {/* toasted face on bottom bun */}
+      <mesh position={[0, -0.42, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[1.05, 32]} />
+        <meshStandardMaterial color="#d4a66a" roughness={0.9} />
       </mesh>
-      {/* QR filling */}
-      <group position={[0, 0.05, 0]} rotation={[-0.4, 0.2, 0]}>
-        <QrTile autoSpin={false} scale={0.5} doubleSided={false} />
-      </group>
-      {/* tomato */}
-      <mesh position={[0, 0.45, 0]}>
-        <cylinderGeometry args={[1.15, 1.15, 0.12, 24]} />
-        <meshStandardMaterial color="#e53935" roughness={0.5} />
+
+      {/* lettuce — ruffled layers */}
+      {[0, 1, 2, 3, 4].map((i) => {
+        const a = (i / 5) * Math.PI * 2;
+        return (
+          <mesh
+            key={`lettuce-${i}`}
+            position={[
+              Math.cos(a) * 0.12,
+              -0.32,
+              Math.sin(a) * 0.12,
+            ]}
+            rotation={[-0.15 + i * 0.05, a * 0.3, i * 0.2]}
+            scale={[1.05 + (i % 2) * 0.08, 0.12, 1.05]}
+          >
+            <sphereGeometry args={[1.05, 20, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
+            <meshStandardMaterial
+              color={i % 2 ? "#5ecf5a" : "#3daf48"}
+              roughness={0.7}
+              side={THREE.DoubleSide}
+            />
+          </mesh>
+        );
+      })}
+
+      {/* burger patty */}
+      <mesh position={[0, -0.18, 0]}>
+        <cylinderGeometry args={[1.05, 1.08, 0.22, 28]} />
+        <meshStandardMaterial color="#5c3317" roughness={0.75} />
       </mesh>
-      {/* top bun */}
-      <mesh position={[0, 0.75, 0]}>
-        <sphereGeometry args={[1.3, 24, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
-        <meshStandardMaterial color="#d4a017" roughness={0.75} />
-      </mesh>
-      {/* sesame seeds */}
-      {[0, 1, 2, 3, 4, 5].map((i) => (
-        <mesh
-          key={i}
-          position={[
-            Math.cos((i / 6) * Math.PI * 2) * 0.55,
-            1.15,
-            Math.sin((i / 6) * Math.PI * 2) * 0.55,
-          ]}
-        >
-          <sphereGeometry args={[0.05, 6, 6]} />
-          <meshStandardMaterial color="#f5e6c8" />
+      {/* grill marks */}
+      {[-0.35, 0, 0.35].map((x, i) => (
+        <mesh key={`grill-${i}`} position={[x, -0.06, 0]} rotation={[0, 0.15, 0]}>
+          <boxGeometry args={[0.1, 0.02, 1.7]} />
+          <meshStandardMaterial color="#3d2010" roughness={0.9} />
         </mesh>
       ))}
+
+      {/* cheese — slightly melted overhang */}
+      <mesh position={[0.05, 0.0, 0.02]} rotation={[0.02, 0.12, 0.04]}>
+        <RoundedBox args={[2.0, 0.06, 2.0]} radius={0.04}>
+          <meshStandardMaterial color="#f5c542" roughness={0.45} metalness={0.05} />
+        </RoundedBox>
+      </mesh>
+      <mesh position={[0.85, -0.05, 0.55]} rotation={[0.4, 0.2, 0.3]} scale={[1, 0.35, 0.7]}>
+        <sphereGeometry args={[0.25, 12, 12]} />
+        <meshStandardMaterial color="#f5c542" roughness={0.45} />
+      </mesh>
+
+      {/* tomato slices */}
+      <mesh position={[-0.35, 0.12, 0.15]} rotation={[0.05, 0.2, 0]}>
+        <cylinderGeometry args={[0.55, 0.55, 0.08, 24]} />
+        <meshStandardMaterial color="#e53935" roughness={0.4} />
+      </mesh>
+      <mesh position={[0.4, 0.14, -0.1]} rotation={[-0.04, -0.15, 0.05]}>
+        <cylinderGeometry args={[0.5, 0.5, 0.08, 24]} />
+        <meshStandardMaterial color="#d32f2f" roughness={0.4} />
+      </mesh>
+      {/* tomato seeds hint */}
+      <mesh position={[-0.35, 0.17, 0.15]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.12, 0.28, 16]} />
+        <meshStandardMaterial color="#ffcdd2" roughness={0.6} />
+      </mesh>
+
+      {/* top bun group */}
+      <group ref={lid} position={[0, 0.72, 0]}>
+        <mesh scale={[1.05, 0.75, 1.05]}>
+          <sphereGeometry args={[1.15, 32, 24, 0, Math.PI * 2, 0, Math.PI / 2]} />
+          <meshStandardMaterial color="#d4a017" roughness={0.7} />
+        </mesh>
+        {/* lighter crust rim */}
+        <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.95, 1.15, 32]} />
+          <meshStandardMaterial color="#c4922e" roughness={0.75} />
+        </mesh>
+        {/* sesame seeds */}
+        {sesame.map(([x, y, z], i) => (
+          <mesh
+            key={`seed-${i}`}
+            position={[x, 0.55 + y, z]}
+            rotation={[0.2 + i * 0.15, i * 0.7, 0.25]}
+            scale={[1.4, 0.55, 0.8]}
+          >
+            <sphereGeometry args={[0.045, 8, 8]} />
+            <meshStandardMaterial color="#f7edd4" roughness={0.65} />
+          </mesh>
+        ))}
+      </group>
+
+      {/* Burger pick + QR mounted together so the code sits on the stick tip */}
+      <group position={[0, 0.95, 0.55]}>
+        <mesh position={[0, 0.35, 0]}>
+          <cylinderGeometry args={[0.028, 0.032, 1.1, 10]} />
+          <meshStandardMaterial color="#c9a56a" roughness={0.8} />
+        </mesh>
+        {/* tiny knob under the card */}
+        <mesh position={[0, 0.92, 0]}>
+          <sphereGeometry args={[0.05, 10, 10]} />
+          <meshStandardMaterial color="#b89560" roughness={0.7} />
+        </mesh>
+        <group position={[0, 1.22, 0.02]} rotation={[-0.05, 0.04, 0]}>
+          <QrTile autoSpin={false} scale={0.28} doubleSided={false} />
+        </group>
+      </group>
     </group>
   );
 }
@@ -783,45 +1080,356 @@ function BalloonScene() {
 
 function DuckScene() {
   const duck = useRef<THREE.Group>(null);
+  const wing = useRef<THREE.Mesh>(null);
   const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
 
   useFrame(({ clock }) => {
-    if (!duck.current || reducedMotion) return;
+    if (reducedMotion) return;
     const t = clock.getElapsedTime();
-    duck.current.position.y = Math.sin(t * 2) * 0.08 - 0.2;
-    duck.current.rotation.y = Math.sin(t * 0.8) * 0.2;
+    if (duck.current) {
+      duck.current.position.y = Math.sin(t * 2.2) * 0.07 - 0.15;
+      duck.current.rotation.y = Math.sin(t * 0.75) * 0.18;
+    }
+    if (wing.current) {
+      wing.current.rotation.z = 0.35 + Math.sin(t * 4) * 0.18;
+    }
   });
 
   return (
     <group ref={duck}>
-      {/* body */}
-      <mesh position={[0, 0, 0]} scale={[1.2, 0.85, 1]}>
-        <sphereGeometry args={[0.9, 24, 24]} />
-        <meshStandardMaterial color="#ffe566" roughness={0.45} />
+      {/* plump body */}
+      <mesh position={[0, 0, 0]} scale={[1.25, 0.95, 1.1]}>
+        <sphereGeometry args={[0.85, 36, 36]} />
+        <meshStandardMaterial color="#ffe566" roughness={0.4} />
+      </mesh>
+      {/* belly */}
+      <mesh position={[0.15, -0.1, 0.35]} scale={[0.9, 0.85, 0.55]}>
+        <sphereGeometry args={[0.55, 24, 24]} />
+        <meshStandardMaterial color="#fff4b8" roughness={0.5} />
       </mesh>
       {/* head */}
-      <mesh position={[0.7, 0.75, 0]}>
-        <sphereGeometry args={[0.45, 20, 20]} />
-        <meshStandardMaterial color="#ffe566" roughness={0.45} />
+      <mesh position={[0.75, 0.85, 0]} scale={[1, 1.05, 1]}>
+        <sphereGeometry args={[0.48, 32, 32]} />
+        <meshStandardMaterial color="#ffe566" roughness={0.4} />
       </mesh>
-      {/* beak */}
-      <mesh position={[1.2, 0.7, 0]} rotation={[0, 0, -0.2]}>
-        <coneGeometry args={[0.16, 0.4, 12]} />
-        <meshStandardMaterial color="#ff8a3d" roughness={0.5} />
+      {/* cheek fluff */}
+      <mesh position={[0.95, 0.7, 0.28]} scale={[0.7, 0.55, 0.5]}>
+        <sphereGeometry args={[0.16, 14, 14]} />
+        <meshStandardMaterial color="#ffd24a" roughness={0.5} />
       </mesh>
-      {/* eye */}
-      <mesh position={[0.9, 0.9, 0.28]}>
-        <sphereGeometry args={[0.08, 10, 10]} />
-        <meshStandardMaterial color="#0c1824" />
+      {/* beak upper */}
+      <mesh position={[1.28, 0.78, 0]} rotation={[0, 0, -0.15]} scale={[1.2, 0.55, 0.85]}>
+        <sphereGeometry args={[0.18, 16, 16]} />
+        <meshStandardMaterial color="#ff8a3d" roughness={0.45} />
       </mesh>
+      {/* beak lower */}
+      <mesh position={[1.22, 0.68, 0]} rotation={[0.15, 0, -0.1]} scale={[1, 0.35, 0.7]}>
+        <sphereGeometry args={[0.14, 14, 14]} />
+        <meshStandardMaterial color="#f07830" roughness={0.5} />
+      </mesh>
+      {/* cartoon eye */}
+      <group position={[0.95, 0.98, 0.32]}>
+        <mesh scale={[1, 1.2, 0.65]}>
+          <sphereGeometry args={[0.11, 18, 18]} />
+          <meshStandardMaterial color="#ffffff" roughness={0.25} />
+        </mesh>
+        <mesh position={[0.02, 0, 0.06]}>
+          <sphereGeometry args={[0.055, 14, 14]} />
+          <meshStandardMaterial color="#1a2a20" />
+        </mesh>
+        <mesh position={[0.035, 0.025, 0.095]}>
+          <sphereGeometry args={[0.02, 10, 10]} />
+          <meshStandardMaterial
+            color="#ffffff"
+            emissive="#ffffff"
+            emissiveIntensity={0.45}
+          />
+        </mesh>
+      </group>
       {/* wing */}
-      <mesh position={[-0.1, 0.15, 0.75]} rotation={[0.3, 0.2, 0.4]}>
-        <sphereGeometry args={[0.35, 12, 12]} />
-        <meshStandardMaterial color="#f5d76e" roughness={0.5} />
+      <mesh
+        ref={wing}
+        position={[-0.15, 0.15, 0.78]}
+        rotation={[0.25, 0.15, 0.35]}
+        scale={[0.85, 0.55, 1.15]}
+      >
+        <sphereGeometry args={[0.4, 20, 20]} />
+        <meshStandardMaterial color="#f5d76e" roughness={0.45} />
+      </mesh>
+      {/* feet */}
+      <mesh position={[0.15, -0.75, 0.35]} scale={[1.4, 0.35, 0.9]} rotation={[0, 0.2, 0]}>
+        <sphereGeometry args={[0.18, 14, 14]} />
+        <meshStandardMaterial color="#ff8a3d" roughness={0.55} />
+      </mesh>
+      <mesh position={[-0.2, -0.75, 0.2]} scale={[1.3, 0.35, 0.85]} rotation={[0, -0.15, 0]}>
+        <sphereGeometry args={[0.16, 14, 14]} />
+        <meshStandardMaterial color="#ff8a3d" roughness={0.55} />
       </mesh>
       {/* QR hat */}
-      <group position={[0.15, 1.35, 0]} rotation={[-0.35, 0.4, 0]}>
-        <QrTile autoSpin={false} scale={0.32} doubleSided={false} />
+      <group position={[0.2, 1.45, 0]} rotation={[-0.3, 0.35, 0]}>
+        <QrTile autoSpin={false} scale={0.3} doubleSided={false} />
+      </group>
+    </group>
+  );
+}
+
+function RainDrop({
+  texture,
+  seed,
+}: {
+  texture: THREE.Texture | null;
+  seed: number;
+}) {
+  const ref = useRef<THREE.Group>(null);
+  const x = ((seed * 47) % 100) / 100 * 6 - 3;
+  const z = ((seed * 73) % 100) / 100 * 4 - 2;
+  const speed = 1.4 + (seed % 7) * 0.18;
+  const startY = 2.5 + (seed % 5) * 0.45;
+  const rot = (seed % 10) * 0.2;
+
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    const t = clock.getElapsedTime() * speed + seed;
+    const y = startY - ((t * 1.6) % 5.5);
+    ref.current.position.set(x + Math.sin(t * 0.4) * 0.15, y, z);
+    ref.current.rotation.z = rot + Math.sin(t) * 0.15;
+  });
+
+  return (
+    <group ref={ref} scale={0.12 + (seed % 4) * 0.02}>
+      <mesh>
+        <planeGeometry args={[2.2, 2.2]} />
+        {texture ? (
+          <meshBasicMaterial map={texture} toneMapped={false} transparent opacity={0.95} />
+        ) : (
+          <meshStandardMaterial color={C.emerald} />
+        )}
+      </mesh>
+      <mesh position={[0, 0, -0.02]}>
+        <planeGeometry args={[2.4, 2.4]} />
+        <meshStandardMaterial color="#0c241c" />
+      </mesh>
+    </group>
+  );
+}
+
+function Cloud({
+  position,
+  scale = 1,
+}: {
+  position: [number, number, number];
+  scale?: number;
+}) {
+  const ref = useRef<THREE.Group>(null);
+  useFrame(({ clock }) => {
+    if (!ref.current) return;
+    ref.current.position.x =
+      position[0] + Math.sin(clock.getElapsedTime() * 0.15 + position[2]) * 0.25;
+  });
+
+  return (
+    <group ref={ref} position={position} scale={scale}>
+      <mesh position={[0, 0, 0]}>
+        <sphereGeometry args={[0.55, 18, 18]} />
+        <meshStandardMaterial color="#e8f1f8" roughness={1} />
+      </mesh>
+      <mesh position={[0.45, -0.05, 0.1]}>
+        <sphereGeometry args={[0.42, 16, 16]} />
+        <meshStandardMaterial color="#dce8f2" roughness={1} />
+      </mesh>
+      <mesh position={[-0.4, -0.08, 0.05]}>
+        <sphereGeometry args={[0.4, 16, 16]} />
+        <meshStandardMaterial color="#f2f7fb" roughness={1} />
+      </mesh>
+      <mesh position={[0.1, 0.28, -0.05]}>
+        <sphereGeometry args={[0.35, 14, 14]} />
+        <meshStandardMaterial color="#eef5fa" roughness={1} />
+      </mesh>
+    </group>
+  );
+}
+
+/** Tiny romantic partner for the rainy road scene. */
+function RainPartner({
+  side,
+  accent,
+}: {
+  side: "left" | "right";
+  accent: string;
+}) {
+  const dir = side === "left" ? -1 : 1;
+  const lean = side === "left" ? 0.12 : -0.12;
+
+  return (
+    <group position={[dir * 0.38, -1.15, 0.2]} rotation={[0, -dir * 0.35, lean]}>
+      {/* legs */}
+      <mesh position={[-0.08, -0.35, 0]}>
+        <capsuleGeometry args={[0.07, 0.22, 6, 10]} />
+        <meshStandardMaterial color="#1e293b" roughness={0.7} />
+      </mesh>
+      <mesh position={[0.08, -0.35, 0]}>
+        <capsuleGeometry args={[0.07, 0.22, 6, 10]} />
+        <meshStandardMaterial color="#1e293b" roughness={0.7} />
+      </mesh>
+      {/* body */}
+      <mesh position={[0, 0.05, 0]} scale={[0.9, 1.05, 0.75]}>
+        <sphereGeometry args={[0.28, 20, 20]} />
+        <meshStandardMaterial color={accent} roughness={0.55} />
+      </mesh>
+      {/* head */}
+      <mesh position={[0, 0.48, 0.02]}>
+        <sphereGeometry args={[0.22, 22, 22]} />
+        <ToonSkin />
+      </mesh>
+      {/* hair */}
+      <mesh
+        position={[0, 0.58, -0.02]}
+        scale={side === "right" ? [1.05, 0.7, 1] : [1, 0.55, 0.95]}
+      >
+        <sphereGeometry args={[0.2, 16, 16]} />
+        <meshStandardMaterial
+          color={side === "left" ? "#1a2e28" : "#4a2c1a"}
+          roughness={0.85}
+        />
+      </mesh>
+      {side === "right" && (
+        <mesh position={[0.12, 0.35, 0.05]} scale={[0.5, 1.1, 0.4]}>
+          <sphereGeometry args={[0.12, 12, 12]} />
+          <meshStandardMaterial color="#4a2c1a" roughness={0.85} />
+        </mesh>
+      )}
+      {/* eyes */}
+      <mesh position={[-0.06, 0.5, 0.18]}>
+        <sphereGeometry args={[0.03, 10, 10]} />
+        <meshStandardMaterial color="#0c1824" />
+      </mesh>
+      <mesh position={[0.06, 0.5, 0.18]}>
+        <sphereGeometry args={[0.03, 10, 10]} />
+        <meshStandardMaterial color="#0c1824" />
+      </mesh>
+      {/* blush */}
+      <mesh position={[-0.12, 0.44, 0.16]} scale={[1.2, 0.7, 0.4]}>
+        <sphereGeometry args={[0.03, 8, 8]} />
+        <meshStandardMaterial color="#ff8fab" transparent opacity={0.5} />
+      </mesh>
+      <mesh position={[0.12, 0.44, 0.16]} scale={[1.2, 0.7, 0.4]}>
+        <sphereGeometry args={[0.03, 8, 8]} />
+        <meshStandardMaterial color="#ff8fab" transparent opacity={0.5} />
+      </mesh>
+      {/* outer arm toward partner */}
+      <mesh
+        position={[dir * -0.22, 0.05, 0.12]}
+        rotation={[0.4, 0, dir * -0.9]}
+      >
+        <capsuleGeometry args={[0.055, 0.28, 6, 10]} />
+        <ToonSkin />
+      </mesh>
+    </group>
+  );
+}
+
+function RainRomanceScene() {
+  const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
+  const accent = useQrStore((s) => s.style.fgColor);
+  const qrDataUrl = useQrStore((s) => s.qrDataUrl);
+  const texture = useQrTexture(qrDataUrl);
+  const couple = useRef<THREE.Group>(null);
+  const heart = useRef<THREE.Group>(null);
+
+  useFrame(({ clock }) => {
+    if (reducedMotion) return;
+    const t = clock.getElapsedTime();
+    if (couple.current) {
+      couple.current.position.y = Math.sin(t * 1.6) * 0.03;
+    }
+    if (heart.current) {
+      heart.current.position.y = 0.35 + Math.sin(t * 2.2) * 0.08;
+      heart.current.scale.setScalar(0.9 + Math.sin(t * 3) * 0.08);
+    }
+  });
+
+  const drops = useMemo(() => Array.from({ length: 14 }, (_, i) => i + 1), []);
+
+  return (
+    <group>
+      {/* dusky sky plate */}
+      <mesh position={[0, 1.8, -4]}>
+        <planeGeometry args={[14, 8]} />
+        <meshStandardMaterial color="#1a2f3d" roughness={1} />
+      </mesh>
+
+      <Cloud position={[-2.2, 2.35, -1.2]} scale={1.15} />
+      <Cloud position={[0.3, 2.55, -0.8]} scale={1.35} />
+      <Cloud position={[2.4, 2.3, -1.5]} scale={1.05} />
+      <Cloud position={[-0.8, 2.1, 0.2]} scale={0.85} />
+
+      {/* raining QR codes */}
+      {drops.map((seed) => (
+        <RainDrop key={seed} texture={texture} seed={seed} />
+      ))}
+
+      {/* wet road */}
+      <mesh position={[0, -1.85, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[8, 5]} />
+        <meshStandardMaterial color="#2a3340" metalness={0.35} roughness={0.35} />
+      </mesh>
+      {/* center dashes */}
+      {[-1.5, -0.5, 0.5, 1.5].map((z, i) => (
+        <mesh
+          key={`dash-${i}`}
+          position={[0, -1.84, z]}
+          rotation={[-Math.PI / 2, 0, 0]}
+        >
+          <planeGeometry args={[0.12, 0.55]} />
+          <meshStandardMaterial color="#f8fafc" emissive="#f8fafc" emissiveIntensity={0.15} />
+        </mesh>
+      ))}
+      {/* sidewalks */}
+      <mesh position={[-2.6, -1.82, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[1.2, 5]} />
+        <meshStandardMaterial color="#3d4654" roughness={0.9} />
+      </mesh>
+      <mesh position={[2.6, -1.82, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[1.2, 5]} />
+        <meshStandardMaterial color="#3d4654" roughness={0.9} />
+      </mesh>
+
+      {/* romantic couple */}
+      <group ref={couple}>
+        <RainPartner side="left" accent={accent} />
+        <RainPartner side="right" accent={C.sky} />
+        {/* shared umbrella */}
+        <mesh position={[0, 0.15, 0.15]}>
+          <cylinderGeometry args={[0.025, 0.025, 1.5, 8]} />
+          <meshStandardMaterial color="#334155" metalness={0.4} roughness={0.4} />
+        </mesh>
+        <mesh position={[0, 0.95, 0.15]} rotation={[0.15, 0, 0]}>
+          <sphereGeometry args={[0.85, 24, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
+          <meshStandardMaterial
+            color="#ef4444"
+            roughness={0.45}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+        {/* floating heart */}
+        <group ref={heart} position={[0, 0.35, 0.55]}>
+          <mesh position={[-0.08, 0, 0]}>
+            <sphereGeometry args={[0.09, 12, 12]} />
+            <meshStandardMaterial color="#fb7185" emissive="#fb7185" emissiveIntensity={0.25} />
+          </mesh>
+          <mesh position={[0.08, 0, 0]}>
+            <sphereGeometry args={[0.09, 12, 12]} />
+            <meshStandardMaterial color="#fb7185" emissive="#fb7185" emissiveIntensity={0.25} />
+          </mesh>
+          <mesh position={[0, -0.1, 0]} rotation={[0, 0, Math.PI / 4]}>
+            <boxGeometry args={[0.16, 0.16, 0.08]} />
+            <meshStandardMaterial color="#fb7185" emissive="#fb7185" emissiveIntensity={0.25} />
+          </mesh>
+        </group>
+        {/* big QR held between them like a shared photo */}
+        <group position={[0, -0.35, 0.55]} rotation={[-0.15, 0, 0]}>
+          <QrTile autoSpin={false} scale={0.22} doubleSided={false} />
+        </group>
       </group>
     </group>
   );
@@ -849,6 +1457,8 @@ function SceneContent({ mode }: { mode: SceneMode }) {
       return <BalloonScene />;
     case "duck":
       return <DuckScene />;
+    case "rain":
+      return <RainRomanceScene />;
     case "gift":
       return <GiftBox />;
     case "package":

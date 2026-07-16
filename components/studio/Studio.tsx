@@ -48,12 +48,12 @@ const SCENES: { value: SceneMode; label: string; hint: string }[] = [
   {
     value: "buddy",
     label: "Buddy",
-    hint: "A little 3D buddy holds your code",
+    hint: "A chibi cartoon buddy holds your code",
   },
   {
     value: "bounce",
     label: "Trampoline",
-    hint: "Watch your QR bounce forever",
+    hint: "QR bouncing on a padded trampoline",
   },
   {
     value: "ufo",
@@ -73,7 +73,7 @@ const SCENES: { value: SceneMode; label: string; hint: string }[] = [
   {
     value: "sandwich",
     label: "Sandwich",
-    hint: "QR: now available as lunch filling",
+    hint: "Sesame burger with QR as the secret filling",
   },
   {
     value: "balloon",
@@ -84,6 +84,11 @@ const SCENES: { value: SceneMode; label: string; hint: string }[] = [
     value: "duck",
     label: "Rubber duck",
     hint: "Debug rubber duck… with a QR on its head",
+  },
+  {
+    value: "rain",
+    label: "QR Rain",
+    hint: "Clouds, raining QR codes, and a couple on the road",
   },
   {
     value: "gift",

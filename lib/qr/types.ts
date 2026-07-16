@@ -38,7 +38,8 @@ export type SceneMode =
   | "disco"
   | "sandwich"
   | "balloon"
-  | "duck";
+  | "duck"
+  | "rain";
 
 /** Playful 2D presentation modes for the flat preview. */
 export type View2dMode =
