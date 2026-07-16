@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
-import { AdSlot } from "@/components/ads/AdSlot";
+import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function GalleryPage() {
 
         <GalleryClient />
 
-        <AdSlot slot={siteConfig.adSlots.gallery} className="mt-12" />
+        <PlanAwareAd slot={siteConfig.adSlots.gallery} className="mt-12" />
       </main>
       <Footer />
     </>

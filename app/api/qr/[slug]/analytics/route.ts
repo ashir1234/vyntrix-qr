@@ -34,6 +34,7 @@ export async function GET(req: Request, { params }: Ctx) {
     plan,
     analyticsWindowDays: PLAN_LIMITS[plan].analyticsWindowDays,
     csvExport: PLAN_LIMITS[plan].csvExport,
+    customSlug: PLAN_LIMITS[plan].customSlug,
     ...analytics,
   });
 }

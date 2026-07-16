@@ -249,6 +249,45 @@ export async function updateQrCode(
   });
 }
 
+/**
+ * Rename a dynamic code's short slug. Updates the primary key and all related
+ * scan rows so analytics history follows the new link.
+ */
+export async function renameQrCode(
+  oldSlug: string,
+  newSlug: string,
+): Promise<void> {
+  const db = await getClient();
+  const now = Date.now();
+  // Insert a copy under the new slug, move scans, then delete the old row.
+  // Works across libSQL/Turso without relying on FK cascade.
+  const existing = await getQrCode(oldSlug);
+  if (!existing) throw new Error("Not found.");
+  if (await slugExists(newSlug)) throw new Error("Slug taken.");
+
+  await db.execute({
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    args: [
+      newSlug,
+      existing.destination,
+      existing.title,
+      existing.edit_token,
+      existing.user_id,
+      existing.created_at,
+      now,
+    ],
+  });
+  await db.execute({
+    sql: "UPDATE scans SET slug = ? WHERE slug = ?",
+    args: [newSlug, oldSlug],
+  });
+  await db.execute({
+    sql: "DELETE FROM qr_codes WHERE slug = ?",
+    args: [oldSlug],
+  });
+}
+
 export async function deleteQrCode(slug: string): Promise<void> {
   const db = await getClient();
   await db.execute({ sql: "DELETE FROM qr_codes WHERE slug = ?", args: [slug] });

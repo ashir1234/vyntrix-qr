@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useQrStore, type DynamicResult } from "@/lib/store";
 import { Toggle } from "@/components/ui/controls";
 import { trackEvent } from "@/lib/analytics";
+import { authEnabled } from "@/lib/authFlags";
 
 function saveCodeLocally(r: DynamicResult) {
   try {
@@ -60,6 +61,22 @@ export function DynamicPanel() {
   const [error, setError] = useState<string | null>(null);
   const [errorCode, setErrorCode] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [isPro, setIsPro] = useState(false);
+  const [customSlug, setCustomSlug] = useState("");
+
+  useEffect(() => {
+    if (!authEnabled) return;
+    let active = true;
+    fetch("/api/billing/plan")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (active && j?.plan === "pro") setIsPro(true);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const create = async () => {
     setLoading(true);
@@ -69,7 +86,12 @@ export function DynamicPanel() {
       const res = await fetch("/api/qr", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ destination: url }),
+        body: JSON.stringify({
+          destination: url,
+          ...(isPro && customSlug.trim()
+            ? { customSlug: customSlug.trim() }
+            : {}),
+        }),
       });
       const json = await res.json();
       if (!res.ok) {
@@ -117,6 +139,7 @@ export function DynamicPanel() {
 
   const reset = () => {
     setDynamic(null);
+    setCustomSlug("");
     setError(null);
   };
 
@@ -147,6 +170,43 @@ export function DynamicPanel() {
                 Generates a short link that redirects to your URL. You can change
                 where it points anytime — no reprinting.
               </p>
+
+              {isPro ? (
+                <div>
+                  <label className="mb-1 block text-xs font-medium text-[var(--muted)]">
+                    Custom short link{" "}
+                    <span className="opacity-60">(optional)</span>
+                  </label>
+                  <div className="flex items-center gap-1.5">
+                    <span className="shrink-0 text-xs text-[var(--muted)]">
+                      /r/
+                    </span>
+                    <input
+                      value={customSlug}
+                      onChange={(e) => setCustomSlug(e.target.value)}
+                      placeholder="my-menu"
+                      className="input-field font-mono text-xs"
+                      maxLength={32}
+                    />
+                  </div>
+                  <p className="mt-1 text-[11px] text-[var(--muted)]">
+                    Letters, numbers, hyphens. Leave blank for a random code.
+                  </p>
+                </div>
+              ) : authEnabled ? (
+                <p className="text-[11px] text-[var(--muted)]">
+                  Want a branded link like{" "}
+                  <span className="font-mono">/r/my-menu</span>?{" "}
+                  <Link
+                    href="/pricing"
+                    className="text-[var(--brand-2)] underline"
+                  >
+                    Upgrade to Pro
+                  </Link>
+                  .
+                </p>
+              ) : null}
+
               <button
                 onClick={create}
                 disabled={loading}
@@ -215,7 +275,8 @@ export function DynamicPanel() {
                   Sign in to continue
                 </Link>
               )}
-              {errorCode === "quota_exceeded" && (
+              {(errorCode === "quota_exceeded" ||
+                errorCode === "upgrade_required") && (
                 <Link
                   href="/pricing"
                   className="btn-primary inline-block rounded-lg px-3.5 py-1.5 text-xs font-semibold"

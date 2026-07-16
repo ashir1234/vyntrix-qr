@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Studio } from "@/components/studio/Studio";
-import { AdSlot } from "@/components/ads/AdSlot";
+import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function StudioPage() {
         </div>
         <Studio />
         <div className="mx-auto w-[min(1200px,95vw)]">
-          <AdSlot slot={siteConfig.adSlots.studio} className="mb-8" />
+          <PlanAwareAd slot={siteConfig.adSlots.studio} className="mb-8" />
         </div>
       </main>
       <Footer />

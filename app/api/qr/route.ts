@@ -7,6 +7,7 @@ import { authEnabled } from "@/lib/authFlags";
 import { getUserId } from "@/lib/authServer";
 import { getUserPlan } from "@/lib/billing";
 import { canCreateDynamic, PLAN_LIMITS } from "@/lib/plans";
+import { normalizeSlug, validateCustomSlug } from "@/lib/slug";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { destination?: string; title?: string };
+  let body: { destination?: string; title?: string; customSlug?: string };
   try {
     body = await req.json();
   } catch {
@@ -39,6 +40,7 @@ export async function POST(req: Request) {
 
   const destination = (body.destination ?? "").trim();
   const title = (body.title ?? "").trim().slice(0, 120) || null;
+  const wantsCustom = Boolean(body.customSlug?.trim());
 
   if (!isValidHttpUrl(destination)) {
     return NextResponse.json(
@@ -53,13 +55,17 @@ export async function POST(req: Request) {
   const userId = await getUserId();
   if (authEnabled && !userId) {
     return NextResponse.json(
-      { error: "Please sign in to create a dynamic QR code.", code: "auth_required" },
+      {
+        error: "Please sign in to create a dynamic QR code.",
+        code: "auth_required",
+      },
       { status: 401 },
     );
   }
 
+  let plan: "free" | "pro" = "free";
   if (userId) {
-    const plan = await getUserPlan(userId);
+    plan = await getUserPlan(userId);
     const count = await countQrCodesByUser(userId);
     if (!canCreateDynamic(plan, count)) {
       const limit = PLAN_LIMITS[plan].maxDynamicCodes;
@@ -75,13 +81,36 @@ export async function POST(req: Request) {
     }
   }
 
-  const editToken = generateEditToken();
   let slug = generateSlug();
-  for (let attempt = 0; attempt < 5; attempt++) {
-    if (!(await slugExists(slug))) break;
-    slug = generateSlug();
+  if (wantsCustom) {
+    if (!PLAN_LIMITS[plan].customSlug) {
+      return NextResponse.json(
+        {
+          error: "Custom short-link slugs are a Pro feature.",
+          code: "upgrade_required",
+        },
+        { status: 402 },
+      );
+    }
+    const validationError = validateCustomSlug(body.customSlug ?? "");
+    if (validationError) {
+      return NextResponse.json({ error: validationError }, { status: 400 });
+    }
+    slug = normalizeSlug(body.customSlug ?? "");
+    if (await slugExists(slug)) {
+      return NextResponse.json(
+        { error: "That short link is already taken. Try another." },
+        { status: 409 },
+      );
+    }
+  } else {
+    for (let attempt = 0; attempt < 5; attempt++) {
+      if (!(await slugExists(slug))) break;
+      slug = generateSlug();
+    }
   }
 
+  const editToken = generateEditToken();
   await createQrCode({ slug, destination, title, editToken, userId });
 
   const base = getBaseUrl(req);

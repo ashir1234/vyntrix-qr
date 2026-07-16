@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Hero3D } from "@/components/site/Hero3D";
-import { AdSlot } from "@/components/ads/AdSlot";
+import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 import { faqJsonLd, guides, howToJsonLd } from "@/lib/seo";
 
@@ -233,7 +233,7 @@ export default function Home() {
           </div>
         </section>
 
-        <AdSlot slot={siteConfig.adSlots.home} className="my-8" />
+        <PlanAwareAd slot={siteConfig.adSlots.home} className="my-8" />
 
         <section className="py-8" id="faq">
           <h2 className="text-center text-3xl font-bold tracking-tight">

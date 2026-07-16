@@ -33,6 +33,7 @@ interface Analytics {
   plan?: "free" | "pro";
   analyticsWindowDays?: number | null;
   csvExport?: boolean;
+  customSlug?: boolean;
   total: number;
   byDay: { date: string; count: number }[];
   byDevice: Bucket[];
@@ -56,7 +57,9 @@ export function ManageClient({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [destination, setDestination] = useState("");
+  const [slugInput, setSlugInput] = useState(slug);
   const [saving, setSaving] = useState(false);
+  const [savingSlug, setSavingSlug] = useState(false);
   const [savedMsg, setSavedMsg] = useState<string | null>(null);
 
   const load = useCallback(
@@ -72,6 +75,7 @@ export function ManageClient({
         if (!res.ok) throw new Error(json.error ?? "Failed to load.");
         setData(json);
         setDestination(json.destination);
+        setSlugInput(json.slug);
       } catch (e) {
         setError(e instanceof Error ? e.message : "Failed to load.");
         setData(null);
@@ -103,6 +107,35 @@ export function ManageClient({
       setSavedMsg(e instanceof Error ? e.message : "Failed to update.");
     } finally {
       setSaving(false);
+    }
+  };
+
+  const saveSlug = async () => {
+    setSavingSlug(true);
+    setSavedMsg(null);
+    try {
+      const res = await fetch(`/api/qr/${slug}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          destination,
+          customSlug: slugInput,
+          editToken: token,
+        }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Failed to rename.");
+      if (json.slug !== slug) {
+        // Slug changed — jump to the new manage URL so bookmarks stay valid.
+        window.location.href = json.manageUrl;
+        return;
+      }
+      setSavedMsg("Short link updated.");
+      if (data) setData({ ...data, slug: json.slug });
+    } catch (e) {
+      setSavedMsg(e instanceof Error ? e.message : "Failed to rename.");
+    } finally {
+      setSavingSlug(false);
     }
   };
 
@@ -222,8 +255,62 @@ export function ManageClient({
             {saving ? "Saving…" : "Save"}
           </button>
         </div>
-        {savedMsg && <p className="mt-2 text-sm text-emerald-400">{savedMsg}</p>}
       </div>
+
+      {/* Custom short-link slug (Pro) */}
+      {data.customSlug ? (
+        <div className="glass rounded-2xl p-5">
+          <h2 className="font-semibold">Custom short link</h2>
+          <p className="mt-1 text-xs text-[var(--muted)]">
+            Change the path of your short URL. Printed QR codes that already use
+            the old link will stop working — update them if needed.
+          </p>
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className="flex min-w-0 flex-1 items-center gap-1.5">
+              <span className="shrink-0 text-sm text-[var(--muted)]">/r/</span>
+              <input
+                value={slugInput}
+                onChange={(e) => setSlugInput(e.target.value)}
+                className="input-field font-mono text-sm"
+                maxLength={32}
+              />
+            </div>
+            <button
+              onClick={saveSlug}
+              disabled={savingSlug || slugInput.trim() === data.slug}
+              className="btn-primary shrink-0 rounded-xl px-5 py-2 text-sm font-semibold disabled:opacity-60"
+            >
+              {savingSlug ? "Saving…" : "Update slug"}
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-3 text-sm">
+          <span className="text-[var(--muted)]">
+            Short link: <span className="font-mono">/r/{data.slug}</span> —
+            upgrade to Pro for a custom slug like{" "}
+            <span className="font-mono">/r/my-menu</span>.
+          </span>
+          <a
+            href="/pricing"
+            className="btn-primary shrink-0 rounded-lg px-4 py-1.5 text-xs font-semibold"
+          >
+            Upgrade to Pro
+          </a>
+        </div>
+      )}
+
+      {savedMsg && (
+        <p
+          className={`text-sm ${
+            /fail|error|taken|reserved|must|pro feature/i.test(savedMsg)
+              ? "text-red-400"
+              : "text-emerald-400"
+          }`}
+        >
+          {savedMsg}
+        </p>
+      )}
 
       {/* Scans over time */}
       <div className="glass rounded-2xl p-5">
