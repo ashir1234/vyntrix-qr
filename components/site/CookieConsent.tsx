@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site";
-import { getConsent, setConsent } from "@/lib/consent";
+import { applyConsentMode, getConsent, setConsent } from "@/lib/consent";
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -11,7 +11,9 @@ export function CookieConsent() {
   useEffect(() => {
     // Only relevant when ads are configured (that's what sets cookies).
     if (!siteConfig.adsenseClient) return;
-    if (getConsent() === null) setVisible(true);
+    const stored = getConsent();
+    if (stored === null) setVisible(true);
+    else applyConsentMode(stored === "accepted");
   }, []);
 
   if (!visible) return null;

@@ -1,25 +1,16 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site";
-import { CONSENT_EVENT, getConsent } from "@/lib/consent";
 
 /**
- * Loads the AdSense library only after the visitor has accepted cookies, so we
- * never set advertising cookies without consent (EEA/UK compliance).
+ * Loads the AdSense library. The tag is always present (so Google can verify the
+ * site and serve ads), while Google Consent Mode — initialised in the document
+ * head with all storage denied by default — ensures no advertising cookies are
+ * set until the visitor accepts via the cookie banner.
  */
 export function AdSenseScript() {
-  const [accepted, setAccepted] = useState(false);
-
-  useEffect(() => {
-    const sync = () => setAccepted(getConsent() === "accepted");
-    sync();
-    window.addEventListener(CONSENT_EVENT, sync);
-    return () => window.removeEventListener(CONSENT_EVENT, sync);
-  }, []);
-
-  if (!siteConfig.adsenseClient || !accepted) return null;
+  if (!siteConfig.adsenseClient) return null;
 
   return (
     <Script
