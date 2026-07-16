@@ -33,7 +33,7 @@ export function GuideLayout({
                 {i === breadcrumbs.length - 1 ? (
                   <span className="text-[var(--foreground)]">{b.name}</span>
                 ) : (
-                  <Link href={b.href} className="transition hover:text-white">
+                  <Link href={b.href} className="transition hover:text-[var(--foreground)]">
                     {b.name}
                   </Link>
                 )}

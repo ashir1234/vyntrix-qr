@@ -8,10 +8,10 @@ import { PRESETS, useQrStore } from "@/lib/store";
 import type { QrStyle } from "@/lib/qr/types";
 
 const baseStyle: QrStyle = {
-  fgColor: "#7c5cff",
-  bgColor: "#0d1024",
+  fgColor: "#10b981",
+  bgColor: "#ffffff",
   useGradient: true,
-  gradientColor: "#21d4fd",
+  gradientColor: "#38bdf8",
   gradientType: "linear",
   dotType: "rounded",
   cornerSquareType: "extra-rounded",

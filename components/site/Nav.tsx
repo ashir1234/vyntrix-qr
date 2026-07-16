@@ -11,19 +11,19 @@ export function Nav() {
         <div className="flex items-center gap-1 text-sm">
           <Link
             href="/studio"
-            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-white"
+            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-[var(--foreground)]"
           >
             Studio
           </Link>
           <Link
             href="/gallery"
-            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-white"
+            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-[var(--foreground)]"
           >
             Gallery
           </Link>
           <Link
             href="/guides"
-            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-white"
+            className="rounded-lg px-3 py-1.5 text-[var(--muted)] transition hover:text-[var(--foreground)]"
           >
             Guides
           </Link>

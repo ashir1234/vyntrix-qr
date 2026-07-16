@@ -4,9 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { CONTENT_TYPE_META } from "@/lib/qr/content";
-import type { MaterialKind, QrContentType } from "@/lib/qr/types";
+import type { MaterialKind, QrContentType, SceneMode, View2dMode } from "@/lib/qr/types";
 import { selectEncodedData, useQrStore } from "@/lib/store";
 import { QRPreview, downloadQr } from "./QRPreview";
+import { Preview2DFun } from "./Preview2DFun";
 import { ContentForm } from "./ContentForm";
 import { StyleControls } from "./StyleControls";
 import { DynamicPanel } from "./DynamicPanel";
@@ -26,6 +27,89 @@ const MATERIALS: { value: MaterialKind; label: string }[] = [
   { value: "glass", label: "Glass" },
   { value: "metallic", label: "Metallic" },
   { value: "holographic", label: "Holographic" },
+];
+
+const SCENES: { value: SceneMode; label: string; hint: string }[] = [
+  {
+    value: "showcase",
+    label: "Showcase",
+    hint: "Drag to orbit · scroll to zoom",
+  },
+  {
+    value: "runaway",
+    label: "Runaway",
+    hint: "Move your cursor near the QR — it flees!",
+  },
+  {
+    value: "sticky",
+    label: "Magnet",
+    hint: "Opposite of runaway — the QR sticks to your cursor",
+  },
+  {
+    value: "buddy",
+    label: "Buddy",
+    hint: "A little 3D buddy holds your code",
+  },
+  {
+    value: "bounce",
+    label: "Trampoline",
+    hint: "Watch your QR bounce forever",
+  },
+  {
+    value: "ufo",
+    label: "UFO",
+    hint: "Aliens are beaming up your QR",
+  },
+  {
+    value: "rocket",
+    label: "Rocket",
+    hint: "QR strapped to a rocket — 3… 2… 1…",
+  },
+  {
+    value: "disco",
+    label: "Disco",
+    hint: "Saturday night fever for barcodes",
+  },
+  {
+    value: "sandwich",
+    label: "Sandwich",
+    hint: "QR: now available as lunch filling",
+  },
+  {
+    value: "balloon",
+    label: "Balloon",
+    hint: "Hot-air balloon tourism, QR edition",
+  },
+  {
+    value: "duck",
+    label: "Rubber duck",
+    hint: "Debug rubber duck… with a QR on its head",
+  },
+  {
+    value: "gift",
+    label: "Gift box",
+    hint: "QR perched on a gift box",
+  },
+  {
+    value: "package",
+    label: "Package",
+    hint: "QR on a shipping package",
+  },
+];
+
+const MODES_2D: { value: View2dMode; label: string; hint: string }[] = [
+  { value: "clean", label: "Clean", hint: "Plain live preview" },
+  { value: "neon", label: "Neon", hint: "Pulsing neon glow frame" },
+  { value: "glitch", label: "Glitch", hint: "Cyberpunk RGB glitch vibes" },
+  { value: "polaroid", label: "Polaroid", hint: "Instant photo frame" },
+  { value: "sticker", label: "Sticker", hint: "Taped-on sticker look" },
+  { value: "matrix", label: "Matrix", hint: "Digital rain behind the code" },
+  { value: "sparkle", label: "Sparkle", hint: "Twinkly fairy dust" },
+  { value: "runaway", label: "Runaway", hint: "Cursor near? It scoots away" },
+  { value: "bounce", label: "Bounce", hint: "Boing boing boing" },
+  { value: "comic", label: "Comic", hint: "POW! Halftone comic frame" },
+  { value: "crt", label: "CRT", hint: "Retro TV scanlines" },
+  { value: "zoom", label: "Zoom lens", hint: "Hover to magnify details" },
 ];
 
 function playChime(enabled: boolean) {
@@ -65,6 +149,10 @@ export function Studio() {
   const dynamic = useQrStore((s) => s.dynamic);
   const material = useQrStore((s) => s.material);
   const setMaterial = useQrStore((s) => s.setMaterial);
+  const sceneMode = useQrStore((s) => s.sceneMode);
+  const setSceneMode = useQrStore((s) => s.setSceneMode);
+  const view2dMode = useQrStore((s) => s.view2dMode);
+  const setView2dMode = useQrStore((s) => s.setView2dMode);
   const settings = useQrStore((s) => s.settings);
   const setSetting = useQrStore((s) => s.setSetting);
   const bumpGeneration = useQrStore((s) => s.bumpGeneration);
@@ -151,7 +239,7 @@ export function Studio() {
                 className={`rounded-lg px-2.5 py-1.5 text-xs font-medium transition ${
                   active
                     ? "bg-[var(--brand)] text-white"
-                    : "bg-[var(--surface-2)] text-[var(--muted)] hover:text-white"
+                    : "bg-[var(--surface-2)] text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
                 <span className="mr-1">{meta.icon}</span>
@@ -169,7 +257,7 @@ export function Studio() {
               className={`rounded-lg px-3 py-1.5 text-sm font-medium capitalize transition ${
                 tab === t
                   ? "bg-[var(--brand)] text-white"
-                  : "text-[var(--muted)] hover:text-white"
+                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
               }`}
             >
               {t}
@@ -232,7 +320,7 @@ export function Studio() {
                 className={`rounded-lg px-4 py-1.5 text-sm font-medium uppercase transition ${
                   view === v
                     ? "bg-[var(--brand)] text-white"
-                    : "text-[var(--muted)] hover:text-white"
+                    : "text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
                 {v}
@@ -240,7 +328,11 @@ export function Studio() {
             ))}
           </div>
           <span className="hidden text-xs text-[var(--muted)] sm:block">
-            {view === "3d" ? "Drag to orbit · scroll to zoom" : "Live preview"}
+            {view === "3d"
+              ? (SCENES.find((s) => s.value === sceneMode)?.hint ??
+                "Drag to orbit · scroll to zoom")
+              : (MODES_2D.find((m) => m.value === view2dMode)?.hint ??
+                "Live preview")}
           </span>
         </div>
 
@@ -256,7 +348,9 @@ export function Studio() {
               className="relative"
               style={{ transformStyle: "preserve-3d" }}
             >
-              <QRPreview />
+              <Preview2DFun>
+                <QRPreview />
+              </Preview2DFun>
               <AnimatePresence>
                 {scanning && (
                   <motion.div
@@ -267,7 +361,7 @@ export function Studio() {
                     className="pointer-events-none absolute left-0 right-0 h-1 rounded-full"
                     style={{
                       background:
-                        "linear-gradient(90deg,transparent,#21d4fd,transparent)",
+                        "linear-gradient(90deg,transparent,#10b981,transparent)",
                       boxShadow: "0 0 18px 4px rgba(33,212,253,0.8)",
                     }}
                   />
@@ -299,20 +393,72 @@ export function Studio() {
         </div>
 
         {view === "3d" && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {MATERIALS.map((m) => (
-              <button
-                key={m.value}
-                onClick={() => setMaterial(m.value)}
-                className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
-                  material === m.value
-                    ? "btn-primary"
-                    : "border border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:text-white"
-                }`}
-              >
-                {m.label}
-              </button>
-            ))}
+          <div className="mt-3 space-y-2">
+            <div>
+              <p className="mb-1.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
+                Fun scenes
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {SCENES.map((s) => (
+                  <button
+                    key={s.value}
+                    onClick={() => setSceneMode(s.value)}
+                    title={s.hint}
+                    className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                      sceneMode === s.value
+                        ? "btn-primary"
+                        : "border border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:text-[var(--foreground)]"
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="mb-1.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
+                Material
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {MATERIALS.map((m) => (
+                  <button
+                    key={m.value}
+                    onClick={() => setMaterial(m.value)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                      material === m.value
+                        ? "btn-primary"
+                        : "border border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:text-[var(--foreground)]"
+                    }`}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {view === "2d" && (
+          <div className="mt-3">
+            <p className="mb-1.5 text-[10px] font-medium uppercase tracking-wider text-[var(--muted)]">
+              Fun 2D effects
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {MODES_2D.map((m) => (
+                <button
+                  key={m.value}
+                  onClick={() => setView2dMode(m.value)}
+                  title={m.hint}
+                  className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                    view2dMode === m.value
+                      ? "btn-primary"
+                      : "border border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:text-[var(--foreground)]"
+                  }`}
+                >
+                  {m.label}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 

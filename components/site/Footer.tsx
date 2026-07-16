@@ -23,7 +23,7 @@ export function Footer() {
               href={siteConfig.parentCompany.url}
               target="_blank"
               rel="noopener"
-              className="text-[var(--brand-2)] transition hover:text-white"
+              className="text-[var(--brand-2)] transition hover:text-[var(--foreground)]"
             >
               {siteConfig.parentCompany.name}
             </a>{" "}
@@ -34,17 +34,17 @@ export function Footer() {
           <p className="mb-3 font-medium text-[var(--foreground)]">Product</p>
           <ul className="space-y-2">
             <li>
-              <Link href="/studio" className="transition hover:text-white">
+              <Link href="/studio" className="transition hover:text-[var(--foreground)]">
                 QR Studio
               </Link>
             </li>
             <li>
-              <Link href="/gallery" className="transition hover:text-white">
+              <Link href="/gallery" className="transition hover:text-[var(--foreground)]">
                 Gallery
               </Link>
             </li>
             <li>
-              <Link href="/guides" className="transition hover:text-white">
+              <Link href="/guides" className="transition hover:text-[var(--foreground)]">
                 Guides
               </Link>
             </li>
@@ -56,7 +56,7 @@ export function Footer() {
             <li>
               <Link
                 href="/guides/wifi-qr-code"
-                className="transition hover:text-white"
+                className="transition hover:text-[var(--foreground)]"
               >
                 WiFi QR code
               </Link>
@@ -64,7 +64,7 @@ export function Footer() {
             <li>
               <Link
                 href="/guides/qr-code-with-logo"
-                className="transition hover:text-white"
+                className="transition hover:text-[var(--foreground)]"
               >
                 QR with logo
               </Link>
@@ -72,7 +72,7 @@ export function Footer() {
             <li>
               <Link
                 href="/guides/dynamic-qr-code"
-                className="transition hover:text-white"
+                className="transition hover:text-[var(--foreground)]"
               >
                 Dynamic QR
               </Link>
@@ -80,7 +80,7 @@ export function Footer() {
             <li>
               <Link
                 href="/guides/vcard-qr-code"
-                className="transition hover:text-white"
+                className="transition hover:text-[var(--foreground)]"
               >
                 vCard QR
               </Link>
@@ -91,19 +91,19 @@ export function Footer() {
           <p className="mb-3 font-medium text-[var(--foreground)]">Legal</p>
           <ul className="space-y-2">
             <li>
-              <Link href="/privacy" className="transition hover:text-white">
+              <Link href="/privacy" className="transition hover:text-[var(--foreground)]">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="transition hover:text-white">
+              <Link href="/terms" className="transition hover:text-[var(--foreground)]">
                 Terms of Use
               </Link>
             </li>
             <li>
               <a
                 href="/llms.txt"
-                className="transition hover:text-white"
+                className="transition hover:text-[var(--foreground)]"
               >
                 llms.txt
               </a>

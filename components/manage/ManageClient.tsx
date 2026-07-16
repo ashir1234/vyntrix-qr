@@ -38,7 +38,7 @@ interface Analytics {
   recent: ScanRow[];
 }
 
-const COLORS = ["#7c5cff", "#21d4fd", "#ff5cf0", "#00ffa3", "#ffb020"];
+const COLORS = ["#10b981", "#38bdf8", "#f59e0b", "#14b8a6", "#0ea5e9"];
 
 export function ManageClient({
   slug,
@@ -203,21 +203,21 @@ export function ManageClient({
           <AreaChart data={data.byDay}>
             <defs>
               <linearGradient id="scanFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#7c5cff" stopOpacity={0.6} />
-                <stop offset="100%" stopColor="#7c5cff" stopOpacity={0} />
+                <stop offset="0%" stopColor="#10b981" stopOpacity={0.6} />
+                <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="#23284d" />
             <XAxis
               dataKey="date"
-              tick={{ fill: "#9aa0c7", fontSize: 11 }}
+              tick={{ fill: "#8fb5a8", fontSize: 11 }}
               tickFormatter={(d: string) => d.slice(5)}
               interval="preserveStartEnd"
             />
-            <YAxis allowDecimals={false} tick={{ fill: "#9aa0c7", fontSize: 11 }} />
+            <YAxis allowDecimals={false} tick={{ fill: "#8fb5a8", fontSize: 11 }} />
             <Tooltip
               contentStyle={{
-                background: "#0d1024",
+                background: "#15241f",
                 border: "1px solid #23284d",
                 borderRadius: 12,
                 color: "#eef0ff",
@@ -226,7 +226,7 @@ export function ManageClient({
             <Area
               type="monotone"
               dataKey="count"
-              stroke="#7c5cff"
+              stroke="#10b981"
               strokeWidth={2}
               fill="url(#scanFill)"
             />
@@ -243,13 +243,13 @@ export function ManageClient({
               <YAxis
                 type="category"
                 dataKey="name"
-                tick={{ fill: "#9aa0c7", fontSize: 12 }}
+                tick={{ fill: "#8fb5a8", fontSize: 12 }}
                 width={80}
               />
               <Tooltip
                 cursor={{ fill: "rgba(124,92,255,0.1)" }}
                 contentStyle={{
-                  background: "#0d1024",
+                  background: "#15241f",
                   border: "1px solid #23284d",
                   borderRadius: 12,
                   color: "#eef0ff",

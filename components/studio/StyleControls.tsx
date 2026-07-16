@@ -43,7 +43,7 @@ export function StyleControls() {
             <button
               key={p.id}
               onClick={() => applyPreset(p)}
-              className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition hover:border-[var(--brand)] hover:text-white"
+              className="rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1.5 text-xs font-medium text-[var(--foreground)] transition hover:border-[var(--brand)] hover:text-[var(--foreground)]"
             >
               {p.name}
             </button>
@@ -186,7 +186,7 @@ export function StyleControls() {
           {style.logoDataUrl && (
             <button
               onClick={() => setLogo(null)}
-              className="rounded-xl border border-[var(--border)] px-3 py-2 text-sm text-[var(--muted)] transition hover:text-white"
+              className="rounded-xl border border-[var(--border)] px-3 py-2 text-sm text-[var(--muted)] transition hover:text-[var(--foreground)]"
             >
               Remove
             </button>

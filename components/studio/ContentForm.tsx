@@ -178,6 +178,52 @@ export function ContentForm() {
         </Field>
       );
 
+    case "image":
+      return (
+        <Field
+          label="Image URL"
+          hint="Must be a public https:// link"
+        >
+          <TextInput
+            value={f.imageUrl}
+            inputMode="url"
+            placeholder="https://example.com/photo.jpg"
+            onChange={(e) => setField("imageUrl", e.target.value)}
+          />
+        </Field>
+      );
+
+    case "location":
+      return (
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Latitude">
+              <TextInput
+                value={f.locLat}
+                inputMode="decimal"
+                placeholder="40.7128"
+                onChange={(e) => setField("locLat", e.target.value)}
+              />
+            </Field>
+            <Field label="Longitude">
+              <TextInput
+                value={f.locLng}
+                inputMode="decimal"
+                placeholder="-74.0060"
+                onChange={(e) => setField("locLng", e.target.value)}
+              />
+            </Field>
+          </div>
+          <Field label="Place name" hint="Optional">
+            <TextInput
+              value={f.locLabel}
+              placeholder="Office · Cafe · Venue"
+              onChange={(e) => setField("locLabel", e.target.value)}
+            />
+          </Field>
+        </div>
+      );
+
     default:
       return null;
   }

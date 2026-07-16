@@ -27,12 +27,12 @@ export function LogoMark({
           y2="44"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#21d4fd" />
-          <stop offset="0.5" stopColor="#7c5cff" />
-          <stop offset="1" stopColor="#ff5cf0" />
+          <stop stopColor="#10b981" />
+          <stop offset="0.5" stopColor="#0ea5e9" />
+          <stop offset="1" stopColor="#f59e0b" />
         </linearGradient>
       </defs>
-      <rect x="2" y="2" width="44" height="44" rx="12" fill="#0b0c18" />
+      <rect x="2" y="2" width="44" height="44" rx="12" fill="#060d14" />
       <rect
         x="2.75"
         y="2.75"
@@ -44,13 +44,13 @@ export function LogoMark({
         strokeWidth="1.5"
       />
       <rect x="7" y="7" width="12" height="12" rx="3.5" fill={`url(#${g})`} />
-      <rect x="9.2" y="9.2" width="7.6" height="7.6" rx="2.2" fill="#0b0c18" />
+      <rect x="9.2" y="9.2" width="7.6" height="7.6" rx="2.2" fill="#060d14" />
       <rect x="11" y="11" width="4" height="4" rx="1.2" fill={`url(#${g})`} />
       <rect x="29" y="7" width="12" height="12" rx="3.5" fill={`url(#${g})`} />
-      <rect x="31.2" y="9.2" width="7.6" height="7.6" rx="2.2" fill="#0b0c18" />
+      <rect x="31.2" y="9.2" width="7.6" height="7.6" rx="2.2" fill="#060d14" />
       <rect x="33" y="11" width="4" height="4" rx="1.2" fill={`url(#${g})`} />
       <rect x="7" y="29" width="12" height="12" rx="3.5" fill={`url(#${g})`} />
-      <rect x="9.2" y="31.2" width="7.6" height="7.6" rx="2.2" fill="#0b0c18" />
+      <rect x="9.2" y="31.2" width="7.6" height="7.6" rx="2.2" fill="#060d14" />
       <rect x="11" y="33" width="4" height="4" rx="1.2" fill={`url(#${g})`} />
       <path
         d="M27.5 27.5 L34 41 L40.5 27.5"

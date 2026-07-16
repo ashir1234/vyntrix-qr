@@ -23,7 +23,7 @@ const STEPS = [
   {
     n: "1",
     title: "Pick a type",
-    body: "Choose URL, WiFi, vCard, email, SMS, phone, or plain text. We build a valid QR payload for you.",
+    body: "Choose URL, WiFi, vCard, email, SMS, phone, image, location, or plain text. We build a valid QR payload for you.",
   },
   {
     n: "2",
@@ -56,7 +56,7 @@ const FEATURES = [
   {
     icon: "📶",
     title: "Every QR type",
-    body: "URL, WiFi, vCard, email, SMS, and phone — structured forms create the right payload automatically.",
+    body: "URL, WiFi, vCard, email, SMS, phone, image, and location — structured forms create the right payload automatically.",
   },
   {
     icon: "⚡",
@@ -89,7 +89,7 @@ const FAQS = [
   },
   {
     q: "Can I create a WiFi or vCard QR code?",
-    a: "Yes. Vyntrix QR supports URL, text, WiFi, vCard, email, SMS, and phone QR types with structured forms.",
+    a: "Yes. Vyntrix QR supports URL, text, WiFi, vCard, email, SMS, phone, image, and location QR types with structured forms.",
   },
   {
     q: "Are my QR codes and data private?",
@@ -144,7 +144,7 @@ export default function Home() {
               </Link>
             </div>
             <p className="mt-4 text-xs text-[var(--muted)]">
-              URL · WiFi · vCard · Email · SMS · Dynamic QR
+              URL · WiFi · Image · Location · Dynamic QR
             </p>
           </div>
 

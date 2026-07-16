@@ -58,6 +58,21 @@ export function buildQrData(type: QrContentType, f: QrFields): string {
     case "phone":
       return `tel:${f.phoneNumber}`;
 
+    case "image":
+      return f.imageUrl.trim();
+
+    case "location": {
+      const lat = f.locLat.trim();
+      const lng = f.locLng.trim();
+      const label = f.locLabel.trim();
+      if (!lat || !lng) return "";
+      // HTTPS Maps link — opens reliably in phone cameras / browsers
+      const query = label
+        ? `${label} @${lat},${lng}`
+        : `${lat},${lng}`;
+      return `https://www.google.com/maps?q=${encodeURIComponent(query)}`;
+    }
+
     default:
       return "";
   }
@@ -74,4 +89,6 @@ export const CONTENT_TYPE_META: Record<
   email: { label: "Email", icon: "✉️", hint: "Pre-filled email" },
   sms: { label: "SMS", icon: "💬", hint: "Pre-filled text message" },
   phone: { label: "Phone", icon: "📞", hint: "Dial a number" },
+  image: { label: "Image", icon: "🖼️", hint: "Open a hosted image" },
+  location: { label: "Location", icon: "📍", hint: "Drop a map pin" },
 };

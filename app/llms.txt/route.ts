@@ -26,7 +26,7 @@ export function GET() {
 - Company: Built by ${siteConfig.parentCompany.name} (${siteConfig.parentCompany.url}) — ${siteConfig.parentCompany.description}
 
 ## Key features
-- Free QR code generator (URL, text, WiFi, vCard, email, SMS, phone)
+- Free QR code generator (URL, text, WiFi, vCard, email, SMS, phone, image, location)
 - Custom branding: logo, colors, gradients, dot styles
 - Live 2D preview + immersive 3D preview (matte, glass, metallic, holographic)
 - Dynamic QR codes: editable destination URLs + scan analytics

@@ -37,7 +37,7 @@ export function CookieConsent() {
         <div className="flex shrink-0 gap-2">
           <button
             onClick={() => choose("rejected")}
-            className="rounded-xl border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--muted)] transition hover:text-white"
+            className="rounded-xl border border-[var(--border)] px-4 py-2 text-sm font-medium text-[var(--muted)] transition hover:text-[var(--foreground)]"
           >
             Reject
           </button>

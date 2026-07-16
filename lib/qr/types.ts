@@ -5,7 +5,9 @@ export type QrContentType =
   | "vcard"
   | "email"
   | "sms"
-  | "phone";
+  | "phone"
+  | "image"
+  | "location";
 
 export type DotType =
   | "rounded"
@@ -21,6 +23,37 @@ export type ErrorCorrection = "L" | "M" | "Q" | "H";
 export type GradientType = "linear" | "radial";
 
 export type MaterialKind = "matte" | "glass" | "metallic" | "holographic";
+
+/** Playful 3D presentation modes for the studio preview. */
+export type SceneMode =
+  | "showcase"
+  | "runaway"
+  | "sticky"
+  | "buddy"
+  | "gift"
+  | "package"
+  | "bounce"
+  | "ufo"
+  | "rocket"
+  | "disco"
+  | "sandwich"
+  | "balloon"
+  | "duck";
+
+/** Playful 2D presentation modes for the flat preview. */
+export type View2dMode =
+  | "clean"
+  | "neon"
+  | "glitch"
+  | "polaroid"
+  | "sticker"
+  | "matrix"
+  | "sparkle"
+  | "runaway"
+  | "bounce"
+  | "comic"
+  | "crt"
+  | "zoom";
 
 export interface QrFields {
   // url / text
@@ -48,6 +81,12 @@ export interface QrFields {
   smsBody: string;
   // phone
   phoneNumber: string;
+  // image (URL to a hosted image)
+  imageUrl: string;
+  // location
+  locLat: string;
+  locLng: string;
+  locLabel: string;
 }
 
 export interface QrStyle {

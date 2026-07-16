@@ -188,7 +188,7 @@ export function DynamicPanel() {
                 </a>
                 <button
                   onClick={reset}
-                  className="rounded-xl border border-[var(--border)] px-3 py-2 text-xs text-[var(--muted)] transition hover:text-white"
+                  className="rounded-xl border border-[var(--border)] px-3 py-2 text-xs text-[var(--muted)] transition hover:text-[var(--foreground)]"
                 >
                   New link
                 </button>

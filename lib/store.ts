@@ -6,6 +6,8 @@ import type {
   QrFields,
   QrPreset,
   QrStyle,
+  SceneMode,
+  View2dMode,
 } from "./qr/types";
 
 export interface DynamicResult {
@@ -17,7 +19,7 @@ export interface DynamicResult {
 }
 
 const defaultFields: QrFields = {
-  url: "https://vyntrixqr.com",
+  url: "https://vyntrixqr.app",
   text: "Hello from Vyntrix QR ✨",
   wifiSsid: "MyNetwork",
   wifiPassword: "supersecret",
@@ -36,13 +38,17 @@ const defaultFields: QrFields = {
   smsTo: "+15550100",
   smsBody: "Hi!",
   phoneNumber: "+15550100",
+  imageUrl: "https://picsum.photos/800",
+  locLat: "40.7128",
+  locLng: "-74.0060",
+  locLabel: "New York City",
 };
 
 const defaultStyle: QrStyle = {
-  fgColor: "#ff2d95",
-  bgColor: "#0a0518",
+  fgColor: "#10b981",
+  bgColor: "#ffffff",
   useGradient: true,
-  gradientColor: "#12e6ff",
+  gradientColor: "#38bdf8",
   gradientType: "linear",
   dotType: "rounded",
   cornerSquareType: "extra-rounded",
@@ -59,9 +65,9 @@ export const PRESETS: QrPreset[] = [
     name: "Neon",
     material: "holographic",
     style: {
-      fgColor: "#ff2d95",
-      gradientColor: "#12e6ff",
-      bgColor: "#0a0518",
+      fgColor: "#10b981",
+      gradientColor: "#38bdf8",
+      bgColor: "#ffffff",
       useGradient: true,
       dotType: "rounded",
       cornerSquareType: "extra-rounded",
@@ -72,9 +78,9 @@ export const PRESETS: QrPreset[] = [
     name: "Electric",
     material: "holographic",
     style: {
-      fgColor: "#9d3bff",
-      gradientColor: "#12e6ff",
-      bgColor: "#08030f",
+      fgColor: "#38bdf8",
+      gradientColor: "#10b981",
+      bgColor: "#0c1613",
       useGradient: true,
       dotType: "extra-rounded",
       cornerSquareType: "extra-rounded",
@@ -99,8 +105,8 @@ export const PRESETS: QrPreset[] = [
     material: "matte",
     style: {
       fgColor: "#ff7a45",
-      gradientColor: "#ff2e97",
-      bgColor: "#1a0f14",
+      gradientColor: "#f59e0b",
+      bgColor: "#120a06",
       useGradient: true,
       dotType: "classy-rounded",
       cornerSquareType: "extra-rounded",
@@ -113,7 +119,7 @@ export const PRESETS: QrPreset[] = [
     style: {
       fgColor: "#dfe7ff",
       gradientColor: "#8ea3c8",
-      bgColor: "#0a0c18",
+      bgColor: "#f8fafc",
       useGradient: true,
       dotType: "square",
       cornerSquareType: "square",
@@ -159,6 +165,8 @@ interface QrStore {
   fields: QrFields;
   style: QrStyle;
   material: MaterialKind;
+  sceneMode: SceneMode;
+  view2dMode: View2dMode;
   settings: Settings;
   qrDataUrl: string | null;
   generations: number;
@@ -169,6 +177,8 @@ interface QrStore {
   setField: <K extends keyof QrFields>(key: K, value: QrFields[K]) => void;
   setStyle: <K extends keyof QrStyle>(key: K, value: QrStyle[K]) => void;
   setMaterial: (m: MaterialKind) => void;
+  setSceneMode: (m: SceneMode) => void;
+  setView2dMode: (m: View2dMode) => void;
   applyPreset: (preset: QrPreset) => void;
   setLogo: (dataUrl: string | null) => void;
   setQrDataUrl: (url: string | null) => void;
@@ -193,6 +203,8 @@ export const useQrStore = create<QrStore>((set) => ({
   fields: defaultFields,
   style: defaultStyle,
   material: "holographic",
+  sceneMode: "showcase",
+  view2dMode: "clean",
   settings: { soundEnabled: false, reducedMotion: false, autoRotate: true },
   qrDataUrl: null,
   generations: 0,
@@ -205,6 +217,8 @@ export const useQrStore = create<QrStore>((set) => ({
   setStyle: (key, value) =>
     set((s) => ({ style: { ...s.style, [key]: value } })),
   setMaterial: (material) => set({ material }),
+  setSceneMode: (sceneMode) => set({ sceneMode }),
+  setView2dMode: (view2dMode) => set({ view2dMode }),
   applyPreset: (preset) =>
     set((s) => ({
       style: { ...s.style, ...preset.style },
