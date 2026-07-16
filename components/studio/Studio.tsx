@@ -215,7 +215,7 @@ export function Studio() {
                 New here?
               </span>{" "}
               1) Choose a type &amp; fill the form · 2) Open{" "}
-              <span className="text-[var(--foreground)]">Design</span> to add a
+              <span className="text-[var(--foreground)]">Design </span> to add a
               logo &amp; colors · 3) Hit{" "}
               <span className="text-[var(--foreground)]">PNG / SVG</span> to
               download.
