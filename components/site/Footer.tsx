@@ -17,6 +17,18 @@ export function Footer() {
             Free online QR code generator with logo, colors, 3D preview, and
             optional dynamic links — available worldwide.
           </p>
+          <p className="mt-3 text-xs">
+            A product by{" "}
+            <a
+              href={siteConfig.parentCompany.url}
+              target="_blank"
+              rel="noopener"
+              className="text-[var(--brand-2)] transition hover:text-white"
+            >
+              {siteConfig.parentCompany.name}
+            </a>{" "}
+            — AI automation, agents &amp; custom software.
+          </p>
         </div>
         <div>
           <p className="mb-3 font-medium text-[var(--foreground)]">Product</p>

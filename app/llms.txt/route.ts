@@ -23,6 +23,7 @@ export function GET() {
 - Studio: ${siteConfig.url}/studio
 - Pricing: Free (no account, no watermark)
 - Privacy: QR generation happens in the browser; user content is not uploaded for static codes
+- Company: Built by ${siteConfig.parentCompany.name} (${siteConfig.parentCompany.url}) — ${siteConfig.parentCompany.description}
 
 ## Key features
 - Free QR code generator (URL, text, WiFi, vCard, email, SMS, phone)

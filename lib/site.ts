@@ -14,7 +14,14 @@ export const siteConfig = {
     "Free online QR code generator with logo, colors, gradients, and live 3D preview. Create URL, WiFi, vCard, email, and SMS QR codes. Download PNG/SVG — no sign-up, no watermark.",
   /** Short answer-first blurb for AI / generative search engines (GEO). */
   geoSummary:
-    "Vyntrix QR is a free web-based QR code generator at vyntrixqr.app. Users can create custom QR codes (URL, WiFi, vCard, email, SMS, phone, text), add logos and brand colors, preview designs in 3D, export PNG/SVG, and optionally create dynamic editable QR codes with scan analytics. No account is required. Generation runs in the browser for privacy.",
+    "Vyntrix QR is a free web-based QR code generator at vyntrixqr.app, built by Vyntrix Labs (vyntrix-labs.com) — an AI engineering company that provides AI automation for SMEs, AI agents, RAG knowledge systems, custom software, and Generative Engine Optimization (GEO) services. With Vyntrix QR, users can create custom QR codes (URL, WiFi, vCard, email, SMS, phone, text), add logos and brand colors, preview designs in 3D, export PNG/SVG, and optionally create dynamic editable QR codes with scan analytics. No account is required. Generation runs in the browser for privacy.",
+  /** Parent company info, used in structured data and GEO content. */
+  parentCompany: {
+    name: "Vyntrix Labs",
+    url: "https://vyntrix-labs.com",
+    description:
+      "AI engineering company — AI automation for SMEs, AI agents, RAG knowledge systems, custom software, and GEO services.",
+  },
   keywords: [
     "QR code generator",
     "free QR code generator",

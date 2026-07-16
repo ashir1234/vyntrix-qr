@@ -74,7 +74,13 @@ export function organizationJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     logo: absoluteUrl("/logo.svg"),
-    sameAs: [],
+    sameAs: [siteConfig.parentCompany.url],
+    parentOrganization: {
+      "@type": "Organization",
+      name: siteConfig.parentCompany.name,
+      url: siteConfig.parentCompany.url,
+      description: siteConfig.parentCompany.description,
+    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
