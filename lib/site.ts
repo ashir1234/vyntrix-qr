@@ -39,6 +39,8 @@ export const siteConfig = {
   ],
   locale: "en_US",
   twitter: "@vyntrixqr",
+  // Google Analytics 4 measurement id, e.g. "G-XXXXXXXXXX".
+  gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   // Google AdSense publisher id, e.g. "ca-pub-1234567890123456".
   adsenseClient: process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "",
   // Ad unit slot ids from your AdSense dashboard.

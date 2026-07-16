@@ -9,8 +9,8 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Only relevant when ads are configured (that's what sets cookies).
-    if (!siteConfig.adsenseClient) return;
+    // Relevant when ads or analytics are configured (both set cookies).
+    if (!siteConfig.adsenseClient && !siteConfig.gaId) return;
     const stored = getConsent();
     if (stored === null) setVisible(true);
     else applyConsentMode(stored === "accepted");
@@ -27,7 +27,8 @@ export function CookieConsent() {
     <div className="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4">
       <div className="glass mx-auto flex w-[min(900px,96vw)] flex-col items-start gap-3 rounded-2xl p-4 shadow-2xl sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-[var(--muted)]">
-          We use cookies to run ads that keep {siteConfig.name} free. See our{" "}
+          We use cookies for analytics and ads that keep {siteConfig.name} free.
+          See our{" "}
           <Link href="/privacy" className="text-[var(--brand-2)] underline">
             Privacy Policy
           </Link>

@@ -8,6 +8,7 @@ import {
   websiteJsonLd,
 } from "@/lib/seo";
 import { CookieConsent } from "@/components/site/CookieConsent";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -88,6 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const adsClient = siteConfig.adsenseClient;
+  const usesConsent = Boolean(adsClient || siteConfig.gaId);
   const graph = {
     "@context": "https://schema.org",
     "@graph": [organizationJsonLd(), websiteJsonLd(), softwareAppJsonLd()],
@@ -103,25 +105,28 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
+        {/* Google Consent Mode v2 defaults: deny ad/analytics storage until the
+            visitor accepts via the cookie banner. Runs before GA/AdSense load. */}
+        {usesConsent && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
+            }}
+          />
+        )}
         {adsClient && (
-          <>
-            {/* Plain <script> in the initial HTML so AdSense's crawler can
-                verify without executing client-side JS. */}
-            <script
-              async
-              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`}
-              crossOrigin="anonymous"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`,
-              }}
-            />
-          </>
+          /* Plain <script> in the initial HTML so AdSense's crawler can
+             verify without executing client-side JS. */
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`}
+            crossOrigin="anonymous"
+          />
         )}
       </head>
       <body className="min-h-full flex flex-col">
         {children}
+        <GoogleAnalytics />
         <CookieConsent />
       </body>
     </html>
