@@ -55,7 +55,11 @@ export function GuideCta({ label = "Open free studio" }: { label?: string }) {
     <div className="glass glow my-8 rounded-2xl p-6 text-center">
       <p className="text-lg font-semibold">Ready to create yours?</p>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        Free forever — no account, no watermark.
+        Free static QR codes — no watermark.{" "}
+        <Link href="/pricing" className="text-[var(--brand-2)] underline">
+          See Pro
+        </Link>{" "}
+        for unlimited dynamics &amp; analytics.
       </p>
       <Link
         href="/studio"

@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Is a QR code menu free to make?",
-    a: "Yes. On Vyntrix QR you can create and download a QR code that links to your menu for free, with no watermark.",
+    a: "Yes. Static menu QRs are free with no watermark. For a link you can edit after printing, use a dynamic QR (Free: 1 code; Pro: unlimited) and update the destination anytime.",
   },
   {
     q: "How do I update the menu without reprinting the code?",

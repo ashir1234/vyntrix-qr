@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "QR Code Studio — Create & Customize",
   description:
-    "Design your QR code in real time. Add a logo, colors, and gradients, preview it in 3D, and download PNG or SVG — free, no sign-up.",
+    "Design your QR code in real time. Add a logo, colors, and gradients, preview it in 3D, and download PNG or SVG. Free for static codes; sign in for dynamic QR; Pro for unlimited dynamics and print pack.",
   alternates: { canonical: "/studio" },
 };
 

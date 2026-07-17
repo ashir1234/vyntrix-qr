@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "Is a WiFi QR code free?",
-    a: "Yes. On Vyntrix QR you can create and download unlimited WiFi QR codes for free with no watermark.",
+    a: "Yes. Static WiFi QR codes are free with no watermark. Pro adds dynamic WiFi landing pages so you can track how many people open the WiFi details (not whether they joined the network).",
   },
   {
     q: "What security types are supported?",

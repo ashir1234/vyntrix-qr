@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `How ${siteConfig.name} handles your data. QR codes are generated in your browser and are not uploaded to our servers.`,
+  description: `How ${siteConfig.name} handles your data. Static QR codes are generated in your browser; accounts and dynamic QR data are stored to power redirects, analytics, and Pro features.`,
   alternates: { canonical: "/privacy" },
 };
 
@@ -25,10 +25,19 @@ export default function PrivacyPage() {
               Overview
             </h2>
             <p className="mt-2">
-              {siteConfig.name} is a free QR code generator. Your privacy matters
-              to us. The QR codes you create are generated entirely inside your
-              own browser — the content you type (URLs, WiFi passwords, contact
-              details, etc.) is <strong>not sent to or stored on our servers</strong>.
+              {siteConfig.name} offers free static QR generation and optional
+              signed-in features (dynamic QR codes and Pro plans). Your privacy
+              matters to us.{" "}
+              <strong className="text-[var(--foreground)]">
+                Static QR codes
+              </strong>{" "}
+              (content you type for a one-off download) are generated in your
+              browser and are not uploaded for that purpose.{" "}
+              <strong className="text-[var(--foreground)]">
+                Dynamic QR codes, accounts, projects, and Pro features
+              </strong>{" "}
+              store necessary data on our servers so short links, redirects,
+              analytics, and cloud sync can work.
             </p>
           </section>
 
@@ -37,10 +46,15 @@ export default function PrivacyPage() {
               Information we process
             </h2>
             <p className="mt-2">
-              We do not require an account. We may collect anonymous, aggregated
-              usage analytics (such as page views and device type) to improve the
-              product. Any logos or images you upload are processed locally in
-              your browser and are not transmitted to us.
+              If you create an account (via our auth provider), we store your
+              user id, email, and related profile fields for account and billing
+              records. For dynamic QR codes we store destinations, optional
+              titles, design snapshots, WiFi landing credentials (when you use
+              that feature), scan analytics, and project membership. We may also
+              collect anonymous, aggregated usage analytics (such as page views)
+              to improve the product. Logos for static-only generation stay in
+              your browser unless you save them with a dynamic design or cloud
+              sync.
             </p>
           </section>
 
@@ -49,11 +63,10 @@ export default function PrivacyPage() {
               Advertising & cookies
             </h2>
             <p className="mt-2">
-              We use Google AdSense to display ads. Third-party vendors,
+              Free-plan visitors may see Google AdSense ads. Third-party vendors,
               including Google, use cookies to serve ads based on your prior
-              visits to this and other websites. Google&apos;s use of advertising
-              cookies enables it and its partners to serve ads based on your
-              visit to our site and/or other sites on the Internet.
+              visits to this and other websites. Pro subscribers get an ad-free
+              experience when their plan is active.
             </p>
             <p className="mt-2">
               You may opt out of personalized advertising by visiting{" "}
@@ -83,10 +96,10 @@ export default function PrivacyPage() {
               Your choices
             </h2>
             <p className="mt-2">
-              You can disable cookies in your browser settings and use browser
-              extensions to control tracking. Because generation happens locally,
-              you can also use the core generator with JavaScript-only features
-              and no account.
+              You can disable cookies in your browser settings. You can use the
+              studio for static QR codes without signing in. Creating or managing
+              dynamic QR codes requires an account. You can cancel Pro anytime
+              through the billing portal linked from your dashboard.
             </p>
           </section>
 

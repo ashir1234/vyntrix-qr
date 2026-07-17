@@ -35,10 +35,11 @@ export default function TermsPage() {
               Use of the service
             </h2>
             <p className="mt-2">
-              {siteConfig.name} is provided free of charge for creating QR codes.
-              You are responsible for the content you encode and for ensuring you
-              have the rights to any logos or images you use. You agree not to
-              use the service for unlawful, deceptive, or malicious purposes,
+              {siteConfig.name} offers free static QR generation and optional
+              paid Pro features for dynamic QR codes and related tools. You are
+              responsible for the content you encode and for ensuring you have
+              the rights to any logos or images you use. You agree not to use
+              the service for unlawful, deceptive, or malicious purposes,
               including encoding links to malware or phishing sites.
             </p>
           </section>

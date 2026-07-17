@@ -62,7 +62,7 @@ export default function OgImage() {
             maxWidth: 820,
           }}
         >
-          Add logos, colors & gradients. Preview live in 3D. No sign-up.
+          Add logos, colors & gradients. Preview live in 3D. Free & Pro.
         </div>
 
         <div

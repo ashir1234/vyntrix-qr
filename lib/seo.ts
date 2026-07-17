@@ -34,7 +34,7 @@ export const guides = [
     slug: "dynamic-qr-code",
     title: "What Is a Dynamic QR Code? (Editable + Analytics)",
     description:
-      "Learn how dynamic QR codes let you change the destination after printing and track scans. Create an editable QR with free analytics on Vyntrix QR.",
+      "Learn how dynamic QR codes let you change the destination after printing and track scans. Create editable QRs on Vyntrix QR — Free includes 1 dynamic code; Pro unlocks unlimited codes and full analytics.",
     keywords: [
       "dynamic QR code",
       "editable QR code",
@@ -268,18 +268,32 @@ export function softwareAppJsonLd() {
     operatingSystem: "Web Browser",
     url: siteConfig.url,
     description: siteConfig.description,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Free",
+        price: "0",
+        priceCurrency: "USD",
+        description:
+          "Unlimited static QR codes; 1 dynamic QR code with 7-day analytics when signed in",
+      },
+      {
+        "@type": "Offer",
+        name: "Pro",
+        price: "9",
+        priceCurrency: "USD",
+        description:
+          "Unlimited dynamic QR codes, full analytics, custom slugs, WiFi landing pages, projects, bulk create, print pack, no ads",
+      },
+    ],
     featureList: [
-      "Free QR code generator",
+      "Free static QR code generator",
       "Custom logo embedding",
       "Color gradients and styles",
       "3D live preview",
       "WiFi, vCard, URL, email, SMS, phone QR types",
-      "Dynamic editable QR codes with scan analytics",
+      "Dynamic editable QR codes with scan analytics (account required)",
+      "Pro: unlimited dynamics, CSV export, WiFi pages, projects, bulk create, print pack",
       "PNG and SVG export",
     ],
   };

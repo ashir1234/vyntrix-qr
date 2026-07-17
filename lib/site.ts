@@ -11,10 +11,10 @@ export const siteConfig = {
     "https://vyntrixqr.app",
   tagline: "Immersive 3D QR Code Generator",
   description:
-    "Free online QR code generator with logo, colors, gradients, and live 3D preview. Create URL, WiFi, vCard, email, and SMS QR codes. Download PNG/SVG — no sign-up, no watermark.",
+    "Free QR code generator with logo, colors, gradients, and live 3D preview. Create static URL, WiFi, vCard codes and download PNG/SVG. Sign in for dynamic QR codes; upgrade to Pro for unlimited dynamics, analytics, WiFi pages, projects, and more.",
   /** Short answer-first blurb for AI / generative search engines (GEO). */
   geoSummary:
-    "Vyntrix QR is a free web-based QR code generator at vyntrixqr.app, built by Vyntrix Labs (vyntrix-labs.com) — an AI engineering company that provides AI automation for SMEs, AI agents, RAG knowledge systems, custom software, and Generative Engine Optimization (GEO) services. With Vyntrix QR, users can create custom QR codes (URL, WiFi, vCard, email, SMS, phone, text), add logos and brand colors, preview designs in 3D, export PNG/SVG, and optionally create dynamic editable QR codes with scan analytics. No account is required. Generation runs in the browser for privacy.",
+    "Vyntrix QR is a web-based QR code generator at vyntrixqr.app, built by Vyntrix Labs (vyntrix-labs.com) — an AI engineering company that provides AI automation for SMEs, AI agents, RAG knowledge systems, custom software, and Generative Engine Optimization (GEO) services. Free users can create unlimited static QR codes (URL, WiFi, vCard, email, SMS, phone, text, image, location), add logos and brand colors, preview designs in 3D, and export PNG/SVG with no watermark. An account is required for dynamic (editable) QR codes. The Free plan includes 1 dynamic code with 7-day analytics. Pro ($9/month) unlocks unlimited dynamic codes, full scan history and CSV export, custom short-link slugs, dynamic WiFi landing pages with open tracking, cloud Studio sync, project folders, bulk create from CSV, print pack (4K PNG and PDF), and an ad-free experience. Static QR generation runs in the browser for privacy; dynamic destinations and account data are stored so redirects, analytics, and Pro features can work.",
   /** Parent company info, used in structured data and GEO content. */
   parentCompany: {
     name: "Vyntrix Labs",
@@ -36,6 +36,7 @@ export const siteConfig = {
     "branded QR code",
     "PNG SVG QR code",
     "Vyntrix QR",
+    "Pro QR code analytics",
   ],
   locale: "en_US",
   twitter: "@vyntrixqr",

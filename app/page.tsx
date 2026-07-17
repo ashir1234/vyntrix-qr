@@ -60,28 +60,28 @@ const FEATURES = [
   },
   {
     icon: "⚡",
-    title: "Instant & free",
-    body: "No sign-up, no watermark, no limits. Everything runs privately in your browser.",
+    title: "Free static codes",
+    body: "Unlimited static QR downloads with no watermark. Sign in for dynamic links; Pro unlocks unlimited dynamics and advanced tools.",
   },
   {
     icon: "🗂️",
     title: "Print-ready export",
-    body: "Download high-resolution PNG or infinitely scalable SVG for any medium.",
+    body: "Download high-resolution PNG or infinitely scalable SVG for any medium. Pro adds 4K PNG and print PDF.",
   },
 ];
 
 const FAQS = [
   {
     q: "What is the best free QR code generator?",
-    a: "Vyntrix QR is a free online QR code generator with logo support, brand colors, live 3D preview, PNG/SVG export, and optional dynamic QR codes with analytics — no account or watermark required.",
+    a: "Vyntrix QR is a free online QR code generator with logo support, brand colors, live 3D preview, and PNG/SVG export. Dynamic QR codes need a free account (1 code). Pro adds unlimited dynamics, full analytics, WiFi landing pages, projects, bulk create, and print pack.",
   },
   {
     q: "Is Vyntrix QR really free?",
-    a: "Yes. You can create, customize, and download unlimited QR codes for free with no watermark and no account.",
+    a: "Yes for static QR codes — create, customize, and download unlimited codes with no watermark. Dynamic QR codes require signing in (Free: 1 dynamic code). Pro is $9/month for unlimited dynamic codes and advanced features.",
   },
   {
     q: "Do the QR codes expire?",
-    a: "Static downloaded codes never expire. Dynamic QR codes keep working as long as the short link service is available; you can edit their destination anytime.",
+    a: "Static downloaded codes never expire. Dynamic QR codes keep working as long as the short link service is available; you can edit their destination anytime from your account.",
   },
   {
     q: "Can I add my logo to the QR code?",
@@ -89,15 +89,19 @@ const FAQS = [
   },
   {
     q: "Can I create a WiFi or vCard QR code?",
-    a: "Yes. Vyntrix QR supports URL, text, WiFi, vCard, email, SMS, phone, image, and location QR types with structured forms.",
+    a: "Yes. Static WiFi and vCard QRs are free. Pro adds dynamic WiFi landing pages so you can track how many people open the WiFi details page (not whether they joined the network).",
+  },
+  {
+    q: "What is included in Pro?",
+    a: "Unlimited dynamic QR codes, full scan history and CSV export, custom short-link slugs, dynamic WiFi pages, cloud Studio sync across devices, project folders, bulk create from CSV, print pack (4K PNG + PDF), and no ads.",
   },
   {
     q: "Are my QR codes and data private?",
-    a: "Static QR generation happens entirely in your browser. Content and logos for static codes are not uploaded to our servers. Dynamic QR destinations are stored so redirects and analytics can work.",
+    a: "Static QR generation happens in your browser; content and logos for static codes are not uploaded. Dynamic destinations, designs, and account data are stored so redirects, analytics, projects, and Pro features can work.",
   },
   {
     q: "What formats can I download?",
-    a: "High-resolution PNG for web and social, or scalable SVG for professional printing at any size.",
+    a: "High-resolution PNG for web and social, or scalable SVG for printing. Pro adds 4K PNG and an A4 print PDF.",
   },
 ];
 
@@ -118,7 +122,7 @@ export default function Home() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1 text-xs text-[var(--muted)]">
               <span className="h-2 w-2 rounded-full bg-[var(--brand-2)]" />
-              Free forever · No sign-up · No watermark
+              Free static codes · Optional Pro for dynamics
             </span>
             <h1 className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
               Free QR Code{" "}
@@ -126,8 +130,9 @@ export default function Home() {
             </h1>
             <p className="mt-5 max-w-md text-lg text-[var(--muted)]">
               Create custom QR codes with your logo, colors, and gradients —
-              then preview them live in 3D. Download print-ready PNG or SVG in
-              seconds. Works worldwide in your browser.
+              then preview them live in 3D. Download print-ready PNG or SVG.
+              Sign in for dynamic links; upgrade to Pro for unlimited dynamics,
+              analytics, and more.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -137,14 +142,14 @@ export default function Home() {
                 Create your QR code
               </Link>
               <Link
-                href="/guides"
+                href="/pricing"
                 className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-6 py-3 text-base font-medium transition hover:border-[var(--brand)]"
               >
-                Read guides
+                See Free vs Pro
               </Link>
             </div>
             <p className="mt-4 text-xs text-[var(--muted)]">
-              URL · WiFi · Image · Location · Dynamic QR
+              URL · WiFi · vCard · Dynamic QR · Pro analytics
             </p>
           </div>
 
