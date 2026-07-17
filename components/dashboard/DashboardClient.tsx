@@ -22,6 +22,7 @@ interface CodeItem {
   editToken: string;
   createdAt: number;
   design: SavedQrDesign | null;
+  projectId: string | null;
 }
 
 export function DashboardClient({
@@ -48,18 +49,42 @@ export function DashboardClient({
   const [origin, setOrigin] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+  const [projectOptions, setProjectOptions] = useState<
+    { id: string; name: string }[]
+  >([]);
+  const [assigning, setAssigning] = useState<string | null>(null);
 
   useEffect(() => {
     setOrigin(window.location.origin);
   }, []);
 
-  // Fire the conversion event when returning from a successful checkout.
   useEffect(() => {
     if (searchParams.get("upgraded") === "1") {
       trackEvent("subscription_active", { source: "checkout_redirect" });
       setNotice("Welcome to Pro! Your account has been upgraded.");
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (plan !== "pro") return;
+    let active = true;
+    fetch("/api/projects")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (active && j?.projects) {
+          setProjectOptions(
+            j.projects.map((p: { id: string; name: string }) => ({
+              id: p.id,
+              name: p.name,
+            })),
+          );
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [plan, codes]);
 
   const remove = async (code: CodeItem) => {
     if (!confirm(`Delete "${code.title || code.slug}"? This cannot be undone.`))
@@ -76,11 +101,49 @@ export function DashboardClient({
     }
   };
 
+  const assignProject = async (slug: string, projectId: string) => {
+    setAssigning(slug);
+    try {
+      if (!projectId) {
+        // Find current project and remove
+        const current = codes.find((c) => c.slug === slug)?.projectId;
+        if (!current) return;
+        const res = await fetch("/api/projects", {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ id: current, removeSlugs: [slug] }),
+        });
+        if (!res.ok) {
+          const j = await res.json();
+          throw new Error(j.error ?? "Failed");
+        }
+      } else {
+        const res = await fetch("/api/projects", {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ id: projectId, addSlugs: [slug] }),
+        });
+        if (!res.ok) {
+          const j = await res.json();
+          throw new Error(j.error ?? "Failed");
+        }
+      }
+      trackEvent("project_assign", { slug });
+      router.refresh();
+    } catch {
+      /* ignore — panel will show state on refresh */
+    } finally {
+      setAssigning(null);
+    }
+  };
+
   const used = codes.length;
   const isPro = plan === "pro";
   const quotaLabel =
     maxDynamicCodes === null ? `${used} / ∞` : `${used} / ${maxDynamicCodes}`;
   const maxBulkRows = PLAN_LIMITS[plan].maxBulkRows;
+  const projectName = (id: string | null) =>
+    id ? projectOptions.find((p) => p.id === id)?.name ?? "Project" : null;
 
   return (
     <div className="space-y-6">
@@ -108,7 +171,6 @@ export function DashboardClient({
         </div>
       )}
 
-      {/* Plan card */}
       <div className="glass rounded-2xl p-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -126,8 +188,8 @@ export function DashboardClient({
               </p>
             ) : (
               <p className="mt-1 text-xs text-[var(--muted)]">
-                Upgrade for unlimited dynamic codes, full analytics, and CSV
-                export.
+                Upgrade for unlimited dynamic codes, projects, bulk create, and
+                print pack.
               </p>
             )}
           </div>
@@ -157,13 +219,12 @@ export function DashboardClient({
         </div>
       </div>
 
-      <ProjectsPanel isPro={isPro} />
+      <ProjectsPanel isPro={isPro} allCodes={codes} origin={origin} />
       <BulkCreatePanel isPro={isPro} maxBulkRows={maxBulkRows} />
 
-      {/* Codes list */}
       <div className="glass rounded-2xl p-5">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-semibold">Dynamic QR codes</h2>
+          <h2 className="font-semibold">All dynamic QR codes</h2>
           <Link
             href="/studio"
             className="text-sm text-[var(--brand-2)] transition hover:text-[var(--foreground)]"
@@ -187,19 +248,13 @@ export function DashboardClient({
               const shortUrl = origin
                 ? `${origin}/r/${code.slug}`
                 : `/r/${code.slug}`;
+              const folder = projectName(code.projectId);
               return (
                 <li
                   key={code.slug}
                   className="flex flex-wrap items-center gap-4 py-4"
                 >
-                  <div
-                    className="shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-white p-1.5"
-                    title={
-                      code.design
-                        ? "Saved design"
-                        : "No design saved yet — open in Studio and save"
-                    }
-                  >
+                  <div className="shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-white p-1.5">
                     {origin ? (
                       <StaticQr data={shortUrl} style={design.style} size={72} />
                     ) : (
@@ -213,21 +268,34 @@ export function DashboardClient({
                     <p className="truncate text-xs text-[var(--muted)]">
                       {shortUrl} → {code.destination}
                     </p>
-                    {!code.design && (
-                      <p className="mt-0.5 text-[11px] text-amber-400/90">
-                        Design not saved yet
+                    {folder && (
+                      <p className="mt-0.5 text-[11px] text-[var(--brand-2)]">
+                        In project: {folder}
                       </p>
                     )}
                   </div>
                   <div className="flex shrink-0 flex-wrap items-center gap-2 text-sm">
+                    {isPro && projectOptions.length > 0 && (
+                      <select
+                        value={code.projectId ?? ""}
+                        disabled={assigning === code.slug}
+                        onChange={(e) =>
+                          void assignProject(code.slug, e.target.value)
+                        }
+                        className="input-field max-w-[10rem] py-1.5 text-xs"
+                        title="Assign to project"
+                      >
+                        <option value="">No project</option>
+                        {projectOptions.map((p) => (
+                          <option key={p.id} value={p.id}>
+                            {p.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                     <Link
                       href={`/studio?load=${encodeURIComponent(code.slug)}&token=${encodeURIComponent(code.editToken)}`}
                       className="btn-primary rounded-lg px-3 py-1.5 text-xs font-semibold"
-                      onClick={() =>
-                        trackEvent("dashboard_open_studio", {
-                          slug: code.slug,
-                        })
-                      }
                     >
                       Open in Studio
                     </Link>

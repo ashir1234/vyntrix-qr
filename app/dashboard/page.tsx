@@ -114,6 +114,7 @@ export default async function DashboardPage() {
                 editToken: c.edit_token,
                 createdAt: c.created_at,
                 design: c.design,
+                projectId: c.project_id,
               }))}
             />
           </Suspense>

@@ -3,30 +3,47 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { selectEncodedData, useQrStore } from "@/lib/store";
-import { snapshotDesign } from "@/lib/qr/design";
 import { downloadPrintPdf, downloadQr } from "@/components/studio/QRPreview";
 import { trackEvent } from "@/lib/analytics";
 import { authEnabled } from "@/lib/authFlags";
 
-/** Pro-only Studio actions: save project + print pack exports. */
+interface ProjectOpt {
+  id: string;
+  name: string;
+}
+
+/** Pro-only Studio actions: add code to project folder + print pack. */
 export function StudioProTools() {
   const [isPro, setIsPro] = useState(false);
   const [checked, setChecked] = useState(!authEnabled);
-  const [projectName, setProjectName] = useState("");
+  const [projects, setProjects] = useState<ProjectOpt[]>([]);
+  const [selectedProject, setSelectedProject] = useState("");
+  const [newProjectName, setNewProjectName] = useState("");
   const [busy, setBusy] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
 
   const type = useQrStore((s) => s.type);
-  const fields = useQrStore((s) => s.fields);
   const style = useQrStore((s) => s.style);
-  const material = useQrStore((s) => s.material);
-  const sceneMode = useQrStore((s) => s.sceneMode);
-  const view2dMode = useQrStore((s) => s.view2dMode);
   const frame = useQrStore((s) => s.frame);
   const frameLabel = useQrStore((s) => s.frameLabel);
   const dynamic = useQrStore((s) => s.dynamic);
-  const dynamicEnabled = useQrStore((s) => s.dynamicEnabled);
   const data = useQrStore(selectEncodedData);
+
+  const loadProjects = () => {
+    fetch("/api/projects")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (j?.projects) {
+          setProjects(
+            j.projects.map((p: { id: string; name: string }) => ({
+              id: p.id,
+              name: p.name,
+            })),
+          );
+        }
+      })
+      .catch(() => {});
+  };
 
   useEffect(() => {
     if (!authEnabled) return;
@@ -34,10 +51,11 @@ export function StudioProTools() {
     fetch("/api/billing/plan")
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        if (active) {
-          setIsPro(j?.plan === "pro");
-          setChecked(true);
-        }
+        if (!active) return;
+        const pro = j?.plan === "pro";
+        setIsPro(pro);
+        setChecked(true);
+        if (pro) loadProjects();
       })
       .catch(() => {
         if (active) setChecked(true);
@@ -52,8 +70,7 @@ export function StudioProTools() {
   if (!isPro) {
     return (
       <div className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-3 py-2.5 text-xs text-[var(--muted)]">
-        Pro unlocks cloud sync, saved projects, bulk create, and print pack (4K
-        PNG + PDF).{" "}
+        Pro unlocks cloud sync, project folders, bulk create, and print pack.{" "}
         <Link href="/pricing" className="text-[var(--brand-2)] underline">
           Upgrade
         </Link>
@@ -61,44 +78,41 @@ export function StudioProTools() {
     );
   }
 
-  const design = () =>
-    snapshotDesign({
-      style,
-      material,
-      sceneMode,
-      view2dMode,
-      frame,
-      frameLabel,
-    });
-
-  const saveProject = async () => {
-    const name =
-      projectName.trim() ||
-      fields.url ||
-      dynamic?.slug ||
-      `${type} project`;
+  const addToProject = async () => {
+    if (!dynamic?.slug) {
+      setMsg("Create a dynamic QR first, then add it to a project.");
+      return;
+    }
     setBusy("project");
     setMsg(null);
     try {
-      const res = await fetch("/api/projects", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          name,
-          kind: dynamicEnabled && dynamic ? "dynamic" : "static",
-          contentType: type,
-          fields,
-          design: design(),
-          dynamicSlug: dynamic?.slug ?? null,
-        }),
-      });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Save failed.");
-      setMsg(`Saved “${json.name}” to your projects.`);
-      setProjectName("");
-      trackEvent("project_save", { kind: json.kind });
+      let projectId = selectedProject;
+      if (!projectId) {
+        const name = newProjectName.trim() || `Project ${dynamic.slug}`;
+        const res = await fetch("/api/projects", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ name, slugs: [dynamic.slug] }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error ?? "Could not create project.");
+        setMsg(`Added to new project “${json.name}”.`);
+        setNewProjectName("");
+        loadProjects();
+        trackEvent("project_create", { from: "studio" });
+      } else {
+        const res = await fetch("/api/projects", {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ id: projectId, addSlugs: [dynamic.slug] }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error ?? "Could not add to project.");
+        setMsg(`Added to “${json.name}”.`);
+        trackEvent("project_add_code", { from: "studio" });
+      }
     } catch (e) {
-      setMsg(e instanceof Error ? e.message : "Save failed.");
+      setMsg(e instanceof Error ? e.message : "Failed.");
     } finally {
       setBusy(null);
     }
@@ -108,21 +122,40 @@ export function StudioProTools() {
     <div className="mt-3 space-y-3 rounded-xl border border-[var(--brand)]/25 bg-[var(--brand)]/5 p-3">
       <p className="text-xs font-semibold text-[var(--brand-2)]">Pro tools</p>
 
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <input
-          value={projectName}
-          onChange={(e) => setProjectName(e.target.value)}
-          placeholder="Project name (optional)"
-          className="input-field text-sm"
-          maxLength={80}
-        />
-        <button
-          onClick={saveProject}
-          disabled={busy === "project"}
-          className="btn-primary shrink-0 rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-60"
-        >
-          {busy === "project" ? "Saving…" : "Save project"}
-        </button>
+      <div className="space-y-2">
+        <p className="text-[11px] text-[var(--muted)]">
+          Add the current dynamic QR to a project folder.
+        </p>
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <select
+            value={selectedProject}
+            onChange={(e) => setSelectedProject(e.target.value)}
+            className="input-field text-sm"
+          >
+            <option value="">Create new project…</option>
+            {projects.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))}
+          </select>
+          {!selectedProject && (
+            <input
+              value={newProjectName}
+              onChange={(e) => setNewProjectName(e.target.value)}
+              placeholder="New project name"
+              className="input-field text-sm"
+              maxLength={80}
+            />
+          )}
+          <button
+            onClick={addToProject}
+            disabled={busy === "project"}
+            className="btn-primary shrink-0 rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-60"
+          >
+            {busy === "project" ? "Saving…" : "Add to project"}
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -161,7 +194,7 @@ export function StudioProTools() {
       {msg && (
         <p
           className={`text-xs ${
-            /fail|error|limit|pro/i.test(msg)
+            /fail|error|first|could not/i.test(msg)
               ? "text-red-400"
               : "text-emerald-400"
           }`}

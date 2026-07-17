@@ -7,39 +7,39 @@ import {
   deleteProject,
   getProject,
   listProjectsByUser,
-  updateProject,
+  listQrCodesByProject,
+  renameProject,
+  setQrProject,
 } from "@/lib/db";
 import { generateEditToken } from "@/lib/ids";
 import { PLAN_LIMITS } from "@/lib/plans";
-import { designToJson, sanitizeDesign } from "@/lib/qr/design";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function projectJson(p: Awaited<ReturnType<typeof getProject>>) {
-  if (!p) return null;
-  let fields: unknown = {};
-  let design: unknown = null;
-  try {
-    fields = JSON.parse(p.fields_json);
-  } catch {
-    /* keep {} */
-  }
-  try {
-    design = JSON.parse(p.design_json);
-  } catch {
-    /* keep null */
-  }
+function codeJson(c: Awaited<ReturnType<typeof listQrCodesByProject>>[number]) {
+  return {
+    slug: c.slug,
+    title: c.title,
+    destination: c.destination,
+    editToken: c.edit_token,
+    design: c.design,
+    projectId: c.project_id,
+    createdAt: c.created_at,
+  };
+}
+
+async function projectWithCodes(
+  p: NonNullable<Awaited<ReturnType<typeof getProject>>>,
+) {
+  const codes = await listQrCodesByProject(p.id);
   return {
     id: p.id,
     name: p.name,
-    kind: p.kind,
-    contentType: p.content_type,
-    fields,
-    design,
-    dynamicSlug: p.dynamic_slug,
     createdAt: p.created_at,
     updatedAt: p.updated_at,
+    codeCount: codes.length,
+    codes: codes.map(codeJson),
   };
 }
 
@@ -58,8 +58,9 @@ export async function GET() {
   }
 
   const projects = await listProjectsByUser(userId);
+  const withCodes = await Promise.all(projects.map(projectWithCodes));
   return NextResponse.json({
-    projects: projects.map((p) => projectJson(p)),
+    projects: withCodes,
     maxProjects: max,
   });
 }
@@ -78,14 +79,7 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: {
-    name?: string;
-    kind?: "static" | "dynamic";
-    contentType?: string;
-    fields?: unknown;
-    design?: unknown;
-    dynamicSlug?: string | null;
-  };
+  let body: { name?: string; slugs?: string[] };
   try {
     body = await req.json();
   } catch {
@@ -95,10 +89,6 @@ export async function POST(req: Request) {
   const name = (body.name ?? "").trim().slice(0, 80);
   if (!name) {
     return NextResponse.json({ error: "Name is required." }, { status: 400 });
-  }
-  const design = sanitizeDesign(body.design);
-  if (!design) {
-    return NextResponse.json({ error: "Invalid design." }, { status: 400 });
   }
 
   if (max !== null) {
@@ -116,18 +106,14 @@ export async function POST(req: Request) {
 
   await syncSignedInUser();
   const id = `prj_${generateEditToken().slice(0, 16)}`;
-  const row = await createProject({
-    id,
-    userId,
-    name,
-    kind: body.kind === "dynamic" ? "dynamic" : "static",
-    contentType: body.contentType ?? "url",
-    fieldsJson: JSON.stringify(body.fields ?? {}),
-    designJson: designToJson(design) ?? "{}",
-    dynamicSlug: body.dynamicSlug ?? null,
-  });
+  const row = await createProject({ id, userId, name });
 
-  return NextResponse.json(projectJson(row), { status: 201 });
+  const slugs = Array.isArray(body.slugs) ? body.slugs : [];
+  for (const slug of slugs) {
+    await setQrProject(String(slug), userId, id);
+  }
+
+  return NextResponse.json(await projectWithCodes(row), { status: 201 });
 }
 
 export async function PATCH(req: Request) {
@@ -146,11 +132,10 @@ export async function PATCH(req: Request) {
   let body: {
     id?: string;
     name?: string;
-    fields?: unknown;
-    design?: unknown;
-    dynamicSlug?: string | null;
-    kind?: "static" | "dynamic";
-    contentType?: string;
+    /** Assign these slugs to the project. */
+    addSlugs?: string[];
+    /** Remove these slugs from the project (set project_id null). */
+    removeSlugs?: string[];
   };
   try {
     body = await req.json();
@@ -162,26 +147,28 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: "id is required." }, { status: 400 });
   }
 
-  const design =
-    body.design !== undefined ? sanitizeDesign(body.design) : undefined;
-  if (body.design !== undefined && !design) {
-    return NextResponse.json({ error: "Invalid design." }, { status: 400 });
-  }
-
-  const row = await updateProject(body.id, userId, {
-    name: body.name,
-    fieldsJson:
-      body.fields !== undefined ? JSON.stringify(body.fields) : undefined,
-    designJson: design ? designToJson(design) ?? undefined : undefined,
-    dynamicSlug: body.dynamicSlug,
-    kind: body.kind,
-    contentType: body.contentType,
-  });
-
-  if (!row) {
+  let row = await getProject(body.id);
+  if (!row || row.user_id !== userId) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
-  return NextResponse.json(projectJson(row));
+
+  if (body.name?.trim()) {
+    row = (await renameProject(body.id, userId, body.name.trim())) ?? row;
+  }
+
+  for (const slug of body.addSlugs ?? []) {
+    await setQrProject(String(slug), userId, body.id);
+  }
+  for (const slug of body.removeSlugs ?? []) {
+    const code = await setQrProject(String(slug), userId, null);
+    void code;
+  }
+
+  const fresh = await getProject(body.id);
+  if (!fresh) {
+    return NextResponse.json({ error: "Not found." }, { status: 404 });
+  }
+  return NextResponse.json(await projectWithCodes(fresh));
 }
 
 export async function DELETE(req: Request) {

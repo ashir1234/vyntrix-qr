@@ -90,10 +90,10 @@ async function initSchema(c: Client): Promise<void> {
       id            TEXT PRIMARY KEY,
       user_id       TEXT NOT NULL,
       name          TEXT NOT NULL,
-      kind          TEXT NOT NULL,
-      content_type  TEXT NOT NULL,
-      fields_json   TEXT NOT NULL,
-      design_json   TEXT NOT NULL,
+      kind          TEXT NOT NULL DEFAULT 'folder',
+      content_type  TEXT NOT NULL DEFAULT 'folder',
+      fields_json   TEXT NOT NULL DEFAULT '{}',
+      design_json   TEXT NOT NULL DEFAULT '{}',
       dynamic_slug  TEXT,
       created_at    INTEGER NOT NULL,
       updated_at    INTEGER NOT NULL
@@ -108,14 +108,18 @@ async function initSchema(c: Client): Promise<void> {
     await c.execute(sql);
   }
 
-  // Existing Turso DBs were created before user_id / design existed.
+  // Existing Turso DBs were created before user_id / design / project_id existed.
   // CREATE TABLE IF NOT EXISTS does not add columns to an existing table.
   await ensureColumn(c, "qr_codes", "user_id", "TEXT");
   await ensureColumn(c, "qr_codes", "design", "TEXT");
+  await ensureColumn(c, "qr_codes", "project_id", "TEXT");
   await ensureColumn(c, "users", "studio_state", "TEXT");
   await ensureColumn(c, "users", "studio_updated_at", "INTEGER");
   await c.execute(
     "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
+  );
+  await c.execute(
+    "CREATE INDEX IF NOT EXISTS idx_qr_project ON qr_codes(project_id)",
   );
   await c.execute(
     "CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)",
@@ -173,6 +177,8 @@ export interface QrCodeRow {
   user_id: string | null;
   /** Studio look snapshot (pattern, colors, frame, etc.). Null for legacy rows. */
   design: SavedQrDesign | null;
+  /** Optional project folder this code belongs to. */
+  project_id: string | null;
   created_at: number;
   updated_at: number;
 }
@@ -184,6 +190,7 @@ export interface CreateQrInput {
   editToken: string;
   userId?: string | null;
   design?: SavedQrDesign | null;
+  projectId?: string | null;
 }
 
 export interface SubscriptionRow {
@@ -242,8 +249,8 @@ export async function createQrCode(input: CreateQrInput): Promise<void> {
   const db = await getClient();
   const now = Date.now();
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       input.slug,
       input.destination,
@@ -251,6 +258,7 @@ export async function createQrCode(input: CreateQrInput): Promise<void> {
       input.editToken,
       input.userId ?? null,
       designToJson(input.design ?? null),
+      input.projectId ?? null,
       now,
       now,
     ],
@@ -265,6 +273,7 @@ function mapQrRow(r: Record<string, unknown>): QrCodeRow {
     edit_token: String(r.edit_token),
     user_id: str(r.user_id),
     design: parseDesignJson(str(r.design)),
+    project_id: str(r.project_id),
     created_at: num(r.created_at),
     updated_at: num(r.updated_at),
   };
@@ -353,8 +362,8 @@ export async function renameQrCode(
   if (await slugExists(newSlug)) throw new Error("Slug taken.");
 
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       newSlug,
       existing.destination,
@@ -362,6 +371,7 @@ export async function renameQrCode(
       existing.edit_token,
       existing.user_id,
       designToJson(existing.design),
+      existing.project_id,
       existing.created_at,
       now,
     ],
@@ -579,18 +589,13 @@ export async function saveUserStudioState(
 }
 
 /* -------------------------------------------------------------------------- */
-/* Projects                                                                   */
+/* Projects (folders that group dynamic QR codes)                             */
 /* -------------------------------------------------------------------------- */
 
 export interface ProjectRow {
   id: string;
   user_id: string;
   name: string;
-  kind: "static" | "dynamic";
-  content_type: string;
-  fields_json: string;
-  design_json: string;
-  dynamic_slug: string | null;
   created_at: number;
   updated_at: number;
 }
@@ -599,11 +604,6 @@ export interface CreateProjectInput {
   id: string;
   userId: string;
   name: string;
-  kind: "static" | "dynamic";
-  contentType: string;
-  fieldsJson: string;
-  designJson: string;
-  dynamicSlug?: string | null;
 }
 
 export async function createProject(
@@ -611,70 +611,41 @@ export async function createProject(
 ): Promise<ProjectRow> {
   const db = await getClient();
   const now = Date.now();
+  // Legacy columns (kind/content/…) stay for older Turso schemas; new rows
+  // are plain folders.
   await db.execute({
     sql: `INSERT INTO projects
             (id, user_id, name, kind, content_type, fields_json, design_json,
              dynamic_slug, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    args: [
-      input.id,
-      input.userId,
-      input.name.slice(0, 80),
-      input.kind,
-      input.contentType,
-      input.fieldsJson,
-      input.designJson,
-      input.dynamicSlug ?? null,
-      now,
-      now,
-    ],
+          VALUES (?, ?, ?, 'folder', 'folder', '{}', '{}', NULL, ?, ?)`,
+    args: [input.id, input.userId, input.name.slice(0, 80), now, now],
   });
   const row = await getProject(input.id);
   if (!row) throw new Error("Failed to create project.");
   return row;
 }
 
-export async function updateProject(
+export async function renameProject(
   id: string,
   userId: string,
-  patch: {
-    name?: string;
-    fieldsJson?: string;
-    designJson?: string;
-    dynamicSlug?: string | null;
-    kind?: "static" | "dynamic";
-    contentType?: string;
-  },
+  name: string,
 ): Promise<ProjectRow | null> {
   const existing = await getProject(id);
   if (!existing || existing.user_id !== userId) return null;
   const db = await getClient();
-  const now = Date.now();
   await db.execute({
-    sql: `UPDATE projects SET
-            name = ?,
-            kind = ?,
-            content_type = ?,
-            fields_json = ?,
-            design_json = ?,
-            dynamic_slug = ?,
-            updated_at = ?
-          WHERE id = ? AND user_id = ?`,
-    args: [
-      patch.name?.slice(0, 80) ?? existing.name,
-      patch.kind ?? existing.kind,
-      patch.contentType ?? existing.content_type,
-      patch.fieldsJson ?? existing.fields_json,
-      patch.designJson ?? existing.design_json,
-      patch.dynamicSlug !== undefined
-        ? patch.dynamicSlug
-        : existing.dynamic_slug,
-      now,
-      id,
-      userId,
-    ],
+    sql: "UPDATE projects SET name = ?, updated_at = ? WHERE id = ? AND user_id = ?",
+    args: [name.slice(0, 80), Date.now(), id, userId],
   });
   return getProject(id);
+}
+
+export async function touchProject(id: string): Promise<void> {
+  const db = await getClient();
+  await db.execute({
+    sql: "UPDATE projects SET updated_at = ? WHERE id = ?",
+    args: [Date.now(), id],
+  });
 }
 
 export async function getProject(id: string): Promise<ProjectRow | null> {
@@ -692,6 +663,8 @@ export async function listProjectsByUser(
   userId: string,
 ): Promise<ProjectRow[]> {
   const db = await getClient();
+  // One-time soft migration: old snapshot projects stored a single dynamic_slug.
+  await migrateLegacyProjectSlugs(userId);
   const res = await db.execute({
     sql: "SELECT * FROM projects WHERE user_id = ? ORDER BY updated_at DESC",
     args: [userId],
@@ -699,6 +672,34 @@ export async function listProjectsByUser(
   return res.rows.map((r) =>
     mapProject(r as unknown as Record<string, unknown>),
   );
+}
+
+/** Move codes from legacy project.dynamic_slug into qr_codes.project_id. */
+async function migrateLegacyProjectSlugs(userId: string): Promise<void> {
+  const db = await getClient();
+  let res;
+  try {
+    res = await db.execute({
+      sql: `SELECT id, dynamic_slug FROM projects
+            WHERE user_id = ? AND dynamic_slug IS NOT NULL AND dynamic_slug != ''`,
+      args: [userId],
+    });
+  } catch {
+    return;
+  }
+  for (const r of res.rows) {
+    const projectId = String(r.id);
+    const slug = String(r.dynamic_slug);
+    await db.execute({
+      sql: `UPDATE qr_codes SET project_id = ?, updated_at = ?
+            WHERE slug = ? AND user_id = ? AND (project_id IS NULL OR project_id = '')`,
+      args: [projectId, Date.now(), slug, userId],
+    });
+    await db.execute({
+      sql: "UPDATE projects SET dynamic_slug = NULL, kind = 'folder', updated_at = ? WHERE id = ?",
+      args: [Date.now(), projectId],
+    });
+  }
 }
 
 export async function countProjectsByUser(userId: string): Promise<number> {
@@ -710,15 +711,57 @@ export async function countProjectsByUser(userId: string): Promise<number> {
   return num(res.rows[0]?.c);
 }
 
+/** Delete folder only — codes are unassigned, not deleted. */
 export async function deleteProject(
   id: string,
   userId: string,
 ): Promise<boolean> {
   const db = await getClient();
+  await db.execute({
+    sql: "UPDATE qr_codes SET project_id = NULL, updated_at = ? WHERE project_id = ? AND user_id = ?",
+    args: [Date.now(), id, userId],
+  });
   const res = await db.execute({
     sql: "DELETE FROM projects WHERE id = ? AND user_id = ?",
     args: [id, userId],
   });
+  return res.rowsAffected > 0;
+}
+
+export async function listQrCodesByProject(
+  projectId: string,
+): Promise<QrCodeRow[]> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "SELECT * FROM qr_codes WHERE project_id = ? ORDER BY created_at DESC",
+    args: [projectId],
+  });
+  return res.rows.map((r) => mapQrRow(r as unknown as Record<string, unknown>));
+}
+
+/**
+ * Assign (or unassign) a dynamic code to a project folder.
+ * Verifies the code and project belong to the same user.
+ */
+export async function setQrProject(
+  slug: string,
+  userId: string,
+  projectId: string | null,
+): Promise<boolean> {
+  const code = await getQrCode(slug);
+  if (!code || code.user_id !== userId) return false;
+
+  if (projectId) {
+    const project = await getProject(projectId);
+    if (!project || project.user_id !== userId) return false;
+  }
+
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "UPDATE qr_codes SET project_id = ?, updated_at = ? WHERE slug = ? AND user_id = ?",
+    args: [projectId, Date.now(), slug, userId],
+  });
+  if (projectId) await touchProject(projectId);
   return res.rowsAffected > 0;
 }
 
@@ -727,11 +770,6 @@ function mapProject(r: Record<string, unknown>): ProjectRow {
     id: String(r.id),
     user_id: String(r.user_id),
     name: String(r.name),
-    kind: r.kind === "dynamic" ? "dynamic" : "static",
-    content_type: String(r.content_type),
-    fields_json: String(r.fields_json),
-    design_json: String(r.design_json),
-    dynamic_slug: str(r.dynamic_slug),
     created_at: num(r.created_at),
     updated_at: num(r.updated_at),
   };

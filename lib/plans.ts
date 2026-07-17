@@ -84,7 +84,7 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
       "Full scan history + analytics + CSV export",
       "Custom short-link slugs",
       "Cloud Studio sync across devices",
-      "Saved projects library",
+      "Project folders (group many QR codes)",
       "Bulk create from CSV",
       "Print pack (4K PNG, PDF sheet)",
       "No ads",

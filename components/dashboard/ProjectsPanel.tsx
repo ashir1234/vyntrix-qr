@@ -1,34 +1,51 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { StaticQr } from "@/components/gallery/StaticQr";
 import {
   defaultSavedDesign,
-  sanitizeDesign,
   type SavedQrDesign,
 } from "@/lib/qr/design";
-import type { QrFields } from "@/lib/qr/types";
 import { trackEvent } from "@/lib/analytics";
+
+interface CodeBrief {
+  slug: string;
+  title: string | null;
+  destination: string;
+  editToken: string;
+  design: SavedQrDesign | null;
+  projectId: string | null;
+  createdAt: number;
+}
 
 interface ProjectItem {
   id: string;
   name: string;
-  kind: "static" | "dynamic";
-  contentType: string;
-  fields: Partial<QrFields>;
-  design: SavedQrDesign | null;
-  dynamicSlug: string | null;
+  createdAt: number;
   updatedAt: number;
+  codeCount: number;
+  codes: CodeBrief[];
 }
 
-export function ProjectsPanel({ isPro }: { isPro: boolean }) {
+export function ProjectsPanel({
+  isPro,
+  allCodes,
+  origin,
+}: {
+  isPro: boolean;
+  allCodes: CodeBrief[];
+  origin: string;
+}) {
   const router = useRouter();
   const [projects, setProjects] = useState<ProjectItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [deleting, setDeleting] = useState<string | null>(null);
+  const [newName, setNewName] = useState("");
+  const [creating, setCreating] = useState(false);
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [busy, setBusy] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     if (!isPro) return;
@@ -38,23 +55,7 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
       const res = await fetch("/api/projects");
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Failed to load projects.");
-      setProjects(
-        (json.projects ?? []).map(
-          (p: {
-            id: string;
-            name: string;
-            kind: "static" | "dynamic";
-            contentType: string;
-            fields: Partial<QrFields>;
-            design: unknown;
-            dynamicSlug: string | null;
-            updatedAt: number;
-          }) => ({
-            ...p,
-            design: sanitizeDesign(p.design),
-          }),
-        ),
-      );
+      setProjects(json.projects ?? []);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to load.");
     } finally {
@@ -66,9 +67,46 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
     void load();
   }, [load]);
 
-  const remove = async (id: string, name: string) => {
-    if (!confirm(`Delete project “${name}”?`)) return;
-    setDeleting(id);
+  const unassigned = useMemo(() => {
+    const inProject = new Set(
+      projects.flatMap((p) => p.codes.map((c) => c.slug)),
+    );
+    return allCodes.filter((c) => !inProject.has(c.slug));
+  }, [allCodes, projects]);
+
+  const create = async () => {
+    const name = newName.trim();
+    if (!name) return;
+    setCreating(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/projects", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Could not create project.");
+      setProjects((list) => [json, ...list]);
+      setExpanded((e) => ({ ...e, [json.id]: true }));
+      setNewName("");
+      trackEvent("project_create");
+      router.refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Create failed.");
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  const removeProject = async (id: string, name: string) => {
+    if (
+      !confirm(
+        `Delete project “${name}”? Your QR codes stay — they just leave the folder.`,
+      )
+    )
+      return;
+    setBusy(`del:${id}`);
     try {
       const res = await fetch(`/api/projects?id=${encodeURIComponent(id)}`, {
         method: "DELETE",
@@ -76,29 +114,56 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
       if (res.ok) {
         setProjects((list) => list.filter((p) => p.id !== id));
         trackEvent("project_delete");
+        router.refresh();
       }
     } finally {
-      setDeleting(null);
+      setBusy(null);
     }
   };
 
-  const openInStudio = (p: ProjectItem) => {
+  const addCode = async (projectId: string, slug: string) => {
+    if (!slug) return;
+    setBusy(`add:${projectId}`);
     try {
-      sessionStorage.setItem(
-        "vyntrix_load_project",
-        JSON.stringify({
-          type: p.contentType,
-          fields: p.fields,
-          design: p.design,
-          dynamicSlug: p.dynamicSlug,
-          kind: p.kind,
-        }),
+      const res = await fetch("/api/projects", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id: projectId, addSlugs: [slug] }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Could not add code.");
+      setProjects((list) =>
+        list.map((p) => (p.id === projectId ? json : p)),
       );
-    } catch {
-      /* ignore */
+      trackEvent("project_add_code");
+      router.refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to add.");
+    } finally {
+      setBusy(null);
     }
-    trackEvent("project_open", { kind: p.kind });
-    router.push("/studio?project=1");
+  };
+
+  const removeCode = async (projectId: string, slug: string) => {
+    setBusy(`rm:${slug}`);
+    try {
+      const res = await fetch("/api/projects", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id: projectId, removeSlugs: [slug] }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Could not remove code.");
+      setProjects((list) =>
+        list.map((p) => (p.id === projectId ? json : p)),
+      );
+      trackEvent("project_remove_code");
+      router.refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to remove.");
+    } finally {
+      setBusy(null);
+    }
   };
 
   if (!isPro) {
@@ -106,7 +171,7 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
       <div className="glass rounded-2xl p-5">
         <h2 className="font-semibold">Projects</h2>
         <p className="mt-2 text-sm text-[var(--muted)]">
-          Save Studio designs as named projects and reopen them anytime.{" "}
+          Group multiple dynamic QR codes into campaign folders.{" "}
           <Link href="/pricing" className="text-[var(--brand-2)] underline">
             Upgrade to Pro
           </Link>
@@ -117,14 +182,33 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
 
   return (
     <div className="glass rounded-2xl p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="font-semibold">Projects</h2>
-        <Link
-          href="/studio"
-          className="text-sm text-[var(--brand-2)] transition hover:text-[var(--foreground)]"
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h2 className="font-semibold">Projects</h2>
+          <p className="mt-0.5 text-xs text-[var(--muted)]">
+            Folders for campaigns — each project can hold many QR codes.
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row">
+        <input
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+          placeholder="New project name (e.g. Restaurant launch)"
+          className="input-field text-sm"
+          maxLength={80}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") void create();
+          }}
+        />
+        <button
+          onClick={create}
+          disabled={creating || !newName.trim()}
+          className="btn-primary shrink-0 rounded-xl px-4 py-2 text-sm font-semibold disabled:opacity-60"
         >
-          + Save from Studio
-        </Link>
+          {creating ? "Creating…" : "Create project"}
+        </button>
       </div>
 
       {loading ? (
@@ -132,50 +216,135 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
           Loading projects…
         </p>
       ) : error ? (
-        <p className="text-sm text-red-400">{error}</p>
-      ) : projects.length === 0 ? (
+        <p className="mb-3 text-sm text-red-400">{error}</p>
+      ) : null}
+
+      {!loading && projects.length === 0 ? (
         <p className="py-6 text-center text-sm text-[var(--muted)]">
-          No projects yet. Open the studio, style a code, then tap{" "}
-          <span className="font-medium text-[var(--foreground)]">
-            Save project
-          </span>
-          .
+          No projects yet. Create one, then add dynamic QR codes into it.
         </p>
       ) : (
-        <ul className="divide-y divide-[var(--border)]">
+        <ul className="space-y-3">
           {projects.map((p) => {
-            const design = p.design ?? defaultSavedDesign();
-            const previewData = previewForProject(p);
+            const open = expanded[p.id] ?? p.codeCount > 0;
             return (
               <li
                 key={p.id}
-                className="flex flex-wrap items-center gap-4 py-4"
+                className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)]/40"
               >
-                <div className="shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-white p-1.5">
-                  <StaticQr data={previewData} style={design.style} size={64} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-medium">{p.name}</p>
-                  <p className="text-xs text-[var(--muted)]">
-                    {p.kind} · {p.contentType} ·{" "}
-                    {new Date(p.updatedAt).toLocaleDateString()}
-                  </p>
-                </div>
-                <div className="flex shrink-0 gap-2 text-sm">
+                <div className="flex flex-wrap items-center gap-2 px-3 py-2.5">
                   <button
-                    onClick={() => openInStudio(p)}
-                    className="btn-primary rounded-lg px-3 py-1.5 text-xs font-semibold"
+                    type="button"
+                    onClick={() =>
+                      setExpanded((e) => ({ ...e, [p.id]: !open }))
+                    }
+                    className="min-w-0 flex-1 text-left"
                   >
-                    Open in Studio
+                    <span className="font-medium">{p.name}</span>
+                    <span className="ml-2 text-xs text-[var(--muted)]">
+                      {p.codeCount} code{p.codeCount === 1 ? "" : "s"}
+                    </span>
                   </button>
                   <button
-                    onClick={() => remove(p.id, p.name)}
-                    disabled={deleting === p.id}
-                    className="rounded-lg border border-[var(--border)] px-3 py-1.5 text-[var(--muted)] transition hover:border-red-500/50 hover:text-red-400 disabled:opacity-60"
+                    onClick={() => removeProject(p.id, p.name)}
+                    disabled={busy === `del:${p.id}`}
+                    className="rounded-lg border border-[var(--border)] px-2.5 py-1 text-xs text-[var(--muted)] transition hover:border-red-500/50 hover:text-red-400 disabled:opacity-60"
                   >
-                    {deleting === p.id ? "…" : "Delete"}
+                    Delete folder
                   </button>
                 </div>
+
+                {open && (
+                  <div className="border-t border-[var(--border)] px-3 py-3">
+                    {p.codes.length === 0 ? (
+                      <p className="mb-3 text-xs text-[var(--muted)]">
+                        Empty — add a dynamic code below.
+                      </p>
+                    ) : (
+                      <ul className="mb-3 divide-y divide-[var(--border)]">
+                        {p.codes.map((code) => {
+                          const design = code.design ?? defaultSavedDesign();
+                          const shortUrl = origin
+                            ? `${origin}/r/${code.slug}`
+                            : `/r/${code.slug}`;
+                          return (
+                            <li
+                              key={code.slug}
+                              className="flex flex-wrap items-center gap-3 py-2.5"
+                            >
+                              <div className="shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-white p-1">
+                                <StaticQr
+                                  data={shortUrl}
+                                  style={design.style}
+                                  size={48}
+                                />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <p className="truncate text-sm font-medium">
+                                  {code.title || code.slug}
+                                </p>
+                                <p className="truncate text-[11px] text-[var(--muted)]">
+                                  {shortUrl}
+                                </p>
+                              </div>
+                              <div className="flex shrink-0 flex-wrap gap-1.5 text-xs">
+                                <Link
+                                  href={`/studio?load=${encodeURIComponent(code.slug)}&token=${encodeURIComponent(code.editToken)}`}
+                                  className="btn-primary rounded-lg px-2.5 py-1 font-semibold"
+                                >
+                                  Studio
+                                </Link>
+                                <Link
+                                  href={`/manage/${code.slug}?token=${code.editToken}`}
+                                  className="rounded-lg border border-[var(--border)] px-2.5 py-1 font-medium transition hover:border-[var(--brand)]"
+                                >
+                                  Manage
+                                </Link>
+                                <button
+                                  onClick={() => removeCode(p.id, code.slug)}
+                                  disabled={busy === `rm:${code.slug}`}
+                                  className="rounded-lg border border-[var(--border)] px-2.5 py-1 text-[var(--muted)] transition hover:text-[var(--foreground)] disabled:opacity-60"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+
+                    {unassigned.length > 0 ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        <select
+                          id={`add-${p.id}`}
+                          defaultValue=""
+                          className="input-field max-w-xs text-xs"
+                          onChange={(e) => {
+                            const slug = e.target.value;
+                            e.target.value = "";
+                            void addCode(p.id, slug);
+                          }}
+                          disabled={busy === `add:${p.id}`}
+                        >
+                          <option value="" disabled>
+                            Add dynamic code…
+                          </option>
+                          {unassigned.map((c) => (
+                            <option key={c.slug} value={c.slug}>
+                              {c.title || c.slug}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    ) : (
+                      <p className="text-[11px] text-[var(--muted)]">
+                        All your dynamic codes are already in a project. Create
+                        a new code or remove one from a folder to reassign.
+                      </p>
+                    )}
+                  </div>
+                )}
               </li>
             );
           })}
@@ -183,18 +352,4 @@ export function ProjectsPanel({ isPro }: { isPro: boolean }) {
       )}
     </div>
   );
-}
-
-function previewForProject(p: ProjectItem): string {
-  if (p.dynamicSlug) {
-    if (typeof window !== "undefined") {
-      return `${window.location.origin}/r/${p.dynamicSlug}`;
-    }
-    return `https://vyntrixqr.app/r/${p.dynamicSlug}`;
-  }
-  const url = typeof p.fields.url === "string" ? p.fields.url.trim() : "";
-  if (url) return url;
-  const text = typeof p.fields.text === "string" ? p.fields.text.trim() : "";
-  if (text) return text;
-  return "https://vyntrixqr.app";
 }
