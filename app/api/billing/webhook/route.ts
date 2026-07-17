@@ -8,9 +8,10 @@ export const dynamic = "force-dynamic";
 type LemonWebhook = {
   meta?: {
     event_name?: string;
-    custom_data?: { user_id?: string };
+    custom_data?: { user_id?: string | number };
   };
   data?: {
+    type?: string;
     id?: string;
     attributes?: {
       customer_id?: number | string;
@@ -23,6 +24,22 @@ type LemonWebhook = {
     };
   };
 };
+
+/**
+ * Only these events carry a *subscription* object with status like
+ * active / cancelled. Events such as `subscription_payment_success` are
+ * invoices (`status: "paid"`) — writing that over the subscription row
+ * incorrectly drops the user back to Free.
+ */
+const SUBSCRIPTION_EVENTS = new Set([
+  "subscription_created",
+  "subscription_updated",
+  "subscription_cancelled",
+  "subscription_resumed",
+  "subscription_expired",
+  "subscription_paused",
+  "subscription_unpaused",
+]);
 
 const toMs = (v: string | null | undefined): number | null =>
   v ? new Date(v).getTime() : null;
@@ -48,7 +65,10 @@ export async function POST(request: Request) {
     "hex",
   );
 
-  if (hmac.length !== signature.length || !crypto.timingSafeEqual(hmac, signature)) {
+  if (
+    hmac.length !== signature.length ||
+    !crypto.timingSafeEqual(hmac, signature)
+  ) {
     return NextResponse.json("Invalid signature.", { status: 401 });
   }
 
@@ -60,14 +80,24 @@ export async function POST(request: Request) {
   }
 
   const eventName = payload.meta?.event_name ?? "";
-  const userId = payload.meta?.custom_data?.user_id;
+  const rawUserId = payload.meta?.custom_data?.user_id;
+  const userId =
+    rawUserId == null || rawUserId === "" ? null : String(rawUserId);
 
-  // We only care about subscription lifecycle events tied to a known user.
-  if (!eventName.startsWith("subscription_")) {
+  if (!SUBSCRIPTION_EVENTS.has(eventName)) {
     return NextResponse.json({ ok: true, ignored: eventName });
   }
   if (!userId) {
     return NextResponse.json({ ok: true, ignored: "missing user_id" });
+  }
+
+  // Extra guard: payment events can share the subscription_ prefix historically;
+  // only trust payloads that look like subscription resources.
+  if (payload.data?.type && payload.data.type !== "subscriptions") {
+    return NextResponse.json({
+      ok: true,
+      ignored: `unexpected_type:${payload.data.type}`,
+    });
   }
 
   const attrs = payload.data?.attributes ?? {};
@@ -85,5 +115,5 @@ export async function POST(request: Request) {
     customerPortalUrl: attrs.urls?.customer_portal ?? null,
   });
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, event: eventName, status });
 }
