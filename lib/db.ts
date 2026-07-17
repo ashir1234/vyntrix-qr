@@ -72,26 +72,44 @@ async function initSchema(c: Client): Promise<void> {
     )`,
     `CREATE INDEX IF NOT EXISTS idx_scans_slug ON scans(slug)`,
     `CREATE INDEX IF NOT EXISTS idx_scans_ts ON scans(ts)`,
-    `CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)`,
   ];
 
   for (const sql of statements) {
     await c.execute(sql);
   }
 
-  // Migration for databases created before the user_id column existed.
+  // Existing Turso DBs were created before user_id existed. CREATE TABLE IF NOT
+  // EXISTS does not add columns to an existing table, so always ensure user_id.
+  await ensureColumn(c, "qr_codes", "user_id", "TEXT");
+  await c.execute(
+    "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
+  );
+}
+
+/** Add a column if missing. Ignores "duplicate column" errors (already present). */
+async function ensureColumn(
+  c: Client,
+  table: string,
+  column: string,
+  type: string,
+): Promise<void> {
   try {
-    const cols = await c.execute("PRAGMA table_info(qr_codes)");
-    const hasUserId = cols.rows.some((r) => String(r.name) === "user_id");
-    if (!hasUserId) {
-      await c.execute("ALTER TABLE qr_codes ADD COLUMN user_id TEXT");
-      await c.execute(
-        "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
-      );
-    }
+    const cols = await c.execute(`PRAGMA table_info(${table})`);
+    const exists = cols.rows.some(
+      (r) => String(r.name).toLowerCase() === column.toLowerCase(),
+    );
+    if (exists) return;
+  } catch {
+    // If PRAGMA fails, fall through and try ALTER anyway.
+  }
+
+  try {
+    await c.execute(`ALTER TABLE ${table} ADD COLUMN ${column} ${type}`);
   } catch (e) {
-    // Older Turso edge cases — column may already exist under another path.
-    console.warn("[db] user_id migration check failed", e);
+    const msg = e instanceof Error ? e.message : String(e);
+    // Already migrated on a parallel cold start.
+    if (/duplicate column|already exists/i.test(msg)) return;
+    throw e;
   }
 }
 
