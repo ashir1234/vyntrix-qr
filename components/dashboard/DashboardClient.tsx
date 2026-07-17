@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { UpgradeButton } from "@/components/billing/UpgradeButton";
+import { StaticQr } from "@/components/gallery/StaticQr";
 import { trackEvent } from "@/lib/analytics";
+import {
+  defaultSavedDesign,
+  type SavedQrDesign,
+} from "@/lib/qr/design";
 import type { PlanId } from "@/lib/plans";
 
 interface CodeItem {
@@ -13,6 +18,7 @@ interface CodeItem {
   destination: string;
   editToken: string;
   createdAt: number;
+  design: SavedQrDesign | null;
 }
 
 export function DashboardClient({
@@ -169,36 +175,72 @@ export function DashboardClient({
           </p>
         ) : (
           <ul className="divide-y divide-[var(--border)]">
-            {codes.map((code) => (
-              <li
-                key={code.slug}
-                className="flex flex-wrap items-center justify-between gap-3 py-3"
-              >
-                <div className="min-w-0">
-                  <p className="truncate font-medium">
-                    {code.title || code.slug}
-                  </p>
-                  <p className="truncate text-xs text-[var(--muted)]">
-                    {origin}/r/{code.slug} → {code.destination}
-                  </p>
-                </div>
-                <div className="flex shrink-0 items-center gap-2 text-sm">
-                  <Link
-                    href={`/manage/${code.slug}?token=${code.editToken}`}
-                    className="rounded-lg border border-[var(--border)] px-3 py-1.5 font-medium transition hover:border-[var(--brand)]"
+            {codes.map((code) => {
+              const design = code.design ?? defaultSavedDesign();
+              const shortUrl = origin
+                ? `${origin}/r/${code.slug}`
+                : `/r/${code.slug}`;
+              return (
+                <li
+                  key={code.slug}
+                  className="flex flex-wrap items-center gap-4 py-4"
+                >
+                  <div
+                    className="shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-white p-1.5"
+                    title={
+                      code.design
+                        ? "Saved design"
+                        : "No design saved yet — open in Studio and save"
+                    }
                   >
-                    Manage
-                  </Link>
-                  <button
-                    onClick={() => remove(code)}
-                    disabled={deleting === code.slug}
-                    className="rounded-lg border border-[var(--border)] px-3 py-1.5 text-[var(--muted)] transition hover:border-red-500/50 hover:text-red-400 disabled:opacity-60"
-                  >
-                    {deleting === code.slug ? "…" : "Delete"}
-                  </button>
-                </div>
-              </li>
-            ))}
+                    {origin ? (
+                      <StaticQr data={shortUrl} style={design.style} size={72} />
+                    ) : (
+                      <div className="h-[72px] w-[72px] animate-pulse bg-[var(--surface-2)]" />
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate font-medium">
+                      {code.title || code.slug}
+                    </p>
+                    <p className="truncate text-xs text-[var(--muted)]">
+                      {shortUrl} → {code.destination}
+                    </p>
+                    {!code.design && (
+                      <p className="mt-0.5 text-[11px] text-amber-400/90">
+                        Design not saved yet
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex shrink-0 flex-wrap items-center gap-2 text-sm">
+                    <Link
+                      href={`/studio?load=${encodeURIComponent(code.slug)}&token=${encodeURIComponent(code.editToken)}`}
+                      className="btn-primary rounded-lg px-3 py-1.5 text-xs font-semibold"
+                      onClick={() =>
+                        trackEvent("dashboard_open_studio", {
+                          slug: code.slug,
+                        })
+                      }
+                    >
+                      Open in Studio
+                    </Link>
+                    <Link
+                      href={`/manage/${code.slug}?token=${code.editToken}`}
+                      className="rounded-lg border border-[var(--border)] px-3 py-1.5 font-medium transition hover:border-[var(--brand)]"
+                    >
+                      Manage
+                    </Link>
+                    <button
+                      onClick={() => remove(code)}
+                      disabled={deleting === code.slug}
+                      className="rounded-lg border border-[var(--border)] px-3 py-1.5 text-[var(--muted)] transition hover:border-red-500/50 hover:text-red-400 disabled:opacity-60"
+                    >
+                      {deleting === code.slug ? "…" : "Delete"}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

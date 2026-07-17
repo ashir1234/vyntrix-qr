@@ -106,6 +106,7 @@ export default async function DashboardPage() {
                 destination: c.destination,
                 editToken: c.edit_token,
                 createdAt: c.created_at,
+                design: c.design,
               }))}
             />
           </Suspense>

@@ -8,6 +8,7 @@ import { getUserId } from "@/lib/authServer";
 import { getUserPlan } from "@/lib/billing";
 import { canCreateDynamic, PLAN_LIMITS } from "@/lib/plans";
 import { normalizeSlug, validateCustomSlug } from "@/lib/slug";
+import { sanitizeDesign } from "@/lib/qr/design";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -31,7 +32,12 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { destination?: string; title?: string; customSlug?: string };
+  let body: {
+    destination?: string;
+    title?: string;
+    customSlug?: string;
+    design?: unknown;
+  };
   try {
     body = await req.json();
   } catch {
@@ -41,6 +47,7 @@ export async function POST(req: Request) {
   const destination = (body.destination ?? "").trim();
   const title = (body.title ?? "").trim().slice(0, 120) || null;
   const wantsCustom = Boolean(body.customSlug?.trim());
+  const design = sanitizeDesign(body.design);
 
   if (!isValidHttpUrl(destination)) {
     return NextResponse.json(
@@ -111,7 +118,7 @@ export async function POST(req: Request) {
   }
 
   const editToken = generateEditToken();
-  await createQrCode({ slug, destination, title, editToken, userId });
+  await createQrCode({ slug, destination, title, editToken, userId, design });
 
   const base = getBaseUrl(req);
   return NextResponse.json(
@@ -120,6 +127,7 @@ export async function POST(req: Request) {
       destination,
       title,
       editToken,
+      design,
       shortUrl: `${base}/r/${slug}`,
       manageUrl: `${base}/manage/${slug}?token=${editToken}`,
     },

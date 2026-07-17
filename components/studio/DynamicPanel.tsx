@@ -3,9 +3,22 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useQrStore, type DynamicResult } from "@/lib/store";
+import { snapshotDesign } from "@/lib/qr/design";
 import { Toggle } from "@/components/ui/controls";
 import { trackEvent } from "@/lib/analytics";
 import { authEnabled } from "@/lib/authFlags";
+
+function currentDesignSnapshot() {
+  const s = useQrStore.getState();
+  return snapshotDesign({
+    style: s.style,
+    material: s.material,
+    sceneMode: s.sceneMode,
+    view2dMode: s.view2dMode,
+    frame: s.frame,
+    frameLabel: s.frameLabel,
+  });
+}
 
 function saveCodeLocally(r: DynamicResult) {
   try {
@@ -88,6 +101,7 @@ export function DynamicPanel() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           destination: url,
+          design: currentDesignSnapshot(),
           ...(isPro && customSlug.trim()
             ? { customSlug: customSlug.trim() }
             : {}),
@@ -123,13 +137,18 @@ export function DynamicPanel() {
       const res = await fetch(`/api/qr/${dynamic.slug}`, {
         method: "PATCH",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ destination: url, editToken: dynamic.editToken }),
+        body: JSON.stringify({
+          destination: url,
+          editToken: dynamic.editToken,
+          design: currentDesignSnapshot(),
+        }),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Failed to update.");
       setDynamic({ ...dynamic, destination: json.destination });
       setSaved(true);
       setTimeout(() => setSaved(false), 1500);
+      trackEvent("dynamic_design_save", { slug: dynamic.slug });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
@@ -234,15 +253,24 @@ export function DynamicPanel() {
 
               {destinationChanged && (
                 <button
-                  onClick={update}
+                  onClick={() => update()}
                   disabled={loading}
                   className="btn-primary w-full rounded-xl py-2 text-sm font-semibold disabled:opacity-60"
                 >
-                  {loading ? "Updating…" : "Update destination"}
+                  {loading ? "Updating…" : "Update destination & design"}
+                </button>
+              )}
+              {!destinationChanged && (
+                <button
+                  onClick={() => update()}
+                  disabled={loading}
+                  className="w-full rounded-xl border border-[var(--border)] py-2 text-sm font-medium transition hover:border-[var(--brand)] disabled:opacity-60"
+                >
+                  {loading ? "Saving…" : "Save current design to this link"}
                 </button>
               )}
               {saved && (
-                <p className="text-xs text-emerald-400">Destination updated.</p>
+                <p className="text-xs text-emerald-400">Saved to your account.</p>
               )}
 
               <div className="flex gap-2">

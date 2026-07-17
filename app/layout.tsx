@@ -13,6 +13,7 @@ import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { ClerkProvider } from "@clerk/nextjs";
 import { authEnabled } from "@/lib/authFlags";
+import { StudioPersistence } from "@/components/studio/StudioPersistence";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -133,12 +134,14 @@ export default function RootLayout({
               },
             }}
           >
+            <StudioPersistence />
             {children}
             <GoogleAnalytics />
             <CookieConsent />
           </ClerkProvider>
         ) : (
           <>
+            <StudioPersistence />
             {children}
             <GoogleAnalytics />
             <CookieConsent />

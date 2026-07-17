@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Studio } from "@/components/studio/Studio";
+import { StudioLoadFromQuery } from "@/components/studio/StudioLoadFromQuery";
 import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 
@@ -25,6 +27,9 @@ export default function StudioPage() {
             Pick a type on the left, style it, and watch it render live in 3D.
           </p>
         </div>
+        <Suspense fallback={null}>
+          <StudioLoadFromQuery />
+        </Suspense>
         <Studio />
         <div className="mx-auto w-[min(1200px,95vw)]">
           <PlanAwareAd slot={siteConfig.adSlots.studio} className="mb-8" />

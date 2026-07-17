@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { buildQrData } from "./qr/content";
 import type {
   MaterialKind,
@@ -10,6 +11,7 @@ import type {
   View2dMode,
   FrameKind,
 } from "./qr/types";
+import type { SavedQrDesign } from "./qr/design";
 
 export interface DynamicResult {
   slug: string;
@@ -29,7 +31,7 @@ const defaultFields: QrFields = {
   vcFirstName: "Ada",
   vcLastName: "Lovelace",
   vcOrg: "Analytical Engines",
-  vcTitle: "Founder", 
+  vcTitle: "Founder",
   vcPhone: "+1 555 0100",
   vcEmail: "ada@example.com",
   vcUrl: "https://example.com",
@@ -215,6 +217,8 @@ interface QrStore {
   generations: number;
   dynamicEnabled: boolean;
   dynamic: DynamicResult | null;
+  /** True after localStorage rehydration finishes (client only). */
+  _hasHydrated: boolean;
 
   setType: (type: QrContentType) => void;
   setField: <K extends keyof QrFields>(key: K, value: QrFields[K]) => void;
@@ -231,6 +235,15 @@ interface QrStore {
   bumpGeneration: () => void;
   setDynamicEnabled: (v: boolean) => void;
   setDynamic: (result: DynamicResult | null) => void;
+  /** Restore Studio look + optional dynamic link from a saved code. */
+  applySavedDesign: (
+    design: SavedQrDesign,
+    opts?: {
+      destination?: string;
+      dynamic?: DynamicResult | null;
+    },
+  ) => void;
+  setHasHydrated: (v: boolean) => void;
 }
 
 /** The string actually encoded into the QR (dynamic short link when active). */
@@ -243,46 +256,99 @@ export function selectEncodedData(
   return buildQrData(s.type, s.fields);
 }
 
-export const useQrStore = create<QrStore>((set) => ({
-  type: "url",
-  fields: defaultFields,
-  style: defaultStyle,
-  material: "holographic",
-  sceneMode: "showcase",
-  view2dMode: "clean",
-  frame: "none",
-  frameLabel: "Scan Me!",
-  settings: { soundEnabled: false, reducedMotion: false, autoRotate: true },
-  qrDataUrl: null,
-  generations: 0,
-  dynamicEnabled: false,
-  dynamic: null,
+export const STUDIO_STORAGE_GUEST = "vyntrix_studio_guest";
+export const studioStorageKey = (userId: string | null | undefined) =>
+  userId ? `vyntrix_studio_${userId}` : STUDIO_STORAGE_GUEST;
 
-  setType: (type) => set({ type }),
-  setField: (key, value) =>
-    set((s) => ({ fields: { ...s.fields, [key]: value } })),
-  setStyle: (key, value) =>
-    set((s) => ({ style: { ...s.style, [key]: value } })),
-  setMaterial: (material) => set({ material }),
-  setSceneMode: (sceneMode) => set({ sceneMode }),
-  setView2dMode: (view2dMode) => set({ view2dMode }),
-  setFrame: (frame) => set({ frame }),
-  setFrameLabel: (frameLabel) => set({ frameLabel }),
-  applyPreset: (preset) =>
-    set((s) => ({
-      style: { ...s.style, ...preset.style },
-      material: preset.material ?? s.material,
-    })),
-  setLogo: (dataUrl) =>
-    set((s) => ({ style: { ...s.style, logoDataUrl: dataUrl } })),
-  setQrDataUrl: (qrDataUrl) => set({ qrDataUrl }),
-  setSetting: (key, value) =>
-    set((s) => ({ settings: { ...s.settings, [key]: value } })),
-  bumpGeneration: () => set((s) => ({ generations: s.generations + 1 })),
-  setDynamicEnabled: (dynamicEnabled) =>
-    set((s) => ({
-      dynamicEnabled,
-      dynamic: dynamicEnabled ? s.dynamic : null,
-    })),
-  setDynamic: (dynamic) => set({ dynamic }),
-}));
+export const useQrStore = create<QrStore>()(
+  persist(
+    (set) => ({
+      type: "url",
+      fields: defaultFields,
+      style: defaultStyle,
+      material: "holographic",
+      sceneMode: "showcase",
+      view2dMode: "clean",
+      frame: "none",
+      frameLabel: "Scan Me!",
+      settings: { soundEnabled: false, reducedMotion: false, autoRotate: true },
+      qrDataUrl: null,
+      generations: 0,
+      dynamicEnabled: false,
+      dynamic: null,
+      _hasHydrated: false,
+
+      setType: (type) => set({ type }),
+      setField: (key, value) =>
+        set((s) => ({ fields: { ...s.fields, [key]: value } })),
+      setStyle: (key, value) =>
+        set((s) => ({ style: { ...s.style, [key]: value } })),
+      setMaterial: (material) => set({ material }),
+      setSceneMode: (sceneMode) => set({ sceneMode }),
+      setView2dMode: (view2dMode) => set({ view2dMode }),
+      setFrame: (frame) => set({ frame }),
+      setFrameLabel: (frameLabel) => set({ frameLabel }),
+      applyPreset: (preset) =>
+        set((s) => ({
+          style: { ...s.style, ...preset.style },
+          material: preset.material ?? s.material,
+        })),
+      setLogo: (dataUrl) =>
+        set((s) => ({ style: { ...s.style, logoDataUrl: dataUrl } })),
+      setQrDataUrl: (qrDataUrl) => set({ qrDataUrl }),
+      setSetting: (key, value) =>
+        set((s) => ({ settings: { ...s.settings, [key]: value } })),
+      bumpGeneration: () => set((s) => ({ generations: s.generations + 1 })),
+      setDynamicEnabled: (dynamicEnabled) =>
+        set((s) => ({
+          dynamicEnabled,
+          dynamic: dynamicEnabled ? s.dynamic : null,
+        })),
+      setDynamic: (dynamic) => set({ dynamic }),
+      applySavedDesign: (design, opts) =>
+        set((s) => ({
+          type: "url",
+          fields: {
+            ...s.fields,
+            url: opts?.destination ?? s.fields.url,
+          },
+          style: { ...design.style },
+          material: design.material,
+          sceneMode: design.sceneMode,
+          view2dMode: design.view2dMode,
+          frame: design.frame,
+          frameLabel: design.frameLabel,
+          dynamicEnabled: opts?.dynamic ? true : s.dynamicEnabled,
+          dynamic: opts?.dynamic !== undefined ? opts.dynamic : s.dynamic,
+        })),
+      setHasHydrated: (_hasHydrated) => set({ _hasHydrated }),
+    }),
+    {
+      name: STUDIO_STORAGE_GUEST,
+      storage: createJSONStorage(() => localStorage),
+      partialize: (s) => ({
+        type: s.type,
+        fields: s.fields,
+        style: s.style,
+        material: s.material,
+        sceneMode: s.sceneMode,
+        view2dMode: s.view2dMode,
+        frame: s.frame,
+        frameLabel: s.frameLabel,
+        settings: s.settings,
+        dynamicEnabled: s.dynamicEnabled,
+        dynamic: s.dynamic,
+      }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
+    },
+  ),
+);
+
+/** Switch persisted studio design to a per-user (or guest) bucket. */
+export function switchStudioStorage(userId: string | null) {
+  const name = studioStorageKey(userId);
+  useQrStore.persist.setOptions({ name });
+  void useQrStore.persist.rehydrate();
+}

@@ -10,6 +10,8 @@ import { getUserPlan } from "@/lib/billing";
 import { PLAN_LIMITS } from "@/lib/plans";
 import { normalizeSlug, validateCustomSlug } from "@/lib/slug";
 import { getBaseUrl } from "@/lib/baseUrl";
+import { sanitizeDesign } from "@/lib/qr/design";
+import { getUserId } from "@/lib/authServer";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,18 +27,40 @@ function isValidHttpUrl(value: string): boolean {
 
 type Ctx = { params: Promise<{ slug: string }> };
 
-export async function GET(_req: Request, { params }: Ctx) {
+export async function GET(req: Request, { params }: Ctx) {
   const { slug } = await params;
   const row = await getQrCode(slug);
   if (!row) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
+
+  const token = new URL(req.url).searchParams.get("token");
+  const userId = await getUserId();
+  const canManage =
+    (token && token === row.edit_token) ||
+    (userId && row.user_id && userId === row.user_id);
+
+  if (!canManage) {
+    return NextResponse.json({
+      slug: row.slug,
+      destination: row.destination,
+      title: row.title,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    });
+  }
+
+  const base = getBaseUrl(req);
   return NextResponse.json({
     slug: row.slug,
     destination: row.destination,
     title: row.title,
+    editToken: row.edit_token,
+    design: row.design,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+    shortUrl: `${base}/r/${row.slug}`,
+    manageUrl: `${base}/manage/${row.slug}?token=${row.edit_token}`,
   });
 }
 
@@ -47,6 +71,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
     title?: string;
     editToken?: string;
     customSlug?: string;
+    design?: unknown;
   };
   try {
     body = await req.json();
@@ -75,7 +100,10 @@ export async function PATCH(req: Request, { params }: Ctx) {
       ? body.title.trim().slice(0, 120) || null
       : row.title;
 
-  await updateQrCode(slug, destination, title);
+  const design =
+    body.design !== undefined ? sanitizeDesign(body.design) : undefined;
+
+  await updateQrCode(slug, destination, title, design);
 
   let finalSlug = slug;
   const wantsRename =
@@ -115,10 +143,12 @@ export async function PATCH(req: Request, { params }: Ctx) {
   }
 
   const base = getBaseUrl(req);
+  const updated = await getQrCode(finalSlug);
   return NextResponse.json({
     slug: finalSlug,
     destination,
     title,
+    design: updated?.design ?? design ?? row.design,
     shortUrl: `${base}/r/${finalSlug}`,
     manageUrl: `${base}/manage/${finalSlug}?token=${body.editToken}`,
   });

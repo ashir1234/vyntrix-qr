@@ -1,6 +1,11 @@
 import { createClient, type Client, type InValue } from "@libsql/client";
 import { existsSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
+import {
+  designToJson,
+  parseDesignJson,
+  type SavedQrDesign,
+} from "@/lib/qr/design";
 
 /**
  * libSQL-backed store for dynamic QR codes and scan analytics.
@@ -45,6 +50,7 @@ async function initSchema(c: Client): Promise<void> {
       title        TEXT,
       edit_token   TEXT NOT NULL,
       user_id      TEXT,
+      design       TEXT,
       created_at   INTEGER NOT NULL,
       updated_at   INTEGER NOT NULL
     )`,
@@ -78,9 +84,10 @@ async function initSchema(c: Client): Promise<void> {
     await c.execute(sql);
   }
 
-  // Existing Turso DBs were created before user_id existed. CREATE TABLE IF NOT
-  // EXISTS does not add columns to an existing table, so always ensure user_id.
+  // Existing Turso DBs were created before user_id / design existed.
+  // CREATE TABLE IF NOT EXISTS does not add columns to an existing table.
   await ensureColumn(c, "qr_codes", "user_id", "TEXT");
+  await ensureColumn(c, "qr_codes", "design", "TEXT");
   await c.execute(
     "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
   );
@@ -132,6 +139,8 @@ export interface QrCodeRow {
   title: string | null;
   edit_token: string;
   user_id: string | null;
+  /** Studio look snapshot (pattern, colors, frame, etc.). Null for legacy rows. */
+  design: SavedQrDesign | null;
   created_at: number;
   updated_at: number;
 }
@@ -142,6 +151,7 @@ export interface CreateQrInput {
   title: string | null;
   editToken: string;
   userId?: string | null;
+  design?: SavedQrDesign | null;
 }
 
 export interface SubscriptionRow {
@@ -200,14 +210,15 @@ export async function createQrCode(input: CreateQrInput): Promise<void> {
   const db = await getClient();
   const now = Date.now();
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       input.slug,
       input.destination,
       input.title,
       input.editToken,
       input.userId ?? null,
+      designToJson(input.design ?? null),
       now,
       now,
     ],
@@ -221,6 +232,7 @@ function mapQrRow(r: Record<string, unknown>): QrCodeRow {
     title: str(r.title),
     edit_token: String(r.edit_token),
     user_id: str(r.user_id),
+    design: parseDesignJson(str(r.design)),
     created_at: num(r.created_at),
     updated_at: num(r.updated_at),
   };
@@ -276,8 +288,16 @@ export async function updateQrCode(
   slug: string,
   destination: string,
   title: string | null,
+  design?: SavedQrDesign | null,
 ): Promise<void> {
   const db = await getClient();
+  if (design !== undefined) {
+    await db.execute({
+      sql: "UPDATE qr_codes SET destination = ?, title = ?, design = ?, updated_at = ? WHERE slug = ?",
+      args: [destination, title, designToJson(design), Date.now(), slug],
+    });
+    return;
+  }
   await db.execute({
     sql: "UPDATE qr_codes SET destination = ?, title = ?, updated_at = ? WHERE slug = ?",
     args: [destination, title, Date.now(), slug],
@@ -301,14 +321,15 @@ export async function renameQrCode(
   if (await slugExists(newSlug)) throw new Error("Slug taken.");
 
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       newSlug,
       existing.destination,
       existing.title,
       existing.edit_token,
       existing.user_id,
+      designToJson(existing.design),
       existing.created_at,
       now,
     ],

@@ -19,14 +19,24 @@ const STARLIGHT = PRESETS.find((p) => p.id === "starlight")!;
 export function Hero3D() {
   const applyPreset = useQrStore((s) => s.applyPreset);
   const setField = useQrStore((s) => s.setField);
+  const hasHydrated = useQrStore((s) => s._hasHydrated);
 
   useEffect(() => {
+    // Wait for persisted studio state; never overwrite a saved design.
+    if (!hasHydrated) return;
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k?.startsWith("vyntrix_studio")) return;
+      }
+    } catch {
+      /* storage blocked */
+    }
     applyPreset(STARLIGHT);
-    // Demo payload only when empty so the hero QR is visible.
     if (!useQrStore.getState().fields.url.trim()) {
       setField("url", "https://vyntrixqr.app");
     }
-  }, [applyPreset, setField]);
+  }, [hasHydrated, applyPreset, setField]);
 
   return (
     <div className="relative aspect-square w-full">
