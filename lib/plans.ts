@@ -68,7 +68,7 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
   pro: {
     id: "pro",
     name: "Pro",
-    price: "$9",
+    price: "$12",
     priceSuffix: "/month",
     tagline: "For creators and businesses that live on their links.",
     maxDynamicCodes: null,
