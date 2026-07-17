@@ -86,7 +86,7 @@ export default function BestFreeGeneratorGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         {siteConfig.name} gives you unlimited static codes, live 2D/3D preview,
         and branding tools. Sign in for 1 free dynamic code with short analytics;
-        Pro ($9/mo) unlocks unlimited dynamics, CSV export, WiFi landing pages,
+        Pro ($12/mo) unlocks unlimited dynamics, CSV export, WiFi landing pages,
         projects, bulk create, and print pack. Compare plans on{" "}
         <Link href="/pricing" className="text-[var(--brand-2)] underline">
           Pricing

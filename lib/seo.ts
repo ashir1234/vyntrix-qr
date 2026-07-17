@@ -361,7 +361,7 @@ export const guides = [
     slug: "qrfy-alternative",
     title: "QRfy Alternative: Free Static + Affordable Dynamic QR",
     description:
-      "Searching for a QRfy alternative? Vyntrix QR offers free static codes with no watermark, 1 free dynamic code, and Pro analytics from $9/month.",
+      "Searching for a QRfy alternative? Vyntrix QR offers free static codes with no watermark, 1 free dynamic code, and Pro analytics from $12/month.",
     keywords: [
       "QRfy alternative",
       "alternative to QRfy",

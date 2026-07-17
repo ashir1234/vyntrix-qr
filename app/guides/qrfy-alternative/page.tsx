@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "What’s on Pro?",
-    a: "Unlimited dynamic codes, full history + CSV, custom slugs, WiFi landing pages, cloud Studio sync, projects, bulk CSV create, print pack, and no ads — from $9/month.",
+    a: "Unlimited dynamic codes, full history + CSV, custom slugs, WiFi landing pages, cloud Studio sync, projects, bulk CSV create, print pack, and no ads — from $12/month.",
   },
 ];
 

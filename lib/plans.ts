@@ -8,7 +8,7 @@ export type PlanId = "free" | "pro";
 export interface PlanLimits {
   id: PlanId;
   name: string;
-  /** Display price, e.g. "$0" or "$9". */
+  /** Display price, e.g. "$0" or "$12". */
   price: string;
   priceSuffix: string;
   tagline: string;

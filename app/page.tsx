@@ -77,7 +77,7 @@ const FAQS = [
   },
   {
     q: "Is Vyntrix QR really free?",
-    a: "Yes for static QR codes — create, customize, and download unlimited codes with no watermark. Dynamic QR codes require signing in (Free: 1 dynamic code). Pro is $9/month for unlimited dynamic codes and advanced features.",
+    a: "Yes for static QR codes — create, customize, and download unlimited codes with no watermark. Dynamic QR codes require signing in (Free: 1 dynamic code). Pro is $12/month for unlimited dynamic codes and advanced features.",
   },
   {
     q: "Do the QR codes expire?",
