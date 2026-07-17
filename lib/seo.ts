@@ -198,6 +198,178 @@ export const guides = [
     h1: "Static vs Dynamic QR Codes: Which Should You Use?",
     short: "Static vs dynamic",
   },
+  {
+    slug: "qr-code-for-spotify",
+    title: "How to Create a Spotify QR Code (Song, Album, Playlist)",
+    description:
+      "Make a free Spotify QR code that opens a song, album, playlist, or artist. Download PNG or SVG for posters, merch, and menus — track scans with a dynamic link.",
+    keywords: [
+      "Spotify QR code",
+      "QR code for Spotify",
+      "playlist QR code",
+      "Spotify song QR code",
+    ],
+    h1: "How to Create a Spotify QR Code",
+    short: "Spotify QR",
+  },
+  {
+    slug: "qr-code-for-facebook",
+    title: "How to Create a Facebook Page QR Code",
+    description:
+      "Generate a free Facebook QR code for your Page or profile. Print it on flyers, storefronts, and business cards so people can follow you in one scan.",
+    keywords: [
+      "Facebook QR code",
+      "QR code for Facebook page",
+      "Facebook page QR code",
+    ],
+    h1: "How to Create a Facebook QR Code",
+    short: "Facebook QR",
+  },
+  {
+    slug: "qr-code-for-linkedin",
+    title: "How to Create a LinkedIn QR Code",
+    description:
+      "Create a free LinkedIn QR code for your profile or company page. Perfect for networking events, name badges, and email signatures.",
+    keywords: [
+      "LinkedIn QR code",
+      "QR code for LinkedIn",
+      "LinkedIn profile QR",
+    ],
+    h1: "How to Create a LinkedIn QR Code",
+    short: "LinkedIn QR",
+  },
+  {
+    slug: "qr-code-for-tiktok",
+    title: "How to Create a TikTok QR Code",
+    description:
+      "Make a free TikTok QR code for your profile or video. Add it to packaging, posters, and stickers — optional dynamic tracking included.",
+    keywords: [
+      "TikTok QR code",
+      "QR code for TikTok",
+      "TikTok profile QR code",
+    ],
+    h1: "How to Create a TikTok QR Code",
+    short: "TikTok QR",
+  },
+  {
+    slug: "qr-code-for-app-download",
+    title: "How to Create an App Download QR Code (iOS + Android)",
+    description:
+      "Build a free app download QR code for the App Store and Google Play. Use two codes or one smart landing page so every phone gets the right store.",
+    keywords: [
+      "app download QR code",
+      "App Store QR code",
+      "Google Play QR code",
+      "mobile app QR code",
+    ],
+    h1: "How to Create an App Download QR Code",
+    short: "App download QR",
+  },
+  {
+    slug: "qr-code-for-email-signature",
+    title: "How to Add a QR Code to Your Email Signature",
+    description:
+      "Add a free QR code to Gmail or Outlook signatures that opens your booking page, website, or vCard. Includes size and image tips.",
+    keywords: [
+      "email signature QR code",
+      "QR code in email signature",
+      "Outlook signature QR",
+    ],
+    h1: "How to Add a QR Code to Your Email Signature",
+    short: "Email signature",
+  },
+  {
+    slug: "qr-code-for-google-form",
+    title: "How to Create a QR Code for a Google Form",
+    description:
+      "Turn any Google Form into a free survey or RSVP QR code. Ideal for events, classrooms, and customer feedback.",
+    keywords: [
+      "Google Form QR code",
+      "QR code for survey",
+      "QR code for Google Forms",
+      "feedback QR code",
+    ],
+    h1: "How to Create a Google Form QR Code",
+    short: "Google Form QR",
+  },
+  {
+    slug: "qr-code-for-real-estate",
+    title: "How to Use QR Codes on Real Estate Signs",
+    description:
+      "Add a free QR code to yard signs and flyers that opens listings, tours, or lead forms. Use dynamic QR so details can change without reprinting.",
+    keywords: [
+      "real estate QR code",
+      "QR code for yard sign",
+      "property listing QR code",
+    ],
+    h1: "How to Use QR Codes on Real Estate Signs",
+    short: "Real estate QR",
+  },
+  {
+    slug: "qr-code-for-product-packaging",
+    title: "How to Put a QR Code on Product Packaging",
+    description:
+      "Add scannable QR codes to labels and packaging for manuals, warranties, and reorders. Print-size and quiet-zone tips included.",
+    keywords: [
+      "QR code on packaging",
+      "product packaging QR code",
+      "QR code for product label",
+    ],
+    h1: "How to Put a QR Code on Product Packaging",
+    short: "Packaging QR",
+  },
+  {
+    slug: "qr-code-for-resume",
+    title: "How to Add a QR Code to Your Resume or CV",
+    description:
+      "Create a free resume QR code that opens your portfolio, LinkedIn, or hosted CV. Stand out without cluttering the page.",
+    keywords: [
+      "resume QR code",
+      "QR code on CV",
+      "portfolio QR code",
+    ],
+    h1: "How to Add a QR Code to Your Resume",
+    short: "Resume QR",
+  },
+  {
+    slug: "best-free-qr-code-generator",
+    title: "Best Free QR Code Generator (2026): What to Look For",
+    description:
+      "Compare what matters in a free QR code generator: no watermark, logo support, dynamic codes, analytics, and export quality. See how Vyntrix QR fits.",
+    keywords: [
+      "best free QR code generator",
+      "free QR code maker",
+      "QR code generator no watermark",
+    ],
+    h1: "Best Free QR Code Generator: What to Look For",
+    short: "Best free generator",
+  },
+  {
+    slug: "qr-code-monkey-alternative",
+    title: "QR Code Monkey Alternative: Free Branded QR Codes",
+    description:
+      "Looking for a QR Code Monkey alternative? Create free custom QR codes with logo, colors, 3D preview, and optional dynamic links on Vyntrix QR.",
+    keywords: [
+      "QR Code Monkey alternative",
+      "QRCode Monkey alternative",
+      "alternative to QR Code Monkey",
+    ],
+    h1: "QR Code Monkey Alternative",
+    short: "QR Code Monkey alt",
+  },
+  {
+    slug: "qrfy-alternative",
+    title: "QRfy Alternative: Free Static + Affordable Dynamic QR",
+    description:
+      "Searching for a QRfy alternative? Vyntrix QR offers free static codes with no watermark, 1 free dynamic code, and Pro analytics from $9/month.",
+    keywords: [
+      "QRfy alternative",
+      "alternative to QRfy",
+      "QRfy vs free QR generator",
+    ],
+    h1: "QRfy Alternative",
+    short: "QRfy alternative",
+  },
 ] as const;
 
 export type GuideSlug = (typeof guides)[number]["slug"];

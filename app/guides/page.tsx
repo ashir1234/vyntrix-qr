@@ -43,6 +43,13 @@ export default function GuidesHubPage() {
         {siteConfig.name}. Jump into a guide, then open the studio to generate
         yours in seconds.
       </p>
+      <p className="mt-3 text-sm text-[var(--muted)]">
+        Prefer a shorter use-case page? Browse the{" "}
+        <Link href="/qr-code-for" className="text-[var(--brand-2)] underline">
+          QR code for… directory
+        </Link>
+        .
+      </p>
 
       <ul className="mt-10 space-y-4">
         {guides.map((g) => (

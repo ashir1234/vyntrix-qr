@@ -15,6 +15,7 @@ const LINKS = [
   { href: "/studio", label: "Studio" },
   { href: "/gallery", label: "Gallery" },
   { href: "/guides", label: "Guides" },
+  { href: "/qr-code-for", label: "Use cases" },
   { href: "/pricing", label: "Pricing" },
 ] as const;
 

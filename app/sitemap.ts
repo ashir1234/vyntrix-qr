@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { guides } from "@/lib/seo";
+import { qrPlatforms } from "@/lib/qr-platforms";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${siteConfig.url}/qr-code-for`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
       url: `${siteConfig.url}/privacy`,
       lastModified: now,
       changeFrequency: "yearly",
@@ -50,5 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...guideRoutes];
+  const platformRoutes: MetadataRoute.Sitemap = qrPlatforms.map((p) => ({
+    url: `${siteConfig.url}/qr-code-for/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...guideRoutes, ...platformRoutes];
 }

@@ -53,6 +53,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/qr-code-for" className="transition hover:text-[var(--foreground)]">
+                Use cases
+              </Link>
+            </li>
+            <li>
               <Link href="/pricing" className="transition hover:text-[var(--foreground)]">
                 Pricing
               </Link>
