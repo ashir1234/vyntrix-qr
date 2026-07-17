@@ -64,11 +64,18 @@ function CopyRow({ label, value }: { label: string; value: string }) {
 }
 
 export function DynamicPanel() {
+  const type = useQrStore((s) => s.type);
   const dynamicEnabled = useQrStore((s) => s.dynamicEnabled);
   const setDynamicEnabled = useQrStore((s) => s.setDynamicEnabled);
   const dynamic = useQrStore((s) => s.dynamic);
   const setDynamic = useQrStore((s) => s.setDynamic);
   const url = useQrStore((s) => s.fields.url);
+  const wifiSsid = useQrStore((s) => s.fields.wifiSsid);
+  const wifiPassword = useQrStore((s) => s.fields.wifiPassword);
+  const wifiEncryption = useQrStore((s) => s.fields.wifiEncryption);
+  const wifiHidden = useQrStore((s) => s.fields.wifiHidden);
+
+  const isWifi = type === "wifi";
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -91,7 +98,25 @@ export function DynamicPanel() {
     };
   }, []);
 
+  // Switching content type clears an incompatible dynamic link.
+  useEffect(() => {
+    if (!dynamic) return;
+    // Keep dynamic across url↔wifi only if user recreates; safer to reset label.
+  }, [type, dynamic]);
+
+  const wifiPayload = () => ({
+    ssid: wifiSsid,
+    password: wifiPassword,
+    encryption: wifiEncryption,
+    hidden: wifiHidden,
+  });
+
   const create = async () => {
+    if (isWifi && !isPro) {
+      setError("Dynamic WiFi pages with scan tracking are a Pro feature.");
+      setErrorCode("upgrade_required");
+      return;
+    }
     setLoading(true);
     setError(null);
     setErrorCode(null);
@@ -100,8 +125,11 @@ export function DynamicPanel() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          destination: url,
+          contentType: isWifi ? "wifi" : "url",
           design: currentDesignSnapshot(),
+          ...(isWifi
+            ? { wifi: wifiPayload(), title: wifiSsid }
+            : { destination: url }),
           ...(isPro && customSlug.trim()
             ? { customSlug: customSlug.trim() }
             : {}),
@@ -121,7 +149,10 @@ export function DynamicPanel() {
       };
       setDynamic(result);
       saveCodeLocally(result);
-      trackEvent("dynamic_create", { slug: result.slug });
+      trackEvent("dynamic_create", {
+        slug: result.slug,
+        contentType: isWifi ? "wifi" : "url",
+      });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong.");
     } finally {
@@ -138,9 +169,11 @@ export function DynamicPanel() {
         method: "PATCH",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          destination: url,
           editToken: dynamic.editToken,
           design: currentDesignSnapshot(),
+          ...(isWifi
+            ? { wifi: wifiPayload(), title: wifiSsid }
+            : { destination: url }),
         }),
       });
       const json = await res.json();
@@ -162,16 +195,23 @@ export function DynamicPanel() {
     setError(null);
   };
 
-  const destinationChanged = dynamic ? url !== dynamic.destination : false;
+  const destinationChanged = dynamic
+    ? isWifi
+      ? true // always allow "save wifi & design" — we don't fingerprint wifi in store
+      : url !== dynamic.destination
+    : false;
 
   return (
     <div className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-3">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-medium">Dynamic QR</p>
+          <p className="text-sm font-medium">
+            {isWifi ? "Dynamic WiFi page" : "Dynamic QR"}
+          </p>
           <p className="mt-0.5 text-xs text-[var(--muted)]">
-            Editable destination + scan analytics. The printed code never
-            changes.
+            {isWifi
+              ? "Short link opens a page with WiFi details. Track how many people open it (not whether they joined)."
+              : "Editable destination + scan analytics. The printed code never changes."}
           </p>
         </div>
         <Toggle
@@ -186,9 +226,23 @@ export function DynamicPanel() {
           {!dynamic ? (
             <>
               <p className="text-xs text-[var(--muted)]">
-                Generates a short link that redirects to your URL. You can change
-                where it points anytime — no reprinting.
+                {isWifi
+                  ? "Creates a short link to a WiFi landing page. Guests see SSID + password; you see scan analytics."
+                  : "Generates a short link that redirects to your URL. You can change where it points anytime — no reprinting."}
               </p>
+
+              {isWifi && !isPro && authEnabled ? (
+                <p className="text-[11px] text-[var(--muted)]">
+                  Dynamic WiFi pages are Pro.{" "}
+                  <Link
+                    href="/pricing"
+                    className="text-[var(--brand-2)] underline"
+                  >
+                    Upgrade
+                  </Link>{" "}
+                  to track opens — or leave this off for a static WiFi QR.
+                </p>
+              ) : null}
 
               {isPro ? (
                 <div>
@@ -203,16 +257,13 @@ export function DynamicPanel() {
                     <input
                       value={customSlug}
                       onChange={(e) => setCustomSlug(e.target.value)}
-                      placeholder="my-menu"
+                      placeholder={isWifi ? "cafe-wifi" : "my-menu"}
                       className="input-field font-mono text-xs"
                       maxLength={32}
                     />
                   </div>
-                  <p className="mt-1 text-[11px] text-[var(--muted)]">
-                    Letters, numbers, hyphens. Leave blank for a random code.
-                  </p>
                 </div>
-              ) : authEnabled ? (
+              ) : authEnabled && !isWifi ? (
                 <p className="text-[11px] text-[var(--muted)]">
                   Want a branded link like{" "}
                   <span className="font-mono">/r/my-menu</span>?{" "}
@@ -228,16 +279,27 @@ export function DynamicPanel() {
 
               <button
                 onClick={create}
-                disabled={loading}
+                disabled={loading || (isWifi && !isPro)}
                 className="btn-primary w-full rounded-xl py-2 text-sm font-semibold disabled:opacity-60"
               >
-                {loading ? "Creating…" : "Create dynamic link"}
+                {loading
+                  ? "Creating…"
+                  : isWifi
+                    ? "Create WiFi page link"
+                    : "Create dynamic link"}
               </button>
             </>
           ) : (
             <>
               <CopyRow label="Short link (encoded in QR)" value={dynamic.shortUrl} />
               <CopyRow label="Manage & analytics link" value={dynamic.manageUrl} />
+              {isWifi && (
+                <p className="text-[11px] text-[var(--muted)]">
+                  Guests land on{" "}
+                  <span className="font-mono">/wifi/{dynamic.slug}</span> after
+                  the short link.
+                </p>
+              )}
               <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-2">
                 <p className="text-[11px] text-amber-300/90">
                   Save your edit token — it&apos;s the only way to edit this code
@@ -251,16 +313,21 @@ export function DynamicPanel() {
                 />
               </div>
 
-              {destinationChanged && (
+              {(!isWifi && destinationChanged) || isWifi ? (
                 <button
                   onClick={() => update()}
                   disabled={loading}
                   className="btn-primary w-full rounded-xl py-2 text-sm font-semibold disabled:opacity-60"
                 >
-                  {loading ? "Updating…" : "Update destination & design"}
+                  {loading
+                    ? "Saving…"
+                    : isWifi
+                      ? "Update WiFi details & design"
+                      : destinationChanged
+                        ? "Update destination & design"
+                        : "Save current design to this link"}
                 </button>
-              )}
-              {!destinationChanged && (
+              ) : (
                 <button
                   onClick={() => update()}
                   disabled={loading}

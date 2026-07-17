@@ -29,6 +29,13 @@ interface Analytics {
   slug: string;
   title: string | null;
   destination: string;
+  contentType?: "url" | "wifi";
+  wifi?: {
+    ssid: string;
+    password: string;
+    encryption: "WPA" | "WEP" | "nopass";
+    hidden: boolean;
+  } | null;
   createdAt: number;
   plan?: "free" | "pro";
   analyticsWindowDays?: number | null;
@@ -57,6 +64,12 @@ export function ManageClient({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [destination, setDestination] = useState("");
+  const [wifiSsid, setWifiSsid] = useState("");
+  const [wifiPassword, setWifiPassword] = useState("");
+  const [wifiEncryption, setWifiEncryption] = useState<"WPA" | "WEP" | "nopass">(
+    "WPA",
+  );
+  const [wifiHidden, setWifiHidden] = useState(false);
   const [slugInput, setSlugInput] = useState(slug);
   const [saving, setSaving] = useState(false);
   const [savingSlug, setSavingSlug] = useState(false);
@@ -76,6 +89,12 @@ export function ManageClient({
         setData(json);
         setDestination(json.destination);
         setSlugInput(json.slug);
+        if (json.wifi) {
+          setWifiSsid(json.wifi.ssid ?? "");
+          setWifiPassword(json.wifi.password ?? "");
+          setWifiEncryption(json.wifi.encryption ?? "WPA");
+          setWifiHidden(Boolean(json.wifi.hidden));
+        }
       } catch (e) {
         setError(e instanceof Error ? e.message : "Failed to load.");
         setData(null);
@@ -94,15 +113,40 @@ export function ManageClient({
     setSaving(true);
     setSavedMsg(null);
     try {
+      const isWifi = data?.contentType === "wifi";
       const res = await fetch(`/api/qr/${slug}`, {
         method: "PATCH",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ destination, editToken: token }),
+        body: JSON.stringify({
+          editToken: token,
+          ...(isWifi
+            ? {
+                wifi: {
+                  ssid: wifiSsid,
+                  password: wifiPassword,
+                  encryption: wifiEncryption,
+                  hidden: wifiHidden,
+                },
+                title: wifiSsid,
+              }
+            : { destination }),
+        }),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Failed to update.");
-      setSavedMsg("Saved! New scans now redirect to this URL.");
-      if (data) setData({ ...data, destination: json.destination });
+      setSavedMsg(
+        isWifi
+          ? "WiFi details updated. New scans see the new credentials."
+          : "Saved! New scans now redirect to this URL.",
+      );
+      if (data) {
+        setData({
+          ...data,
+          destination: json.destination,
+          wifi: json.wifi ?? data.wifi,
+          title: json.title ?? data.title,
+        });
+      }
     } catch (e) {
       setSavedMsg(e instanceof Error ? e.message : "Failed to update.");
     } finally {
@@ -234,28 +278,95 @@ export function ManageClient({
         </div>
       ) : null}
 
-      {/* Editable destination */}
-      <div className="glass rounded-2xl p-5">
-        <h2 className="font-semibold">Destination URL</h2>
-        <p className="mt-1 text-xs text-[var(--muted)]">
-          Change where this QR code points. The code itself stays the same.
-        </p>
-        <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-          <input
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            className="input-field"
-            inputMode="url"
-          />
-          <button
-            onClick={save}
-            disabled={saving}
-            className="btn-primary shrink-0 rounded-xl px-5 py-2 text-sm font-semibold disabled:opacity-60"
-          >
-            {saving ? "Saving…" : "Save"}
-          </button>
+      {/* Editable destination / WiFi */}
+      {data.contentType === "wifi" ? (
+        <div className="glass rounded-2xl p-5">
+          <h2 className="font-semibold">WiFi details</h2>
+          <p className="mt-1 text-xs text-[var(--muted)]">
+            Guests see these on the landing page. Scan count = page opens, not
+            network joins.
+          </p>
+          <div className="mt-3 space-y-3">
+            <div>
+              <label className="mb-1 block text-xs text-[var(--muted)]">
+                Network name (SSID)
+              </label>
+              <input
+                value={wifiSsid}
+                onChange={(e) => setWifiSsid(e.target.value)}
+                className="input-field"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-[var(--muted)]">
+                Security
+              </label>
+              <select
+                value={wifiEncryption}
+                onChange={(e) =>
+                  setWifiEncryption(
+                    e.target.value as "WPA" | "WEP" | "nopass",
+                  )
+                }
+                className="input-field"
+              >
+                <option value="WPA">WPA/WPA2</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">None (open)</option>
+              </select>
+            </div>
+            {wifiEncryption !== "nopass" && (
+              <div>
+                <label className="mb-1 block text-xs text-[var(--muted)]">
+                  Password
+                </label>
+                <input
+                  value={wifiPassword}
+                  onChange={(e) => setWifiPassword(e.target.value)}
+                  className="input-field"
+                />
+              </div>
+            )}
+            <label className="flex items-center gap-2 text-sm text-[var(--muted)]">
+              <input
+                type="checkbox"
+                checked={wifiHidden}
+                onChange={(e) => setWifiHidden(e.target.checked)}
+              />
+              Hidden network
+            </label>
+            <button
+              onClick={save}
+              disabled={saving}
+              className="btn-primary rounded-xl px-5 py-2 text-sm font-semibold disabled:opacity-60"
+            >
+              {saving ? "Saving…" : "Save WiFi details"}
+            </button>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="glass rounded-2xl p-5">
+          <h2 className="font-semibold">Destination URL</h2>
+          <p className="mt-1 text-xs text-[var(--muted)]">
+            Change where this QR code points. The code itself stays the same.
+          </p>
+          <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+            <input
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              className="input-field"
+              inputMode="url"
+            />
+            <button
+              onClick={save}
+              disabled={saving}
+              className="btn-primary shrink-0 rounded-xl px-5 py-2 text-sm font-semibold disabled:opacity-60"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Custom short-link slug (Pro) */}
       {data.customSlug ? (

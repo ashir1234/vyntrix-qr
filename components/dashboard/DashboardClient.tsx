@@ -23,6 +23,7 @@ interface CodeItem {
   createdAt: number;
   design: SavedQrDesign | null;
   projectId: string | null;
+  contentType?: "url" | "wifi";
 }
 
 export function DashboardClient({
@@ -266,8 +267,15 @@ export function DashboardClient({
                       {code.title || code.slug}
                     </p>
                     <p className="truncate text-xs text-[var(--muted)]">
-                      {shortUrl} → {code.destination}
+                      {code.contentType === "wifi"
+                        ? `${shortUrl} → WiFi landing page`
+                        : `${shortUrl} → ${code.destination}`}
                     </p>
+                    {code.contentType === "wifi" && (
+                      <p className="mt-0.5 text-[11px] text-[var(--brand-2)]">
+                        WiFi page · tracks opens
+                      </p>
+                    )}
                     {folder && (
                       <p className="mt-0.5 text-[11px] text-[var(--brand-2)]">
                         In project: {folder}

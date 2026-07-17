@@ -115,6 +115,7 @@ export default async function DashboardPage() {
                 createdAt: c.created_at,
                 design: c.design,
                 projectId: c.project_id,
+                contentType: c.content_type,
               }))}
             />
           </Suspense>

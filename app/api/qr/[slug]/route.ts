@@ -12,6 +12,12 @@ import { normalizeSlug, validateCustomSlug } from "@/lib/slug";
 import { getBaseUrl } from "@/lib/baseUrl";
 import { sanitizeDesign } from "@/lib/qr/design";
 import { getUserId } from "@/lib/authServer";
+import {
+  parseWifiPayloadJson,
+  sanitizeWifiPayload,
+  wifiPayloadToJson,
+  WIFI_DESTINATION_SENTINEL,
+} from "@/lib/qr/wifiPayload";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -72,6 +78,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
     editToken?: string;
     customSlug?: string;
     design?: unknown;
+    wifi?: unknown;
   };
   try {
     body = await req.json();
@@ -87,14 +94,35 @@ export async function PATCH(req: Request, { params }: Ctx) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const destination =
-    body.destination !== undefined ? body.destination.trim() : row.destination;
-  if (!isValidHttpUrl(destination)) {
-    return NextResponse.json(
-      { error: "Destination must be a valid http(s) URL." },
-      { status: 400 },
-    );
+  const isWifi = row.content_type === "wifi";
+  let destination = row.destination;
+  let payload: string | null | undefined = undefined;
+
+  if (isWifi) {
+    destination = WIFI_DESTINATION_SENTINEL;
+    if (body.wifi !== undefined) {
+      const wifi = sanitizeWifiPayload(body.wifi);
+      if (!wifi) {
+        return NextResponse.json(
+          { error: "Valid WiFi SSID and password are required." },
+          { status: 400 },
+        );
+      }
+      payload = wifiPayloadToJson(wifi);
+    }
+  } else {
+    destination =
+      body.destination !== undefined
+        ? body.destination.trim()
+        : row.destination;
+    if (!isValidHttpUrl(destination)) {
+      return NextResponse.json(
+        { error: "Destination must be a valid http(s) URL." },
+        { status: 400 },
+      );
+    }
   }
+
   const title =
     body.title !== undefined
       ? body.title.trim().slice(0, 120) || null
@@ -103,7 +131,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
   const design =
     body.design !== undefined ? sanitizeDesign(body.design) : undefined;
 
-  await updateQrCode(slug, destination, title, design);
+  await updateQrCode(slug, destination, title, design, payload);
 
   let finalSlug = slug;
   const wantsRename =
@@ -148,9 +176,15 @@ export async function PATCH(req: Request, { params }: Ctx) {
     slug: finalSlug,
     destination,
     title,
+    contentType: updated?.content_type ?? row.content_type,
+    wifi: parseWifiPayloadJson(updated?.payload ?? row.payload),
     design: updated?.design ?? design ?? row.design,
     shortUrl: `${base}/r/${finalSlug}`,
     manageUrl: `${base}/manage/${finalSlug}?token=${body.editToken}`,
+    landingUrl:
+      (updated?.content_type ?? row.content_type) === "wifi"
+        ? `${base}/wifi/${finalSlug}`
+        : undefined,
   });
 }
 

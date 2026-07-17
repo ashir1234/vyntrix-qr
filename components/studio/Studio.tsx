@@ -287,7 +287,7 @@ export function Studio() {
             {tab === "content" ? (
               <div className="space-y-4">
                 <ContentForm />
-                {type === "url" && <DynamicPanel />}
+                {(type === "url" || type === "wifi") && <DynamicPanel />}
               </div>
             ) : (
               <StyleControls />

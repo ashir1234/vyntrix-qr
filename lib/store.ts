@@ -250,7 +250,11 @@ interface QrStore {
 export function selectEncodedData(
   s: Pick<QrStore, "type" | "fields" | "dynamicEnabled" | "dynamic">,
 ): string {
-  if (s.type === "url" && s.dynamicEnabled && s.dynamic) {
+  if (
+    (s.type === "url" || s.type === "wifi") &&
+    s.dynamicEnabled &&
+    s.dynamic
+  ) {
     return s.dynamic.shortUrl;
   }
   return buildQrData(s.type, s.fields);

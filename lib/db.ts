@@ -113,6 +113,8 @@ async function initSchema(c: Client): Promise<void> {
   await ensureColumn(c, "qr_codes", "user_id", "TEXT");
   await ensureColumn(c, "qr_codes", "design", "TEXT");
   await ensureColumn(c, "qr_codes", "project_id", "TEXT");
+  await ensureColumn(c, "qr_codes", "content_type", "TEXT");
+  await ensureColumn(c, "qr_codes", "payload", "TEXT");
   await ensureColumn(c, "users", "studio_state", "TEXT");
   await ensureColumn(c, "users", "studio_updated_at", "INTEGER");
   await c.execute(
@@ -179,6 +181,10 @@ export interface QrCodeRow {
   design: SavedQrDesign | null;
   /** Optional project folder this code belongs to. */
   project_id: string | null;
+  /** `url` (redirect) or `wifi` (landing page). */
+  content_type: "url" | "wifi";
+  /** JSON payload for non-URL types (e.g. WiFi credentials). */
+  payload: string | null;
   created_at: number;
   updated_at: number;
 }
@@ -191,6 +197,8 @@ export interface CreateQrInput {
   userId?: string | null;
   design?: SavedQrDesign | null;
   projectId?: string | null;
+  contentType?: "url" | "wifi";
+  payload?: string | null;
 }
 
 export interface SubscriptionRow {
@@ -249,8 +257,8 @@ export async function createQrCode(input: CreateQrInput): Promise<void> {
   const db = await getClient();
   const now = Date.now();
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, content_type, payload, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       input.slug,
       input.destination,
@@ -259,6 +267,8 @@ export async function createQrCode(input: CreateQrInput): Promise<void> {
       input.userId ?? null,
       designToJson(input.design ?? null),
       input.projectId ?? null,
+      input.contentType ?? "url",
+      input.payload ?? null,
       now,
       now,
     ],
@@ -274,6 +284,8 @@ function mapQrRow(r: Record<string, unknown>): QrCodeRow {
     user_id: str(r.user_id),
     design: parseDesignJson(str(r.design)),
     project_id: str(r.project_id),
+    content_type: r.content_type === "wifi" ? "wifi" : "url",
+    payload: str(r.payload),
     created_at: num(r.created_at),
     updated_at: num(r.updated_at),
   };
@@ -330,18 +342,34 @@ export async function updateQrCode(
   destination: string,
   title: string | null,
   design?: SavedQrDesign | null,
+  payload?: string | null,
 ): Promise<void> {
   const db = await getClient();
+  const now = Date.now();
+  if (design !== undefined && payload !== undefined) {
+    await db.execute({
+      sql: "UPDATE qr_codes SET destination = ?, title = ?, design = ?, payload = ?, updated_at = ? WHERE slug = ?",
+      args: [destination, title, designToJson(design), payload, now, slug],
+    });
+    return;
+  }
   if (design !== undefined) {
     await db.execute({
       sql: "UPDATE qr_codes SET destination = ?, title = ?, design = ?, updated_at = ? WHERE slug = ?",
-      args: [destination, title, designToJson(design), Date.now(), slug],
+      args: [destination, title, designToJson(design), now, slug],
+    });
+    return;
+  }
+  if (payload !== undefined) {
+    await db.execute({
+      sql: "UPDATE qr_codes SET destination = ?, title = ?, payload = ?, updated_at = ? WHERE slug = ?",
+      args: [destination, title, payload, now, slug],
     });
     return;
   }
   await db.execute({
     sql: "UPDATE qr_codes SET destination = ?, title = ?, updated_at = ? WHERE slug = ?",
-    args: [destination, title, Date.now(), slug],
+    args: [destination, title, now, slug],
   });
 }
 
@@ -362,8 +390,8 @@ export async function renameQrCode(
   if (await slugExists(newSlug)) throw new Error("Slug taken.");
 
   await db.execute({
-    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, created_at, updated_at)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    sql: `INSERT INTO qr_codes (slug, destination, title, edit_token, user_id, design, project_id, content_type, payload, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     args: [
       newSlug,
       existing.destination,
@@ -372,6 +400,8 @@ export async function renameQrCode(
       existing.user_id,
       designToJson(existing.design),
       existing.project_id,
+      existing.content_type,
+      existing.payload,
       existing.created_at,
       now,
     ],

@@ -32,6 +32,8 @@ export interface PlanLimits {
   maxBulkRows: number;
   /** Hi-res / print-sheet exports. */
   printPack: boolean;
+  /** Whether Pro can create dynamic WiFi landing pages (scan analytics). */
+  wifiLanding: boolean;
   /** Bullet points for the pricing page. */
   features: string[];
 }
@@ -53,6 +55,7 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
     bulkCreate: false,
     maxBulkRows: 0,
     printPack: false,
+    wifiLanding: false,
     features: [
       "Unlimited static QR codes",
       "Logos, colors, gradients & frames",
@@ -78,9 +81,11 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
     bulkCreate: true,
     maxBulkRows: 50,
     printPack: true,
+    wifiLanding: true,
     features: [
       "Everything in Free",
       "Unlimited dynamic QR codes",
+      "Dynamic WiFi pages + scan analytics",
       "Full scan history + analytics + CSV export",
       "Custom short-link slugs",
       "Cloud Studio sync across devices",

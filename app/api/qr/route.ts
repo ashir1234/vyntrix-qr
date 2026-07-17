@@ -9,6 +9,11 @@ import { getUserPlan } from "@/lib/billing";
 import { canCreateDynamic, PLAN_LIMITS } from "@/lib/plans";
 import { normalizeSlug, validateCustomSlug } from "@/lib/slug";
 import { sanitizeDesign } from "@/lib/qr/design";
+import {
+  sanitizeWifiPayload,
+  wifiPayloadToJson,
+  WIFI_DESTINATION_SENTINEL,
+} from "@/lib/qr/wifiPayload";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -37,6 +42,8 @@ export async function POST(req: Request) {
     title?: string;
     customSlug?: string;
     design?: unknown;
+    contentType?: string;
+    wifi?: unknown;
   };
   try {
     body = await req.json();
@@ -44,21 +51,34 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
-  const destination = (body.destination ?? "").trim();
+  const contentType = body.contentType === "wifi" ? "wifi" : "url";
   const title = (body.title ?? "").trim().slice(0, 120) || null;
   const wantsCustom = Boolean(body.customSlug?.trim());
   const design = sanitizeDesign(body.design);
 
-  if (!isValidHttpUrl(destination)) {
+  let destination = (body.destination ?? "").trim();
+  let payload: string | null = null;
+
+  if (contentType === "wifi") {
+    const wifi = sanitizeWifiPayload(body.wifi);
+    if (!wifi) {
+      return NextResponse.json(
+        { error: "Valid WiFi SSID and password are required." },
+        { status: 400 },
+      );
+    }
+    destination = WIFI_DESTINATION_SENTINEL;
+    payload = wifiPayloadToJson(wifi);
+    if (!title) {
+      // use SSID as default title
+    }
+  } else if (!isValidHttpUrl(destination)) {
     return NextResponse.json(
       { error: "Destination must be a valid http(s) URL." },
       { status: 400 },
     );
   }
 
-  // When accounts are enabled, dynamic codes belong to a signed-in user and are
-  // subject to per-plan quotas. Without Clerk configured, creation stays
-  // anonymous (the original free behavior).
   const userId = await getUserId();
   if (authEnabled && !userId) {
     return NextResponse.json(
@@ -86,6 +106,16 @@ export async function POST(req: Request) {
         { status: 402 },
       );
     }
+  }
+
+  if (contentType === "wifi" && !PLAN_LIMITS[plan].wifiLanding) {
+    return NextResponse.json(
+      {
+        error: "Dynamic WiFi pages with scan tracking are a Pro feature.",
+        code: "upgrade_required",
+      },
+      { status: 402 },
+    );
   }
 
   let slug = generateSlug();
@@ -118,18 +148,37 @@ export async function POST(req: Request) {
   }
 
   const editToken = generateEditToken();
-  await createQrCode({ slug, destination, title, editToken, userId, design });
+  const finalTitle =
+    title ||
+    (contentType === "wifi" && body.wifi
+      ? sanitizeWifiPayload(body.wifi)?.ssid ?? null
+      : null);
+
+  await createQrCode({
+    slug,
+    destination,
+    title: finalTitle,
+    editToken,
+    userId,
+    design,
+    contentType,
+    payload,
+  });
 
   const base = getBaseUrl(req);
   return NextResponse.json(
     {
       slug,
       destination,
-      title,
+      title: finalTitle,
       editToken,
       design,
+      contentType,
+      wifi: contentType === "wifi" ? sanitizeWifiPayload(body.wifi) : null,
       shortUrl: `${base}/r/${slug}`,
       manageUrl: `${base}/manage/${slug}?token=${editToken}`,
+      landingUrl:
+        contentType === "wifi" ? `${base}/wifi/${slug}` : undefined,
     },
     { status: 201 },
   );

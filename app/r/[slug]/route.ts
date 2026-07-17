@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getQrCode, insertScan } from "@/lib/db";
 import { parseUa } from "@/lib/ua";
+import { isWifiDestination } from "@/lib/qr/wifiPayload";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -34,6 +35,15 @@ export async function GET(req: Request, { params }: Ctx) {
     });
   } catch {
     /* never block the redirect on a logging failure */
+  }
+
+  const isWifi =
+    row.content_type === "wifi" || isWifiDestination(row.destination);
+
+  if (isWifi) {
+    return NextResponse.redirect(new URL(`/wifi/${slug}`, req.url), {
+      status: 307,
+    });
   }
 
   return NextResponse.redirect(row.destination, { status: 307 });

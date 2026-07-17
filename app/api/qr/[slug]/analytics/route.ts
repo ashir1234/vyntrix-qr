@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getAnalytics, getQrCode } from "@/lib/db";
 import { getUserPlan } from "@/lib/billing";
 import { PLAN_LIMITS } from "@/lib/plans";
+import { parseWifiPayloadJson } from "@/lib/qr/wifiPayload";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -30,6 +31,8 @@ export async function GET(req: Request, { params }: Ctx) {
     slug: row.slug,
     title: row.title,
     destination: row.destination,
+    contentType: row.content_type,
+    wifi: parseWifiPayloadJson(row.payload),
     createdAt: row.created_at,
     plan,
     analyticsWindowDays: PLAN_LIMITS[plan].analyticsWindowDays,
