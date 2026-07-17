@@ -12,6 +12,7 @@ import { FramedPreview } from "./FramedPreview";
 import { ContentForm } from "./ContentForm";
 import { StyleControls } from "./StyleControls";
 import { DynamicPanel } from "./DynamicPanel";
+import { StudioProTools } from "./StudioProTools";
 import { Toggle } from "@/components/ui/controls";
 import { trackEvent } from "@/lib/analytics";
 
@@ -505,6 +506,7 @@ export function Studio() {
             </button>
           </div>
         </div>
+        <StudioProTools />
         </div>
       </div>
     </>

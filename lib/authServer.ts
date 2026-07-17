@@ -1,4 +1,5 @@
 import { authEnabled } from "./authFlags";
+import { upsertAppUser, type AppUserRow } from "./db";
 
 /**
  * Server-side current user id, or null when signed out / auth disabled.
@@ -20,4 +21,28 @@ export async function getUserEmail(): Promise<string | null> {
   const { currentUser } = await import("@clerk/nextjs/server");
   const user = await currentUser();
   return user?.primaryEmailAddress?.emailAddress ?? null;
+}
+
+/**
+ * Mirror the signed-in Clerk user into our `users` table for record keeping
+ * (email, name, last seen). Safe to call on every dashboard/API hit.
+ */
+export async function syncSignedInUser(): Promise<AppUserRow | null> {
+  if (!authEnabled) return null;
+  const { currentUser } = await import("@clerk/nextjs/server");
+  const user = await currentUser();
+  if (!user) return null;
+
+  const email = user.primaryEmailAddress?.emailAddress ?? null;
+  const name =
+    [user.firstName, user.lastName].filter(Boolean).join(" ").trim() ||
+    user.username ||
+    null;
+
+  return upsertAppUser({
+    id: user.id,
+    email,
+    name,
+    imageUrl: user.imageUrl ?? null,
+  });
 }

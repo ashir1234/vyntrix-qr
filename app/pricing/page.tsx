@@ -12,12 +12,12 @@ const free = PLAN_LIMITS.free;
 export const metadata: Metadata = {
   title: "Pricing — Free & Pro Plans",
   description:
-    "Vyntrix QR is free forever for static QR codes. Upgrade to Pro for unlimited dynamic QR codes, full scan analytics, CSV export, custom slugs, and no ads.",
+    "Vyntrix QR is free forever for static QR codes. Upgrade to Pro for unlimited dynamic QR codes, cloud Studio sync, projects, bulk create, print pack, full analytics, and no ads.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: `Pricing — ${siteConfig.name}`,
     description:
-      "Free forever for static QR codes. Pro unlocks unlimited dynamic codes, full analytics, CSV export, and no ads.",
+      "Free forever for static QR codes. Pro unlocks unlimited dynamic codes, cloud sync, projects, bulk create, print pack, and full analytics.",
     type: "website",
   },
 };
@@ -51,8 +51,8 @@ export default function PricingPage() {
             Simple, honest pricing
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-[var(--muted)]">
-            Create and download QR codes free, forever. Upgrade only when you
-            need unlimited dynamic links and full analytics.
+            Create and download QR codes free, forever. Upgrade for cloud sync,
+            projects, bulk create, print pack, and unlimited dynamic links.
           </p>
         </div>
 

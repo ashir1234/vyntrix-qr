@@ -5,12 +5,15 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { UpgradeButton } from "@/components/billing/UpgradeButton";
 import { StaticQr } from "@/components/gallery/StaticQr";
+import { ProjectsPanel } from "@/components/dashboard/ProjectsPanel";
+import { BulkCreatePanel } from "@/components/dashboard/BulkCreatePanel";
 import { trackEvent } from "@/lib/analytics";
 import {
   defaultSavedDesign,
   type SavedQrDesign,
 } from "@/lib/qr/design";
 import type { PlanId } from "@/lib/plans";
+import { PLAN_LIMITS } from "@/lib/plans";
 
 interface CodeItem {
   slug: string;
@@ -77,6 +80,7 @@ export function DashboardClient({
   const isPro = plan === "pro";
   const quotaLabel =
     maxDynamicCodes === null ? `${used} / ∞` : `${used} / ${maxDynamicCodes}`;
+  const maxBulkRows = PLAN_LIMITS[plan].maxBulkRows;
 
   return (
     <div className="space-y-6">
@@ -152,6 +156,9 @@ export function DashboardClient({
           </div>
         </div>
       </div>
+
+      <ProjectsPanel isPro={isPro} />
+      <BulkCreatePanel isPro={isPro} maxBulkRows={maxBulkRows} />
 
       {/* Codes list */}
       <div className="glass rounded-2xl p-5">

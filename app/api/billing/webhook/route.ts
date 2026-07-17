@@ -1,6 +1,6 @@
 import crypto from "node:crypto";
 import { NextResponse } from "next/server";
-import { upsertSubscription } from "@/lib/db";
+import { upsertAppUser, upsertSubscription } from "@/lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -113,6 +113,14 @@ export async function POST(request: Request) {
     renewsAt: toMs(attrs.renews_at),
     endsAt: toMs(attrs.ends_at),
     customerPortalUrl: attrs.urls?.customer_portal ?? null,
+  });
+
+  // Keep a users row even if they never opened the dashboard after checkout.
+  await upsertAppUser({
+    id: userId,
+    email: attrs.user_email ?? null,
+  }).catch(() => {
+    /* non-fatal */
   });
 
   return NextResponse.json({ ok: true, event: eventName, status });

@@ -5,10 +5,11 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useQrStore } from "@/lib/store";
 import { sanitizeDesign, type SavedQrDesign } from "@/lib/qr/design";
 import type { DynamicResult } from "@/lib/store";
+import type { QrContentType, QrFields } from "@/lib/qr/types";
 
 /**
- * When opened as /studio?load=slug&token=…, fetch that code's design from the
- * DB and restore it into the Studio store (after localStorage rehydration).
+ * Loads a dynamic code (?load=&token=) or a saved project (?project=1) into
+ * Studio after localStorage rehydration.
  */
 export function StudioLoadFromQuery() {
   const searchParams = useSearchParams();
@@ -22,9 +23,52 @@ export function StudioLoadFromQuery() {
   const ranFor = useRef<string | null>(null);
 
   useEffect(() => {
+    if (!hasHydrated) return;
+
+    // Saved project from dashboard
+    if (searchParams.get("project") === "1") {
+      const key = "project:session";
+      if (ranFor.current === key) return;
+      ranFor.current = key;
+      setStatus("loading");
+      try {
+        const raw = sessionStorage.getItem("vyntrix_load_project");
+        sessionStorage.removeItem("vyntrix_load_project");
+        if (!raw) throw new Error("No project payload found.");
+        const payload = JSON.parse(raw) as {
+          type?: QrContentType;
+          fields?: Partial<QrFields>;
+          design?: unknown;
+          dynamicSlug?: string | null;
+          kind?: string;
+        };
+        const design = sanitizeDesign(payload.design);
+        if (!design) throw new Error("Project has no valid design.");
+
+        applySavedDesign(design, {
+          destination:
+            typeof payload.fields?.url === "string"
+              ? payload.fields.url
+              : undefined,
+        });
+        useQrStore.setState((s) => ({
+          type: payload.type ?? s.type,
+          fields: { ...s.fields, ...(payload.fields ?? {}) },
+          dynamicEnabled: payload.kind === "dynamic",
+        }));
+        setMessage("Project loaded into Studio.");
+        setStatus("done");
+        router.replace("/studio", { scroll: false });
+      } catch (e) {
+        setStatus("error");
+        setMessage(e instanceof Error ? e.message : "Failed to load project.");
+      }
+      return;
+    }
+
     const slug = searchParams.get("load");
     const token = searchParams.get("token");
-    if (!slug || !token || !hasHydrated) return;
+    if (!slug || !token) return;
     const key = `${slug}:${token}`;
     if (ranFor.current === key) return;
     ranFor.current = key;
@@ -45,7 +89,6 @@ export function StudioLoadFromQuery() {
         const design: SavedQrDesign | null = sanitizeDesign(json.design);
 
         if (!design) {
-          // Legacy code with no saved look — still restore destination/link.
           applySavedDesign(
             {
               style: useQrStore.getState().style,
@@ -71,7 +114,6 @@ export function StudioLoadFromQuery() {
           setMessage(`Loaded design for /r/${json.slug}`);
         }
         setStatus("done");
-        // Drop query params so a refresh doesn't re-apply over newer edits.
         router.replace("/studio", { scroll: false });
       } catch (e) {
         if (!active) return;
@@ -95,7 +137,7 @@ export function StudioLoadFromQuery() {
           : "border-[var(--brand)]/30 bg-[var(--brand)]/10 text-[var(--brand-2)]"
       }`}
     >
-      {status === "loading" ? "Loading saved design…" : message}
+      {status === "loading" ? "Loading…" : message}
     </div>
   );
 }

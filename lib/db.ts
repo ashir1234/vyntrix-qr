@@ -76,8 +76,32 @@ async function initSchema(c: Client): Promise<void> {
       customer_portal_url TEXT,
       updated_at          INTEGER NOT NULL
     )`,
+    `CREATE TABLE IF NOT EXISTS users (
+      id            TEXT PRIMARY KEY,
+      email         TEXT,
+      name          TEXT,
+      image_url     TEXT,
+      studio_state  TEXT,
+      studio_updated_at INTEGER,
+      created_at    INTEGER NOT NULL,
+      last_seen_at  INTEGER NOT NULL
+    )`,
+    `CREATE TABLE IF NOT EXISTS projects (
+      id            TEXT PRIMARY KEY,
+      user_id       TEXT NOT NULL,
+      name          TEXT NOT NULL,
+      kind          TEXT NOT NULL,
+      content_type  TEXT NOT NULL,
+      fields_json   TEXT NOT NULL,
+      design_json   TEXT NOT NULL,
+      dynamic_slug  TEXT,
+      created_at    INTEGER NOT NULL,
+      updated_at    INTEGER NOT NULL
+    )`,
     `CREATE INDEX IF NOT EXISTS idx_scans_slug ON scans(slug)`,
     `CREATE INDEX IF NOT EXISTS idx_scans_ts ON scans(ts)`,
+    `CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)`,
+    `CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id)`,
   ];
 
   for (const sql of statements) {
@@ -88,8 +112,16 @@ async function initSchema(c: Client): Promise<void> {
   // CREATE TABLE IF NOT EXISTS does not add columns to an existing table.
   await ensureColumn(c, "qr_codes", "user_id", "TEXT");
   await ensureColumn(c, "qr_codes", "design", "TEXT");
+  await ensureColumn(c, "users", "studio_state", "TEXT");
+  await ensureColumn(c, "users", "studio_updated_at", "INTEGER");
   await c.execute(
     "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
+  );
+  await c.execute(
+    "CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)",
+  );
+  await c.execute(
+    "CREATE INDEX IF NOT EXISTS idx_projects_user ON projects(user_id)",
   );
 }
 
@@ -455,6 +487,254 @@ export async function getAllScans(slug: string): Promise<ScanInput[]> {
     referer: str(r.referer),
     country: str(r.country),
   }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Users (signed-in accounts — record keeping)                                */
+/* -------------------------------------------------------------------------- */
+
+export interface AppUserRow {
+  id: string;
+  email: string | null;
+  name: string | null;
+  image_url: string | null;
+  studio_state: string | null;
+  studio_updated_at: number | null;
+  created_at: number;
+  last_seen_at: number;
+}
+
+export interface UpsertAppUserInput {
+  id: string;
+  email?: string | null;
+  name?: string | null;
+  imageUrl?: string | null;
+}
+
+/** Insert or refresh a signed-in user. Always bumps last_seen_at. */
+export async function upsertAppUser(
+  input: UpsertAppUserInput,
+): Promise<AppUserRow> {
+  const db = await getClient();
+  const now = Date.now();
+  await db.execute({
+    sql: `INSERT INTO users (id, email, name, image_url, created_at, last_seen_at)
+          VALUES (?, ?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            email = COALESCE(excluded.email, users.email),
+            name = COALESCE(excluded.name, users.name),
+            image_url = COALESCE(excluded.image_url, users.image_url),
+            last_seen_at = excluded.last_seen_at`,
+    args: [
+      input.id,
+      input.email ?? null,
+      input.name ?? null,
+      input.imageUrl ?? null,
+      now,
+      now,
+    ],
+  });
+  const row = await getAppUser(input.id);
+  if (!row) throw new Error("Failed to upsert user.");
+  return row;
+}
+
+export async function getAppUser(id: string): Promise<AppUserRow | null> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "SELECT * FROM users WHERE id = ?",
+    args: [id],
+  });
+  const r = res.rows[0];
+  if (!r) return null;
+  return {
+    id: String(r.id),
+    email: str(r.email),
+    name: str(r.name),
+    image_url: str(r.image_url),
+    studio_state: str(r.studio_state),
+    studio_updated_at:
+      r.studio_updated_at == null ? null : num(r.studio_updated_at),
+    created_at: num(r.created_at),
+    last_seen_at: num(r.last_seen_at),
+  };
+}
+
+export async function saveUserStudioState(
+  userId: string,
+  stateJson: string,
+  updatedAt: number,
+): Promise<void> {
+  const db = await getClient();
+  // Ensure a users row exists (webhook/sign-in may have created it already).
+  await db.execute({
+    sql: `INSERT INTO users (id, created_at, last_seen_at, studio_state, studio_updated_at)
+          VALUES (?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+            studio_state = excluded.studio_state,
+            studio_updated_at = excluded.studio_updated_at,
+            last_seen_at = excluded.last_seen_at`,
+    args: [userId, updatedAt, updatedAt, stateJson, updatedAt],
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Projects                                                                   */
+/* -------------------------------------------------------------------------- */
+
+export interface ProjectRow {
+  id: string;
+  user_id: string;
+  name: string;
+  kind: "static" | "dynamic";
+  content_type: string;
+  fields_json: string;
+  design_json: string;
+  dynamic_slug: string | null;
+  created_at: number;
+  updated_at: number;
+}
+
+export interface CreateProjectInput {
+  id: string;
+  userId: string;
+  name: string;
+  kind: "static" | "dynamic";
+  contentType: string;
+  fieldsJson: string;
+  designJson: string;
+  dynamicSlug?: string | null;
+}
+
+export async function createProject(
+  input: CreateProjectInput,
+): Promise<ProjectRow> {
+  const db = await getClient();
+  const now = Date.now();
+  await db.execute({
+    sql: `INSERT INTO projects
+            (id, user_id, name, kind, content_type, fields_json, design_json,
+             dynamic_slug, created_at, updated_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    args: [
+      input.id,
+      input.userId,
+      input.name.slice(0, 80),
+      input.kind,
+      input.contentType,
+      input.fieldsJson,
+      input.designJson,
+      input.dynamicSlug ?? null,
+      now,
+      now,
+    ],
+  });
+  const row = await getProject(input.id);
+  if (!row) throw new Error("Failed to create project.");
+  return row;
+}
+
+export async function updateProject(
+  id: string,
+  userId: string,
+  patch: {
+    name?: string;
+    fieldsJson?: string;
+    designJson?: string;
+    dynamicSlug?: string | null;
+    kind?: "static" | "dynamic";
+    contentType?: string;
+  },
+): Promise<ProjectRow | null> {
+  const existing = await getProject(id);
+  if (!existing || existing.user_id !== userId) return null;
+  const db = await getClient();
+  const now = Date.now();
+  await db.execute({
+    sql: `UPDATE projects SET
+            name = ?,
+            kind = ?,
+            content_type = ?,
+            fields_json = ?,
+            design_json = ?,
+            dynamic_slug = ?,
+            updated_at = ?
+          WHERE id = ? AND user_id = ?`,
+    args: [
+      patch.name?.slice(0, 80) ?? existing.name,
+      patch.kind ?? existing.kind,
+      patch.contentType ?? existing.content_type,
+      patch.fieldsJson ?? existing.fields_json,
+      patch.designJson ?? existing.design_json,
+      patch.dynamicSlug !== undefined
+        ? patch.dynamicSlug
+        : existing.dynamic_slug,
+      now,
+      id,
+      userId,
+    ],
+  });
+  return getProject(id);
+}
+
+export async function getProject(id: string): Promise<ProjectRow | null> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "SELECT * FROM projects WHERE id = ?",
+    args: [id],
+  });
+  const r = res.rows[0];
+  if (!r) return null;
+  return mapProject(r as unknown as Record<string, unknown>);
+}
+
+export async function listProjectsByUser(
+  userId: string,
+): Promise<ProjectRow[]> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "SELECT * FROM projects WHERE user_id = ? ORDER BY updated_at DESC",
+    args: [userId],
+  });
+  return res.rows.map((r) =>
+    mapProject(r as unknown as Record<string, unknown>),
+  );
+}
+
+export async function countProjectsByUser(userId: string): Promise<number> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "SELECT COUNT(*) c FROM projects WHERE user_id = ?",
+    args: [userId],
+  });
+  return num(res.rows[0]?.c);
+}
+
+export async function deleteProject(
+  id: string,
+  userId: string,
+): Promise<boolean> {
+  const db = await getClient();
+  const res = await db.execute({
+    sql: "DELETE FROM projects WHERE id = ? AND user_id = ?",
+    args: [id, userId],
+  });
+  return res.rowsAffected > 0;
+}
+
+function mapProject(r: Record<string, unknown>): ProjectRow {
+  return {
+    id: String(r.id),
+    user_id: String(r.user_id),
+    name: String(r.name),
+    kind: r.kind === "dynamic" ? "dynamic" : "static",
+    content_type: String(r.content_type),
+    fields_json: String(r.fields_json),
+    design_json: String(r.design_json),
+    dynamic_slug: str(r.dynamic_slug),
+    created_at: num(r.created_at),
+    updated_at: num(r.updated_at),
+  };
 }
 
 /* -------------------------------------------------------------------------- */

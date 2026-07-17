@@ -179,48 +179,96 @@ export async function downloadQr(
   data: string,
   frame: FrameKind = "none",
   frameLabel = "Scan Me!",
+  size = 1024,
 ) {
-  const bare = await bareQrDataUrl(currentStyle, data, frame === "none" ? 1024 : 800);
+  const bareSize = frame === "none" ? size : Math.min(size, 1200);
+  const bare = await bareQrDataUrl(currentStyle, data, bareSize);
 
   if (frame !== "none") {
     if (type === "svg") {
       const svg = composeFramedSvg(bare, frame, frameLabel);
       triggerDownload(
         new Blob([svg], { type: "image/svg+xml;charset=utf-8" }),
-        "qrverse-framed.svg",
+        "vyntrix-framed.svg",
       );
       return;
     }
-    const blob = await composeFramedPng(bare, frame, frameLabel, 3);
-    triggerDownload(blob, "qrverse-framed.png");
+    const scale = size >= 2048 ? 5 : 3;
+    const blob = await composeFramedPng(bare, frame, frameLabel, scale);
+    triggerDownload(blob, "vyntrix-framed.png");
     return;
   }
 
   if (isCustomDotType(currentStyle.dotType)) {
     if (type === "svg") {
-      const svg = renderPatternQrSvg(data, currentStyle, 1024);
+      const svg = renderPatternQrSvg(data, currentStyle, size);
       triggerDownload(
         new Blob([svg], { type: "image/svg+xml;charset=utf-8" }),
-        "qrverse-code.svg",
+        "vyntrix-code.svg",
       );
       return;
     }
     const blob = await patternQrToBlob(
       data,
       currentStyle,
-      1024,
+      size,
       type === "jpeg" ? "jpeg" : type === "webp" ? "webp" : "png",
     );
-    triggerDownload(blob, `qrverse-code.${type === "jpeg" ? "jpg" : type}`);
+    triggerDownload(blob, `vyntrix-code.${type === "jpeg" ? "jpg" : type}`);
     return;
   }
 
   const mod = await import("qr-code-styling");
   const QR = mod.default;
   const instance = new QR(
-    buildQrOptions({ data, style: currentStyle, size: 1024 }),
+    buildQrOptions({ data, style: currentStyle, size }),
   );
-  await instance.download({ name: "qrverse-code", extension: type });
+  await instance.download({
+    name: size >= 2048 ? "vyntrix-code-print" : "vyntrix-code",
+    extension: type,
+  });
+}
+
+/** Pro print pack: single-page PDF with a large QR + optional caption. */
+export async function downloadPrintPdf(
+  currentStyle: QrStyle,
+  data: string,
+  frame: FrameKind = "none",
+  frameLabel = "Scan Me!",
+) {
+  const { jsPDF } = await import("jspdf");
+  const bare = await bareQrDataUrl(
+    currentStyle,
+    data,
+    frame === "none" ? 1600 : 1000,
+  );
+  let pngDataUrl = bare;
+  if (frame !== "none") {
+    const blob = await composeFramedPng(bare, frame, frameLabel, 4);
+    pngDataUrl = await blobToDataUrl(blob);
+  }
+
+  const doc = new jsPDF({
+    orientation: "portrait",
+    unit: "mm",
+    format: "a4",
+  });
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const qrMm = 120;
+  const x = (pageW - qrMm) / 2;
+  const y = (pageH - qrMm) / 2 - 10;
+  doc.addImage(pngDataUrl, "PNG", x, y, qrMm, qrMm);
+  if (frame === "none" && frameLabel) {
+    doc.setFontSize(14);
+    doc.text(frameLabel, pageW / 2, y + qrMm + 12, { align: "center" });
+  }
+  doc.setFontSize(8);
+  doc.setTextColor(140);
+  doc.text("Printed with Vyntrix QR", pageW / 2, pageH - 12, {
+    align: "center",
+  });
+  doc.save("vyntrix-print.pdf");
 }
 
 export type QrExportType = "png" | "svg" | "jpeg" | "webp";

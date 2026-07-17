@@ -14,6 +14,7 @@ import { AdSenseScript } from "@/components/ads/AdSenseScript";
 import { ClerkProvider } from "@clerk/nextjs";
 import { authEnabled } from "@/lib/authFlags";
 import { StudioPersistence } from "@/components/studio/StudioPersistence";
+import { UserSync } from "@/components/auth/UserSync";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -135,6 +136,7 @@ export default function RootLayout({
             }}
           >
             <StudioPersistence />
+            <UserSync />
             {children}
             <GoogleAnalytics />
             <CookieConsent />

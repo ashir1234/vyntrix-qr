@@ -22,6 +22,16 @@ export interface PlanLimits {
   customSlug: boolean;
   /** Whether ads are shown to this plan. */
   ads: boolean;
+  /** Cloud Studio sync across devices. */
+  cloudSync: boolean;
+  /** Max saved projects. null = unlimited. 0 = feature locked. */
+  maxProjects: number | null;
+  /** Bulk dynamic QR creation from CSV. */
+  bulkCreate: boolean;
+  /** Max rows per bulk create job. */
+  maxBulkRows: number;
+  /** Hi-res / print-sheet exports. */
+  printPack: boolean;
   /** Bullet points for the pricing page. */
   features: string[];
 }
@@ -38,6 +48,11 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
     csvExport: false,
     customSlug: false,
     ads: true,
+    cloudSync: false,
+    maxProjects: 0,
+    bulkCreate: false,
+    maxBulkRows: 0,
+    printPack: false,
     features: [
       "Unlimited static QR codes",
       "Logos, colors, gradients & frames",
@@ -58,14 +73,21 @@ export const PLAN_LIMITS: Record<PlanId, PlanLimits> = {
     csvExport: true,
     customSlug: true,
     ads: false,
+    cloudSync: true,
+    maxProjects: null,
+    bulkCreate: true,
+    maxBulkRows: 50,
+    printPack: true,
     features: [
       "Everything in Free",
       "Unlimited dynamic QR codes",
-      "Full scan history + analytics",
-      "CSV export of every scan",
+      "Full scan history + analytics + CSV export",
       "Custom short-link slugs",
+      "Cloud Studio sync across devices",
+      "Saved projects library",
+      "Bulk create from CSV",
+      "Print pack (4K PNG, PDF sheet)",
       "No ads",
-      "Priority support",
     ],
   },
 };

@@ -6,7 +6,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { DashboardClient } from "@/components/dashboard/DashboardClient";
 import { authEnabled } from "@/lib/authFlags";
-import { getUserId } from "@/lib/authServer";
+import { getUserId, syncSignedInUser } from "@/lib/authServer";
 import { getUserPlan, billingConfigured } from "@/lib/billing";
 import { getSubscription, listQrCodesByUser } from "@/lib/db";
 import { PLAN_LIMITS } from "@/lib/plans";
@@ -43,6 +43,13 @@ export default async function DashboardPage() {
 
   const userId = await getUserId();
   if (!userId) redirect("/sign-in");
+
+  // Always mirror Clerk → Turso for our own user records.
+  try {
+    await syncSignedInUser();
+  } catch (e) {
+    console.error("[dashboard] user sync failed", e);
+  }
 
   let plan: "free" | "pro" = "free";
   let sub: Awaited<ReturnType<typeof getSubscription>> = null;
