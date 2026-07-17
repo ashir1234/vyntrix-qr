@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { UpgradeButton } from "@/components/billing/UpgradeButton";
@@ -51,46 +51,6 @@ export function DashboardClient({
       setNotice("Welcome to Pro! Your account has been upgraded.");
     }
   }, [searchParams]);
-
-  // Best-effort: claim any codes created anonymously before signing in.
-  const claimLocalCodes = useCallback(async () => {
-    let list: { slug?: string; editToken?: string }[] = [];
-    try {
-      const raw = localStorage.getItem("vyntrix_codes");
-      list = raw ? JSON.parse(raw) : [];
-    } catch {
-      return;
-    }
-    if (!Array.isArray(list) || list.length === 0) return;
-
-    const knownSlugs = new Set(codes.map((c) => c.slug));
-    const unclaimed = list.filter((c) => c.slug && !knownSlugs.has(c.slug));
-    if (unclaimed.length === 0) return;
-
-    try {
-      const res = await fetch("/api/qr/claim", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          codes: unclaimed.map((c) => ({
-            slug: c.slug,
-            editToken: c.editToken,
-          })),
-        }),
-      });
-      const json = await res.json();
-      if (res.ok && json.claimed > 0) {
-        setNotice(`Imported ${json.claimed} code(s) from this browser.`);
-        router.refresh();
-      }
-    } catch {
-      /* ignore */
-    }
-  }, [codes, router]);
-
-  useEffect(() => {
-    claimLocalCodes();
-  }, [claimLocalCodes]);
 
   const remove = async (code: CodeItem) => {
     if (!confirm(`Delete "${code.title || code.slug}"? This cannot be undone.`))
