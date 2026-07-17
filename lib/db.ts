@@ -36,8 +36,10 @@ function buildClient(): Client {
 }
 
 async function initSchema(c: Client): Promise<void> {
-  await c.executeMultiple(`
-    CREATE TABLE IF NOT EXISTS qr_codes (
+  // Run statements individually so a single failure doesn't hide the rest
+  // (Turso/libSQL executeMultiple can be finicky across cold starts).
+  const statements = [
+    `CREATE TABLE IF NOT EXISTS qr_codes (
       slug         TEXT PRIMARY KEY,
       destination  TEXT NOT NULL,
       title        TEXT,
@@ -45,8 +47,8 @@ async function initSchema(c: Client): Promise<void> {
       user_id      TEXT,
       created_at   INTEGER NOT NULL,
       updated_at   INTEGER NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS scans (
+    )`,
+    `CREATE TABLE IF NOT EXISTS scans (
       id       INTEGER PRIMARY KEY AUTOINCREMENT,
       slug     TEXT NOT NULL,
       ts       INTEGER NOT NULL,
@@ -55,8 +57,8 @@ async function initSchema(c: Client): Promise<void> {
       browser  TEXT,
       referer  TEXT,
       country  TEXT
-    );
-    CREATE TABLE IF NOT EXISTS subscriptions (
+    )`,
+    `CREATE TABLE IF NOT EXISTS subscriptions (
       user_id             TEXT PRIMARY KEY,
       email               TEXT,
       ls_customer_id      TEXT,
@@ -67,26 +69,41 @@ async function initSchema(c: Client): Promise<void> {
       ends_at             INTEGER,
       customer_portal_url TEXT,
       updated_at          INTEGER NOT NULL
-    );
-    CREATE INDEX IF NOT EXISTS idx_scans_slug ON scans(slug);
-    CREATE INDEX IF NOT EXISTS idx_scans_ts ON scans(ts);
-    CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id);
-  `);
+    )`,
+    `CREATE INDEX IF NOT EXISTS idx_scans_slug ON scans(slug)`,
+    `CREATE INDEX IF NOT EXISTS idx_scans_ts ON scans(ts)`,
+    `CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)`,
+  ];
+
+  for (const sql of statements) {
+    await c.execute(sql);
+  }
 
   // Migration for databases created before the user_id column existed.
-  const cols = await c.execute("PRAGMA table_info(qr_codes)");
-  const hasUserId = cols.rows.some((r) => String(r.name) === "user_id");
-  if (!hasUserId) {
-    await c.execute("ALTER TABLE qr_codes ADD COLUMN user_id TEXT");
-    await c.execute(
-      "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
-    );
+  try {
+    const cols = await c.execute("PRAGMA table_info(qr_codes)");
+    const hasUserId = cols.rows.some((r) => String(r.name) === "user_id");
+    if (!hasUserId) {
+      await c.execute("ALTER TABLE qr_codes ADD COLUMN user_id TEXT");
+      await c.execute(
+        "CREATE INDEX IF NOT EXISTS idx_qr_user ON qr_codes(user_id)",
+      );
+    }
+  } catch (e) {
+    // Older Turso edge cases — column may already exist under another path.
+    console.warn("[db] user_id migration check failed", e);
   }
 }
 
 async function getClient(): Promise<Client> {
   if (!client) client = buildClient();
-  if (!schemaReady) schemaReady = initSchema(client);
+  if (!schemaReady) {
+    schemaReady = initSchema(client).catch((err) => {
+      // Allow the next request to retry schema setup after a transient failure.
+      schemaReady = null;
+      throw err;
+    });
+  }
   await schemaReady;
   return client;
 }
