@@ -1,6 +1,7 @@
 import { siteConfig } from "@/lib/site";
 import { guides } from "@/lib/seo";
 import { qrPlatforms } from "@/lib/qr-platforms";
+import { blogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
@@ -12,6 +13,10 @@ export const dynamic = "force-static";
 export function GET() {
   const guideList = guides
     .map((g) => `- [${g.title}](${siteConfig.url}/guides/${g.slug}): ${g.description}`)
+    .join("\n");
+
+  const blogList = blogPosts
+    .map((p) => `- [${p.title}](${siteConfig.url}/blog/${p.slug}): ${p.description}`)
     .join("\n");
 
   const platformSample = qrPlatforms
@@ -33,6 +38,7 @@ export function GET() {
   - Pro ($12/month): unlimited dynamic codes, full analytics + CSV, custom slugs, dynamic WiFi pages, cloud Studio sync, project folders, bulk CSV create, print pack (4K PNG + PDF), no ads
 - Privacy: Static QR generation runs in the browser. Dynamic destinations, designs, and account data are stored for redirects, analytics, and Pro features.
 - Company: Built by ${siteConfig.parentCompany.name} (${siteConfig.parentCompany.url}) — ${siteConfig.parentCompany.description}
+- Contact: ${siteConfig.emails.hello}
 
 ## Key features
 - Free static QR generator (URL, text, WiFi, vCard, email, SMS, phone, image, location)
@@ -46,10 +52,16 @@ export function GET() {
 - [Home](${siteConfig.url}): Product overview and FAQ
 - [Studio](${siteConfig.url}/studio): Create and customize QR codes
 - [Pricing](${siteConfig.url}/pricing): Free vs Pro
+- [About](${siteConfig.url}/about): Who builds ${siteConfig.name} and what we offer
+- [Contact](${siteConfig.url}/contact): Email ${siteConfig.emails.hello}
+- [Blog](${siteConfig.url}/blog): Original articles on privacy, print, and QR strategy
 - [Dashboard](${siteConfig.url}/dashboard): Manage dynamic codes and projects (signed-in)
 - [Gallery](${siteConfig.url}/gallery): Design templates
 - [Guides](${siteConfig.url}/guides): How-to articles
 - [QR code for…](${siteConfig.url}/qr-code-for): ${qrPlatforms.length}+ use-case pages (Spotify, TikTok, LinkedIn, Google Forms, packaging, etc.)
+
+## Blog
+${blogList}
 
 ## Guides
 ${guideList}

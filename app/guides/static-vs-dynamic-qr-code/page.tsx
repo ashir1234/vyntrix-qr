@@ -24,6 +24,18 @@ const FAQS = [
     q: "Which is better for marketing?",
     a: "Dynamic — you can fix typos, change campaigns, and measure scans without reprinting.",
   },
+  {
+    q: "Are static codes always free?",
+    a: "On Vyntrix QR, unlimited static codes are free with no watermark. Dynamic codes need an account (1 free) or Pro for unlimited.",
+  },
+  {
+    q: "Can I convert a printed static code into a dynamic one?",
+    a: "No. You would need to print a new QR that points at a short link. Plan ahead if print costs are high.",
+  },
+  {
+    q: "Do WiFi and vCard codes need to be dynamic?",
+    a: "Usually no. Classic WiFi and vCard payloads are fine as static. Use dynamic when you want a landing page, tracking, or editable credentials/links.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -63,14 +75,31 @@ export default function StaticVsDynamicGuidePage() {
       <h1 className="text-4xl font-bold tracking-tight">{guide.h1}</h1>
       <p className="mt-4 text-lg text-[var(--muted)]">
         Both static and{" "}
-        <Link href="/guides/dynamic-qr-code" className="text-[var(--brand-2)] underline">
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
           dynamic QR codes
         </Link>{" "}
-        scan the same way. The difference is what happens behind the code — and
-        whether you can change it later.
+        scan the same way on a phone camera. The difference is what is encoded
+        behind the pattern — and whether you can change it later without
+        reprinting.
       </p>
 
       <GuideCta label="Create your QR code" />
+
+      <h2 className="mt-10 text-2xl font-semibold">Quick definitions</h2>
+      <p className="mt-3 text-[var(--muted)]">
+        <strong className="text-[var(--foreground)]">Static:</strong> the QR
+        contains the final payload (full URL, WiFi string, vCard, text). What
+        you print is what you get — forever.
+      </p>
+      <p className="mt-3 text-[var(--muted)]">
+        <strong className="text-[var(--foreground)]">Dynamic:</strong> the QR
+        contains a short link. Our servers redirect each scan to the current
+        destination and can record analytics. You update the destination in
+        Manage / Dashboard.
+      </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Side by side</h2>
       <div className="mt-4 overflow-x-auto">
@@ -94,9 +123,19 @@ export default function StaticVsDynamicGuidePage() {
               <td className="py-2">Yes</td>
             </tr>
             <tr className="border-b border-[var(--border)]">
-              <td className="py-2 pr-4">Works forever offline</td>
-              <td className="py-2 pr-4">Yes</td>
+              <td className="py-2 pr-4">Works without our servers</td>
+              <td className="py-2 pr-4">Yes (payload is in the code)</td>
               <td className="py-2">Needs redirect online</td>
+            </tr>
+            <tr className="border-b border-[var(--border)]">
+              <td className="py-2 pr-4">Account required</td>
+              <td className="py-2 pr-4">No on Vyntrix QR</td>
+              <td className="py-2">Yes</td>
+            </tr>
+            <tr className="border-b border-[var(--border)]">
+              <td className="py-2 pr-4">Cost model here</td>
+              <td className="py-2 pr-4">Unlimited free static</td>
+              <td className="py-2">1 free; Pro for unlimited</td>
             </tr>
             <tr>
               <td className="py-2 pr-4">Best for</td>
@@ -107,17 +146,70 @@ export default function StaticVsDynamicGuidePage() {
         </table>
       </div>
 
-      <h2 className="mt-10 text-2xl font-semibold">When to use each</h2>
+      <h2 className="mt-10 text-2xl font-semibold">When to use static</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
-          <strong className="text-[var(--foreground)]">Static:</strong> content
-          that never changes — WiFi credentials, a vCard, a permanent URL.
+          Permanent personal or company homepage that will not move for years
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Dynamic:</strong> anything
-          you might update or want to measure — menus, promos, review links.
+          <Link
+            href="/guides/wifi-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            WiFi credentials
+          </Link>{" "}
+          for a guest network that rarely changes
+        </li>
+        <li>
+          <Link
+            href="/guides/vcard-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            vCard / contact
+          </Link>{" "}
+          details on a business card
+        </li>
+        <li>Situations where you want zero dependency on a redirect service</li>
+        <li>Internal labels where analytics do not matter</li>
+      </ul>
+
+      <h2 className="mt-10 text-2xl font-semibold">When to use dynamic</h2>
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
+        <li>Anything expensive to reprint (packaging, billboards, window vinyl)</li>
+        <li>Campaigns where you need scan counts or CSV export</li>
+        <li>Menus, offers, and event pages that change seasonally</li>
+        <li>Team workflows where one person prints and another updates the URL</li>
+        <li>
+          Custom short slugs and Pro tools — see{" "}
+          <Link href="/pricing" className="text-[var(--brand-2)] underline">
+            Pricing
+          </Link>
         </li>
       </ul>
+
+      <h2 className="mt-10 text-2xl font-semibold">Decision checklist</h2>
+      <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
+        <li>Will the destination possibly change in the next 12 months?</li>
+        <li>Is the print run costly or hard to replace?</li>
+        <li>Do you need scan numbers for a report or client?</li>
+        <li>Is the payload WiFi/vCard rather than a website?</li>
+      </ol>
+      <p className="mt-3 text-[var(--muted)]">
+        If you answered yes to 1–3, start dynamic. If you answered yes mainly to
+        4 and the data is stable, static is usually simpler and free.
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">Privacy and reliability notes</h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Static generation for one-off downloads runs in your browser. Dynamic
+        destinations and scan events are stored so redirects and analytics can
+        work — details in the{" "}
+        <Link href="/privacy" className="text-[var(--brand-2)] underline">
+          Privacy Policy
+        </Link>
+        . Dynamic codes also assume the redirect stays available; keep that in
+        mind for decade-long archival prints.
+      </p>
 
       <h2 className="mt-10 text-2xl font-semibold">FAQ</h2>
       <div className="mt-4 space-y-3">

@@ -14,15 +14,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const platform = getQrPlatform(slug);
   if (!platform) return {};
 
+  const hasDeepGuide = Boolean(platform.relatedGuideSlug);
+  const canonical = hasDeepGuide
+    ? `/guides/${platform.relatedGuideSlug}`
+    : `/qr-code-for/${platform.slug}`;
+
   return {
     title: platform.title,
     description: platform.description,
     keywords: [...platform.keywords],
-    alternates: { canonical: `/qr-code-for/${platform.slug}` },
+    alternates: { canonical },
+    // Consolidate indexing on the deeper /guides article when one exists —
+    // reduces thin duplicate URLs for search / AdSense quality.
+    robots: hasDeepGuide ? { index: false, follow: true } : undefined,
     openGraph: {
       title: platform.title,
       description: platform.description,
       type: "article",
+      url: canonical,
     },
   };
 }

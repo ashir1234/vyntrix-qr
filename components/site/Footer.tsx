@@ -53,6 +53,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/blog" className="transition hover:text-[var(--foreground)]">
+                Blog
+              </Link>
+            </li>
+            <li>
               <Link href="/qr-code-for" className="transition hover:text-[var(--foreground)]">
                 Use cases
               </Link>
@@ -60,6 +65,16 @@ export function Footer() {
             <li>
               <Link href="/pricing" className="transition hover:text-[var(--foreground)]">
                 Pricing
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="transition hover:text-[var(--foreground)]">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="transition hover:text-[var(--foreground)]">
+                Contact
               </Link>
             </li>
           </ul>
@@ -98,6 +113,11 @@ export function Footer() {
             <li>
               <Link href="/terms" className="transition hover:text-[var(--foreground)]">
                 Terms of Use
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="transition hover:text-[var(--foreground)]">
+                Contact
               </Link>
             </li>
           </ul>

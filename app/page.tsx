@@ -166,6 +166,15 @@ export default function Home() {
           <p className="mt-3 text-[var(--muted)] leading-relaxed">
             {siteConfig.geoSummary}
           </p>
+          <p className="mt-3 text-sm text-[var(--muted)]">
+            <Link href="/about" className="text-[var(--brand-2)] underline">
+              About us
+            </Link>
+            {" · "}
+            <Link href="/contact" className="text-[var(--brand-2)] underline">
+              Contact
+            </Link>
+          </p>
         </section>
 
         <section className="py-8" id="how-it-works">

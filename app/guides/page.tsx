@@ -48,6 +48,10 @@ export default function GuidesHubPage() {
         <Link href="/qr-code-for" className="text-[var(--brand-2)] underline">
           QR code for… directory
         </Link>
+        . For longer editorial notes, see the{" "}
+        <Link href="/blog" className="text-[var(--brand-2)] underline">
+          blog
+        </Link>
         .
       </p>
 

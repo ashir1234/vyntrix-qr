@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { siteConfig } from "@/lib/site";
@@ -109,9 +110,16 @@ export default function PrivacyPage() {
             </h2>
             <p className="mt-2">
               Questions about this policy? Reach us at{" "}
-              <span className="text-[var(--foreground)]">
-                privacy@{siteConfig.domain}
-              </span>
+              <a
+                href={`mailto:${siteConfig.emails.hello}`}
+                className="text-[var(--brand-2)] underline"
+              >
+                {siteConfig.emails.hello}
+              </a>{" "}
+              or see{" "}
+              <Link href="/contact" className="text-[var(--brand-2)] underline">
+                Contact
+              </Link>
               .
             </p>
           </section>

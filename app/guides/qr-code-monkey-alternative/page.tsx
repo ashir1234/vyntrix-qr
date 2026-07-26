@@ -25,6 +25,14 @@ const FAQS = [
     q: "Are dynamic QR codes available?",
     a: "Yes. Free includes 1 dynamic code when signed in; Pro unlocks unlimited dynamics, analytics, and more.",
   },
+  {
+    q: "Is there a watermark on free codes?",
+    a: "No watermark on free static downloads.",
+  },
+  {
+    q: "Can teams organize many codes?",
+    a: "Pro adds project folders, bulk CSV create, and dashboard management for dynamic links.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -90,6 +98,53 @@ export default function QrCodeMonkeyAltPage() {
           </Link>
         </li>
       </ul>
+
+      <h2 className="mt-10 text-2xl font-semibold">
+        Beyond one-off design downloads
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Design-first generators are great for a single pretty square. Campaigns,
+        packaging, and menus usually need{" "}
+        <Link
+          href="/guides/static-vs-dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          editable destinations
+        </Link>
+        , scan history, and honest pricing. That is where {siteConfig.name}{" "}
+        focuses — see{" "}
+        <Link href="/pricing" className="text-[var(--brand-2)] underline">
+          Pricing
+        </Link>{" "}
+        and our{" "}
+        <Link href="/blog" className="text-[var(--brand-2)] underline">
+          blog
+        </Link>
+        .
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">Quick evaluation</h2>
+      <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
+        <li>Create a logo QR and export SVG — check for watermarks.</li>
+        <li>Create one dynamic link and change the destination.</li>
+        <li>
+          Skim{" "}
+          <Link href="/privacy" className="text-[var(--brand-2)] underline">
+            Privacy
+          </Link>{" "}
+          for static vs stored dynamics.
+        </li>
+        <li>
+          Compare with our{" "}
+          <Link
+            href="/guides/qrfy-alternative"
+            className="text-[var(--brand-2)] underline"
+          >
+            QRfy alternative
+          </Link>{" "}
+          notes if you are shopping broadly.
+        </li>
+      </ol>
 
       <h2 className="mt-10 text-2xl font-semibold">FAQ</h2>
       <div className="mt-4 space-y-3">

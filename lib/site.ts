@@ -40,6 +40,10 @@ export const siteConfig = {
   ],
   locale: "en_US",
   twitter: "@vyntrixqr",
+  /** Public contact — Vyntrix Labs inbox for this product. */
+  emails: {
+    hello: "hello@vyntrix-labs.com",
+  },
   // Google Analytics 4 measurement id, e.g. "G-XXXXXXXXXX".
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   // Google AdSense publisher id, e.g. "ca-pub-1234567890123456".

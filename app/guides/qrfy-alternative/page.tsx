@@ -25,6 +25,14 @@ const FAQS = [
     q: "What’s on Pro?",
     a: "Unlimited dynamic codes, full history + CSV, custom slugs, WiFi landing pages, cloud Studio sync, projects, bulk CSV create, print pack, and no ads — from $12/month.",
   },
+  {
+    q: "Can I migrate existing printed codes?",
+    a: "Printed static codes cannot be “converted.” For new print runs, create dynamic links on Vyntrix QR so future updates are painless.",
+  },
+  {
+    q: "Do you support WiFi and vCard?",
+    a: "Yes — free static WiFi and vCard types, plus Pro dynamic WiFi landing pages with open tracking.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -66,7 +74,11 @@ export default function QrfyAltPage() {
         Searching for a{" "}
         <strong className="text-[var(--foreground)]">QRfy alternative</strong>?{" "}
         {siteConfig.name} combines free static branding with an affordable Pro
-        plan for dynamic QR codes, analytics, and business workflows.
+        plan for dynamic QR codes, analytics, and business workflows — built by{" "}
+        <Link href="/about" className="text-[var(--brand-2)] underline">
+          {siteConfig.parentCompany.name}
+        </Link>
+        .
       </p>
 
       <GuideCta label={`Try ${siteConfig.name}`} />
@@ -83,6 +95,60 @@ export default function QrfyAltPage() {
           </Link>
         </li>
       </ul>
+
+      <h2 className="mt-10 text-2xl font-semibold">What to compare</h2>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full border-collapse text-sm">
+          <thead>
+            <tr className="border-b border-[var(--border)] text-left">
+              <th className="py-2 pr-4 font-semibold">Criteria</th>
+              <th className="py-2 font-semibold">What we offer</th>
+            </tr>
+          </thead>
+          <tbody className="text-[var(--muted)]">
+            <tr className="border-b border-[var(--border)]">
+              <td className="py-2 pr-4">Static free tier</td>
+              <td className="py-2">Unlimited, no watermark</td>
+            </tr>
+            <tr className="border-b border-[var(--border)]">
+              <td className="py-2 pr-4">Dynamic / analytics</td>
+              <td className="py-2">1 free; Pro unlimited + CSV</td>
+            </tr>
+            <tr className="border-b border-[var(--border)]">
+              <td className="py-2 pr-4">Privacy model</td>
+              <td className="py-2">Static in-browser; dynamics stored for redirects</td>
+            </tr>
+            <tr>
+              <td className="py-2 pr-4">Exports</td>
+              <td className="py-2">PNG + SVG (Pro: 4K / PDF print pack)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className="mt-10 text-2xl font-semibold">Who switches successfully</h2>
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
+        <li>Teams that want clear Free vs Pro limits before printing</li>
+        <li>Brands that need logo + SVG without a watermark tax</li>
+        <li>Operators who care about WiFi, vCard, and packaging workflows</li>
+      </ul>
+      <p className="mt-3 text-[var(--muted)]">
+        Also see our{" "}
+        <Link
+          href="/guides/qr-code-monkey-alternative"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR Code Monkey alternative
+        </Link>{" "}
+        and{" "}
+        <Link
+          href="/guides/best-free-qr-code-generator"
+          className="text-[var(--brand-2)] underline"
+        >
+          best free generator checklist
+        </Link>
+        .
+      </p>
 
       <h2 className="mt-10 text-2xl font-semibold">FAQ</h2>
       <div className="mt-4 space-y-3">
