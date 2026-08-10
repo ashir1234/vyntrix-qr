@@ -56,6 +56,48 @@ export const blogPosts: BlogPost[] = [
       "dynamic QR worth it",
     ],
   },
+  {
+    slug: "error-correction-logos-pretty-qr-fail",
+    title: "Error Correction, Logos, and Why Pretty QR Codes Fail",
+    description:
+      "How QR error correction works, why logos and low contrast burn that budget, and a simple decision tree for branded print.",
+    date: "2026-08-05",
+    readingMinutes: 8,
+    topic: "Design",
+    keywords: [
+      "QR code error correction",
+      "QR code with logo scanning",
+      "branded QR code fails",
+    ],
+  },
+  {
+    slug: "small-business-qr-playbook",
+    title: "A Small-Business QR Playbook: Five Codes That Matter",
+    description:
+      "Reviews, menus, WiFi, WhatsApp, and one social profile — where to place them, when to use dynamic, and a one-afternoon rollout.",
+    date: "2026-08-07",
+    readingMinutes: 9,
+    topic: "Playbook",
+    keywords: [
+      "QR code for small business",
+      "restaurant QR code setup",
+      "Google review QR code",
+    ],
+  },
+  {
+    slug: "finish-the-qr-workflow",
+    title: "Building a QR Workflow People Actually Finish",
+    description:
+      "Where generators lose users between design and print — and how we designed Vyntrix QR around watermarks, SVG, and editable dynamics.",
+    date: "2026-08-10",
+    readingMinutes: 7,
+    topic: "Product",
+    keywords: [
+      "QR code generator workflow",
+      "print ready QR SVG",
+      "no watermark QR code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

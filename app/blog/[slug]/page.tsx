@@ -5,7 +5,10 @@ import type { ReactNode } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import {
+  ErrorCorrectionLogosPost,
+  FinishTheQrWorkflowPost,
   PrintQrChecklistPost,
+  SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
 } from "@/components/blog/posts";
@@ -23,6 +26,9 @@ const BODY: Record<string, () => ReactNode> = {
   "static-qr-privacy-in-the-browser": () => <StaticQrPrivacyPost />,
   "print-qr-codes-that-scan": () => <PrintQrChecklistPost />,
   "static-vs-dynamic-qr-cost": () => <StaticVsDynamicCostPost />,
+  "error-correction-logos-pretty-qr-fail": () => <ErrorCorrectionLogosPost />,
+  "small-business-qr-playbook": () => <SmallBusinessQrPlaybookPost />,
+  "finish-the-qr-workflow": () => <FinishTheQrWorkflowPost />,
 };
 
 export function generateStaticParams() {
