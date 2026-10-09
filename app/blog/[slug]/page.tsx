@@ -7,6 +7,7 @@ import { Footer } from "@/components/site/Footer";
 import {
   ErrorCorrectionLogosPost,
   FinishTheQrWorkflowPost,
+  LinkedInQrCodeGuidePost,
   PrintQrChecklistPost,
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
@@ -29,6 +30,7 @@ const BODY: Record<string, () => ReactNode> = {
   "error-correction-logos-pretty-qr-fail": () => <ErrorCorrectionLogosPost />,
   "small-business-qr-playbook": () => <SmallBusinessQrPlaybookPost />,
   "finish-the-qr-workflow": () => <FinishTheQrWorkflowPost />,
+  "linkedin-qr-code-guide": () => <LinkedInQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
