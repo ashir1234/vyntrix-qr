@@ -98,6 +98,22 @@ export const blogPosts: BlogPost[] = [
       "no watermark QR code",
     ],
   },
+  {
+    slug: "linkedin-qr-code-guide",
+    title: "How to Make a LinkedIn QR Code (Profile, Company Page, Business Card)",
+    description:
+      "A practical guide to creating LinkedIn QR codes — from finding your profile URL to printing branded codes on business cards, badges, slides, and email signatures.",
+    date: "2026-10-09",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "linkedin qr code",
+      "business card qr code",
+      "linkedin profile qr code",
+      "linkedin company page qr code",
+      "networking qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

@@ -592,3 +592,444 @@ export function FinishTheQrWorkflowPost() {
     </article>
   );
 }
+
+export function LinkedInQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        LinkedIn is where professional connections live, but exchanging profiles
+        at conferences, job fairs, and client meetings is still awkward. Spelling
+        out names, searching through dozens of similar profiles, and typing URLs
+        on tiny keyboards wastes time and loses leads. A{" "}
+        <strong className="text-[var(--foreground)]">LinkedIn QR code</strong>{" "}
+        solves this: one scan opens your profile or company page directly, ready
+        for a connection request.
+      </p>
+      <p>
+        This guide walks through finding your LinkedIn URL, understanding
+        LinkedIn&apos;s native QR feature, creating a custom branded code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , and placing it on business cards, badges, slides, and email signatures
+        — with sizing tips to make sure it actually scans when printed.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Find your LinkedIn profile or company page URL
+      </h2>
+      <p>
+        Before you can create a QR code, you need the exact URL you want scanners
+        to land on. LinkedIn offers two main options:
+      </p>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Personal profile URL
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Log in to LinkedIn on desktop or mobile browser.</li>
+        <li>Click your profile picture → &quot;View profile.&quot;</li>
+        <li>
+          Look at the URL in your browser&apos;s address bar. It looks like{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            linkedin.com/in/your-name
+          </code>
+          .
+        </li>
+        <li>
+          For a cleaner link, click &quot;Edit public profile &amp; URL&quot; on
+          the right sidebar and customize your public profile URL to remove
+          random numbers.
+        </li>
+        <li>Copy the full URL including <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://</code>.</li>
+      </ol>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Company page URL
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Search for your company on LinkedIn or navigate from your profile if you&apos;re an admin.</li>
+        <li>
+          The URL format is{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            linkedin.com/company/company-name
+          </code>
+          .
+        </li>
+        <li>Copy the full URL for trade show booths, recruiting materials, or office signage.</li>
+      </ol>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Tip:</strong> Test your URL
+        in an incognito/private browser window to confirm it&apos;s publicly
+        accessible. If your profile is set to &quot;connections only,&quot;
+        scanners who aren&apos;t already connected will see a restricted view.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        LinkedIn&apos;s built-in QR code feature
+      </h2>
+      <p>
+        LinkedIn&apos;s mobile app includes a QR code feature. In the app, tap
+        the search bar, then tap the QR icon (small square) to the right of the
+        search field. This shows your profile QR and lets you scan other
+        people&apos;s codes.
+      </p>
+      <p>
+        This built-in feature works fine for quick in-person exchanges when both
+        parties have the LinkedIn app open. However, it has limitations for
+        professional print materials:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>The QR image you can save is a fixed design — you cannot add your logo or brand colors.</li>
+        <li>Resolution is limited, which can cause blurry prints on large formats.</li>
+        <li>There&apos;s no SVG export for crisp vector printing.</li>
+        <li>You cannot track how many times the code was scanned.</li>
+        <li>If you change roles or want to point to a company page instead, you need a new image.</li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Why create a custom LinkedIn QR code
+      </h2>
+      <p>
+        A custom QR code built in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        offers advantages that matter for business cards and professional print:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Logo and colors:</strong>{" "}
+          Add your headshot, company logo, or brand colors to match your card
+          design. Keep logos modest to preserve scan reliability — see our{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            guide on error correction and logos
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">SVG export:</strong>{" "}
+          Vector files scale perfectly for any print size, from small badge
+          inserts to roll-up banners.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG without watermark:</strong>{" "}
+          {siteConfig.name} static codes are free with no watermark, so you get
+          clean files ready for your designer.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Dynamic option for flexibility:
+          </strong>{" "}
+          With a{" "}
+          <Link
+            href="/guides/dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            dynamic QR code
+          </Link>
+          , you can change the destination URL after printing — useful when you
+          change jobs, switch from personal to company page, or want scan
+          analytics. Free includes 1 dynamic code; Pro ($12/month) unlocks
+          unlimited dynamics with full scan history.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating your LinkedIn QR code
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Open the{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Studio
+          </Link>{" "}
+          and select the URL type.
+        </li>
+        <li>Paste your LinkedIn profile or company page URL.</li>
+        <li>
+          <strong className="text-[var(--foreground)]">Decide: static or dynamic?</strong>{" "}
+          Static is fine if your LinkedIn URL is stable. Choose dynamic if you
+          might redirect to a different profile later or want to track scans per
+          event. Read{" "}
+          <Link
+            href="/guides/static-vs-dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            static vs dynamic
+          </Link>{" "}
+          for a detailed comparison.
+        </li>
+        <li>
+          In the Design tab, add your logo (optional) and adjust colors. Stick
+          to dark modules on a light background for best scan reliability.
+        </li>
+        <li>Preview the code and test-scan with your phone&apos;s camera.</li>
+        <li>
+          Download PNG for digital use or email signatures, SVG for business
+          cards and large print.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to put your LinkedIn QR code
+      </h2>
+      <p>
+        A LinkedIn QR code is useful anywhere you want to make connecting easy.
+        Here are the most common placements with specific tips for each:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Business cards
+      </h3>
+      <p>
+        The classic use case. Place the QR on the back of your card with a short
+        label like &quot;Connect on LinkedIn.&quot; Size matters: on a standard
+        85 × 55 mm card, aim for at least 2 × 2 cm (about 0.8 inches) for the
+        code. Smaller codes with logos struggle to scan. Our{" "}
+        <Link
+          href="/guides/qr-code-for-business-card"
+          className="text-[var(--brand-2)] underline"
+        >
+          business card QR guide
+        </Link>{" "}
+        covers design, vCard vs URL decisions, and printer file formats.
+      </p>
+      <p>
+        Many professionals put a{" "}
+        <Link
+          href="/guides/vcard-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          vCard QR
+        </Link>{" "}
+        on one side (for instant contact save) and a LinkedIn QR on the other
+        (for the full profile with recommendations and posts).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Conference badges and name tags
+      </h3>
+      <p>
+        Lanyard badges scan differently than cards — they hang vertically,
+        people scan from odd angles, and conference lighting can glare on glossy
+        holders. Use high contrast, skip decorative gradients, and size
+        generously if badge dimensions allow. Consider a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic code
+        </Link>{" "}
+        if you reuse the same badge across multiple events and want to track
+        scans per conference.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Presentation slides
+      </h3>
+      <p>
+        A &quot;Let&apos;s connect&quot; closing slide with your LinkedIn QR
+        works well for webinars, conference talks, and sales decks. Size the
+        code large enough for phone cameras to scan from audience distance — for
+        a projected slide, that usually means taking up a good portion of the
+        screen. PNG is fine for slides; SVG is overkill unless you&apos;re also
+        printing handouts.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Email signatures
+      </h3>
+      <p>
+        An email signature QR bridges digital messages and mobile devices.
+        Recipients on desktop can click the link; those checking email on one
+        phone can scan from a second device (or print the email). Keep it small
+        — roughly 100–130 pixels wide — and use a simple design without heavy
+        logos at this scale. Our{" "}
+        <Link
+          href="/guides/qr-code-for-email-signature"
+          className="text-[var(--brand-2)] underline"
+        >
+          email signature QR guide
+        </Link>{" "}
+        covers Gmail and Outlook setup.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Trade show booths and banners
+      </h3>
+      <p>
+        Large format printing needs SVG or high-resolution PNG exported at the
+        final print dimensions. Use the ~10:1 rule: code width should be roughly
+        1/10 of the expected scanning distance. For a banner viewed from 2
+        meters, size the code at least 20 cm. Our{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>{" "}
+        covers distance, proofing, and common failures.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print sizing tips
+      </h2>
+      <p>
+        QR codes fail silently — they look fine until someone tries to scan and
+        nothing happens. Follow these sizing guidelines:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum for business cards:</strong>{" "}
+          2 × 2 cm without logos, slightly larger if you add a center mark.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Badges and small print:</strong>{" "}
+          At least 2.5 cm if conditions are suboptimal (glossy surfaces, dim
+          lighting).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Distance formula:</strong>{" "}
+          Code width ≈ scan distance ÷ 10, then add margin for logos and dense URLs.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Always proof:</strong>{" "}
+          Print one sample at actual size and test-scan with both iPhone and
+          Android cameras before ordering a batch.
+        </li>
+      </ul>
+      <p>
+        See{" "}
+        <Link
+          href="/guides/qr-code-size-for-print"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR code size for print
+        </Link>{" "}
+        for a complete reference table.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: when each makes sense
+      </h2>
+      <p>
+        A static QR code encodes your LinkedIn URL directly. Once printed,
+        it&apos;s permanent — if you change jobs and get a new LinkedIn profile
+        (rare, but it happens), or want to switch from personal to company page,
+        you&apos;ll need to reprint.
+      </p>
+      <p>
+        A{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        encodes a short redirect URL that you can update anytime. Benefits
+        include:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Change the destination without reprinting badges or cards.</li>
+        <li>Track scan counts and see when/where people connect.</li>
+        <li>A/B test sending some scans to your profile and others to a company page.</li>
+      </ul>
+      <p>
+        For most personal business cards with a stable profile, static is fine
+        and simpler. For team materials, reusable conference badges, or when you
+        want analytics, dynamic pays for itself in flexibility. Pro ($12/month)
+        includes unlimited dynamic codes, full scan history, CSV export, and
+        custom short-link slugs.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes to avoid
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Profile not public:</strong>{" "}
+          If your profile is restricted to connections only, scanners see
+          limited info. Check visibility in LinkedIn settings.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Outdated headline or photo:</strong>{" "}
+          Scanners judge quickly. Update your profile before a major networking
+          event.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Wrong URL:</strong>{" "}
+          Accidentally encoding a search results page or an old profile URL with
+          a different ID happens more than you&apos;d think. Verify the
+          destination.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Code too small:</strong>{" "}
+          Tiny codes with logos fail on older phones. Test at final print size.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Low contrast:</strong>{" "}
+          Light brand colors on cream paper, or dark codes on dark backgrounds,
+          confuse cameras. Stick to dark-on-light.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Heavy logo overlay:</strong>{" "}
+          Logos covering more than ~25% of the code area risk scan failures. See{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            error correction and logos
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Screenshot of LinkedIn&apos;s app QR:</strong>{" "}
+          Saving a low-resolution screenshot instead of generating a proper
+          print-ready file leads to blurry results.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No label:</strong>{" "}
+          Always add a caption like &quot;Scan to connect on LinkedIn&quot; so
+          people know what the code does.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Wrapping up
+      </h2>
+      <p>
+        A LinkedIn QR code turns handshakes into connections and booth visits
+        into followers. Start with your clean profile or company page URL,
+        decide whether static or dynamic fits your use case, create a branded
+        code in the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>
+        , and test before you print. For deeper dives, see our{" "}
+        <Link
+          href="/guides/qr-code-for-linkedin"
+          className="text-[var(--brand-2)] underline"
+        >
+          LinkedIn QR guide
+        </Link>{" "}
+        (quick reference) and{" "}
+        <Link
+          href="/guides/qr-code-for-business-card"
+          className="text-[var(--brand-2)] underline"
+        >
+          business card QR guide
+        </Link>{" "}
+        (vCard vs URL, design tips).
+      </p>
+      <p>
+        Questions?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
