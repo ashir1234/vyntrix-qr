@@ -114,6 +114,22 @@ export const blogPosts: BlogPost[] = [
       "networking qr code",
     ],
   },
+  {
+    slug: "youtube-qr-code-guide",
+    title: "How to Make a YouTube QR Code (Channel, Video, Subscribe & Print)",
+    description:
+      "A complete guide to creating YouTube QR codes — channel URLs, video links, Shorts, playlists, the ?sub_confirmation=1 subscribe prompt, static vs dynamic for campaigns, and a print/scan checklist for packaging, posters, merch, and events.",
+    date: "2026-10-13",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "youtube qr code",
+      "youtube channel qr code",
+      "youtube video qr code",
+      "subscribe qr code youtube",
+      "qr code for youtube",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

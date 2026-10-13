@@ -12,6 +12,7 @@ import {
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
+  YouTubeQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -31,6 +32,7 @@ const BODY: Record<string, () => ReactNode> = {
   "small-business-qr-playbook": () => <SmallBusinessQrPlaybookPost />,
   "finish-the-qr-workflow": () => <FinishTheQrWorkflowPost />,
   "linkedin-qr-code-guide": () => <LinkedInQrCodeGuidePost />,
+  "youtube-qr-code-guide": () => <YouTubeQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
