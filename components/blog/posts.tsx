@@ -593,6 +593,583 @@ export function FinishTheQrWorkflowPost() {
   );
 }
 
+export function YouTubeQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        YouTube is the second-largest search engine, and plenty of physical
+        materials — product packaging, event posters, business cards, merch,
+        trade-show banners — would benefit from a direct link into it. A{" "}
+        <strong className="text-[var(--foreground)]">YouTube QR code</strong>{" "}
+        lets someone scan once and land on your channel, a specific video, a
+        Shorts compilation, or a playlist — without typing a single character.
+      </p>
+      <p>
+        This guide covers the link types YouTube offers (channel, video, Short,
+        playlist), the <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code>{" "}
+        subscribe prompt trick, when to use static vs dynamic codes, a
+        print-ready checklist, and placement ideas — packaging, posters, merch,
+        event badges, and business cards.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        YouTube link types: what to encode
+      </h2>
+      <p>
+        YouTube supports several URL formats. Pick the one that matches your
+        goal, then paste it into the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        URL field.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Channel URL
+      </h3>
+      <p>
+        A channel link shows your full page — all uploads, playlists, community
+        posts, and the Subscribe button. Use it for brand awareness, creator
+        networking, or anywhere the goal is &quot;follow me here.&quot; Formats:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtube.com/@YourHandle
+          </code>{" "}
+          — the modern handle format (preferred)
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtube.com/c/YourChannel
+          </code>{" "}
+          — legacy custom URL (still works, but avoid for new materials)
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtube.com/channel/UC...
+          </code>{" "}
+          — internal channel ID link (works but not human-readable)
+        </li>
+      </ul>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Finding your URL:</strong>{" "}
+        Open your YouTube channel page in a browser, copy the address bar. If
+        you have a custom handle, it will be <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">@YourHandle</code>. If not, consider
+        claiming one in YouTube Studio → Customization → Basic info.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Video URL
+      </h3>
+      <p>
+        A single-video link lands viewers directly on that video. Great for
+        product demos, tutorials referenced on packaging, or highlight reels.
+        YouTube offers two share formats:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtu.be/VIDEO_ID
+          </code>{" "}
+          — short share link (slightly simpler QR pattern)
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtube.com/watch?v=VIDEO_ID
+          </code>{" "}
+          — full URL
+        </li>
+      </ul>
+      <p className="mt-4">
+        To get either: open the video → click Share → copy the link. Both work;
+        the short link produces a marginally simpler QR code, but the
+        difference is small.
+      </p>
+      <p className="mt-2">
+        <strong className="text-[var(--foreground)]">Timestamp links:</strong>{" "}
+        Append <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?t=90s</code> or{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">&amp;t=2m30s</code> to start playback
+        at a specific moment. Useful for conference handouts or printed guides
+        that reference one segment of a longer recording.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        YouTube Shorts URL
+      </h3>
+      <p>
+        Shorts have their own URL format:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://youtube.com/shorts/VIDEO_ID
+        </code>
+        . On mobile, this opens the Shorts player (vertical feed). Use it when
+        the Short is the primary content — quick tips, product teasers, or
+        behind-the-scenes clips on packaging.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Playlist URL
+      </h3>
+      <p>
+        Playlists work well for course modules, album tracks, event session
+        archives, or a &quot;best of&quot; reel. Format:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://youtube.com/playlist?list=PL...
+          </code>
+        </li>
+      </ul>
+      <p className="mt-4">
+        A playlist QR makes sense when a single video would feel incomplete —
+        workshop series, multi-part tutorials, or conference recordings. If the
+        playlist evolves, a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        lets you swap the destination later without reprinting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        The subscribe prompt: ?sub_confirmation=1
+      </h2>
+      <p>
+        You may have seen URLs with{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> appended
+        to the channel link. When a viewer opens this link, YouTube displays a
+        pop-up asking them to confirm a subscription.{" "}
+        <strong className="text-[var(--foreground)]">
+          It does not auto-subscribe anyone.
+        </strong>{" "}
+        Viewers still tap &quot;Subscribe&quot; themselves. The prompt simply
+        surfaces the action immediately instead of leaving the button in the
+        header.
+      </p>
+      <p>
+        Example:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://youtube.com/@YourHandle?sub_confirmation=1
+        </code>
+      </p>
+      <p className="mt-4">
+        Use this when your explicit goal is subscriber growth — merch inserts,
+        giveaway posters, post-event thank-you cards. Avoid it if the code
+        should land on a single video or playlist (the prompt only works on
+        channel pages). Keep expectations realistic: the bump comes from making
+        the ask obvious, not from any automation.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: which to choose
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">static QR code</strong>{" "}
+        encodes the destination URL directly. Once printed, it points there
+        forever — no account required, no tracking. A{" "}
+        <strong className="text-[var(--foreground)]">dynamic QR code</strong>{" "}
+        encodes a short redirect URL that you can update anytime, plus you get
+        scan counts.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When static is fine
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Linking to your stable channel URL that will not change</li>
+        <li>A &quot;How to assemble&quot; video on permanent product packaging</li>
+        <li>One-off event badges where you do not need scan analytics</li>
+        <li>Personal business cards with a channel link you control</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When dynamic is worth it
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Seasonal campaign posters where the featured video changes</li>
+        <li>Trade-show booths where you want per-event scan numbers</li>
+        <li>Product packaging on long-lived retail shelves — the code can be updated remotely if a video is deleted or replaced</li>
+        <li>Merch runs where you may want to redirect to a playlist or different video later</li>
+        <li>You want to A/B test whether a Shorts link or a full video converts better</li>
+      </ul>
+      <p className="mt-4">
+        Read{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          when free QR codes become expensive
+        </Link>{" "}
+        for the full cost comparison.{" "}
+        <Link href="/pricing" className="text-[var(--brand-2)] underline">
+          Free
+        </Link>{" "}
+        includes 1 dynamic code to test the workflow; Pro ($12/month) unlocks
+        unlimited dynamics, full scan history, and CSV export.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating your YouTube QR code
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Open the{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>{" "}
+          and select the URL content type.
+        </li>
+        <li>
+          Paste your YouTube link — channel, video, Short, or playlist. Add{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> if you want
+          the subscribe prompt on a channel link.
+        </li>
+        <li>
+          Decide static vs dynamic. Static is instant, no account. Dynamic
+          requires sign-in but lets you track scans and change the destination.
+        </li>
+        <li>
+          In the Design tab, adjust colors. YouTube&apos;s red works well as an
+          accent, but keep modules dark and the background light for reliable
+          scans. Optional: add a small logo (see{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            error correction and logos
+          </Link>
+          ).
+        </li>
+        <li>
+          Scan-test with your phone camera to confirm the link opens correctly.
+        </li>
+        <li>
+          Download: PNG for digital use, SVG for print. The Studio exports both
+          free and without watermark.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print &amp; scan checklist
+      </h2>
+      <p>
+        QR codes fail silently — they look fine until nobody can open them. Run
+        through this checklist before you commit to print. (Full details in our{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>
+        .)
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size for distance:</strong>{" "}
+          Code width ≈ expected scan distance ÷ 10. A poster viewed from 2 m
+          needs at least 20 cm; a business card held at arm&apos;s length
+          (30 cm) needs at least 2 cm — more if you add a logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light, solid background. Avoid placing codes over photos
+          without a white pad underneath.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
+          Leave at least 4 modules of empty margin around the code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Export vector for large formats:</strong>{" "}
+          SVG scales cleanly; a 300-pixel PNG stretched onto a banner will blur.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Proof on real phones:</strong>{" "}
+          Print one sample at final size, scan with both iPhone and Android
+          camera apps, under realistic lighting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Watch for glare:</strong>{" "}
+          Glossy laminate under bright retail lights can blind the camera.
+          Matte finishes scan more reliably.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Label the code:</strong>{" "}
+          &quot;Scan to watch&quot; or &quot;Subscribe on YouTube&quot; tells
+          people what happens before they raise their phone.
+        </li>
+      </ol>
+      <p className="mt-4">
+        See{" "}
+        <Link
+          href="/guides/qr-code-size-for-print"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR code size for print
+        </Link>{" "}
+        for a full distance → size table.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to place YouTube QR codes
+      </h2>
+      <p>
+        A YouTube link adds value wherever printed materials benefit from video
+        context. Here are the most common placements:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Product packaging
+      </h3>
+      <p>
+        Link to setup tutorials, how-to videos, or an unboxing reel. This
+        reduces support queries and improves customer experience. Place the
+        code where it&apos;s visible after unboxing (inside flap or quick-start
+        card) and where it will not be creased or taped over. Use a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic code
+        </Link>{" "}
+        if the product has a long shelf life and the video might be replaced.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Posters and flyers
+      </h3>
+      <p>
+        Music releases, film trailers, event promos — posters are a natural fit.
+        Size the code generously (remember the 10:1 rule) and place it in a
+        lower corner so phones can reach it without obscuring the headline.
+        Dynamic codes let you swap the featured video between tour legs or
+        release phases.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Merch and apparel
+      </h3>
+      <p>
+        Hangtags, inner labels, or even printed directly on packaging can link
+        fans to exclusive content. Keep codes small but functional — test on
+        the actual fabric or tag stock. A channel link with{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> works well
+        here: buyers already like your brand, so nudging a subscription is
+        reasonable.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Events and conferences
+      </h3>
+      <p>
+        Session slides, badge inserts, signage, and workshop handouts can all
+        link to session recordings or speaker channels. A dynamic code per event
+        lets you track scans by conference. Our{" "}
+        <Link
+          href="/blog/linkedin-qr-code-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          LinkedIn QR guide
+        </Link>{" "}
+        covers badge-sizing tips that apply here too.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Business cards
+      </h3>
+      <p>
+        Creators, agencies, and video-production professionals can replace a
+        plain portfolio link with a channel QR. Follow the{" "}
+        <Link
+          href="/guides/qr-code-for-business-card"
+          className="text-[var(--brand-2)] underline"
+        >
+          business card QR guide
+        </Link>{" "}
+        for sizing (at least 2 cm on a standard 85 × 55 mm card) and contrast.
+        Consider adding a{" "}
+        <Link
+          href="/guides/vcard-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          vCard QR
+        </Link>{" "}
+        on the other side for instant contact save.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Educational materials
+      </h3>
+      <p>
+        Textbooks, syllabi, posters, and lab guides can link to lecture
+        recordings or demonstration videos. Playlists are especially useful for
+        courses with multiple modules.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes to avoid
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Linking to unlisted or private videos:</strong>{" "}
+          Scanners without the link permission see an error. Double-check
+          visibility in YouTube Studio.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Claiming ?sub_confirmation=1 auto-subscribes:</strong>{" "}
+          It does not. Viewers still tap Subscribe. Overpromising annoys them.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Using a video you plan to delete:</strong>{" "}
+          If you will remove the video after a campaign, use a dynamic code so
+          you can redirect to a replacement.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Ignoring mobile-first experience:</strong>{" "}
+          QR scans come from phones. Make sure the video plays well on
+          mobile — vertical crops for Shorts, subtitles if viewers are in
+          public with sound off.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Tiny codes with heavy logos:</strong>{" "}
+          Logos eat into error-correction budget. On a small tag, skip the
+          logo or use a minimal monochrome mark.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No call to action:</strong>{" "}
+          A bare square with no label is mysterious. &quot;Watch the demo&quot;
+          or &quot;Subscribe on YouTube&quot; sets expectations.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Printing static when dynamic would save a reprint:</strong>{" "}
+          If the destination might change and the print run is expensive,
+          dynamic codes are cheaper than reprinting. See{" "}
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            when free codes become expensive
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Skipping the proof scan:</strong>{" "}
+          Always test at final size, on the actual stock, with real phones.
+          What looks fine on screen may fail on glossy paper under store lights.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Quick reference: YouTube URL types
+      </h2>
+      <div className="overflow-x-auto mt-4">
+        <table className="w-full text-sm border border-[var(--border)] rounded-lg">
+          <thead className="bg-[var(--surface)]">
+            <tr>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Type</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">URL Format</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Best For</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--border)]">
+            <tr>
+              <td className="p-3">Channel</td>
+              <td className="p-3 font-mono text-xs">youtube.com/@Handle</td>
+              <td className="p-3">Brand awareness, subscriptions</td>
+            </tr>
+            <tr>
+              <td className="p-3">Channel + subscribe prompt</td>
+              <td className="p-3 font-mono text-xs">youtube.com/@Handle?sub_confirmation=1</td>
+              <td className="p-3">Subscriber-growth campaigns</td>
+            </tr>
+            <tr>
+              <td className="p-3">Video</td>
+              <td className="p-3 font-mono text-xs">youtu.be/VIDEO_ID</td>
+              <td className="p-3">Single tutorial, demo, announcement</td>
+            </tr>
+            <tr>
+              <td className="p-3">Video + timestamp</td>
+              <td className="p-3 font-mono text-xs">youtu.be/VIDEO_ID?t=90s</td>
+              <td className="p-3">Highlighting one segment</td>
+            </tr>
+            <tr>
+              <td className="p-3">Short</td>
+              <td className="p-3 font-mono text-xs">youtube.com/shorts/VIDEO_ID</td>
+              <td className="p-3">Vertical teasers, quick tips</td>
+            </tr>
+            <tr>
+              <td className="p-3">Playlist</td>
+              <td className="p-3 font-mono text-xs">youtube.com/playlist?list=PL...</td>
+              <td className="p-3">Courses, albums, archives</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Wrapping up
+      </h2>
+      <p>
+        A YouTube QR code turns packaging, posters, badges, and merch into video
+        gateways. Pick the right link type — channel for subscriptions, video
+        for single destinations, playlist for series. Add{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> if you want
+        the subscribe prompt, but set honest expectations. Decide static vs
+        dynamic based on how likely the destination is to change and whether you
+        need scan analytics.
+      </p>
+      <p>
+        Run through the print checklist before approving any run. Size for
+        distance, proof on real phones, and label every code so scanners know
+        what to expect.
+      </p>
+      <p>
+        For related reading, see our{" "}
+        <Link
+          href="/guides/qr-code-for-youtube"
+          className="text-[var(--brand-2)] underline"
+        >
+          YouTube QR guide
+        </Link>{" "}
+        (quick reference),{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          small-business QR playbook
+        </Link>
+        , and{" "}
+        <Link
+          href="/blog/linkedin-qr-code-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          LinkedIn QR code guide
+        </Link>{" "}
+        (similar structure, networking focus).
+      </p>
+      <p>
+        Create your YouTube QR in the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>{" "}
+        — static codes are free with no watermark, dynamic codes require a free
+        account.
+      </p>
+      <p>
+        Questions?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
+
 export function LinkedInQrCodeGuidePost() {
   return (
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">

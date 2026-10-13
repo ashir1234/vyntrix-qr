@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: now,
+      lastModified: new Date("2026-10-13"),
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -82,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // blogPosts includes: youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${siteConfig.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
