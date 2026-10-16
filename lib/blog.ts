@@ -130,6 +130,23 @@ export const blogPosts: BlogPost[] = [
       "qr code for youtube",
     ],
   },
+  {
+    slug: "qr-code-with-logo-guide",
+    title: "How to Create a QR Code with a Logo (Step-by-Step Guide)",
+    description:
+      "A practical walkthrough for creating a QR code with a logo inside — preparing your logo file, uploading it, choosing error correction, testing scans, and exporting for print or web using Vyntrix QR.",
+    date: "2026-10-16",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "qr code with logo",
+      "qr codes with logo",
+      "how to create a qr code with a logo",
+      "logo in qr code",
+      "qr code with logo inside",
+      "branded qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
