@@ -1170,6 +1170,583 @@ export function YouTubeQrCodeGuidePost() {
   );
 }
 
+export function QrCodeWithLogoGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A plain black-and-white QR code does the job, but a{" "}
+        <strong className="text-[var(--foreground)]">QR code with a logo</strong>{" "}
+        does the job <em>and</em> looks like it belongs on your brand. Whether
+        you want your company mark, app icon, or a custom symbol in the center,
+        adding a logo to a QR code is straightforward — if you understand how
+        QR codes handle damage and follow a few practical steps.
+      </p>
+      <p>
+        This guide walks through the entire process of{" "}
+        <strong className="text-[var(--foreground)]">
+          creating a QR code with a logo inside
+        </strong>{" "}
+        using{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        : preparing your logo file, uploading it, choosing error correction,
+        adjusting colors, keeping the quiet zone intact, testing scans on
+        several phones, exporting for print vs web, and deciding when to make
+        the code dynamic so the destination can change after printing.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Why QR codes with logos work
+      </h2>
+      <p>
+        QR codes include built-in redundancy called{" "}
+        <strong className="text-[var(--foreground)]">error correction</strong>.
+        Scanners can still read the code even when part of it is missing,
+        damaged, or — in our case — covered by a logo. The QR standard offers
+        four levels of error correction (L, M, Q, H), each letting the code
+        tolerate progressively more &quot;damage.&quot;
+      </p>
+      <p>
+        When you drop a logo in the center of a QR code, you are deliberately
+        covering modules. Higher error correction compensates by encoding more
+        redundant data. That is why generators like {siteConfig.name} raise the
+        error-correction level automatically when you upload a logo.
+      </p>
+      <p>
+        For a deeper dive into how error correction works and why branded codes
+        sometimes fail, read{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          Error Correction, Logos, and Why Pretty QR Codes Fail
+        </Link>
+        . This post focuses on the practical &quot;how&quot; — the step-by-step creation
+        process.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Prepare your logo file
+      </h2>
+      <p>
+        Not every logo works well inside a QR code. Follow these guidelines to
+        set yourself up for success:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Use a square or near-square format.
+          </strong>{" "}
+          QR codes are square; a wide horizontal logo will either be cropped or
+          waste space with empty padding.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Prefer transparent backgrounds.
+          </strong>{" "}
+          A transparent PNG or SVG lets the QR background show through,
+          creating a cleaner integrated look than a white box sitting on top.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Keep it simple.
+          </strong>{" "}
+          Flat marks, icons, and simple wordmarks scan better than detailed
+          photographs or intricate illustrations. Fine details disappear at
+          small sizes.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Export large enough.
+          </strong>{" "}
+          Upload a logo that is sharp at around 200–400 px on a side. The
+          Studio scales it down; starting with a low-resolution file makes it
+          blurry.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid busy colors.
+          </strong>{" "}
+          A monochrome or two-color logo with strong contrast scans more
+          reliably than a gradient-heavy design that blends into the modules.
+        </li>
+      </ul>
+      <p>
+        In short: flat, high-contrast, square-ish marks work best. If your logo
+        is complex, consider using a simplified icon version for the QR code.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Open the Studio and enter your content
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Go to the{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Choose a content type — URL, WiFi, vCard, text, or another option.
+          Most branded codes use URL since they point to websites, landing
+          pages, or{" "}
+          <Link
+            href="/guides/dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            dynamic short links
+          </Link>
+          .
+        </li>
+        <li>
+          Fill in the form: paste your URL, enter WiFi credentials, or provide
+          whatever data the chosen type requires.
+        </li>
+      </ol>
+      <p>
+        At this point you have a working QR code in the preview pane — just
+        without styling or a logo yet.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 3: Decide static vs dynamic
+      </h2>
+      <p>
+        Before you fall in love with your branded design, make a strategic
+        choice:{" "}
+        <strong className="text-[var(--foreground)]">static</strong> or{" "}
+        <strong className="text-[var(--foreground)]">dynamic</strong>?
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Static:</strong> The
+          destination URL is encoded directly in the QR code. Once printed, it
+          cannot be changed. No account required; the code is generated entirely
+          in your browser.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dynamic:</strong> The QR
+          code encodes a short redirect link. You can update the destination
+          anytime without reprinting, and you get scan analytics. Requires a
+          free account.
+        </li>
+      </ul>
+      <p>
+        If your print run is expensive, the URL might change, or you want to
+        track scans, toggle the dynamic option before styling. Read{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>{" "}
+        for a full cost comparison.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 4: Upload your logo
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Switch to the <strong className="text-[var(--foreground)]">Design</strong>{" "}
+          tab in the Studio.
+        </li>
+        <li>
+          Scroll down to the <strong className="text-[var(--foreground)]">Logo</strong>{" "}
+          section and click <strong className="text-[var(--foreground)]">Upload logo</strong>.
+        </li>
+        <li>
+          Select your prepared image file (PNG, SVG, JPEG, or other common
+          formats are accepted).
+        </li>
+        <li>
+          The Studio places the logo in the center and renders a live preview.
+          You can swap or remove the logo anytime.
+        </li>
+      </ol>
+      <p>
+        When you upload a logo, the Studio automatically raises the{" "}
+        <strong className="text-[var(--foreground)]">error correction</strong>{" "}
+        level to <strong className="text-[var(--foreground)]">H</strong> (the
+        highest) if it was previously set to L or M. This protects scan
+        reliability.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 5: Choose error correction
+      </h2>
+      <p>
+        The error-correction selector offers four levels: L, M, Q, and H. Higher
+        levels let the code survive more damage (including your logo) but create
+        denser patterns with more modules.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">H (High):</strong>{" "}
+          Recommended when using a logo. Tolerates up to ~30% damage.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Q (Quartile):</strong>{" "}
+          A middle ground for modest logos or when you need a slightly simpler
+          pattern.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">M / L:</strong>{" "}
+          Best for plain codes without logos. Not recommended when covering
+          modules with branding.
+        </li>
+      </ul>
+      <p>
+        The hint under the selector says &quot;Higher = more logo-friendly.&quot; Stick
+        with H or Q when a logo is present.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 6: Adjust logo size
+      </h2>
+      <p>
+        Once a logo is uploaded, a{" "}
+        <strong className="text-[var(--foreground)]">Logo size</strong> slider
+        appears (ranging from 10% to 60% of the QR area). Resist the temptation
+        to max it out:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">15–30%</strong> is the
+          safe zone for most logos and high error correction.
+        </li>
+        <li>
+          Larger logos (40–60%) look dramatic but eat into the error-correction
+          budget. They can work on large prints but may fail on small business
+          cards.
+        </li>
+        <li>
+          Test-scan after every significant size change. The live preview looks
+          fine, but a real phone camera is the ultimate judge.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 7: Customize colors and dot styles
+      </h2>
+      <p>
+        A logo is just one part of brand identity. The Studio also lets you
+        adjust:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Foreground color:</strong>{" "}
+          The color of the QR modules (the &quot;dots&quot;).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Background color:</strong>{" "}
+          Usually white or a light shade.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Gradient:</strong>{" "}
+          Optional linear or radial gradient across the modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dot style:</strong>{" "}
+          Choose from rounded, dots, classy, square, heart, diamond, star, and
+          many more.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Corner styles:</strong>{" "}
+          Customize the three finder squares in the corners.
+        </li>
+      </ul>
+      <p>
+        <strong className="text-[var(--foreground)]">Contrast matters most.</strong>{" "}
+        Keep modules dark relative to the background. Light-on-light (yellow on
+        cream) or dark-on-dark (navy on black) combinations confuse scanners.
+        Brand colors are fine as long as the contrast ratio stays high.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 8: Protect the quiet zone
+      </h2>
+      <p>
+        The <strong className="text-[var(--foreground)]">quiet zone</strong> is
+        the empty margin around the entire QR code. Scanners need this blank
+        space to distinguish the code from surrounding artwork. The Studio has
+        a <strong className="text-[var(--foreground)]">Quiet-zone margin</strong>{" "}
+        slider (0–40 px); keep at least 8–12 px for reliability.
+      </p>
+      <p>
+        When placing the final file in your design software, do not crop into
+        that margin or butt text directly against the edge. Four modules of
+        clear space on every side is the industry rule of thumb.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 9: Test on multiple phones
+      </h2>
+      <p>
+        The live 2D/3D preview in the Studio is convenient, but it is not a
+        substitute for real scanning. Before you finalize:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Scan with the native camera app on an <strong className="text-[var(--foreground)]">iPhone</strong>.
+        </li>
+        <li>
+          Scan with the native camera app on an <strong className="text-[var(--foreground)]">Android</strong> phone.
+        </li>
+        <li>
+          Try an older phone if you have one — older cameras and lower-resolution
+          screens are less forgiving.
+        </li>
+        <li>
+          If the code will be printed, print a proof at final size and scan it
+          under realistic lighting.
+        </li>
+      </ol>
+      <p>
+        Test every time you change the logo size, color contrast, or target URL
+        length.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 10: Export for print or web
+      </h2>
+      <p>
+        The Studio offers two download formats:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">PNG:</strong>{" "}
+          A raster image suitable for web, social media, email signatures, and
+          small print. Make sure the pixel dimensions are large enough for your
+          use case (aim for 300 DPI at final print size).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">SVG:</strong>{" "}
+          A vector file that scales infinitely without blurring. Ideal for
+          large-format print — posters, banners, packaging. Also perfect for
+          handing to a designer who will place the code in Illustrator or
+          InDesign.
+        </li>
+      </ul>
+      <p>
+        Both formats are{" "}
+        <strong className="text-[var(--foreground)]">free and without watermark</strong>{" "}
+        for static codes. Dynamic codes also export without watermark once you
+        are signed in.
+      </p>
+      <p>
+        If you added a decorative frame in the Studio, the downloaded file
+        includes it. For print sizing guidance, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>{" "}
+        and the{" "}
+        <Link
+          href="/guides/qr-code-size-for-print"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR code size for print
+        </Link>{" "}
+        reference.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        When to use a dynamic code
+      </h2>
+      <p>
+        Adding a logo does not change whether you should choose static or
+        dynamic — but it is worth repeating the decision framework here because
+        branded codes often appear on expensive print runs:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Dynamic is worth it</strong>{" "}
+          when the destination URL might change, when you need scan analytics,
+          or when reprinting would cost more than a Pro plan.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Static is fine</strong>{" "}
+          for permanent links (your homepage, a stable YouTube channel, a WiFi
+          password that never changes) and one-off events.
+        </li>
+      </ul>
+      <p>
+        Dynamic codes encode a short redirect, so the QR pattern itself is
+        simpler — fewer modules to cover with your logo. That can be a bonus
+        when you want a larger brand mark.
+      </p>
+      <p>
+        Read more in{" "}
+        <Link
+          href="/blog/finish-the-qr-workflow"
+          className="text-[var(--brand-2)] underline"
+        >
+          Building a QR Workflow People Actually Finish
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print checklist for branded codes
+      </h2>
+      <p>
+        Before you approve a print run, verify:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size for distance:</strong>{" "}
+          Code width ≈ scanning distance ÷ 10. Add extra if you have a large
+          logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong>{" "}
+          Dark modules on a light, solid background.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
+          At least four modules of clear margin on every side.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No cover on finder squares:</strong>{" "}
+          The three large squares in the corners must remain visible.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Vector for large formats:</strong>{" "}
+          Use SVG for banners and packaging; PNG is fine for small digital use.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Proof scan:</strong>{" "}
+          Print one sample at final size and test with real phones under
+          realistic lighting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Watch for glare:</strong>{" "}
+          Glossy laminate under bright lights can blind the camera. Matte
+          finishes scan more reliably.
+        </li>
+      </ol>
+      <p>
+        A full pre-press walkthrough is in the{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist post
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ: QR codes with logos
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does a logo stop a QR code from scanning?
+      </h3>
+      <p>
+        Not if you use high error correction and keep the logo at a reasonable
+        size. {siteConfig.name} automatically raises error correction when you
+        upload a logo, so the code stays scannable.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What size should the logo be?
+      </h3>
+      <p>
+        Aim for 15–30% of the QR area for reliable scanning. Larger logos (up
+        to 60% in the Studio) work on big prints with high error correction,
+        but test thoroughly.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I put the logo in a corner?
+      </h3>
+      <p>
+        No. The three finder squares in the corners are critical for scanners
+        to orient the code. Never cover them. Center logos are the safe
+        default.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I add a logo to a free QR code?
+      </h3>
+      <p>
+        Yes. On {siteConfig.name}, static QR codes are free with no watermark,
+        including logo support, color customization, and SVG/PNG export.
+        Dynamic codes also support logos and require a free account.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What file format should my logo be?
+      </h3>
+      <p>
+        A transparent PNG or SVG works best. Avoid low-resolution JPEGs with
+        white boxes around the mark.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Do brand colors hurt scanning?
+      </h3>
+      <p>
+        They can if contrast is low. Yellow on white, light gray on cream, or
+        any light-on-light combination confuses cameras. Keep modules dark
+        relative to the background and test on real phones.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I print a logo QR as static or dynamic?
+      </h3>
+      <p>
+        If the destination might change or the print run is expensive, use a
+        dynamic code so you can update without reprinting. For permanent links
+        and one-off events, static is fine.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Wrapping up
+      </h2>
+      <p>
+        Creating a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code with a logo inside
+        </strong>{" "}
+        is straightforward once you understand the role of error correction.
+        Prepare a simple, high-contrast logo; upload it in the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>
+        ; keep the size modest; choose H or Q error correction; protect the
+        quiet zone; test on multiple phones; and export SVG for print, PNG for
+        digital.
+      </p>
+      <p>
+        If the destination might change or you want scan analytics, make it
+        dynamic before you finalize the design. For a deeper understanding of
+        why branded codes sometimes fail, read{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          Error Correction, Logos, and Why Pretty QR Codes Fail
+        </Link>
+        .
+      </p>
+      <p>
+        Questions?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
+
 export function LinkedInQrCodeGuidePost() {
   return (
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
