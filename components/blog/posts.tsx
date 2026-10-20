@@ -1747,6 +1747,663 @@ export function QrCodeWithLogoGuidePost() {
   );
 }
 
+export function QrCodeLogoDesignPost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Adding a logo to a QR code is straightforward — keeping it scannable is
+        where most designs fail. If you already know{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          why logo QR codes fail
+        </Link>{" "}
+        and want a{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          step-by-step walkthrough
+        </Link>{" "}
+        for creating one in {siteConfig.name}, those guides have you covered.
+        This post is the design reference: concrete rules for logo size,
+        placement, contrast, styling, file formats, and a pre-launch testing
+        protocol that catches failures before they cost you a print run.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Logo size and error correction: the core tradeoff
+      </h2>
+      <p>
+        Every QR code includes redundant data so scanners can still decode it
+        when part of the pattern is damaged, dirty, or — in your case — covered
+        by a logo. The four error correction levels (L, M, Q, H) determine how
+        much damage the code can tolerate:
+      </p>
+      <div className="overflow-x-auto mt-4">
+        <table className="w-full text-sm border border-[var(--border)] rounded-lg">
+          <thead className="bg-[var(--surface)]">
+            <tr>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Level</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Recovery capacity</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Safe logo coverage</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Pattern density</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--border)]">
+            <tr>
+              <td className="p-3 font-semibold text-[var(--foreground)]">L</td>
+              <td className="p-3">~7%</td>
+              <td className="p-3">Not recommended</td>
+              <td className="p-3">Lowest (simplest pattern)</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-semibold text-[var(--foreground)]">M</td>
+              <td className="p-3">~15%</td>
+              <td className="p-3">≤10% with caution</td>
+              <td className="p-3">Low–medium</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-semibold text-[var(--foreground)]">Q</td>
+              <td className="p-3">~25%</td>
+              <td className="p-3">15–20%</td>
+              <td className="p-3">Medium–high</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-semibold text-[var(--foreground)]">H</td>
+              <td className="p-3">~30%</td>
+              <td className="p-3">20–30%</td>
+              <td className="p-3">Highest (most modules)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">The rule:</strong> Your
+        logo should cover less than the recovery capacity, with headroom for
+        print imperfections. {siteConfig.name} Studio offers a logo size slider
+        from 10% to 60% and auto-raises error correction to H when you upload a
+        logo. For most branded codes, stay between{" "}
+        <strong className="text-[var(--foreground)]">15–30%</strong> with H
+        correction. Pushing to 40–60% can work on large prints with perfect
+        contrast, but test aggressively.
+      </p>
+      <p>
+        Higher error correction creates denser patterns with more modules. That
+        means the code is harder to read at very small sizes (e.g., 1.5 cm
+        business cards). If you need a tiny code, either shrink the logo or drop
+        it entirely. A plain code at 2 cm beats a branded code that won&apos;t scan.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Placement: center only, respect the anatomy
+      </h2>
+      <p>
+        QR codes have non-negotiable structural elements that scanners rely on
+        to orient and read the pattern. Never obscure:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Finder patterns</strong>{" "}
+          — the three large squares in the corners. These tell the camera where
+          the code starts and how it&apos;s rotated.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Timing patterns</strong>{" "}
+          — the alternating dark/light lines between finder patterns. They help
+          scanners count modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Alignment patterns</strong>{" "}
+          — smaller squares in larger QR codes that correct for perspective
+          distortion.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone</strong> — the
+          blank margin around the entire code. Scanners need this empty space to
+          distinguish the code from surrounding artwork.
+        </li>
+      </ul>
+      <p>
+        The safe zone for a logo is the{" "}
+        <strong className="text-[var(--foreground)]">center</strong> of the data
+        area — the region where error correction can recover the covered
+        modules. {siteConfig.name} Studio automatically places uploaded logos in
+        the center. Never drag a logo toward a corner or edge; you&apos;ll hit
+        structural patterns.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">Offset logos?</strong>{" "}
+        Sometimes designers want the logo slightly off-center for aesthetic
+        reasons. This is risky: you&apos;re covering modules that might be closer to
+        timing or alignment patterns, and uneven coverage can exceed error
+        correction in one direction while leaving slack elsewhere. Stick to
+        center unless you have extensive testing budget.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Logo padding and background plates
+      </h2>
+      <p>
+        A logo dropped directly onto the modules often looks cluttered and scans
+        poorly — the logo&apos;s edges blend into the pattern. Use one of these
+        techniques:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Transparent logo with clear background:</strong>{" "}
+          The simplest approach if your logo is a simple mark with strong
+          outlines. Works best when the logo color contrasts with both the
+          foreground modules and the QR background.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">White (or light) background plate:</strong>{" "}
+          Add a small square or circle of the QR&apos;s background color behind the
+          logo. This creates visual separation and ensures the logo sits on a
+          clean field. The plate&apos;s area counts toward your coverage budget.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Subtle padding in the logo file:</strong>{" "}
+          Export your logo with a few pixels of built-in margin. This avoids the
+          logo touching modules directly, even without a visible plate.
+        </li>
+      </ul>
+      <p>
+        Avoid heavy drop shadows, outer glows, or fuzzy edges on the logo. These
+        bleed into modules and reduce scanner confidence.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Mark-only logos vs full wordmarks
+      </h2>
+      <p>
+        Not all logos work equally well inside a QR code:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Icon / symbol / mark:</strong>{" "}
+          Compact, roughly square, high contrast. Ideal. Examples: app icons,
+          monograms, simplified brand marks.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Horizontal wordmark:</strong>{" "}
+          Wide and short. Forces you to either use a tiny version (illegible) or
+          cover excessive horizontal area (risky). Consider a stacked or
+          abbreviated version.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Full lockup (icon + wordmark):</strong>{" "}
+          Usually too complex and too large. Extract the icon for the QR code;
+          place the full logo elsewhere on the material.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Photography or detailed illustrations:</strong>{" "}
+          Fine details disappear at small sizes and gradients hurt contrast.
+          Avoid.
+        </li>
+      </ul>
+      <p>
+        Many brands have a &quot;mark-only&quot; version for exactly this use case. If
+        yours doesn&apos;t, ask your designer for one — or use the app icon.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Color and contrast rules
+      </h2>
+      <p>
+        Scanners detect QR codes by finding the contrast boundary between dark
+        modules and a light background. Mess with that contrast and scans fail —
+        even if the pattern is intact.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        The golden rule: dark on light
+      </h3>
+      <p>
+        Keep modules darker than the background. Black on white is the safest.
+        Brand colors work if you maintain a strong contrast ratio — navy on
+        cream, dark green on white, etc. Light modules on dark backgrounds
+        (&quot;inverted&quot; codes) are technically valid but scan less reliably in
+        variable lighting. Avoid them unless you&apos;ve tested thoroughly.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Gradients: use with caution
+      </h3>
+      <p>
+        {siteConfig.name} Studio offers linear and radial gradients across
+        modules. A subtle dark-to-slightly-less-dark gradient can look elegant.
+        A gradient that fades to a light color in any region kills contrast in
+        that zone. If you use a gradient, ensure the lightest point is still
+        clearly darker than the background. Test-scan after every adjustment.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Logo color vs code color
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          If your logo is dark, a white/light background plate helps it stand
+          out from dark modules.
+        </li>
+        <li>
+          If your logo is light or colorful, ensure it doesn&apos;t blend into the QR
+          background. A thin dark border or background plate may help.
+        </li>
+        <li>
+          Match the QR&apos;s foreground color to a brand accent if you want
+          cohesion, but keep the logo visually distinct.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Avoid these contrast killers
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Yellow or light-gray modules on white</li>
+        <li>Pastel modules on pastel backgrounds</li>
+        <li>Multicolor gradients that create low-contrast zones</li>
+        <li>Printing on busy photographic backgrounds without a solid pad</li>
+        <li>Metallic or holographic inks without a matte underlay</li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Module shape and eye styling limits
+      </h2>
+      <p>
+        {siteConfig.name} Studio offers many dot styles (rounded, dots, classy,
+        square, heart, diamond, star, and more) plus corner frame and corner dot
+        options. These are safe to use — the pattern geometry stays correct.
+        However:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Overly decorative styles reduce effective contrast.</strong>{" "}
+          A &quot;heart&quot; or &quot;star&quot; dot style has less filled area per module than a
+          square, making the code lighter overall. Compensate with darker colors
+          or larger sizes.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Keep finder-pattern corners recognizable.</strong>{" "}
+          The three large corner squares must remain clearly square-ish and
+          contrasting. Extreme corner styles (like very rounded outer frames
+          with dot centers) can confuse older scanners.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Combine decorative styles with simpler logos.</strong>{" "}
+          If your logo is detailed, keep modules simple. If modules are fancy,
+          keep the logo clean. Too much visual complexity everywhere overwhelms
+          the eye and the scanner.
+        </li>
+      </ul>
+      <p>
+        When in doubt, start with &quot;rounded&quot; or &quot;square&quot; dots and standard corner
+        styles. Add flair only after confirming the code scans reliably.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        File format for the logo
+      </h2>
+      <p>
+        What you upload into the QR generator matters:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Transparent PNG:</strong>{" "}
+          The standard choice. Use a file at least 200–400 px on a side so
+          scaling down stays sharp. Transparent background lets the QR&apos;s own
+          background show through — or lets you add a background plate cleanly.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">SVG:</strong> Vector
+          format, scales perfectly. If the generator supports it (many do),
+          SVG is ideal for crisp results at any export size.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">JPEG:</strong> Avoid if
+          possible. No transparency support, and compression artifacts can blur
+          edges. If you must use JPEG, ensure the background color exactly
+          matches the QR background.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Low-resolution files:</strong>{" "}
+          A 50 px logo upscaled to 400 px will be blurry. Start with a
+          high-resolution source.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Export format: SVG for print, PNG for web
+      </h2>
+      <p>
+        Once your logo QR code is designed, export it in the right format for
+        your use case:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">SVG (vector):</strong>{" "}
+          Scales infinitely without blurring. Ideal for print — business cards,
+          posters, packaging, banners. Hand this to your designer or printer.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG (raster):</strong>{" "}
+          Fixed resolution. Fine for web, email signatures, social media, and
+          small digital uses. Export at a resolution large enough for your
+          intended display size. For print, ensure the PNG is at least 300 DPI
+          at final dimensions.
+        </li>
+      </ul>
+      <p>
+        {siteConfig.name} exports both formats free and without watermark. Use
+        SVG whenever print quality matters. See{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print QR codes that scan
+        </Link>{" "}
+        for a full pre-press checklist.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Testing protocol: phones, distances, lighting
+      </h2>
+      <p>
+        The preview on your screen is not proof the code works. Before you
+        commit to print or wide distribution:
+      </p>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Scan with an iPhone</strong>{" "}
+          using the native Camera app. iOS is generally forgiving but not
+          infallible.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan with an Android phone</strong>{" "}
+          using the native Camera app. Android cameras vary widely; test on at
+          least one mid-range device if possible.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan an older phone</strong>{" "}
+          if your audience might use one. Older cameras and lower-resolution
+          screens are less forgiving.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Print a proof at final size</strong>{" "}
+          on the actual stock (paper, vinyl, fabric) before approving a run.
+          Screen colors and print colors differ; what looks fine digitally may
+          lose contrast on paper.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan at expected distance</strong>{" "}
+          — arm&apos;s length for a business card, 2 meters for a poster, 5+ meters
+          for a banner. The ~10:1 rule (code width ≈ scan distance ÷ 10) is a
+          starting point; logos and dense URLs need extra margin. See{" "}
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR code size for print
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test under realistic lighting</strong>{" "}
+          — dim restaurant, bright retail, outdoor shade. Glossy laminate can
+          glare; matte finishes scan more reliably.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Confirm the destination</strong>{" "}
+          opens correctly — especially for{" "}
+          <Link
+            href="/guides/dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            dynamic codes
+          </Link>{" "}
+          where a redirect is involved.
+        </li>
+      </ol>
+      <p>
+        Test after every significant change: logo size, color, dot style, or URL
+        length. A code that scanned at 20% logo coverage might fail at 35%.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Quick-reference table: logo QR design rules
+      </h2>
+      <div className="overflow-x-auto mt-4">
+        <table className="w-full text-sm border border-[var(--border)] rounded-lg">
+          <thead className="bg-[var(--surface)]">
+            <tr>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Rule</th>
+              <th className="text-left p-3 font-semibold text-[var(--foreground)]">Guideline</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[var(--border)]">
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Error correction</td>
+              <td className="p-3">Use H (or at least Q) when a logo is present</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Logo size</td>
+              <td className="p-3">15–30% of the code area; test if exceeding 30%</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Placement</td>
+              <td className="p-3">Center only — never over finder patterns, timing, or quiet zone</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Logo shape</td>
+              <td className="p-3">Square or near-square; icon/mark preferred over wordmarks</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Logo file</td>
+              <td className="p-3">Transparent PNG or SVG, 200–400+ px, no compression artifacts</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Padding</td>
+              <td className="p-3">Use a background plate or built-in margin to separate logo from modules</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Contrast</td>
+              <td className="p-3">Dark modules on light background; avoid inverted or low-contrast combos</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Gradients</td>
+              <td className="p-3">Keep lightest point clearly darker than background</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Dot styles</td>
+              <td className="p-3">Safe to use, but compensate for reduced fill with darker colors or larger size</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Export for print</td>
+              <td className="p-3">SVG (vector); PNG at 300+ DPI for final size if raster needed</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Export for web</td>
+              <td className="p-3">PNG at display resolution; SVG also works</td>
+            </tr>
+            <tr>
+              <td className="p-3 font-medium text-[var(--foreground)]">Minimum size (with logo)</td>
+              <td className="p-3">≥2.5 cm on business cards; larger for posters and distance scanning</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Pre-launch checklist
+      </h2>
+      <p>
+        Run through this list before approving any print run or publishing a
+        logo QR code online:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Error correction set to H or Q</strong>{" "}
+          (auto-set in {siteConfig.name} when you upload a logo).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Logo size under 30%</strong>{" "}
+          (or tested extensively if larger).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Logo centered</strong>{" "}
+          — not touching finder patterns, timing, or quiet zone.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dark modules on light background</strong>{" "}
+          with strong contrast.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Gradient (if any) stays dark throughout.</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone preserved</strong>{" "}
+          — at least 4 modules of blank margin on all sides.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Code sized for distance</strong>{" "}
+          — 10:1 rule plus margin for logo and URL length.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scanned on iPhone camera app.</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scanned on Android camera app.</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Printed proof tested at final size, on final stock, under real lighting.</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Destination URL correct</strong>{" "}
+          (especially for dynamic redirects).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Exported as SVG for print</strong>{" "}
+          (or PNG at ≥300 DPI).
+        </li>
+      </ol>
+      <p>
+        If any step fails, fix it before printing. A beautiful code that doesn&apos;t
+        scan is worse than a plain one that works.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        When to skip the logo
+      </h2>
+      <p>
+        Sometimes a plain QR code is the better choice:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Very small codes</strong>{" "}
+          (under 2 cm) — logos can&apos;t be seen clearly and just hurt scan
+          reliability.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dense data</strong>{" "}
+          (long URLs, vCards with lots of fields) — already high module count;
+          adding a logo makes it harder to scan.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Low-quality print</strong>{" "}
+          (cheap stickers, low-res thermal labels) — error budget is needed to
+          survive the print process, not a logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Internal / utility codes</strong>{" "}
+          — warehouse labels, internal URLs, where branding adds no value.
+        </li>
+      </ul>
+      <p>
+        For these cases, skip the logo and use color or a decorative frame to
+        add brand context without covering modules.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related resources
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo (Step-by-Step)
+          </Link>{" "}
+          — the full walkthrough for creating one in {siteConfig.name} Studio.
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>{" "}
+          — the deeper technical explanation.
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>{" "}
+          — the pre-press checklist for any QR code.
+        </li>
+        <li>
+          <Link
+            href="/guides/qr-code-with-logo"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code with Logo Guide
+          </Link>{" "}
+          — quick reference.
+        </li>
+        <li>
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code Size for Print
+          </Link>{" "}
+          — the complete sizing reference.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Wrapping up
+      </h2>
+      <p>
+        A well-designed logo QR code balances brand visibility with scan
+        reliability. Use H error correction, keep the logo under 30% of the
+        code area, center it, maintain dark-on-light contrast, and test on real
+        phones before you print. When in doubt, simplify — a plain code that
+        scans is better than a branded code that fails.
+      </p>
+      <p>
+        Design your logo QR in the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        — static codes are free with no watermark, and dynamic codes let you
+        track scans and update the destination after printing.
+      </p>
+      <p>
+        Questions?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
+
 export function LinkedInQrCodeGuidePost() {
   return (
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">

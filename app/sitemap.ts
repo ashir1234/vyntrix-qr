@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-10-16"),
+      lastModified: new Date("2026-10-20"),
       changeFrequency: "weekly",
       priority: 0.85,
     },

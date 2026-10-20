@@ -9,6 +9,7 @@ import {
   FinishTheQrWorkflowPost,
   LinkedInQrCodeGuidePost,
   PrintQrChecklistPost,
+  QrCodeLogoDesignPost,
   QrCodeWithLogoGuidePost,
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
@@ -35,6 +36,7 @@ const BODY: Record<string, () => ReactNode> = {
   "linkedin-qr-code-guide": () => <LinkedInQrCodeGuidePost />,
   "youtube-qr-code-guide": () => <YouTubeQrCodeGuidePost />,
   "qr-code-with-logo-guide": () => <QrCodeWithLogoGuidePost />,
+  "qr-code-logo-design-best-practices": () => <QrCodeLogoDesignPost />,
 };
 
 export function generateStaticParams() {
