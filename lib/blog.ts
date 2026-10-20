@@ -147,6 +147,24 @@ export const blogPosts: BlogPost[] = [
       "branded qr code",
     ],
   },
+  {
+    slug: "qr-code-logo-design-best-practices",
+    title: "QR Code Logo Design: Size, Placement, Contrast & Error Correction Best Practices",
+    description:
+      "Concrete design rules for putting a logo in a QR code — logo size vs error correction, center placement, padding, color contrast, module styling limits, file formats, and a pre-launch testing checklist.",
+    date: "2026-10-20",
+    readingMinutes: 10,
+    topic: "Design",
+    keywords: [
+      "qr code logo design",
+      "logo in qr code",
+      "qr code with logo inside",
+      "qr codes with logo",
+      "qr code logo placement",
+      "qr code logo size",
+      "branded qr code design",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
