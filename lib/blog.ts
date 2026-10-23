@@ -165,6 +165,23 @@ export const blogPosts: BlogPost[] = [
       "branded qr code design",
     ],
   },
+  {
+    slug: "qr-code-met-logo-maken",
+    title: "QR code met logo maken: stap voor stap (gratis)",
+    description:
+      "Leer hoe je gratis een QR code met logo maakt in Vyntrix QR Studio. Praktische handleiding voor Nederlandse en Belgische bedrijven: menukaarten, visitekaartjes, verpakkingen en meer.",
+    date: "2026-10-23",
+    readingMinutes: 7,
+    topic: "Handleiding",
+    keywords: [
+      "qr code met logo",
+      "qr code met logo maken",
+      "qr met logo",
+      "qr code maken met logo",
+      "gratis qr code generator",
+      "qr code generator met logo",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
