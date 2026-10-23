@@ -2844,3 +2844,307 @@ export function LinkedInQrCodeGuidePost() {
     </article>
   );
 }
+
+export function QrCodeMetLogoMakenPost() {
+  return (
+    <article lang="nl" className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Een QR code met logo oogt professioneler en valt beter op bij klanten.
+        In deze handleiding leer je hoe je{" "}
+        <strong className="text-[var(--foreground)]">
+          gratis een QR code met je eigen logo maakt
+        </strong>{" "}
+        in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . Je hebt geen technische kennis nodig — alleen je logo en twee minuten tijd.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Waarom een QR code met logo?
+      </h2>
+      <p>
+        Een standaard zwart-witte QR code werkt prima, maar een code met je
+        bedrijfslogo wekt vertrouwen en versterkt je merkherkenning. Klanten
+        herkennen meteen dat de code van jou komt — handig voor:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Menukaarten in restaurants en cafés</li>
+        <li>Visitekaartjes met LinkedIn- of websitelink</li>
+        <li>Verpakkingen en productlabels</li>
+        <li>Posters en flyers voor evenementen</li>
+        <li>WiFi-toegang voor gasten</li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 1: Open de Studio en kies je inhoud
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Ga naar de{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Kies een inhoudstype: URL, WiFi, vCard, tekst, e-mail of een andere optie.
+          De meeste bedrijven kiezen URL (voor website of landingspagina).
+        </li>
+        <li>
+          Vul het formulier in — plak je URL, voer WiFi-gegevens in, of vul de vereiste data in.
+        </li>
+      </ol>
+      <p>
+        Je ziet nu al een werkende QR code in de preview — maar nog zonder styling of logo.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 2: Upload je logo
+      </h2>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Klik op het tabblad{" "}
+          <strong className="text-[var(--foreground)]">Design</strong>.
+        </li>
+        <li>
+          Scroll naar{" "}
+          <strong className="text-[var(--foreground)]">Logo</strong> en klik op{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong>.
+        </li>
+        <li>
+          Selecteer een PNG, SVG of JPEG van je logo. Een vierkant logo met
+          transparante achtergrond werkt het beste.
+        </li>
+        <li>
+          De Studio plaatst je logo automatisch in het midden van de QR code.
+        </li>
+      </ol>
+      <p>
+        <strong className="text-[var(--foreground)]">Tip:</strong> Bij het uploaden
+        van een logo verhoogt de Studio automatisch de foutcorrectie naar niveau H
+        (de hoogste). Dit zorgt ervoor dat de QR code nog steeds scanbaar blijft,
+        ook al bedekt het logo een deel van de modules.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 3: Pas de grootte aan
+      </h2>
+      <p>
+        Na het uploaden verschijnt een{" "}
+        <strong className="text-[var(--foreground)]">Logo size</strong> schuifregelaar.
+        Je kunt de grootte instellen van 10% tot 60% van de QR code. Voor de beste
+        scanbaarheid raden we 15–30% aan.
+      </p>
+      <p>
+        Grotere logo&apos;s zien er opvallender uit, maar vergroten het risico dat
+        bepaalde telefoons de code niet kunnen scannen. Test altijd met meerdere
+        apparaten voordat je gaat drukken.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 4: Kies kleuren en stijl (optioneel)
+      </h2>
+      <p>
+        In het Design-tabblad kun je ook de kleuren en module-stijl aanpassen:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Voorgrondkleur:</strong>{" "}
+          De kleur van de QR-modules. Kies een donkere kleur voor goed contrast.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Achtergrondkleur:</strong>{" "}
+          Standaard wit, maar je kunt een lichte merkleur kiezen.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Gradient:</strong>{" "}
+          Lineair of radiaal kleurverloop voor een moderne uitstraling.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Module-stijl:</strong>{" "}
+          Rond, vierkant, hartjes, sterren en meer.
+        </li>
+      </ul>
+      <p>
+        Houd het contrast hoog — donkere modules op een lichte achtergrond scannen
+        het beste. Lichte codes op donkere achtergronden werken ook, maar vermijd
+        subtiele kleurverschillen.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 5: Test de code
+      </h2>
+      <p>
+        Klik op{" "}
+        <strong className="text-[var(--foreground)]">📱 Test scan</strong> voor een
+        visuele animatie, maar test ook altijd met een echte telefoon:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open de camera-app op je iPhone of Android.</li>
+        <li>Richt de camera op het scherm.</li>
+        <li>Controleer of de juiste bestemming opent.</li>
+      </ol>
+      <p>
+        Test met minstens twee verschillende telefoons. Oudere toestellen hebben
+        soms moeite met grote logo&apos;s of lage resolutie.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Stap 6: Download je QR code
+      </h2>
+      <p>
+        Klik op <strong className="text-[var(--foreground)]">PNG</strong> voor
+        digitaal gebruik of <strong className="text-[var(--foreground)]">SVG</strong>{" "}
+        voor drukwerk. SVG schaalt oneindig zonder kwaliteitsverlies — ideaal voor
+        visitekaartjes, posters en verpakkingen.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Tips voor Nederlandse en Belgische bedrijven
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Horeca:</strong>{" "}
+          Plaats een QR code met logo op je menukaart die linkt naar allergeneninformatie
+          of een online bestelformulier. Een branded code oogt professioneler dan
+          een generieke zwart-witte code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Detailhandel:</strong>{" "}
+          Gebruik QR codes op verpakkingen voor productinformatie, handleidingen
+          of garantieregistratie.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dienstverleners:</strong>{" "}
+          Een QR code op je visitekaartje die direct naar je{" "}
+          <Link
+            href="/guides/qr-code-for-linkedin"
+            className="text-[var(--brand-2)] underline"
+          >
+            LinkedIn-profiel
+          </Link>{" "}
+          of website linkt, maakt netwerken makkelijker.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Evenementen:</strong>{" "}
+          Zet een QR code op tickets, badges en posters voor ticketvalidatie of
+          extra informatie.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">WiFi voor gasten:</strong>{" "}
+          Maak een{" "}
+          <Link
+            href="/guides/wifi-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            WiFi QR code
+          </Link>{" "}
+          met je bedrijfslogo zodat klanten direct kunnen verbinden zonder
+          wachtwoord in te typen.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Statisch of dynamisch?
+      </h2>
+      <p>
+        Een{" "}
+        <strong className="text-[var(--foreground)]">statische</strong> QR code
+        codeert de URL direct. Eenmaal gedrukt kun je de bestemming niet meer
+        wijzigen. Een{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamische QR code
+        </Link>{" "}
+        codeert een korte redirect-link die je achteraf kunt aanpassen — handig
+        als je de bestemming wilt wijzigen zonder opnieuw te drukken, of als je
+        scanstatistieken wilt bijhouden.
+      </p>
+      <p>
+        De gratis versie bevat 1 dynamische code. Met Pro (€12/maand) krijg je
+        onbeperkt dynamische codes, volledige scangeschiedenis en CSV-export.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Veelgemaakte fouten vermijden
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Te groot logo:</strong>{" "}
+          Houd het logo onder 30% van de QR code. Grotere logo&apos;s kunnen
+          scanproblemen veroorzaken.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Te klein afdrukken:</strong>{" "}
+          Een QR code met logo moet minimaal 2–3 cm breed zijn voor betrouwbaar
+          scannen. Lees meer in onze{" "}
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            afmetingengids
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Laag contrast:</strong>{" "}
+          Donkere modules op lichte achtergrond werkt het beste. Vermijd lichte
+          kleuren op lichte achtergronden.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Niet testen:</strong>{" "}
+          Altijd scannen met een echte telefoon vóór drukken.
+        </li>
+      </ul>
+      <p>
+        Voor meer ontwerpregels, zie onze Engelstalige gidsen over{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR codes met logo (stap-voor-stap)
+        </Link>
+        ,{" "}
+        <Link
+          href="/blog/qr-code-logo-design-best-practices"
+          className="text-[var(--brand-2)] underline"
+        >
+          logo-ontwerp best practices
+        </Link>{" "}
+        en{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          foutcorrectie en waarom logo-QR codes soms falen
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Samenvatting
+      </h2>
+      <p>
+        Een QR code met logo maken is eenvoudig in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        : kies je inhoud, upload je logo, pas de grootte en kleuren aan, test met
+        een echte telefoon, en download als PNG of SVG. Gebruik een vierkant logo
+        met hoog contrast, houd de grootte onder 30%, en test altijd voordat je
+        gaat drukken.
+      </p>
+      <p>
+        Vragen?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Neem contact op
+        </Link>{" "}
+        met {siteConfig.parentCompany.name} via {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
