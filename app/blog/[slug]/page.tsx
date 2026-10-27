@@ -11,6 +11,7 @@ import {
   PrintQrChecklistPost,
   QrCodeLogoDesignPost,
   QrCodeMetLogoMakenPost,
+  QrCodesWithLogoMoreScansPost,
   QrCodeWithLogoGuidePost,
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
@@ -39,6 +40,7 @@ const BODY: Record<string, () => ReactNode> = {
   "qr-code-with-logo-guide": () => <QrCodeWithLogoGuidePost />,
   "qr-code-logo-design-best-practices": () => <QrCodeLogoDesignPost />,
   "qr-code-met-logo-maken": () => <QrCodeMetLogoMakenPost />,
+  "qr-codes-with-logo-more-scans": () => <QrCodesWithLogoMoreScansPost />,
 };
 
 export function generateStaticParams() {

@@ -182,6 +182,23 @@ export const blogPosts: BlogPost[] = [
       "qr code generator met logo",
     ],
   },
+  {
+    slug: "qr-codes-with-logo-more-scans",
+    title: "Do QR Codes with a Logo Get More Scans? What 46.9 Million Scans Reveal",
+    description:
+      "New research from Scanova's 2026 QR Code Benchmarks shows customized QR codes get 2.4× more scans than plain black-and-white ones. Here's what the data says about logo QR codes — and what else drives scans.",
+    date: "2026-10-27",
+    readingMinutes: 8,
+    topic: "Research",
+    keywords: [
+      "qr codes with logo",
+      "qr code with logo",
+      "logo in qr code",
+      "qr code with logo inside",
+      "qr code scan rate",
+      "branded qr code performance",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

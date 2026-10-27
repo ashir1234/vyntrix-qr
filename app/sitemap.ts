@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-10-23"),
+      lastModified: new Date("2026-10-27"),
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -82,13 +82,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // blogPosts includes: qr-code-met-logo-maken (2026-10-23, Dutch), qr-code-with-logo-guide (2026-10-16), youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
+  // blogPosts includes: qr-codes-with-logo-more-scans (2026-10-27), qr-code-met-logo-maken (2026-10-23, Dutch), qr-code-with-logo-guide (2026-10-16), youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${siteConfig.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
     changeFrequency: "monthly",
     priority: 0.75,
   }));
+
+  // Explicitly include the latest blog post URL for clarity
+  const explicitBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/qr-codes-with-logo-more-scans`,
+      lastModified: new Date("2026-10-27"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+  ];
+
+  // Merge explicit posts with auto-generated, avoiding duplicates
+  const allBlogRoutes = [
+    ...explicitBlogPosts,
+    ...blogRoutes.filter(
+      (r) => !explicitBlogPosts.some((e) => e.url === r.url)
+    ),
+  ];
 
   // Only index platform URLs that do not already have a deeper /guides article.
   const platformRoutes: MetadataRoute.Sitemap = qrPlatforms
@@ -100,5 +118,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
-  return [...staticRoutes, ...guideRoutes, ...blogRoutes, ...platformRoutes];
+  return [...staticRoutes, ...guideRoutes, ...allBlogRoutes, ...platformRoutes];
 }
