@@ -199,6 +199,24 @@ export const blogPosts: BlogPost[] = [
       "branded qr code performance",
     ],
   },
+  {
+    slug: "gs1-sunrise-2027-qr-codes-packaging",
+    title:
+      "GS1 Sunrise 2027: What the Switch to QR Codes on Packaging Means for Your Brand",
+    description:
+      "Retailers are adopting 2D barcodes by end of 2027. Learn what GS1 Digital Link is, how to dual-code packaging, and why the QR on your product needs to deliver value — not just scan at checkout.",
+    date: "2026-10-30",
+    readingMinutes: 11,
+    topic: "Packaging",
+    keywords: [
+      "gs1 sunrise 2027",
+      "qr code on packaging",
+      "2d barcode packaging",
+      "gs1 digital link qr code",
+      "upc to qr code",
+      "product packaging qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

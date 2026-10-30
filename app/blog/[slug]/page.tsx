@@ -7,6 +7,7 @@ import { Footer } from "@/components/site/Footer";
 import {
   ErrorCorrectionLogosPost,
   FinishTheQrWorkflowPost,
+  Gs1Sunrise2027Post,
   LinkedInQrCodeGuidePost,
   PrintQrChecklistPost,
   QrCodeLogoDesignPost,
@@ -41,6 +42,7 @@ const BODY: Record<string, () => ReactNode> = {
   "qr-code-logo-design-best-practices": () => <QrCodeLogoDesignPost />,
   "qr-code-met-logo-maken": () => <QrCodeMetLogoMakenPost />,
   "qr-codes-with-logo-more-scans": () => <QrCodesWithLogoMoreScansPost />,
+  "gs1-sunrise-2027-qr-codes-packaging": () => <Gs1Sunrise2027Post />,
 };
 
 export function generateStaticParams() {

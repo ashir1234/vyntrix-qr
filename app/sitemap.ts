@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-10-27"),
+      lastModified: new Date("2026-10-30"),
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -90,8 +90,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // Explicitly include the latest blog post URL for clarity
+  // Explicitly include the latest blog post URLs for clarity
   const explicitBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/gs1-sunrise-2027-qr-codes-packaging`,
+      lastModified: new Date("2026-10-30"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/qr-codes-with-logo-more-scans`,
       lastModified: new Date("2026-10-27"),

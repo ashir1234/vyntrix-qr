@@ -3427,3 +3427,471 @@ export function QrCodesWithLogoMoreScansPost() {
     </article>
   );
 }
+
+export function Gs1Sunrise2027Post() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        By the end of 2027, most major retailers want their point-of-sale
+        systems able to scan 2D barcodes — including QR codes — alongside the
+        familiar UPC stripes. The transition is called{" "}
+        <strong className="text-[var(--foreground)]">GS1 Sunrise 2027</strong>,
+        and it represents the biggest change to product packaging barcodes in
+        decades.
+      </p>
+      <p>
+        For brands and small businesses printing their own packaging, Sunrise
+        2027 is both an opportunity and a logistics puzzle. This post explains
+        what&apos;s happening, why it matters, and what you can do now to prepare.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What is GS1 Sunrise 2027?
+      </h2>
+      <p>
+        GS1 — the organization that issues UPC barcodes — has set an industry
+        goal: by the end of 2027, retail POS scanners should be capable of
+        reading 2D barcodes (QR codes and Data Matrix) at checkout, not just
+        the traditional 1D UPC stripes.
+      </p>
+      <p>
+        According to{" "}
+        <a
+          href="https://www.packagingdive.com/news/gs1-sunrise-2027-adoption-pack-expo/872821/"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Packaging Dive (Oct 27, 2026)
+        </a>
+        , as of Pack Expo, approximately 2,000 retailers and 1,900 brands have
+        participated in 2D pilots or implementations. The goal is retail POS
+        readiness by the end of 2027.
+      </p>
+      <p>
+        This is{" "}
+        <strong className="text-[var(--foreground)]">
+          &quot;a sunrise, not a sunset&quot;
+        </strong>{" "}
+        — UPC barcodes aren&apos;t going away. As{" "}
+        <a
+          href="https://www.nacsmagazine.com/issues/october-2026/setting-up-the-sunrise"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          NACS Magazine (Oct 2026)
+        </a>{" "}
+        explains, brands will co-locate UPC and 2D codes on packaging until
+        retailer readiness reaches approximately 90–95%.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What is a GS1 Digital Link QR code?
+      </h2>
+      <p>
+        A standard QR code can encode any URL. A{" "}
+        <strong className="text-[var(--foreground)]">GS1 Digital Link</strong>{" "}
+        QR code encodes a URL in a specific format that includes the product&apos;s
+        GTIN (the number from your UPC barcode) plus optional data like expiry
+        date, batch number, and a product page URL.
+      </p>
+      <p>
+        The result is a single QR code that can be read by a retail scanner at
+        checkout (extracting the GTIN for the sale) and by a consumer&apos;s phone
+        (opening a product landing page). According to{" "}
+        <a
+          href="https://www.igd.com/articles/how-next-generation-qr-codes-are-shaping-the-future-of-retail/74321"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          IGD (Oct 13, 2026)
+        </a>
+        , GS1-powered QR codes can carry the GTIN plus expiry, batch, and
+        product URL in a single code.
+      </p>
+      <p>
+        This dual function is the key shift: the QR on your packaging
+        isn&apos;t just a marketing link anymore — it can also be the checkout
+        barcode.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Why retailers are adopting 2D codes
+      </h2>
+      <p>
+        The traditional UPC barcode encodes only a GTIN — a product identifier.
+        A 2D code can encode far more data in the same space. Retailers see
+        several benefits:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Expiry and batch tracking:
+          </strong>{" "}
+          IGD reports that 7-Eleven Thailand uses QR codes to flag expired
+          products at checkout, preventing spoiled items from being sold.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Inventory management:
+          </strong>{" "}
+          Woolworths Australia saw up to 21% productivity improvement managing
+          inventory by expiry date using GS1 QR codes, according to IGD.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Consumer engagement:
+          </strong>{" "}
+          The same code that scans at POS can link consumers to product
+          information, recipes, sustainability data, or promotional offers.
+        </li>
+      </ul>
+      <p>
+        Tesco became the first UK chain to put QR codes across an entire
+        private-label core sausage range in 2026 (IGD), demonstrating that
+        large-scale rollout is practical.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        The transition: dual-coding your packaging
+      </h2>
+      <p>
+        During the transition, brands need to print both a UPC barcode and a 2D
+        code on packaging. Per Packaging Dive, this dual-coding squeezes
+        packaging real estate — you&apos;re adding a QR code without removing the
+        UPC, at least until retailer readiness is high enough.
+      </p>
+      <p>
+        NACS Magazine recommends that retailers review all their scanners —
+        POS, self-checkout, inventory — to ensure 2D readiness. For brands,
+        the implication is clear: don&apos;t assume the QR will replace the UPC
+        yet, but do plan for where both will fit on your pack.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Making the consumer scan worth it
+      </h2>
+      <p>
+        A GS1 Digital Link QR code can scan at checkout, but most consumers
+        won&apos;t scan your package QR unless there&apos;s a reason. As Packaging Dive
+        notes, &quot;there has to be value in even performing the scan&quot; — and
+        incentives like discounts can help.
+      </p>
+      <p>
+        Research backs this up. According to{" "}
+        <a
+          href="https://www.retailbrew.com/stories/nearly-95-of-qr-code-scans-come-from-just-5-of-codes-what-gets-consumers-to-scan"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Retail Brew (Oct 9, 2026)
+        </a>{" "}
+        citing Scanova&apos;s 2026 QR Code Benchmarks, purpose-built product pages
+        averaged 28,914 scans per code versus just 4,017 for codes pointing to
+        a generic website. How-to videos averaged 19,181 scans. And{" "}
+        <Link
+          href="/blog/qr-codes-with-logo-more-scans"
+          className="text-[var(--brand-2)] underline"
+        >
+          customized QR codes got 2.4× more scans
+        </Link>{" "}
+        than plain black-and-white ones.
+      </p>
+      <p>
+        For deeper data on what drives QR engagement, see our post on{" "}
+        <Link
+          href="/blog/qr-codes-with-logo-more-scans"
+          className="text-[var(--brand-2)] underline"
+        >
+          what 46.9 million scans reveal about logo QR codes
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Practical steps for brands and small businesses
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        1. Get your GTIN from GS1
+      </h3>
+      <p>
+        GS1 Digital Link QR codes require a GS1-licensed GTIN — the same
+        number in your UPC barcode. If you&apos;re already selling at retail, you
+        have this. If not, you&apos;ll need to join GS1 and obtain GTINs for your
+        products.{" "}
+        <strong className="text-[var(--foreground)]">
+          {siteConfig.name} does not issue GTINs
+        </strong>{" "}
+        — you get those directly from GS1.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        2. Work with a Digital Link resolver
+      </h3>
+      <p>
+        A GS1 Digital Link URL must be hosted on a resolver that can parse the
+        GTIN and route requests appropriately — one response for a retail
+        scanner, another for a consumer&apos;s browser. GS1 itself provides resolver
+        services, and there are third-party options.{" "}
+        <strong className="text-[var(--foreground)]">
+          {siteConfig.name} is a static, in-browser QR generator
+        </strong>{" "}
+        — it does not host Digital Link resolvers. We can generate the QR
+        code image once you have the Digital Link URL, but the URL itself
+        comes from your resolver.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        3. Plan dual-code placement on packaging
+      </h3>
+      <p>
+        Until retailer 2D readiness hits 90–95%, you&apos;ll need both UPC and QR.
+        Work with your packaging designer to allocate space for both. Consider:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Primary display panel for the QR (visible, consumer-facing)</li>
+        <li>Traditional UPC placement on back or side panel</li>
+        <li>
+          Quiet zone requirements for both codes (see our{" "}
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            print checklist
+          </Link>
+          )
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        4. Design for scannability
+      </h3>
+      <p>
+        The same print rules apply to packaging QR codes:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> At least
+          1 cm × 1 cm absolute minimum; larger is better. Use the ~10:1 rule
+          for expected scan distance. See{" "}
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR code size for print
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> At
+          least 4 modules (ideally more) of clear space around the code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Avoid metallic or reflective
+          substrates.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Logo:</strong> If you
+          add a logo inside the QR, keep it under 30% of the code area and use
+          high error correction. See{" "}
+          <Link
+            href="/blog/qr-code-logo-design-best-practices"
+            className="text-[var(--brand-2)] underline"
+          >
+            logo design best practices
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            why pretty QR codes fail
+          </Link>
+          .
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        5. Build a landing page that delivers value
+      </h3>
+      <p>
+        A packaging QR that opens your homepage wastes the scan. Build a
+        purpose-specific landing page with product details, how-to videos, or
+        an incentive. As the Scanova data shows, purpose-built pages
+        dramatically outperform generic destinations.
+      </p>
+      <p>
+        If your Digital Link resolver supports it, you can serve different
+        content based on the scanning context — richer info for consumers,
+        structured data for B2B partners.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        6. Consider dynamic vs static for non-GS1 codes
+      </h3>
+      <p>
+        A GS1 Digital Link code is essentially static — the URL encodes the
+        GTIN and doesn&apos;t change. But if you&apos;re adding a separate marketing QR
+        (not the Digital Link), you may want a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        so you can update the destination without reprinting. Our{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static vs dynamic cost analysis
+        </Link>{" "}
+        explains when each makes sense.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What {siteConfig.name} does and doesn&apos;t do
+      </h2>
+      <p>
+        To be clear about what we offer:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">{siteConfig.name} generates QR code images</strong>{" "}
+          — static PNG/SVG for any URL, including a GS1 Digital Link URL you
+          provide.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">We do not issue GTINs</strong>{" "}
+          — get those from GS1.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">We do not host a Digital Link resolver</strong>{" "}
+          — that requires a GS1-conformant resolver service.
+        </li>
+        <li>
+          We offer{" "}
+          <Link
+            href="/guides/dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            dynamic QR codes
+          </Link>{" "}
+          for marketing use cases where you need editable destinations and
+          scan analytics, but these are separate from GS1 Digital Link.
+        </li>
+      </ul>
+      <p>
+        If you have a Digital Link URL ready, you can paste it into the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>
+        , add your logo, and export a print-ready file. For the full
+        workflow, see our{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          small-business QR playbook
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Timeline and what to watch
+      </h2>
+      <p>
+        The 2027 deadline is about scanner readiness, not a mandate. Brands
+        won&apos;t be forced to switch overnight. But if you&apos;re designing new
+        packaging or planning a refresh in the next year, now is the time to:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Confirm your GTINs are in order with GS1</li>
+        <li>Research Digital Link resolver options</li>
+        <li>Audit your packaging real estate for dual-code placement</li>
+        <li>Build landing pages that make the consumer scan worthwhile</li>
+      </ol>
+      <p>
+        For brands already in retail, talk to your retail partners about their
+        2D scanner rollout timeline. For small businesses selling direct, you
+        have more flexibility — but the same principles apply if you
+        eventually want shelf placement.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Further reading
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-logo-design-best-practices"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code Logo Design Best Practices
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-codes-with-logo-more-scans"
+            className="text-[var(--brand-2)] underline"
+          >
+            Do QR Codes with a Logo Get More Scans?
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code Size for Print Guide
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about QR codes for packaging?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
