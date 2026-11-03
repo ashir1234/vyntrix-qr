@@ -217,6 +217,24 @@ export const blogPosts: BlogPost[] = [
       "product packaging qr code",
     ],
   },
+  {
+    slug: "quishing-fake-qr-code-scams",
+    title:
+      "Quishing Season: How to Spot a Fake QR Code (and Protect the Codes Your Business Prints)",
+    description:
+      "QR code phishing (quishing) surges every holiday season. Learn how to spot tampered QR codes, avoid fake payment scams, and make your business's printed codes harder to spoof.",
+    date: "2026-11-03",
+    readingMinutes: 9,
+    topic: "Security",
+    keywords: [
+      "quishing",
+      "fake qr code scam",
+      "how to tell if a qr code is safe",
+      "qr code sticker scam",
+      "qr code phishing",
+      "qr code security",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
