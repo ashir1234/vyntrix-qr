@@ -3895,3 +3895,445 @@ export function Gs1Sunrise2027Post() {
     </article>
   );
 }
+
+export function QuishingFakeQrCodeScamsPost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        As the 2026 holiday season approaches, scammers are ramping up a tactic
+        that exploits the trust people place in QR codes:{" "}
+        <strong className="text-[var(--foreground)]">quishing</strong> — QR code
+        phishing. A fake sticker over a parking meter, a tampered code on a
+        restaurant bill, a convincing email with a QR that leads to a credential
+        harvester — these attacks are growing globally, and they spike during
+        high-traffic shopping and travel periods.
+      </p>
+      <p>
+        This post covers two angles: how to protect yourself when scanning codes
+        in the wild, and how to make the QR codes your business prints harder to
+        spoof and easier for customers to trust.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What is quishing?
+      </h2>
+      <p>
+        Quishing is phishing delivered via QR code. Instead of a suspicious link
+        in an email, the attacker uses a QR code that, when scanned, sends the
+        victim to a fake login page, a malware download, or a payment form
+        designed to steal credentials or money.
+      </p>
+      <p>
+        The technique works because QR codes obscure the destination URL — you
+        cannot read the link before scanning, and many people tap through
+        without checking where they land.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Recent warnings from around the world
+      </h2>
+      <p>
+        Quishing is not hypothetical. Law enforcement and security organizations
+        are issuing active warnings:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Dubai (Oct 2026):</strong>{" "}
+          Dubai Police&apos;s eCrime Hub warned residents about fake QR codes
+          appearing on parking meters, restaurant tables, and public signage.{" "}
+          <a
+            href="https://gulfnews.com/living-in-uae/safety-security/scanned-a-qr-code-in-dubai-watch-out-for-quishing-scams-1.500696132"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Gulf News reported
+          </a>{" "}
+          four warning signs: odd placement or a sticker over another code, a
+          site asking for ID/banking/passwords, unusual design or URL, and
+          unexpected app or file download prompts.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Brazil (Oct 20, 2026):
+          </strong>{" "}
+          Febraban, the Brazilian banking federation,{" "}
+          <a
+            href="https://portal.febraban.org.br/noticia/4508/pt-br"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            issued an alert
+          </a>{" "}
+          about fake stickers placed over legitimate payment codes in bars,
+          restaurants, and parking lots, plus tampered QR codes on printed
+          invoices (boletos). They advise always checking the recipient name and
+          amount in your banking app before confirming any QR-initiated payment.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Russia (Sept–Oct 2026):
+          </strong>{" "}
+          Kaspersky{" "}
+          <a
+            href="https://www.kaspersky.ru/about/press-releases/laboratoriya-kasperskogo-preduprezhdaet-o-novoj-volne-moshennicheskih-pisem-s-qr-kodami-ot-imeni-oficialnyh-vedomstv"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            reported
+          </a>{" "}
+          a wave of corporate emails impersonating government agencies, each
+          containing a QR code leading to fake postal-tracking payment pages.
+          Kaspersky blocked more than 800 such messages since September 11.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Texas (Oct 5, 2026):
+          </strong>{" "}
+          The Fort Bend County Sheriff&apos;s Office{" "}
+          <a
+            href="https://www.click2houston.com/news/local/2026/10/05/fort-bend-county-sheriffs-office-warns-of-fake-qr-code-scam-targeting-residents/"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            warned residents
+          </a>{" "}
+          about fake QR codes appearing on parking meters, citing earlier FTC
+          warnings about the same tactic.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            California (Oct 20, 2026):
+          </strong>{" "}
+          CSU Channel Islands issued a{" "}
+          <a
+            href="https://www.csuci.edu/news/releases/20261020-qr-code-phishing.html"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            holiday-season advisory
+          </a>{" "}
+          reminding students and staff to be cautious with QR codes in emails
+          and public spaces.
+        </li>
+      </ul>
+      <p>
+        The pattern is clear: quishing is a global, active threat — not a future
+        concern.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Part 1: How to spot a fake QR code (for everyone who scans)
+      </h2>
+      <p>
+        Use this checklist before you scan any QR code in public or from an
+        unexpected source:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        1. Look for physical tampering
+      </h3>
+      <p>
+        Scammers often stick a fake code over a legitimate one. Check for:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>A sticker placed over another QR code</li>
+        <li>Edges that don&apos;t align with the surrounding material</li>
+        <li>Different paper stock, print quality, or color compared to the sign</li>
+        <li>Codes on parking meters, payment terminals, or restaurant tables
+          that look hastily attached</li>
+      </ul>
+      <p>
+        If the code looks like it was added after the fact, treat it as suspect.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        2. Preview the URL before opening
+      </h3>
+      <p>
+        Most phone camera apps show a preview of the URL before you tap. Stop
+        and read it:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Does the domain match the business you expect? A parking app code
+          should go to the parking company&apos;s domain, not a random string of
+          characters.</li>
+        <li>Watch for typosquatting: <code>paypa1.com</code> instead of{" "}
+          <code>paypal.com</code>, or <code>parking-dubai-pay.xyz</code> instead
+          of the official municipal site.</li>
+        <li>Be wary of URL shorteners (<code>bit.ly</code>, <code>tinyurl.com</code>,
+          etc.) on payment or login codes — legitimate businesses usually use
+          their own domain.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        3. Distrust urgency and immediate payment requests
+      </h3>
+      <p>
+        Scam pages often push you to act fast: &quot;Pay now to avoid a fine,&quot;
+        &quot;Your package will be returned,&quot; &quot;Account suspended.&quot; Real services
+        rarely demand immediate card details via a QR code with no prior notice.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        4. Never enter banking or ID details from an unexpected code
+      </h3>
+      <p>
+        If a QR code leads to a page asking for your bank login, credit card
+        number, national ID, or password — and you did not initiate a payment
+        yourself — stop. Go directly to the official app or website instead.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        5. Verify payments in the official app
+      </h3>
+      <p>
+        Febraban&apos;s advice for Brazil applies everywhere: if a QR code initiates
+        a payment, check the recipient name and amount in your banking app
+        before you confirm. If the details don&apos;t match the merchant you expect,
+        cancel.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        6. Install apps only from official stores
+      </h3>
+      <p>
+        If scanning a code prompts you to download an app or APK file directly,
+        do not install it. Legitimate apps are available through the App Store
+        or Google Play. A QR that bypasses the store is a red flag.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Part 2: How to protect the QR codes your business prints
+      </h2>
+      <p>
+        If you run a business that uses QR codes — menus, payment, product info,
+        check-in — scammers can target your customers by overlaying fake codes
+        on your materials. Here is how to make your codes harder to spoof and
+        easier for customers to trust.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        1. Brand your codes with a logo and consistent colors
+      </h3>
+      <p>
+        A plain black-and-white QR code is easy to replace without anyone
+        noticing. A branded code with your logo embedded and your brand colors
+        is much harder to fake — customers will notice if a sticker looks
+        different from your usual materials.
+      </p>
+      <p>
+        In {siteConfig.name}&apos;s{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>
+        , you can add a logo, set foreground/background colors, and download
+        print-ready files for free. For design guidance, see our posts on{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          creating a QR code with a logo
+        </Link>{" "}
+        and{" "}
+        <Link
+          href="/blog/qr-code-logo-design-best-practices"
+          className="text-[var(--brand-2)] underline"
+        >
+          logo design best practices
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        2. Print the destination URL in readable text
+      </h3>
+      <p>
+        Next to your QR code, print the short URL or domain in plain text:{" "}
+        <code>menu.yourrestaurant.com</code> or <code>pay.yourshop.com</code>.
+        This lets cautious customers verify where the code should go. If a
+        scammer sticks a fake code over yours, the printed URL will not match
+        the destination — an obvious tell.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        3. Use tamper-evident placement
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Laminate table tents so stickers cannot be applied without
+          damaging the surface.</li>
+        <li>Print codes directly onto materials rather than using adhesive
+          labels when possible.</li>
+        <li>Recess codes into signage or behind protective covers.</li>
+        <li>Inspect your public-facing codes regularly — weekly or daily for
+          high-traffic locations.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        4. Use your own domain, not third-party shorteners
+      </h3>
+      <p>
+        A static code pointing to <code>menu.yourdomain.com</code> is more
+        trustworthy than one pointing to <code>bit.ly/xyz123</code>. If you need
+        editable destinations or scan analytics, use a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        with a custom short-link slug on a domain you control. Our{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static vs dynamic cost breakdown
+        </Link>{" "}
+        explains when each approach makes sense.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        5. Add a call-to-action frame
+      </h3>
+      <p>
+        A frame around the code that says &quot;Scan to view menu&quot; or &quot;Pay with
+        [YourBrand]&quot; reinforces authenticity. It is another element a scammer
+        would have to replicate, and it tells customers exactly what to expect.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        6. Keep codes scannable
+      </h3>
+      <p>
+        All the branding in the world will not help if the code does not scan.
+        Use adequate{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          error correction for logos
+        </Link>
+        , follow{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print best practices
+        </Link>
+        , and test your codes at the expected scan distance before you print a
+        batch.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How {siteConfig.name} fits in
+      </h2>
+      <p>
+        {siteConfig.name} is a free, in-browser{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          QR code generator
+        </Link>{" "}
+        that runs client-side for static codes — your data stays in your
+        browser. You can add a logo, choose brand colors, and export SVG or PNG
+        without creating an account.
+      </p>
+      <p>
+        For businesses that need editable destinations or scan analytics, Pro
+        unlocks unlimited dynamic codes with custom slugs and full analytics.
+        Either way, the goal is the same: give you codes that are easy to brand,
+        hard to fake, and straightforward to print correctly. For a full privacy
+        breakdown, see{" "}
+        <Link
+          href="/blog/static-qr-privacy-in-the-browser"
+          className="text-[var(--brand-2)] underline"
+        >
+          how static QR generation stays private
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Checklist summary
+      </h2>
+      <p>
+        <strong className="text-[var(--foreground)]">For scanners:</strong>
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Look for stickers or tampering.</li>
+        <li>Preview the URL before tapping.</li>
+        <li>Distrust urgency and immediate payment demands.</li>
+        <li>Never enter banking or ID details from an unexpected code.</li>
+        <li>Verify payment details in your official banking app.</li>
+        <li>Install apps only from official stores.</li>
+      </ol>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">For businesses:</strong>
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Brand codes with your logo and colors.</li>
+        <li>Print the destination URL in readable text.</li>
+        <li>Use tamper-evident placement and inspect codes regularly.</li>
+        <li>Point static codes to your own domain.</li>
+        <li>Add a call-to-action frame.</li>
+        <li>Follow print best practices so codes scan reliably.</li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Further reading
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/static-qr-privacy-in-the-browser"
+            className="text-[var(--brand-2)] underline"
+          >
+            How Static QR Generation Stays Private in Your Browser
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo (Step-by-Step)
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-logo-design-best-practices"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code Logo Design Best Practices
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about QR code security or branding?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-10-30"),
+      lastModified: new Date("2026-11-03"),
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -92,6 +92,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Explicitly include the latest blog post URLs for clarity
   const explicitBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/quishing-fake-qr-code-scams`,
+      lastModified: new Date("2026-11-03"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/gs1-sunrise-2027-qr-codes-packaging`,
       lastModified: new Date("2026-10-30"),

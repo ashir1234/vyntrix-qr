@@ -14,6 +14,7 @@ import {
   QrCodeMetLogoMakenPost,
   QrCodesWithLogoMoreScansPost,
   QrCodeWithLogoGuidePost,
+  QuishingFakeQrCodeScamsPost,
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
@@ -43,6 +44,7 @@ const BODY: Record<string, () => ReactNode> = {
   "qr-code-met-logo-maken": () => <QrCodeMetLogoMakenPost />,
   "qr-codes-with-logo-more-scans": () => <QrCodesWithLogoMoreScansPost />,
   "gs1-sunrise-2027-qr-codes-packaging": () => <Gs1Sunrise2027Post />,
+  "quishing-fake-qr-code-scams": () => <QuishingFakeQrCodeScamsPost />,
 };
 
 export function generateStaticParams() {
