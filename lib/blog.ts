@@ -235,6 +235,23 @@ export const blogPosts: BlogPost[] = [
       "qr code security",
     ],
   },
+  {
+    slug: "how-to-generate-qr-code-for-facebook",
+    title: "How to Generate a QR Code for Facebook (Page, Profile & Print)",
+    description:
+      "A practical guide to creating Facebook QR codes — finding your Page or profile URL, Meta's built-in options and their limits, and creating branded QR codes with logo and colors for print using Vyntrix QR Studio.",
+    date: "2026-11-03",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to generate a qr code for facebook",
+      "how to make qr code for facebook page",
+      "facebook page qr code",
+      "facebook qr code",
+      "qr code for facebook page",
+      "generate facebook qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

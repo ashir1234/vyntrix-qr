@@ -6,6 +6,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import {
   ErrorCorrectionLogosPost,
+  FacebookQrCodeGuidePost,
   FinishTheQrWorkflowPost,
   Gs1Sunrise2027Post,
   LinkedInQrCodeGuidePost,
@@ -45,6 +46,7 @@ const BODY: Record<string, () => ReactNode> = {
   "qr-codes-with-logo-more-scans": () => <QrCodesWithLogoMoreScansPost />,
   "gs1-sunrise-2027-qr-codes-packaging": () => <Gs1Sunrise2027Post />,
   "quishing-fake-qr-code-scams": () => <QuishingFakeQrCodeScamsPost />,
+  "how-to-generate-qr-code-for-facebook": () => <FacebookQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
