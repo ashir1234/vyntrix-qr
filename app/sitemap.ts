@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-11-03"),
+      lastModified: new Date("2026-11-06"),
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -82,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // blogPosts includes: how-to-generate-qr-code-for-facebook (2026-11-03), quishing-fake-qr-code-scams (2026-11-03), qr-codes-with-logo-more-scans (2026-10-27), qr-code-met-logo-maken (2026-10-23, Dutch), qr-code-with-logo-guide (2026-10-16), youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
+  // blogPosts includes: how-to-make-qr-code-for-instagram (2026-11-06), how-to-generate-qr-code-for-facebook (2026-11-03), quishing-fake-qr-code-scams (2026-11-03), qr-codes-with-logo-more-scans (2026-10-27), qr-code-met-logo-maken (2026-10-23, Dutch), qr-code-with-logo-guide (2026-10-16), youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${siteConfig.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
@@ -92,6 +92,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Explicitly include the latest blog post URLs for clarity
   const explicitBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-instagram`,
+      lastModified: new Date("2026-11-06"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/how-to-generate-qr-code-for-facebook`,
       lastModified: new Date("2026-11-03"),
