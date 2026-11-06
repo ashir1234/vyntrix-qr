@@ -252,6 +252,25 @@ export const blogPosts: BlogPost[] = [
       "generate facebook qr code",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-instagram",
+    title: "How to Make a QR Code for Instagram (Profile, Post, Reel & Print)",
+    description:
+      "A practical guide to creating Instagram QR codes — Instagram's built-in profile QR vs custom branded codes, finding profile/post/Reel URLs, designing with logos and colors, static vs dynamic for campaigns, and a print checklist for business cards, packaging, and posters.",
+    date: "2026-11-06",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a qr code for instagram",
+      "how to create a qr code for instagram",
+      "how to get qr code for instagram",
+      "instagram qr code",
+      "instagram profile qr code",
+      "qr code for instagram page",
+      "qr code for instagram post",
+      "qr code for instagram reel",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

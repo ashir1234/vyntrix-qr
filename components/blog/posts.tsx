@@ -5097,3 +5097,687 @@ export function FacebookQrCodeGuidePost() {
     </article>
   );
 }
+
+export function InstagramQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Instagram remains one of the most visual, engagement-driven platforms —
+        and an{" "}
+        <strong className="text-[var(--foreground)]">Instagram QR code</strong>{" "}
+        turns offline moments into profile visits, follows, and content views.
+        Retail tags, café table tents, product packaging, event badges, and
+        business cards can all carry a scannable link without anyone typing{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          @yourhandle
+        </code>{" "}
+        from memory.
+      </p>
+      <p>
+        This guide covers Instagram&apos;s built-in QR feature (and its limits),
+        how to find the right URL for profiles, posts, Reels, and Story
+        highlights, creating a branded QR in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , when to use static vs dynamic codes, a print checklist, and a security
+        note on QR scams.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Instagram&apos;s built-in profile QR code
+      </h2>
+      <p>
+        Instagram provides a native QR code feature so users can share their
+        profile without typing. You can find it in two places:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Mobile app (Share profile)
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the Instagram app on iOS or Android.</li>
+        <li>Go to your profile (tap your profile picture or the person icon).</li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">menu</strong> (three
+          lines) in the top-right corner.
+        </li>
+        <li>
+          Tap <strong className="text-[var(--foreground)]">QR code</strong> (or look
+          for &quot;Share profile&quot; which may show a QR option).
+        </li>
+        <li>
+          Instagram displays a QR code you can customize with{" "}
+          <strong className="text-[var(--foreground)]">color themes</strong>,{" "}
+          <strong className="text-[var(--foreground)]">emoji backgrounds</strong>, or
+          even a{" "}
+          <strong className="text-[var(--foreground)]">selfie overlay</strong>.
+        </li>
+        <li>
+          Tap <strong className="text-[var(--foreground)]">Save image</strong> to
+          download it to your camera roll.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Web browser (Settings)
+      </h3>
+      <p>
+        On desktop, log in to{" "}
+        <a
+          href="https://instagram.com"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          instagram.com
+        </a>
+        , go to your profile, click the gear icon → Settings → QR code. The web
+        version offers fewer customization options but produces a downloadable
+        image.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Limitations of Instagram&apos;s built-in QR
+      </h3>
+      <p>
+        Instagram&apos;s native QR is convenient for quick sharing, but it has
+        real limits for professional use:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">No vector export:</strong>{" "}
+          The download is a PNG at a fixed resolution. Scaling it for a large
+          poster or banner leads to blurry edges.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No custom logo:</strong>{" "}
+          You can add a selfie or Instagram&apos;s emoji backgrounds, but you
+          cannot embed your own business logo in the center.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No brand colors:</strong>{" "}
+          Color themes are preset — you cannot match your exact brand palette.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No scan analytics:</strong>{" "}
+          Instagram does not tell you how many people scanned the code or when.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Profile only:</strong>{" "}
+          The built-in QR links to your profile — not to a specific post, Reel,
+          or Story highlight.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For print materials where branding, resolution, and analytics matter,
+        generating a custom QR code gives you more control.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How to get the right Instagram URL
+      </h2>
+      <p>
+        Before creating a QR code, you need the correct URL for what you want
+        people to see. Instagram offers several link types.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Profile URL (most common)
+      </h3>
+      <p>
+        For follower growth, link directly to your profile:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://instagram.com/yourusername
+          </code>
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.instagram.com/yourusername
+          </code>{" "}
+          (both work; the shorter version produces a slightly simpler QR pattern)
+        </li>
+      </ul>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Finding your URL:</strong>{" "}
+        Open Instagram in a web browser, navigate to your profile, and copy the
+        address bar. Alternatively, open the app → your profile → tap the
+        username at the top → &quot;Copy Profile URL&quot; (if available) or
+        construct it manually.
+      </p>
+      <p className="mt-2">
+        <strong className="text-[var(--foreground)]">Tip:</strong> Double-check
+        spelling. Instagram usernames are case-insensitive, but the URL must
+        exist. A typo leads to a 404.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Post URL
+      </h3>
+      <p>
+        To link to a specific photo or carousel post:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the post on Instagram (app or web).</li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">three dots</strong> (⋯)
+          on the post.
+        </li>
+        <li>
+          Tap <strong className="text-[var(--foreground)]">Copy link</strong> (or
+          &quot;Link&quot; on web).
+        </li>
+      </ol>
+      <p className="mt-4">
+        The URL format is{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://instagram.com/p/SHORTCODE/
+        </code>
+        . Use this for launch-day signage, product reveals, or campaign-specific
+        content where you want scans to land on one post.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Reel URL
+      </h3>
+      <p>
+        For Reels, the process is similar:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the Reel.</li>
+        <li>Tap the three dots (⋯) → Copy link.</li>
+      </ol>
+      <p className="mt-4">
+        The URL format is{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://instagram.com/reel/SHORTCODE/
+        </code>
+        . On mobile, this opens the Reels player directly. Great for video-first
+        campaigns, tutorials, or behind-the-scenes content.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Story Highlight URL
+      </h3>
+      <p>
+        Story Highlights (the pinned story circles on your profile) also have
+        shareable URLs:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the Highlight on your profile.</li>
+        <li>Tap the three dots (⋯) → Copy link (or share and copy from there).</li>
+      </ol>
+      <p className="mt-4">
+        The URL format is{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://instagram.com/stories/highlights/HIGHLIGHTID/
+        </code>
+        . Use this when you want to surface curated content — product tutorials,
+        testimonials, FAQs — without sending people to your whole profile.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Private vs public content
+      </h3>
+      <p>
+        <strong className="text-[var(--foreground)]">Private accounts:</strong>{" "}
+        If your Instagram account is set to private, scanners who are not
+        approved followers will see a restricted view — a locked profile with no
+        content visible. For marketing materials, always use a{" "}
+        <strong className="text-[var(--foreground)]">public</strong> business or
+        creator account.
+      </p>
+      <p className="mt-2">
+        <strong className="text-[var(--foreground)]">Deleted or archived content:</strong>{" "}
+        If you encode a post or Reel URL and later delete or archive it, the QR
+        code will lead to a 404 page. For long-lived print materials, consider
+        linking to your profile or using a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        so you can redirect if the content changes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a branded Instagram QR code in Vyntrix QR Studio
+      </h2>
+      <p>
+        For print materials, branded QR codes look more professional and build
+        trust.{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        lets you create a custom Instagram QR code with your colors, logo, and
+        export options — free for static codes, with Pro features for dynamic
+        redirects and analytics.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Step-by-step
+      </h3>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Open Studio:</strong>{" "}
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            vyntrixqr.app/studio
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Paste your URL:</strong>{" "}
+          Enter the Instagram URL (profile, post, Reel, or Highlight) in the URL
+          field.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Optional — enable Dynamic:
+          </strong>{" "}
+          Toggle on Dynamic QR if you want to track scans or update the
+          destination later without reprinting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Design tab:</strong>{" "}
+          Customize the look:
+          <ul className="list-disc space-y-1 pl-5 mt-2">
+            <li>
+              <strong>Foreground color:</strong> Instagram gradient colors work
+              well — try #E1306C (pink) or #833AB4 (purple) for on-brand codes
+            </li>
+            <li>
+              <strong>Background:</strong> White or light for best contrast
+            </li>
+            <li>
+              <strong>Dot style:</strong> Square, Rounded, Dots — rounded can
+              soften the look to match Instagram&apos;s aesthetic
+            </li>
+            <li>
+              <strong>Logo:</strong> Upload your business logo or the Instagram
+              icon (see our{" "}
+              <Link
+                href="/blog/qr-code-with-logo-guide"
+                className="text-[var(--brand-2)] underline"
+              >
+                QR code with logo guide
+              </Link>
+              )
+            </li>
+            <li>
+              <strong>Error correction:</strong> Higher levels (H) tolerate more
+              logo coverage
+            </li>
+            <li>
+              <strong>Frame:</strong> Optional text frame like &quot;Follow us
+              on Instagram&quot;
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong>{" "}
+          Click PNG (for digital or small prints) or SVG (for large prints,
+          scalable to any size). Static codes are free with no watermark.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Profile vs post vs Reel vs Story Highlight: which destination?
+      </h2>
+      <p>
+        Different destinations serve different goals:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Profile:</strong> Best
+          for ongoing follower growth — business cards, packaging, permanent
+          signage. Scanners see your full feed and can follow with one tap.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Post:</strong> Best for
+          campaign-specific content — a product launch, contest announcement, or
+          featured collaboration. Limited lifespan if you archive or delete the
+          post.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Reel:</strong> Best for
+          video-first engagement — tutorials, demos, behind-the-scenes. Opens
+          directly in the Reels player on mobile.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Story Highlight:</strong>{" "}
+          Best for curated evergreen content — FAQ highlights, product
+          tutorials, testimonials. Stays available as long as you keep the
+          Highlight pinned.
+        </li>
+      </ul>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Tip:</strong> For long-lived
+        print materials (packaging, menus, signage), linking to your profile is
+        usually safest — it always works as long as your account exists. For
+        short-term campaigns (event posters, limited drops), a post or Reel link
+        can drive focused engagement.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic for Instagram campaigns
+      </h2>
+      <p>
+        Choosing between{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static and dynamic QR codes
+        </Link>{" "}
+        depends on your use case.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When static is fine
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Linking to your stable profile URL that will not change</li>
+        <li>Business cards where you control the username</li>
+        <li>Permanent retail signage or product packaging</li>
+        <li>You do not need scan analytics</li>
+      </ul>
+      <p className="mt-4">
+        Static is simpler — no account required, no ongoing cost, works forever
+        as long as the destination exists.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When dynamic is worth it
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Seasonal campaigns: point to a launch Reel now, redirect to your
+          profile after the campaign ends
+        </li>
+        <li>
+          Trade shows and events: track scans per placement, see which booth
+          location drives more engagement
+        </li>
+        <li>
+          Long-run packaging on retail shelves: update the destination remotely
+          if you change usernames or the original post is deleted
+        </li>
+        <li>
+          A/B testing: compare engagement between linking to your profile vs a
+          specific Reel
+        </li>
+        <li>You want scan counts, dates, and device breakdowns</li>
+      </ul>
+      <p className="mt-4">
+        {siteConfig.name} Free includes 1 dynamic code; Pro ($12/month) unlocks
+        unlimited dynamics with full scan history.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan checklist
+      </h2>
+      <p>
+        QR codes fail silently — they look fine until nobody can scan them. Run
+        through this checklist before printing. Full details in our{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print QR codes checklist
+        </Link>
+        .
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size for distance:</strong>{" "}
+          Code width ≈ expected scan distance ÷ 10. A poster viewed from 2 m
+          needs at least 20 cm; a business card held at arm&apos;s length needs
+          at least 2 cm — more if you add a logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Instagram&apos;s gradient colors (pink,
+          purple) work well on white.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
+          Leave at least 4 modules of empty margin around the code — no text or
+          graphics touching the edges.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Vector for print:</strong>{" "}
+          Export SVG for posters and banners. A low-resolution PNG stretched to
+          poster size will blur.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test on real phones:</strong>{" "}
+          Print one sample at final size, scan with both iPhone and Android
+          camera apps, under realistic lighting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Watch for glare:</strong>{" "}
+          Glossy lamination or glass surfaces can block scans. Matte finishes
+          work better.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to use your Instagram QR code
+      </h2>
+      <p>
+        Instagram QR codes work anywhere you want to convert offline attention
+        into follows and engagement:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Product hang tags and packaging:</strong>{" "}
+          &quot;See it styled on IG&quot; — fashion, beauty, and home goods
+          brands use this heavily
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Retail window decals and fitting-room mirrors:</strong>{" "}
+          Capture shoppers who might not buy today but will follow for updates
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Café and restaurant table cards:</strong>{" "}
+          &quot;Follow us for specials&quot; while customers wait
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Event badges and booth backdrops:</strong>{" "}
+          Conferences, trade shows, and networking events
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Business cards:</strong>{" "}
+          A QR code on the back links to your professional Instagram (see our{" "}
+          <Link
+            href="/blog/linkedin-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            LinkedIn QR guide
+          </Link>{" "}
+          for dual-code card ideas)
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Printed lookbooks and mailers:</strong>{" "}
+          Fashion and beauty brands shipping catalogs
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Food trucks and pop-ups:</strong>{" "}
+          Limited-time locations where search is hard
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Security note: Instagram QR is never a login
+      </h2>
+      <p>
+        Legitimate Instagram QR codes link to public content — profiles, posts,
+        Reels. They{" "}
+        <strong className="text-[var(--foreground)]">
+          never ask you to log in
+        </strong>{" "}
+        via the QR code itself. If you scan a code and land on a page asking for
+        your Instagram password, stop — it&apos;s a phishing attempt.
+      </p>
+      <p className="mt-4">
+        QR code phishing (&quot;quishing&quot;) increases during holiday seasons
+        and big sales events. Scammers print fake codes over legitimate ones in
+        public places. For tips on spotting tampered codes and protecting your
+        own printed materials, see our{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          quishing and fake QR code scams guide
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes to avoid
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Linking to a private account:
+          </strong>{" "}
+          Scanners see a locked profile with no content. Use a public account.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Typos in the username:</strong>{" "}
+          Instagram URLs must be exact. Double-check before printing.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Linking to deleted or archived content:
+          </strong>{" "}
+          If you print a post URL and later archive it, the code leads to a 404.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Code too small:</strong>{" "}
+          Tiny codes with logos fail on older phone cameras. Test at final print
+          size.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Low contrast:</strong>{" "}
+          Light colors on light backgrounds confuse cameras. Stick to
+          dark-on-light.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Heavy logo overlay:</strong>{" "}
+          Logos covering more than ~25% of the code risk scan failures. See our{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            error correction and logos guide
+          </Link>{" "}
+          for details.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No call-to-action:</strong>{" "}
+          Always add a caption like &quot;Follow us on Instagram&quot; or
+          &quot;Scan for behind-the-scenes&quot; so people know what the code
+          does.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Using Instagram&apos;s Nametag screenshots:
+          </strong>{" "}
+          Nametags only scan inside the Instagram app. A URL QR code works with
+          any phone camera.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Wrapping up
+      </h2>
+      <p>
+        An Instagram QR code turns physical touchpoints — packaging, signage,
+        business cards, event materials — into profile follows and content
+        engagement. Start with a clean public URL (profile for follower growth,
+        post or Reel for campaigns), decide whether static or dynamic fits your
+        use case, create a branded code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , and test before you print.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Related guides
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/guides/qr-code-for-instagram"
+            className="text-[var(--brand-2)] underline"
+          >
+            Instagram QR Code Guide (quick reference)
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-generate-qr-code-for-facebook"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Generate a QR Code for Facebook
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/youtube-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a YouTube QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/linkedin-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a LinkedIn QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about Instagram QR codes or print design?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

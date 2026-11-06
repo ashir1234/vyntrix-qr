@@ -9,6 +9,7 @@ import {
   FacebookQrCodeGuidePost,
   FinishTheQrWorkflowPost,
   Gs1Sunrise2027Post,
+  InstagramQrCodeGuidePost,
   LinkedInQrCodeGuidePost,
   PrintQrChecklistPost,
   QrCodeLogoDesignPost,
@@ -47,6 +48,7 @@ const BODY: Record<string, () => ReactNode> = {
   "gs1-sunrise-2027-qr-codes-packaging": () => <Gs1Sunrise2027Post />,
   "quishing-fake-qr-code-scams": () => <QuishingFakeQrCodeScamsPost />,
   "how-to-generate-qr-code-for-facebook": () => <FacebookQrCodeGuidePost />,
+  "how-to-make-qr-code-for-instagram": () => <InstagramQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
