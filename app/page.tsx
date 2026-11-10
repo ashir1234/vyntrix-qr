@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { Hero3D } from "@/components/site/Hero3D";
+import { Studio } from "@/components/studio/Studio";
 import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 import { faqJsonLd, guides, howToJsonLd } from "@/lib/seo";
@@ -117,54 +117,29 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd()) }}
       />
       <Nav />
+      <section className="mx-auto w-[min(1200px,95vw)] pt-8">
+        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+          Free QR Code <span className="gradient-text">Generator</span>
+        </h1>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          Build it here. Add a logo, colors, and a live preview, then download
+          PNG or SVG. No watermark on static codes.
+        </p>
+        <p className="mt-2 text-sm text-[var(--muted)]">
+          <Link href="/pricing" className="text-[var(--brand-2)] underline">
+            Free vs Pro
+          </Link>
+          {" · "}
+          <Link
+            href="/guides/best-free-qr-code-generator"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR code generator comparison
+          </Link>
+        </p>
+      </section>
+      <Studio />
       <main className="mx-auto w-[min(1100px,94vw)]">
-        <section className="grid items-center gap-8 py-12 md:grid-cols-2 md:py-20">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-2)] px-3 py-1 text-xs text-[var(--muted)]">
-              <span className="h-2 w-2 rounded-full bg-[var(--brand-2)]" />
-              Free static codes · Optional Pro for dynamics
-            </span>
-            <h1 className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-              Free QR Code{" "}
-              <span className="gradient-text">Generator</span>
-            </h1>
-            <p className="mt-5 max-w-md text-lg text-[var(--muted)]">
-              Create custom QR codes with your logo, colors, and gradients -
-              then preview them live in 3D. Download print-ready PNG or SVG.
-              Sign in for dynamic links; upgrade to Pro for unlimited dynamics,
-              analytics, and more.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/studio"
-                className="btn-primary rounded-xl px-6 py-3 text-base font-semibold glow"
-              >
-                Create your QR code
-              </Link>
-              <Link
-                href="/pricing"
-                className="rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-6 py-3 text-base font-medium transition hover:border-[var(--brand)]"
-              >
-                See Free vs Pro
-              </Link>
-            </div>
-            <p className="mt-4 text-xs text-[var(--muted)]">
-              URL · WiFi · vCard · Dynamic QR · Pro analytics
-            </p>
-            <p className="mt-3 text-sm">
-              <Link
-                href="/guides/best-free-qr-code-generator"
-                className="text-[var(--brand-2)] underline"
-              >
-                QR code generator comparison
-              </Link>
-            </p>
-          </div>
-
-          <div className="glass rounded-3xl p-2">
-            <Hero3D />
-          </div>
-        </section>
 
         {/* GEO / AI answer-first summary */}
         <section className="glass rounded-2xl p-6 md:p-8" aria-label="About Vyntrix QR">
