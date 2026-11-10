@@ -271,6 +271,23 @@ export const blogPosts: BlogPost[] = [
       "qr code for instagram reel",
     ],
   },
+  {
+    slug: "how-to-make-whatsapp-qr-code",
+    title: "How to Make a WhatsApp QR Code (Chat, Business, Group & Print)",
+    description:
+      "A practical guide to creating WhatsApp QR codes - click-to-chat links with wa.me, prefilled messages, WhatsApp Business short links, group invite codes, printing for storefronts and packaging, and a privacy note on phone number exposure.",
+    date: "2026-11-10",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a whatsapp qr code",
+      "whatsapp qr code generator",
+      "qr code for whatsapp number",
+      "qr code for whatsapp chat",
+      "whatsapp business qr code",
+      "whatsapp group qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

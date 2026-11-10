@@ -5781,3 +5781,683 @@ export function InstagramQrCodeGuidePost() {
     </article>
   );
 }
+
+export function WhatsAppQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        WhatsApp is the default messaging app for billions of people worldwide -
+        and a{" "}
+        <strong className="text-[var(--foreground)]">WhatsApp QR code</strong>{" "}
+        lets customers start a conversation with one scan instead of saving your
+        number, opening contacts, and typing out a message. Whether you run a
+        small shop, restaurant, service business, or just want to share your
+        number on a business card, this guide covers everything you need.
+      </p>
+      <p>
+        We will walk through building a click-to-chat link, creating a branded
+        QR code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , WhatsApp&apos;s built-in QR feature vs a generator, group invite
+        codes, WhatsApp Business use cases, print tips, and a privacy note on
+        phone number exposure.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How WhatsApp click-to-chat links work
+      </h2>
+      <p>
+        WhatsApp provides a universal link format that opens a chat with any
+        phone number - no contact save required. The format is:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded">
+        https://wa.me/&lt;phone-number&gt;
+      </p>
+      <p>
+        The phone number must be in{" "}
+        <strong className="text-[var(--foreground)]">
+          international format without the + sign, spaces, or dashes
+        </strong>
+        . For example:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          US number <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">+1 (555) 123-4567</code> becomes{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://wa.me/15551234567</code>
+        </li>
+        <li>
+          UK number <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">+44 7911 123456</code> becomes{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://wa.me/447911123456</code>
+        </li>
+        <li>
+          Indian number <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">+91 98765 43210</code> becomes{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://wa.me/919876543210</code>
+        </li>
+      </ul>
+      <p className="mt-4">
+        When someone clicks or scans this link on a device with WhatsApp
+        installed, it opens a chat window with your number pre-filled - ready to
+        send a message.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Adding a prefilled message
+      </h3>
+      <p>
+        You can include a default message that appears in the text field when
+        the chat opens. This is useful for context - &quot;Hi, I scanned your QR
+        at the store&quot; or &quot;I&apos;m interested in product X.&quot;
+      </p>
+      <p>
+        Add{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          ?text=
+        </code>{" "}
+        followed by your URL-encoded message:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://wa.me/15551234567?text=Hi%2C%20I%20found%20you%20via%20QR%20code
+      </p>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">URL encoding rules:</strong>{" "}
+        Spaces become <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">%20</code>,
+        commas become <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">%2C</code>,
+        exclamation marks become <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">%21</code>.
+        You can use any{" "}
+        <a
+          href="https://www.urlencoder.org/"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          URL encoder tool
+        </a>{" "}
+        online to convert your message.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">Tip:</strong> Keep
+        prefilled messages short and specific. Long messages create longer URLs,
+        which create denser QR patterns that are harder to scan at small sizes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a WhatsApp QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        Once you have your <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> link ready, creating a QR code takes about a minute:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Paste your <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> link into the URL field (e.g.,{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://wa.me/15551234567</code> or with{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?text=</code>).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Style the code:</strong>{" "}
+          Choose colors that match your brand, adjust module shape (rounded,
+          square, dots), and optionally add a logo - see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test the code:</strong>{" "}
+          Use your phone&apos;s camera to scan the preview. Confirm it opens
+          WhatsApp and shows the correct number (and prefilled message, if set).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong> Export
+          as PNG for digital use or SVG for print. SVG scales cleanly for
+          storefronts, packaging, and large posters.
+        </li>
+      </ol>
+      <p className="mt-4">
+        For print materials that may need updates (e.g., if you change phone
+        numbers), consider a{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        that redirects through a short link you can edit without reprinting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        WhatsApp&apos;s built-in QR code vs a generator
+      </h2>
+      <p>
+        WhatsApp includes a native QR code feature in both the regular app and
+        WhatsApp Business. Here&apos;s how they compare to using a generator
+        like {siteConfig.name}.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        WhatsApp personal app QR
+      </h3>
+      <p>
+        In the regular WhatsApp app, you can share your contact via QR:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open WhatsApp → Settings (gear icon) → QR code icon next to your name.</li>
+        <li>Your personal QR code appears. Tap the share or download icon.</li>
+        <li>Others scan it to add you as a contact.</li>
+      </ol>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Limitations:</strong> This
+        code adds you as a contact - it does not open a chat directly. It
+        downloads as a PNG at a fixed resolution with WhatsApp branding. You
+        cannot customize colors, add a logo, or export SVG.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        WhatsApp Business short links
+      </h3>
+      <p>
+        The WhatsApp Business app includes a &quot;Short link&quot; feature that
+        generates a <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> link and QR code automatically:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open WhatsApp Business → Settings → Business tools → Short link.</li>
+        <li>
+          WhatsApp displays your link (e.g.,{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me/15551234567</code>) and a QR code.
+        </li>
+        <li>You can add a prefilled message here and share or download the code.</li>
+      </ol>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Limitations:</strong> The
+        QR is a simple black-and-white PNG with no branding options. For
+        storefronts, packaging, or any print material where brand consistency
+        matters, a custom QR from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        gives you more control.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        WhatsApp Business catalog links
+      </h3>
+      <p>
+        If you&apos;ve set up a WhatsApp Business catalog, you can link directly
+        to a product:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://wa.me/c/&lt;phone-number&gt;
+      </p>
+      <p>
+        This opens your business catalog in WhatsApp. You can encode this link
+        in a QR code for product tags, menus, or in-store displays.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When to use a generator instead
+      </h3>
+      <p>Use {siteConfig.name} or another generator when you need:</p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Custom colors</strong>{" "}
+          that match your brand
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">A logo</strong> in the
+          center of the QR (with appropriate error correction - see{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+          )
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">SVG export</strong> for
+          clean scaling on large prints
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Scan analytics
+          </strong>{" "}
+          (dynamic codes only)
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Editable destination
+          </strong>{" "}
+          without reprinting (dynamic codes)
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        WhatsApp group invite QR codes
+      </h2>
+      <p>
+        WhatsApp groups have their own invite links that you can convert to QR
+        codes. This is useful for community groups, class chats, team channels,
+        or event coordination.
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the WhatsApp group.</li>
+        <li>Tap the group name at the top → Invite via link.</li>
+        <li>
+          Copy the link (format:{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://chat.whatsapp.com/INVITE_CODE</code>
+          ) or tap the QR code icon to see WhatsApp&apos;s built-in version.
+        </li>
+        <li>
+          For a branded code, paste the link into{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>{" "}
+          and customize.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Warning: resetting the invite link breaks printed codes
+      </h3>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          If you or another admin resets the group invite link, all existing QR
+          codes become invalid.
+        </strong>{" "}
+        Anyone scanning an old code will see an error. This is important for
+        printed materials like event posters, class handouts, or membership
+        cards - once the link is reset, those prints are useless.
+      </p>
+      <p>
+        If you plan to print group invite QR codes at scale, consider:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Communicate with admins
+          </strong>{" "}
+          - ensure no one resets the link without warning
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Use a dynamic QR code
+          </strong>{" "}
+          that redirects to the invite link - if the link resets, you update the
+          redirect instead of reprinting
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        WhatsApp Business use cases
+      </h2>
+      <p>
+        WhatsApp QR codes shine for businesses that rely on direct customer
+        communication. Here are practical placements:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Storefront window and counter
+      </h3>
+      <p>
+        A QR code on your window or at the checkout counter invites walk-bys and
+        customers to message you with questions, orders, or appointment
+        requests. Include a prefilled message like &quot;Hi, I&apos;m outside
+        your store and have a question.&quot;
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Product packaging
+      </h3>
+      <p>
+        Print a WhatsApp QR on packaging for post-purchase support. Customers
+        can scan to ask about usage, report issues, or reorder - without hunting
+        for contact info. This works well for{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          small businesses
+        </Link>{" "}
+        that handle support personally rather than through a call center.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Receipts and invoices
+      </h3>
+      <p>
+        Add a WhatsApp QR to printed receipts for instant follow-up: &quot;Have
+        a question about your order? Scan to chat.&quot; This reduces email back-and-forth and reaches customers on the app they already use.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Restaurant table tents and menus
+      </h3>
+      <p>
+        Table tents with a WhatsApp QR let diners message for orders, special
+        requests, or to call a server without flagging someone down. Combined
+        with a menu QR, this creates a contactless ordering flow. See{" "}
+        <Link
+          href="/guides/qr-code-for-restaurant-menu"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR Code for Restaurant Menu
+        </Link>{" "}
+        for menu-specific tips.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Business cards and flyers
+      </h3>
+      <p>
+        Instead of (or alongside) your phone number, a WhatsApp QR on a business
+        card lets contacts start a chat immediately. They skip the
+        save-then-open-WhatsApp friction.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and size guidelines
+      </h2>
+      <p>
+        WhatsApp QR codes follow the same physical rules as any QR code. For
+        print materials, keep these in mind:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum size:</strong>{" "}
+          At least 2 cm (0.8 in) for close-up scanning like business cards. For
+          posters viewed from a distance, scale up - the 10:1 rule (code width ≈
+          expected scan distance ÷ 10) is a good starting point.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
+          Leave at least 4 modules of empty space around the code. Crowded
+          designs that bleed into the QR can cause scan failures.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Avoid low-contrast color combinations
+          (light gray on white) or placing the code over busy images.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Vector for print:</strong>{" "}
+          Export SVG when possible. PNG works for digital or small print, but
+          scaling a low-res PNG for a window vinyl leads to blurry edges.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For a full pre-press checklist, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Privacy note: WhatsApp QR codes expose your phone number
+      </h2>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          A WhatsApp QR code reveals your phone number to anyone who scans it.
+        </strong>{" "}
+        Unlike a website URL or social media profile, the phone number is
+        embedded directly in the link. There is no way to hide it - the link
+        format requires the full number.
+      </p>
+      <p>
+        Consider whether this is acceptable for your use case:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">For businesses:</strong>{" "}
+          A dedicated business line is generally fine. Customers need to reach
+          you, and the number is already public.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">For personal use:</strong>{" "}
+          Sharing your personal number on a public QR (e.g., a poster or flyer)
+          means anyone can save and call it. Consider a separate business number
+          or Google Voice line if privacy matters.
+        </li>
+      </ul>
+      <p className="mt-4">
+        Also be aware of{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR code scams (quishing)
+        </Link>
+        . Malicious actors can create fake WhatsApp QR codes that lead to
+        phishing numbers or impersonation attempts. If you display public QR
+        codes, use tamper-evident printing and monitor for sticker overlays.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Test before you print
+      </h2>
+      <p>
+        Always scan your QR code before finalizing any print run:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Test on multiple devices:
+          </strong>{" "}
+          Try iPhone and Android, different camera apps, and both WhatsApp and
+          WhatsApp Business if relevant.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Confirm the destination:
+          </strong>{" "}
+          Check that the correct phone number appears and any prefilled message
+          loads as expected.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Print a proof at final size:
+          </strong>{" "}
+          A code that scans fine on screen may fail when printed at business-card
+          scale with a large logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan at distance:</strong>{" "}
+          If the code will be on a poster or storefront, test from the expected
+          viewing distance.
+        </li>
+      </ol>
+      <p className="mt-4">
+        Fixing a broken QR after 1,000 flyers are printed is expensive. A
+        two-minute test beforehand costs nothing.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ: WhatsApp QR codes
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a WhatsApp QR code without showing my phone number?
+      </h3>
+      <p>
+        No. The <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> link format requires the phone number. There is no anonymous
+        option - anyone who scans can see (and save) the number.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code expire?
+      </h3>
+      <p>
+        A static QR code encoding a <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> link does not expire - the link
+        format is permanent as long as WhatsApp supports it. Group invite links,
+        however, become invalid if an admin resets the link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I track how many people scan my WhatsApp QR code?
+      </h3>
+      <p>
+        A static QR code has no built-in analytics. To track scans, use a{" "}
+        <Link
+          href="/guides/dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          dynamic QR code
+        </Link>{" "}
+        that redirects through a trackable short link before reaching the{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> destination.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What if I change my phone number?
+      </h3>
+      <p>
+        A static QR code encoding your old number will still work for that old
+        number - but new messages will not reach your new WhatsApp account. You
+        would need to generate a new QR code and reprint. A dynamic code lets
+        you update the destination without reprinting.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I use WhatsApp Web to scan a QR code?
+      </h3>
+      <p>
+        WhatsApp Web uses a QR code for device linking, but that is a separate
+        feature. A <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">wa.me</code> QR code for starting a chat works only on
+        mobile devices with WhatsApp installed.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I add a WhatsApp logo to my QR code?
+      </h3>
+      <p>
+        Yes - upload the WhatsApp logo (or your business logo) in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        and increase error correction to compensate. See{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Create a QR Code with a Logo
+        </Link>{" "}
+        for step-by-step instructions.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Summary: creating a WhatsApp QR code
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Build your link:{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">https://wa.me/&lt;number&gt;</code>{" "}
+          with optional <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?text=</code> for a prefilled message.
+        </li>
+        <li>
+          Paste the link into{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          , customize colors and logo.
+        </li>
+        <li>Test on your phone before downloading.</li>
+        <li>Export SVG for print, PNG for digital.</li>
+        <li>For group invites, be aware that resetting the link breaks printed codes.</li>
+        <li>Consider dynamic codes if you may change numbers or want scan analytics.</li>
+        <li>Remember: your phone number is visible to anyone who scans.</li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-generate-qr-code-for-facebook"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Generate a QR Code for Facebook
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-instagram"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Instagram
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/youtube-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a YouTube QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/linkedin-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a LinkedIn QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about WhatsApp QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

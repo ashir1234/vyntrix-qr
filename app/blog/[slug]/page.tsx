@@ -20,6 +20,7 @@ import {
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
+  WhatsAppQrCodeGuidePost,
   YouTubeQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
@@ -49,6 +50,7 @@ const BODY: Record<string, () => ReactNode> = {
   "quishing-fake-qr-code-scams": () => <QuishingFakeQrCodeScamsPost />,
   "how-to-generate-qr-code-for-facebook": () => <FacebookQrCodeGuidePost />,
   "how-to-make-qr-code-for-instagram": () => <InstagramQrCodeGuidePost />,
+  "how-to-make-whatsapp-qr-code": () => <WhatsAppQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
