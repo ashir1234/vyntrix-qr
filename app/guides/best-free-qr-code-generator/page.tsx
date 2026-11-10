@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideCta, GuideLayout } from "@/components/guides/GuideLayout";
 import {
+  absoluteUrl,
   articleJsonLd,
   breadcrumbJsonLd,
   faqJsonLd,
@@ -12,7 +13,56 @@ import { siteConfig } from "@/lib/site";
 const slug = "best-free-qr-code-generator";
 const guide = getGuide(slug)!;
 
+const TOOLS = [
+  {
+    name: "Vyntrix QR",
+    href: "/studio",
+    external: false,
+    body: "Our generator. Unlimited static codes with no watermark, logo and colors, a live 3D preview, and PNG or SVG download. Sign in for 1 dynamic code. Pro is $12/month for unlimited dynamic codes and analytics.",
+  },
+  {
+    name: "QR Code Monkey",
+    href: "https://www.qrcode-monkey.com/",
+    external: true,
+    body: "A free design tool built around logo QR codes, colors, and custom patterns. Useful when the job is a branded static code and you do not need scan analytics.",
+  },
+  {
+    name: "Adobe Express",
+    href: "https://www.adobe.com/express/feature/image/qr-code-generator",
+    external: true,
+    body: "A free static QR code generator for URLs. You can change colors, add a logo, and download PNG, JPEG, or PDF, then drop the code into an Express design. It does not make WiFi or vCard codes.",
+  },
+  {
+    name: "Canva",
+    href: "https://www.canva.com/",
+    external: true,
+    body: "A design editor with a QR code element. Pick it when the code has to sit inside a poster, menu, or social graphic you are already making in Canva.",
+  },
+  {
+    name: "QR Tiger",
+    href: "https://www.qrcode-tiger.com/",
+    external: true,
+    body: "A branded generator with free static codes and paid dynamic codes. Dynamic codes let you change the destination later and see scan activity.",
+  },
+  {
+    name: "QRStuff",
+    href: "https://www.qrstuff.com/",
+    external: true,
+    body: "A long-running generator for static codes that keep working, plus dynamic codes when you need to edit the link or track scans.",
+  },
+  {
+    name: "Bitly",
+    href: "https://bitly.com/",
+    external: true,
+    body: "A short-link product that also makes QR codes. Choose it when the QR should point at a Bitly link you already track with the rest of your campaigns.",
+  },
+] as const;
+
 const FAQS = [
+  {
+    q: "What is a QR code generator?",
+    a: "A QR code generator turns a link, WiFi login, contact card, or short text into a scannable code. Static generators bake the data into the pattern. Dynamic generators store a short link so you can change the destination later.",
+  },
   {
     q: "What makes a free QR generator actually good?",
     a: "No watermark on static codes, logo/color support, reliable PNG/SVG export, clear privacy, and an honest path to dynamic codes if you need analytics.",
@@ -57,7 +107,7 @@ export default function BestFreeGeneratorGuidePage() {
       breadcrumbs={[
         { name: "Home", href: "/" },
         { name: "Guides", href: "/guides" },
-        { name: "Best free generator", href: `/guides/${slug}` },
+        { name: "QR code generator", href: `/guides/${slug}` },
       ]}
       jsonLd={[
         breadcrumbJsonLd([
@@ -71,69 +121,57 @@ export default function BestFreeGeneratorGuidePage() {
           path: `/guides/${slug}`,
         }),
         faqJsonLd(FAQS),
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: guide.h1,
+          itemListOrder: "https://schema.org/ItemListOrderAscending",
+          numberOfItems: TOOLS.length,
+          itemListElement: TOOLS.map((tool, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: tool.name,
+            url: tool.external ? tool.href : absoluteUrl(tool.href),
+          })),
+        },
       ]}
     >
       <h1 className="text-4xl font-bold tracking-tight">{guide.h1}</h1>
       <p className="mt-4 text-lg text-[var(--muted)]">
-        Searching for the{" "}
-        <strong className="text-[var(--foreground)]">
-          best free QR code generator
-        </strong>
-        ? Focus on watermarks, branding, exports, privacy, and whether dynamic
-        codes are honest about pricing - not on stuffing keyword lists or
-        chasing every gimmick feature.
+        A{" "}
+        <strong className="text-[var(--foreground)]">QR code generator</strong>{" "}
+        turns a link, WiFi login, or contact card into a code someone can scan.
+        These seven are the ones worth opening, and what each one is actually
+        for. This list is published by {siteConfig.name}, so our own product is
+        first and described from our product, not from an outside award.
       </p>
 
       <GuideCta label={`Try ${siteConfig.name} free`} />
 
-      <h2 className="mt-10 text-2xl font-semibold">
-        Checklist: what “free” should include
-      </h2>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Static codes free without a watermark</li>
-        <li>Logo, colors, and print-ready PNG/SVG</li>
-        <li>Optional dynamic codes with clear Free vs Pro limits</li>
-        <li>Privacy you can explain (static in-browser vs stored dynamics)</li>
-        <li>Guides for real use cases - WiFi, menus, packaging, social</li>
-        <li>Works on modern phones without forcing a proprietary scanner app</li>
-      </ul>
-
-      <h2 className="mt-10 text-2xl font-semibold">
-        Red flags in free QR tools
-      </h2>
-      <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Watermarks or forced branding on “free” downloads</li>
-        <li>Dynamic links with no way to export history or unclear expiry</li>
-        <li>Vague privacy policies about what is uploaded</li>
-        <li>Only low-res PNG, no SVG for professional print</li>
-        <li>Hidden pricing that appears only after you print a campaign</li>
-      </ul>
-
-      <h2 className="mt-10 text-2xl font-semibold">
-        How {siteConfig.name} fits
-      </h2>
-      <p className="mt-3 text-[var(--muted)]">
-        {siteConfig.name} gives you unlimited static codes, live 2D/3D preview,
-        and branding tools. Sign in for 1 free dynamic code with short
-        analytics; Pro ($12/mo) unlocks unlimited dynamics, CSV export, WiFi
-        landing pages, projects, bulk create, and print pack. Compare plans on{" "}
-        <Link href="/pricing" className="text-[var(--brand-2)] underline">
-          Pricing
-        </Link>
-        .
-      </p>
-      <p className="mt-3 text-[var(--muted)]">
-        Static generation runs in the browser for privacy; dynamic destinations
-        are stored so redirects and analytics can work. Read more on{" "}
-        <Link href="/about" className="text-[var(--brand-2)] underline">
-          About
-        </Link>{" "}
-        and the{" "}
-        <Link href="/privacy" className="text-[var(--brand-2)] underline">
-          Privacy Policy
-        </Link>
-        .
-      </p>
+      <h2 className="mt-10 text-2xl font-semibold">Seven QR code generators</h2>
+      <ol className="mt-4 list-decimal space-y-6 pl-5 text-[var(--muted)]">
+        {TOOLS.map((tool) => (
+          <li key={tool.name}>
+            <h3 className="text-lg font-semibold text-[var(--foreground)]">
+              {tool.external ? (
+                <a
+                  href={tool.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {tool.name}
+                </a>
+              ) : (
+                <Link href={tool.href} className="underline">
+                  {tool.name}
+                </Link>
+              )}
+            </h3>
+            <p className="mt-1">{tool.body}</p>
+          </li>
+        ))}
+      </ol>
 
       <h2 className="mt-10 text-2xl font-semibold">
         Feature priorities by use case

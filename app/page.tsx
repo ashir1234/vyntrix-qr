@@ -151,6 +151,14 @@ export default function Home() {
             <p className="mt-4 text-xs text-[var(--muted)]">
               URL · WiFi · vCard · Dynamic QR · Pro analytics
             </p>
+            <p className="mt-3 text-sm">
+              <Link
+                href="/guides/best-free-qr-code-generator"
+                className="text-[var(--brand-2)] underline"
+              >
+                QR code generator comparison
+              </Link>
+            </p>
           </div>
 
           <div className="glass rounded-3xl p-2">
