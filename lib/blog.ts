@@ -12,7 +12,7 @@ export type BlogPost = {
   topic: string;
 };
 
-/** Original editorial posts — keep these substantial and unique. */
+/** Original editorial posts - keep these substantial and unique. */
 export const blogPosts: BlogPost[] = [
   {
     slug: "static-qr-privacy-in-the-browser",
@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
     slug: "print-qr-codes-that-scan",
     title: "Print QR Codes That Actually Scan: A Field Checklist",
     description:
-      "A practical pre-press checklist for size, contrast, quiet zone, proofs, and when to use SVG vs PNG — based on how phones fail in the real world.",
+      "A practical pre-press checklist for size, contrast, quiet zone, proofs, and when to use SVG vs PNG - based on how phones fail in the real world.",
     date: "2026-07-22",
     readingMinutes: 9,
     topic: "Print",
@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     slug: "small-business-qr-playbook",
     title: "A Small-Business QR Playbook: Five Codes That Matter",
     description:
-      "Reviews, menus, WiFi, WhatsApp, and one social profile — where to place them, when to use dynamic, and a one-afternoon rollout.",
+      "Reviews, menus, WiFi, WhatsApp, and one social profile - where to place them, when to use dynamic, and a one-afternoon rollout.",
     date: "2026-08-07",
     readingMinutes: 9,
     topic: "Playbook",
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     slug: "finish-the-qr-workflow",
     title: "Building a QR Workflow People Actually Finish",
     description:
-      "Where generators lose users between design and print — and how we designed Vyntrix QR around watermarks, SVG, and editable dynamics.",
+      "Where generators lose users between design and print - and how we designed Vyntrix QR around watermarks, SVG, and editable dynamics.",
     date: "2026-08-10",
     readingMinutes: 7,
     topic: "Product",
@@ -102,7 +102,7 @@ export const blogPosts: BlogPost[] = [
     slug: "linkedin-qr-code-guide",
     title: "How to Make a LinkedIn QR Code (Profile, Company Page, Business Card)",
     description:
-      "A practical guide to creating LinkedIn QR codes — from finding your profile URL to printing branded codes on business cards, badges, slides, and email signatures.",
+      "A practical guide to creating LinkedIn QR codes - from finding your profile URL to printing branded codes on business cards, badges, slides, and email signatures.",
     date: "2026-10-09",
     readingMinutes: 10,
     topic: "Guide",
@@ -118,7 +118,7 @@ export const blogPosts: BlogPost[] = [
     slug: "youtube-qr-code-guide",
     title: "How to Make a YouTube QR Code (Channel, Video, Subscribe & Print)",
     description:
-      "A complete guide to creating YouTube QR codes — channel URLs, video links, Shorts, playlists, the ?sub_confirmation=1 subscribe prompt, static vs dynamic for campaigns, and a print/scan checklist for packaging, posters, merch, and events.",
+      "A complete guide to creating YouTube QR codes - channel URLs, video links, Shorts, playlists, the ?sub_confirmation=1 subscribe prompt, static vs dynamic for campaigns, and a print/scan checklist for packaging, posters, merch, and events.",
     date: "2026-10-13",
     readingMinutes: 10,
     topic: "Guide",
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
     slug: "qr-code-with-logo-guide",
     title: "How to Create a QR Code with a Logo (Step-by-Step Guide)",
     description:
-      "A practical walkthrough for creating a QR code with a logo inside — preparing your logo file, uploading it, choosing error correction, testing scans, and exporting for print or web using Vyntrix QR.",
+      "A practical walkthrough for creating a QR code with a logo inside - preparing your logo file, uploading it, choosing error correction, testing scans, and exporting for print or web using Vyntrix QR.",
     date: "2026-10-16",
     readingMinutes: 10,
     topic: "Guide",
@@ -151,7 +151,7 @@ export const blogPosts: BlogPost[] = [
     slug: "qr-code-logo-design-best-practices",
     title: "QR Code Logo Design: Size, Placement, Contrast & Error Correction Best Practices",
     description:
-      "Concrete design rules for putting a logo in a QR code — logo size vs error correction, center placement, padding, color contrast, module styling limits, file formats, and a pre-launch testing checklist.",
+      "Concrete design rules for putting a logo in a QR code - logo size vs error correction, center placement, padding, color contrast, module styling limits, file formats, and a pre-launch testing checklist.",
     date: "2026-10-20",
     readingMinutes: 10,
     topic: "Design",
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
     slug: "qr-codes-with-logo-more-scans",
     title: "Do QR Codes with a Logo Get More Scans? What 46.9 Million Scans Reveal",
     description:
-      "New research from Scanova's 2026 QR Code Benchmarks shows customized QR codes get 2.4× more scans than plain black-and-white ones. Here's what the data says about logo QR codes — and what else drives scans.",
+      "New research from Scanova's 2026 QR Code Benchmarks shows customized QR codes get 2.4× more scans than plain black-and-white ones. Here's what the data says about logo QR codes - and what else drives scans.",
     date: "2026-10-27",
     readingMinutes: 8,
     topic: "Research",
@@ -204,7 +204,7 @@ export const blogPosts: BlogPost[] = [
     title:
       "GS1 Sunrise 2027: What the Switch to QR Codes on Packaging Means for Your Brand",
     description:
-      "Retailers are adopting 2D barcodes by end of 2027. Learn what GS1 Digital Link is, how to dual-code packaging, and why the QR on your product needs to deliver value — not just scan at checkout.",
+      "Retailers are adopting 2D barcodes by end of 2027. Learn what GS1 Digital Link is, how to dual-code packaging, and why the QR on your product needs to deliver value - not just scan at checkout.",
     date: "2026-10-30",
     readingMinutes: 11,
     topic: "Packaging",
@@ -239,7 +239,7 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-generate-qr-code-for-facebook",
     title: "How to Generate a QR Code for Facebook (Page, Profile & Print)",
     description:
-      "A practical guide to creating Facebook QR codes — finding your Page or profile URL, Meta's built-in options and their limits, and creating branded QR codes with logo and colors for print using Vyntrix QR Studio.",
+      "A practical guide to creating Facebook QR codes - finding your Page or profile URL, Meta's built-in options and their limits, and creating branded QR codes with logo and colors for print using Vyntrix QR Studio.",
     date: "2026-11-03",
     readingMinutes: 10,
     topic: "Guide",
@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-make-qr-code-for-instagram",
     title: "How to Make a QR Code for Instagram (Profile, Post, Reel & Print)",
     description:
-      "A practical guide to creating Instagram QR codes — Instagram's built-in profile QR vs custom branded codes, finding profile/post/Reel URLs, designing with logos and colors, static vs dynamic for campaigns, and a print checklist for business cards, packaging, and posters.",
+      "A practical guide to creating Instagram QR codes - Instagram's built-in profile QR vs custom branded codes, finding profile/post/Reel URLs, designing with logos and colors, static vs dynamic for campaigns, and a print checklist for business cards, packaging, and posters.",
     date: "2026-11-06",
     readingMinutes: 10,
     topic: "Guide",

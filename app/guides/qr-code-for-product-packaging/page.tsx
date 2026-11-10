@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "What size should a packaging QR be?",
-    a: "As a rule of thumb, at least 2×2 cm (≈0.8 in) for close scans — larger if people scan from farther away or the surface is curved.",
+    a: "As a rule of thumb, at least 2×2 cm (≈0.8 in) for close scans - larger if people scan from farther away or the surface is curved.",
   },
   {
     q: "Should packaging use dynamic QR codes?",
@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: "What should the code link to?",
-    a: "Setup guides, how-to videos, warranty registration, refill orders, recycling info, or authenticity checks — one clear primary job per code.",
+    a: "Setup guides, how-to videos, warranty registration, refill orders, recycling info, or authenticity checks - one clear primary job per code.",
   },
   {
     q: "SVG or PNG for label printers?",
@@ -77,7 +77,7 @@ export default function PackagingGuidePage() {
         A{" "}
         <strong className="text-[var(--foreground)]">packaging QR code</strong>{" "}
         connects physical products to manuals, how-to videos, warranties, and
-        refill links — without crowding the label. Because packaging lives for
+        refill links - without crowding the label. Because packaging lives for
         years, plan for change with{" "}
         <Link
           href="/guides/dynamic-qr-code"
@@ -109,7 +109,7 @@ export default function PackagingGuidePage() {
           so manuals can move without new packaging plates.
         </li>
         <li>
-          Brand carefully —{" "}
+          Brand carefully -{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"

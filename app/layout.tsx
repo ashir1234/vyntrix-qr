@@ -29,7 +29,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
+    default: `${siteConfig.name} - Free QR Code Generator with Logo & 3D Preview`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -51,12 +51,12 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
+    title: `${siteConfig.name} - Free QR Code Generator with Logo & 3D Preview`,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
+    title: `${siteConfig.name} - Free QR Code Generator with Logo & 3D Preview`,
     description: siteConfig.description,
     creator: siteConfig.twitter,
   },

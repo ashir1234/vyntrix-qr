@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "What’s on Pro?",
-    a: "Unlimited dynamic codes, full history + CSV, custom slugs, WiFi landing pages, cloud Studio sync, projects, bulk CSV create, print pack, and no ads — from $12/month.",
+    a: "Unlimited dynamic codes, full history + CSV, custom slugs, WiFi landing pages, cloud Studio sync, projects, bulk CSV create, print pack, and no ads - from $12/month.",
   },
   {
     q: "Can I migrate existing printed codes?",
@@ -31,7 +31,7 @@ const FAQS = [
   },
   {
     q: "Do you support WiFi and vCard?",
-    a: "Yes — free static WiFi and vCard types, plus Pro dynamic WiFi landing pages with open tracking.",
+    a: "Yes - free static WiFi and vCard types, plus Pro dynamic WiFi landing pages with open tracking.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function QrfyAltPage() {
         Searching for a{" "}
         <strong className="text-[var(--foreground)]">QRfy alternative</strong>?{" "}
         {siteConfig.name} combines free static branding with an affordable Pro
-        plan for dynamic QR codes, analytics, and business workflows — built by{" "}
+        plan for dynamic QR codes, analytics, and business workflows - built by{" "}
         <Link href="/about" className="text-[var(--brand-2)] underline">
           {siteConfig.parentCompany.name}
         </Link>

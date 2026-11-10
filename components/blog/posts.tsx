@@ -10,7 +10,7 @@ export function StaticQrPrivacyPost() {
         <strong className="text-[var(--foreground)]">
           static QR generation for one-off downloads runs in your browser
         </strong>
-        . Dynamic codes are different by design — and we say so up front.
+        . Dynamic codes are different by design - and we say so up front.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -45,7 +45,7 @@ export function StaticQrPrivacyPost() {
         </Link>{" "}
         encodes a short link. To redirect scanners and show analytics, we must
         store the destination, account ownership, and scan events. That is not
-        optional — it is how editable codes work. Free includes 1 dynamic code;
+        optional - it is how editable codes work. Free includes 1 dynamic code;
         Pro expands history, CSV export, and related tools. Details live in our{" "}
         <Link href="/privacy" className="text-[var(--brand-2)] underline">
           Privacy Policy
@@ -59,7 +59,7 @@ export function StaticQrPrivacyPost() {
       <ol className="list-decimal space-y-2 pl-5">
         <li>
           Use <strong className="text-[var(--foreground)]">static</strong> for
-          permanent WiFi, vCard, or a URL that will never change — no account
+          permanent WiFi, vCard, or a URL that will never change - no account
           required.
         </li>
         <li>
@@ -71,7 +71,7 @@ export function StaticQrPrivacyPost() {
           codes.
         </li>
         <li>
-          Read the cookie / ads notice if you browse on the free plan — Pro is
+          Read the cookie / ads notice if you browse on the free plan - Pro is
           ad-free when active.
         </li>
       </ol>
@@ -81,7 +81,7 @@ export function StaticQrPrivacyPost() {
       </h2>
       <p>
         “Does scanning tell you who I am?” Scan analytics for dynamic codes are
-        aggregate (counts, coarse device/time signals) — not a dossier on every
+        aggregate (counts, coarse device/time signals) - not a dossier on every
         visitor. “Can I delete data?” Contact us via{" "}
         <Link href="/contact" className="text-[var(--brand-2)] underline">
           Contact
@@ -134,7 +134,7 @@ export function PrintQrChecklistPost() {
         3. Protect contrast and quiet zone
       </h2>
       <ul className="list-disc space-y-2 pl-5">
-        <li>Dark modules on a light, solid pad — not on busy photography</li>
+        <li>Dark modules on a light, solid pad - not on busy photography</li>
         <li>Empty margin of at least four modules on every side</li>
         <li>Beware glossy laminate glare under store lights</li>
       </ul>
@@ -161,7 +161,7 @@ export function PrintQrChecklistPost() {
         <li>Scan with iPhone and Android camera apps.</li>
         <li>Stand at the farthest expected distance.</li>
         <li>
-          Confirm the destination — especially for{" "}
+          Confirm the destination - especially for{" "}
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
@@ -197,7 +197,7 @@ export function StaticVsDynamicCostPost() {
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
         Free static QR codes are genuinely free on {siteConfig.name}. The
-        expensive part is rarely the generator — it is{" "}
+        expensive part is rarely the generator - it is{" "}
         <strong className="text-[var(--foreground)]">reprinting</strong> when a
         URL, offer, or menu changes. That is when dynamic codes pay for
         themselves.
@@ -291,7 +291,7 @@ export function ErrorCorrectionLogosPost() {
       <p>
         Pretty QR codes fail for a boring reason: scanners need enough intact
         modules to reconstruct the payload. Logos, gradients, and fancy frames
-        remove or obscure those modules. Error correction is the safety net —
+        remove or obscure those modules. Error correction is the safety net -
         and it has limits.
       </p>
 
@@ -313,7 +313,7 @@ export function ErrorCorrectionLogosPost() {
         Why “more design” often means “larger print”
       </h2>
       <ul className="list-disc space-y-2 pl-5">
-        <li>Higher correction makes denser patterns — small cards struggle.</li>
+        <li>Higher correction makes denser patterns - small cards struggle.</li>
         <li>Long URLs already use more modules; logos pile on risk.</li>
         <li>
           Low contrast (light brand colors on cream stock) wastes the correction
@@ -348,7 +348,7 @@ export function ErrorCorrectionLogosPost() {
           mark.
         </li>
         <li>
-          Packaging or poster with room? Logo is fine — proof on the real
+          Packaging or poster with room? Logo is fine - proof on the real
           substrate.
         </li>
         <li>
@@ -401,7 +401,7 @@ export function SmallBusinessQrPlaybookPost() {
           >
             Google review QR
           </Link>{" "}
-          on receipts or the counter — ask honestly, never incentivize.
+          on receipts or the counter - ask honestly, never incentivize.
         </li>
         <li>
           <Link
@@ -421,7 +421,7 @@ export function SmallBusinessQrPlaybookPost() {
           >
             Guest WiFi QR
           </Link>{" "}
-          at the entrance — static is fine if the password is stable.
+          at the entrance - static is fine if the password is stable.
         </li>
         <li>
           <Link
@@ -451,7 +451,7 @@ export function SmallBusinessQrPlaybookPost() {
         A good-enough code at the payment counter outperforms a perfect SVG that
         lives only in a brand deck. Caption every code (“Scan for today’s
         menu”). Size for distance. Proof on iPhone and Android under real
-        lights — details in our{" "}
+        lights - details in our{" "}
         <Link
           href="/blog/print-qr-codes-that-scan"
           className="text-[var(--brand-2)] underline"
@@ -467,7 +467,7 @@ export function SmallBusinessQrPlaybookPost() {
       <p>
         Free static codes on {siteConfig.name} cover WiFi and permanent links.
         Pay for dynamic (or use the free single dynamic slot) when print is
-        expensive to replace — menus, packaging, window vinyl. See{" "}
+        expensive to replace - menus, packaging, window vinyl. See{" "}
         <Link
           href="/blog/static-vs-dynamic-qr-cost"
           className="text-[var(--brand-2)] underline"
@@ -518,7 +518,7 @@ export function FinishTheQrWorkflowPost() {
       <p>
         Most QR tools lose people between “looks cool” and “printed and
         working.” We built {siteConfig.name} around finishing the job: pick a
-        type, brand it, preview, download, and — if needed — keep a dynamic link
+        type, brand it, preview, download, and - if needed - keep a dynamic link
         you can still edit next month.
       </p>
 
@@ -538,7 +538,7 @@ export function FinishTheQrWorkflowPost() {
       <p>
         Unlimited static codes with no watermark. Logo and color tools with live
         2D/3D preview. Honest limits: one free dynamic code to learn the
-        workflow; Pro when you outgrow it. Privacy spelled out — static in the
+        workflow; Pro when you outgrow it. Privacy spelled out - static in the
         browser, dynamics stored for redirects (
         <Link
           href="/blog/static-qr-privacy-in-the-browser"
@@ -598,17 +598,17 @@ export function YouTubeQrCodeGuidePost() {
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
         YouTube is the second-largest search engine, and plenty of physical
-        materials — product packaging, event posters, business cards, merch,
-        trade-show banners — would benefit from a direct link into it. A{" "}
+        materials - product packaging, event posters, business cards, merch,
+        trade-show banners - would benefit from a direct link into it. A{" "}
         <strong className="text-[var(--foreground)]">YouTube QR code</strong>{" "}
         lets someone scan once and land on your channel, a specific video, a
-        Shorts compilation, or a playlist — without typing a single character.
+        Shorts compilation, or a playlist - without typing a single character.
       </p>
       <p>
         This guide covers the link types YouTube offers (channel, video, Short,
         playlist), the <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code>{" "}
         subscribe prompt trick, when to use static vs dynamic codes, a
-        print-ready checklist, and placement ideas — packaging, posters, merch,
+        print-ready checklist, and placement ideas - packaging, posters, merch,
         event badges, and business cards.
       </p>
 
@@ -628,7 +628,7 @@ export function YouTubeQrCodeGuidePost() {
         Channel URL
       </h3>
       <p>
-        A channel link shows your full page — all uploads, playlists, community
+        A channel link shows your full page - all uploads, playlists, community
         posts, and the Subscribe button. Use it for brand awareness, creator
         networking, or anywhere the goal is &quot;follow me here.&quot; Formats:
       </p>
@@ -637,19 +637,19 @@ export function YouTubeQrCodeGuidePost() {
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://youtube.com/@YourHandle
           </code>{" "}
-          — the modern handle format (preferred)
+          - the modern handle format (preferred)
         </li>
         <li>
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://youtube.com/c/YourChannel
           </code>{" "}
-          — legacy custom URL (still works, but avoid for new materials)
+          - legacy custom URL (still works, but avoid for new materials)
         </li>
         <li>
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://youtube.com/channel/UC...
           </code>{" "}
-          — internal channel ID link (works but not human-readable)
+          - internal channel ID link (works but not human-readable)
         </li>
       </ul>
       <p className="mt-4">
@@ -672,13 +672,13 @@ export function YouTubeQrCodeGuidePost() {
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://youtu.be/VIDEO_ID
           </code>{" "}
-          — short share link (slightly simpler QR pattern)
+          - short share link (slightly simpler QR pattern)
         </li>
         <li>
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://youtube.com/watch?v=VIDEO_ID
           </code>{" "}
-          — full URL
+          - full URL
         </li>
       </ul>
       <p className="mt-4">
@@ -703,7 +703,7 @@ export function YouTubeQrCodeGuidePost() {
           https://youtube.com/shorts/VIDEO_ID
         </code>
         . On mobile, this opens the Shorts player (vertical feed). Use it when
-        the Short is the primary content — quick tips, product teasers, or
+        the Short is the primary content - quick tips, product teasers, or
         behind-the-scenes clips on packaging.
       </p>
 
@@ -722,7 +722,7 @@ export function YouTubeQrCodeGuidePost() {
         </li>
       </ul>
       <p className="mt-4">
-        A playlist QR makes sense when a single video would feel incomplete —
+        A playlist QR makes sense when a single video would feel incomplete -
         workshop series, multi-part tutorials, or conference recordings. If the
         playlist evolves, a{" "}
         <Link
@@ -756,7 +756,7 @@ export function YouTubeQrCodeGuidePost() {
         </code>
       </p>
       <p className="mt-4">
-        Use this when your explicit goal is subscriber growth — merch inserts,
+        Use this when your explicit goal is subscriber growth - merch inserts,
         giveaway posters, post-event thank-you cards. Avoid it if the code
         should land on a single video or playlist (the prompt only works on
         channel pages). Keep expectations realistic: the bump comes from making
@@ -770,7 +770,7 @@ export function YouTubeQrCodeGuidePost() {
         A{" "}
         <strong className="text-[var(--foreground)]">static QR code</strong>{" "}
         encodes the destination URL directly. Once printed, it points there
-        forever — no account required, no tracking. A{" "}
+        forever - no account required, no tracking. A{" "}
         <strong className="text-[var(--foreground)]">dynamic QR code</strong>{" "}
         encodes a short redirect URL that you can update anytime, plus you get
         scan counts.
@@ -792,7 +792,7 @@ export function YouTubeQrCodeGuidePost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>Seasonal campaign posters where the featured video changes</li>
         <li>Trade-show booths where you want per-event scan numbers</li>
-        <li>Product packaging on long-lived retail shelves — the code can be updated remotely if a video is deleted or replaced</li>
+        <li>Product packaging on long-lived retail shelves - the code can be updated remotely if a video is deleted or replaced</li>
         <li>Merch runs where you may want to redirect to a playlist or different video later</li>
         <li>You want to A/B test whether a Shorts link or a full video converts better</li>
       </ul>
@@ -824,7 +824,7 @@ export function YouTubeQrCodeGuidePost() {
           and select the URL content type.
         </li>
         <li>
-          Paste your YouTube link — channel, video, Short, or playlist. Add{" "}
+          Paste your YouTube link - channel, video, Short, or playlist. Add{" "}
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> if you want
           the subscribe prompt on a channel link.
         </li>
@@ -857,7 +857,7 @@ export function YouTubeQrCodeGuidePost() {
         Print &amp; scan checklist
       </h2>
       <p>
-        QR codes fail silently — they look fine until nobody can open them. Run
+        QR codes fail silently - they look fine until nobody can open them. Run
         through this checklist before you commit to print. (Full details in our{" "}
         <Link
           href="/blog/print-qr-codes-that-scan"
@@ -872,7 +872,7 @@ export function YouTubeQrCodeGuidePost() {
           <strong className="text-[var(--foreground)]">Size for distance:</strong>{" "}
           Code width ≈ expected scan distance ÷ 10. A poster viewed from 2 m
           needs at least 20 cm; a business card held at arm&apos;s length
-          (30 cm) needs at least 2 cm — more if you add a logo.
+          (30 cm) needs at least 2 cm - more if you add a logo.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
@@ -943,7 +943,7 @@ export function YouTubeQrCodeGuidePost() {
         Posters and flyers
       </h3>
       <p>
-        Music releases, film trailers, event promos — posters are a natural fit.
+        Music releases, film trailers, event promos - posters are a natural fit.
         Size the code generously (remember the 10:1 rule) and place it in a
         lower corner so phones can reach it without obscuring the headline.
         Dynamic codes let you swap the featured video between tour legs or
@@ -955,7 +955,7 @@ export function YouTubeQrCodeGuidePost() {
       </h3>
       <p>
         Hangtags, inner labels, or even printed directly on packaging can link
-        fans to exclusive content. Keep codes small but functional — test on
+        fans to exclusive content. Keep codes small but functional - test on
         the actual fabric or tag stock. A channel link with{" "}
         <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> works well
         here: buyers already like your brand, so nudging a subscription is
@@ -1031,7 +1031,7 @@ export function YouTubeQrCodeGuidePost() {
         <li>
           <strong className="text-[var(--foreground)]">Ignoring mobile-first experience:</strong>{" "}
           QR scans come from phones. Make sure the video plays well on
-          mobile — vertical crops for Shorts, subtitles if viewers are in
+          mobile - vertical crops for Shorts, subtitles if viewers are in
           public with sound off.
         </li>
         <li>
@@ -1115,7 +1115,7 @@ export function YouTubeQrCodeGuidePost() {
       </h2>
       <p>
         A YouTube QR code turns packaging, posters, badges, and merch into video
-        gateways. Pick the right link type — channel for subscriptions, video
+        gateways. Pick the right link type - channel for subscriptions, video
         for single destinations, playlist for series. Add{" "}
         <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">?sub_confirmation=1</code> if you want
         the subscribe prompt, but set honest expectations. Decide static vs
@@ -1156,7 +1156,7 @@ export function YouTubeQrCodeGuidePost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Studio
         </Link>{" "}
-        — static codes are free with no watermark, dynamic codes require a free
+        - static codes are free with no watermark, dynamic codes require a free
         account.
       </p>
       <p>
@@ -1178,7 +1178,7 @@ export function QrCodeWithLogoGuidePost() {
         <strong className="text-[var(--foreground)]">QR code with a logo</strong>{" "}
         does the job <em>and</em> looks like it belongs on your brand. Whether
         you want your company mark, app icon, or a custom symbol in the center,
-        adding a logo to a QR code is straightforward — if you understand how
+        adding a logo to a QR code is straightforward - if you understand how
         QR codes handle damage and follow a few practical steps.
       </p>
       <p>
@@ -1203,7 +1203,7 @@ export function QrCodeWithLogoGuidePost() {
         QR codes include built-in redundancy called{" "}
         <strong className="text-[var(--foreground)]">error correction</strong>.
         Scanners can still read the code even when part of it is missing,
-        damaged, or — in our case — covered by a logo. The QR standard offers
+        damaged, or - in our case - covered by a logo. The QR standard offers
         four levels of error correction (L, M, Q, H), each letting the code
         tolerate progressively more &quot;damage.&quot;
       </p>
@@ -1222,7 +1222,7 @@ export function QrCodeWithLogoGuidePost() {
         >
           Error Correction, Logos, and Why Pretty QR Codes Fail
         </Link>
-        . This post focuses on the practical &quot;how&quot; — the step-by-step creation
+        . This post focuses on the practical &quot;how&quot; - the step-by-step creation
         process.
       </p>
 
@@ -1289,7 +1289,7 @@ export function QrCodeWithLogoGuidePost() {
           .
         </li>
         <li>
-          Choose a content type — URL, WiFi, vCard, text, or another option.
+          Choose a content type - URL, WiFi, vCard, text, or another option.
           Most branded codes use URL since they point to websites, landing
           pages, or{" "}
           <Link
@@ -1306,7 +1306,7 @@ export function QrCodeWithLogoGuidePost() {
         </li>
       </ol>
       <p>
-        At this point you have a working QR code in the preview pane — just
+        At this point you have a working QR code in the preview pane - just
         without styling or a logo yet.
       </p>
 
@@ -1496,7 +1496,7 @@ export function QrCodeWithLogoGuidePost() {
           Scan with the native camera app on an <strong className="text-[var(--foreground)]">Android</strong> phone.
         </li>
         <li>
-          Try an older phone if you have one — older cameras and lower-resolution
+          Try an older phone if you have one - older cameras and lower-resolution
           screens are less forgiving.
         </li>
         <li>
@@ -1525,7 +1525,7 @@ export function QrCodeWithLogoGuidePost() {
         <li>
           <strong className="text-[var(--foreground)]">SVG:</strong>{" "}
           A vector file that scales infinitely without blurring. Ideal for
-          large-format print — posters, banners, packaging. Also perfect for
+          large-format print - posters, banners, packaging. Also perfect for
           handing to a designer who will place the code in Illustrator or
           InDesign.
         </li>
@@ -1560,7 +1560,7 @@ export function QrCodeWithLogoGuidePost() {
       </h2>
       <p>
         Adding a logo does not change whether you should choose static or
-        dynamic — but it is worth repeating the decision framework here because
+        dynamic - but it is worth repeating the decision framework here because
         branded codes often appear on expensive print runs:
       </p>
       <ul className="list-disc space-y-2 pl-5">
@@ -1577,7 +1577,7 @@ export function QrCodeWithLogoGuidePost() {
       </ul>
       <p>
         Dynamic codes encode a short redirect, so the QR pattern itself is
-        simpler — fewer modules to cover with your logo. That can be a bonus
+        simpler - fewer modules to cover with your logo. That can be a bonus
         when you want a larger brand mark.
       </p>
       <p>
@@ -1751,7 +1751,7 @@ export function QrCodeLogoDesignPost() {
   return (
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
-        Adding a logo to a QR code is straightforward — keeping it scannable is
+        Adding a logo to a QR code is straightforward - keeping it scannable is
         where most designs fail. If you already know{" "}
         <Link
           href="/blog/error-correction-logos-pretty-qr-fail"
@@ -1777,7 +1777,7 @@ export function QrCodeLogoDesignPost() {
       </h2>
       <p>
         Every QR code includes redundant data so scanners can still decode it
-        when part of the pattern is damaged, dirty, or — in your case — covered
+        when part of the pattern is damaged, dirty, or - in your case - covered
         by a logo. The four error correction levels (L, M, Q, H) determine how
         much damage the code can tolerate:
       </p>
@@ -1846,21 +1846,21 @@ export function QrCodeLogoDesignPost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">Finder patterns</strong>{" "}
-          — the three large squares in the corners. These tell the camera where
+          - the three large squares in the corners. These tell the camera where
           the code starts and how it&apos;s rotated.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Timing patterns</strong>{" "}
-          — the alternating dark/light lines between finder patterns. They help
+          - the alternating dark/light lines between finder patterns. They help
           scanners count modules.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Alignment patterns</strong>{" "}
-          — smaller squares in larger QR codes that correct for perspective
+          - smaller squares in larger QR codes that correct for perspective
           distortion.
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Quiet zone</strong> — the
+          <strong className="text-[var(--foreground)]">Quiet zone</strong> - the
           blank margin around the entire code. Scanners need this empty space to
           distinguish the code from surrounding artwork.
         </li>
@@ -1868,7 +1868,7 @@ export function QrCodeLogoDesignPost() {
       <p>
         The safe zone for a logo is the{" "}
         <strong className="text-[var(--foreground)]">center</strong> of the data
-        area — the region where error correction can recover the covered
+        area - the region where error correction can recover the covered
         modules. {siteConfig.name} Studio automatically places uploaded logos in
         the center. Never drag a logo toward a corner or edge; you&apos;ll hit
         structural patterns.
@@ -1887,7 +1887,7 @@ export function QrCodeLogoDesignPost() {
       </h2>
       <p>
         A logo dropped directly onto the modules often looks cluttered and scans
-        poorly — the logo&apos;s edges blend into the pattern. Use one of these
+        poorly - the logo&apos;s edges blend into the pattern. Use one of these
         techniques:
       </p>
       <ul className="list-disc space-y-2 pl-5">
@@ -1945,7 +1945,7 @@ export function QrCodeLogoDesignPost() {
       </ul>
       <p>
         Many brands have a &quot;mark-only&quot; version for exactly this use case. If
-        yours doesn&apos;t, ask your designer for one — or use the app icon.
+        yours doesn&apos;t, ask your designer for one - or use the app icon.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -1953,7 +1953,7 @@ export function QrCodeLogoDesignPost() {
       </h2>
       <p>
         Scanners detect QR codes by finding the contrast boundary between dark
-        modules and a light background. Mess with that contrast and scans fail —
+        modules and a light background. Mess with that contrast and scans fail -
         even if the pattern is intact.
       </p>
 
@@ -1962,7 +1962,7 @@ export function QrCodeLogoDesignPost() {
       </h3>
       <p>
         Keep modules darker than the background. Black on white is the safest.
-        Brand colors work if you maintain a strong contrast ratio — navy on
+        Brand colors work if you maintain a strong contrast ratio - navy on
         cream, dark green on white, etc. Light modules on dark backgrounds
         (&quot;inverted&quot; codes) are technically valid but scan less reliably in
         variable lighting. Avoid them unless you&apos;ve tested thoroughly.
@@ -2014,7 +2014,7 @@ export function QrCodeLogoDesignPost() {
       <p>
         {siteConfig.name} Studio offers many dot styles (rounded, dots, classy,
         square, heart, diamond, star, and more) plus corner frame and corner dot
-        options. These are safe to use — the pattern geometry stays correct.
+        options. These are safe to use - the pattern geometry stays correct.
         However:
       </p>
       <ul className="list-disc space-y-2 pl-5">
@@ -2053,7 +2053,7 @@ export function QrCodeLogoDesignPost() {
           <strong className="text-[var(--foreground)]">Transparent PNG:</strong>{" "}
           The standard choice. Use a file at least 200–400 px on a side so
           scaling down stays sharp. Transparent background lets the QR&apos;s own
-          background show through — or lets you add a background plate cleanly.
+          background show through - or lets you add a background plate cleanly.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">SVG:</strong> Vector
@@ -2083,7 +2083,7 @@ export function QrCodeLogoDesignPost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">SVG (vector):</strong>{" "}
-          Scales infinitely without blurring. Ideal for print — business cards,
+          Scales infinitely without blurring. Ideal for print - business cards,
           posters, packaging, banners. Hand this to your designer or printer.
         </li>
         <li>
@@ -2137,7 +2137,7 @@ export function QrCodeLogoDesignPost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Scan at expected distance</strong>{" "}
-          — arm&apos;s length for a business card, 2 meters for a poster, 5+ meters
+          - arm&apos;s length for a business card, 2 meters for a poster, 5+ meters
           for a banner. The ~10:1 rule (code width ≈ scan distance ÷ 10) is a
           starting point; logos and dense URLs need extra margin. See{" "}
           <Link
@@ -2150,12 +2150,12 @@ export function QrCodeLogoDesignPost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Test under realistic lighting</strong>{" "}
-          — dim restaurant, bright retail, outdoor shade. Glossy laminate can
+          - dim restaurant, bright retail, outdoor shade. Glossy laminate can
           glare; matte finishes scan more reliably.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Confirm the destination</strong>{" "}
-          opens correctly — especially for{" "}
+          opens correctly - especially for{" "}
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
@@ -2192,7 +2192,7 @@ export function QrCodeLogoDesignPost() {
             </tr>
             <tr>
               <td className="p-3 font-medium text-[var(--foreground)]">Placement</td>
-              <td className="p-3">Center only — never over finder patterns, timing, or quiet zone</td>
+              <td className="p-3">Center only - never over finder patterns, timing, or quiet zone</td>
             </tr>
             <tr>
               <td className="p-3 font-medium text-[var(--foreground)]">Logo shape</td>
@@ -2252,7 +2252,7 @@ export function QrCodeLogoDesignPost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Logo centered</strong>{" "}
-          — not touching finder patterns, timing, or quiet zone.
+          - not touching finder patterns, timing, or quiet zone.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Dark modules on light background</strong>{" "}
@@ -2263,11 +2263,11 @@ export function QrCodeLogoDesignPost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Quiet zone preserved</strong>{" "}
-          — at least 4 modules of blank margin on all sides.
+          - at least 4 modules of blank margin on all sides.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Code sized for distance</strong>{" "}
-          — 10:1 rule plus margin for logo and URL length.
+          - 10:1 rule plus margin for logo and URL length.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Scanned on iPhone camera app.</strong>
@@ -2301,22 +2301,22 @@ export function QrCodeLogoDesignPost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">Very small codes</strong>{" "}
-          (under 2 cm) — logos can&apos;t be seen clearly and just hurt scan
+          (under 2 cm) - logos can&apos;t be seen clearly and just hurt scan
           reliability.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Dense data</strong>{" "}
-          (long URLs, vCards with lots of fields) — already high module count;
+          (long URLs, vCards with lots of fields) - already high module count;
           adding a logo makes it harder to scan.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Low-quality print</strong>{" "}
-          (cheap stickers, low-res thermal labels) — error budget is needed to
+          (cheap stickers, low-res thermal labels) - error budget is needed to
           survive the print process, not a logo.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Internal / utility codes</strong>{" "}
-          — warehouse labels, internal URLs, where branding adds no value.
+          - warehouse labels, internal URLs, where branding adds no value.
         </li>
       </ul>
       <p>
@@ -2335,7 +2335,7 @@ export function QrCodeLogoDesignPost() {
           >
             How to Create a QR Code with a Logo (Step-by-Step)
           </Link>{" "}
-          — the full walkthrough for creating one in {siteConfig.name} Studio.
+          - the full walkthrough for creating one in {siteConfig.name} Studio.
         </li>
         <li>
           <Link
@@ -2344,7 +2344,7 @@ export function QrCodeLogoDesignPost() {
           >
             Error Correction, Logos, and Why Pretty QR Codes Fail
           </Link>{" "}
-          — the deeper technical explanation.
+          - the deeper technical explanation.
         </li>
         <li>
           <Link
@@ -2353,7 +2353,7 @@ export function QrCodeLogoDesignPost() {
           >
             Print QR Codes That Actually Scan
           </Link>{" "}
-          — the pre-press checklist for any QR code.
+          - the pre-press checklist for any QR code.
         </li>
         <li>
           <Link
@@ -2362,7 +2362,7 @@ export function QrCodeLogoDesignPost() {
           >
             QR Code with Logo Guide
           </Link>{" "}
-          — quick reference.
+          - quick reference.
         </li>
         <li>
           <Link
@@ -2371,7 +2371,7 @@ export function QrCodeLogoDesignPost() {
           >
             QR Code Size for Print
           </Link>{" "}
-          — the complete sizing reference.
+          - the complete sizing reference.
         </li>
       </ul>
 
@@ -2382,7 +2382,7 @@ export function QrCodeLogoDesignPost() {
         A well-designed logo QR code balances brand visibility with scan
         reliability. Use H error correction, keep the logo under 30% of the
         code area, center it, maintain dark-on-light contrast, and test on real
-        phones before you print. When in doubt, simplify — a plain code that
+        phones before you print. When in doubt, simplify - a plain code that
         scans is better than a branded code that fails.
       </p>
       <p>
@@ -2390,7 +2390,7 @@ export function QrCodeLogoDesignPost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           {siteConfig.name} Studio
         </Link>{" "}
-        — static codes are free with no watermark, and dynamic codes let you
+        - static codes are free with no watermark, and dynamic codes let you
         track scans and update the destination after printing.
       </p>
       <p>
@@ -2423,7 +2423,7 @@ export function LinkedInQrCodeGuidePost() {
           {siteConfig.name} Studio
         </Link>
         , and placing it on business cards, badges, slides, and email signatures
-        — with sizing tips to make sure it actually scans when printed.
+        - with sizing tips to make sure it actually scans when printed.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -2489,7 +2489,7 @@ export function LinkedInQrCodeGuidePost() {
         professional print materials:
       </p>
       <ul className="list-disc space-y-2 pl-5">
-        <li>The QR image you can save is a fixed design — you cannot add your logo or brand colors.</li>
+        <li>The QR image you can save is a fixed design - you cannot add your logo or brand colors.</li>
         <li>Resolution is limited, which can cause blurry prints on large formats.</li>
         <li>There&apos;s no SVG export for crisp vector printing.</li>
         <li>You cannot track how many times the code was scanned.</li>
@@ -2510,7 +2510,7 @@ export function LinkedInQrCodeGuidePost() {
         <li>
           <strong className="text-[var(--foreground)]">Logo and colors:</strong>{" "}
           Add your headshot, company logo, or brand colors to match your card
-          design. Keep logos modest to preserve scan reliability — see our{" "}
+          design. Keep logos modest to preserve scan reliability - see our{" "}
           <Link
             href="/blog/error-correction-logos-pretty-qr-fail"
             className="text-[var(--brand-2)] underline"
@@ -2540,7 +2540,7 @@ export function LinkedInQrCodeGuidePost() {
           >
             dynamic QR code
           </Link>
-          , you can change the destination URL after printing — useful when you
+          , you can change the destination URL after printing - useful when you
           change jobs, switch from personal to company page, or want scan
           analytics. Free includes 1 dynamic code; Pro ($12/month) unlocks
           unlimited dynamics with full scan history.
@@ -2623,7 +2623,7 @@ export function LinkedInQrCodeGuidePost() {
         Conference badges and name tags
       </h3>
       <p>
-        Lanyard badges scan differently than cards — they hang vertically,
+        Lanyard badges scan differently than cards - they hang vertically,
         people scan from odd angles, and conference lighting can glare on glossy
         holders. Use high contrast, skip decorative gradients, and size
         generously if badge dimensions allow. Consider a{" "}
@@ -2643,7 +2643,7 @@ export function LinkedInQrCodeGuidePost() {
       <p>
         A &quot;Let&apos;s connect&quot; closing slide with your LinkedIn QR
         works well for webinars, conference talks, and sales decks. Size the
-        code large enough for phone cameras to scan from audience distance — for
+        code large enough for phone cameras to scan from audience distance - for
         a projected slide, that usually means taking up a good portion of the
         screen. PNG is fine for slides; SVG is overkill unless you&apos;re also
         printing handouts.
@@ -2656,7 +2656,7 @@ export function LinkedInQrCodeGuidePost() {
         An email signature QR bridges digital messages and mobile devices.
         Recipients on desktop can click the link; those checking email on one
         phone can scan from a second device (or print the email). Keep it small
-        — roughly 100–130 pixels wide — and use a simple design without heavy
+        - roughly 100–130 pixels wide - and use a simple design without heavy
         logos at this scale. Our{" "}
         <Link
           href="/guides/qr-code-for-email-signature"
@@ -2688,7 +2688,7 @@ export function LinkedInQrCodeGuidePost() {
         Print sizing tips
       </h2>
       <p>
-        QR codes fail silently — they look fine until someone tries to scan and
+        QR codes fail silently - they look fine until someone tries to scan and
         nothing happens. Follow these sizing guidelines:
       </p>
       <ul className="list-disc space-y-2 pl-5">
@@ -2727,7 +2727,7 @@ export function LinkedInQrCodeGuidePost() {
       </h2>
       <p>
         A static QR code encodes your LinkedIn URL directly. Once printed,
-        it&apos;s permanent — if you change jobs and get a new LinkedIn profile
+        it&apos;s permanent - if you change jobs and get a new LinkedIn profile
         (rare, but it happens), or want to switch from personal to company page,
         you&apos;ll need to reprint.
       </p>
@@ -2858,7 +2858,7 @@ export function QrCodeMetLogoMakenPost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           {siteConfig.name} Studio
         </Link>
-        . Je hebt geen technische kennis nodig — alleen je logo en twee minuten tijd.
+        . Je hebt geen technische kennis nodig - alleen je logo en twee minuten tijd.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -2867,7 +2867,7 @@ export function QrCodeMetLogoMakenPost() {
       <p>
         Een standaard zwart-witte QR code werkt prima, maar een code met je
         bedrijfslogo wekt vertrouwen en versterkt je merkherkenning. Klanten
-        herkennen meteen dat de code van jou komt — handig voor:
+        herkennen meteen dat de code van jou komt - handig voor:
       </p>
       <ul className="list-disc space-y-2 pl-5">
         <li>Menukaarten in restaurants en cafés</li>
@@ -2893,11 +2893,11 @@ export function QrCodeMetLogoMakenPost() {
           De meeste bedrijven kiezen URL (voor website of landingspagina).
         </li>
         <li>
-          Vul het formulier in — plak je URL, voer WiFi-gegevens in, of vul de vereiste data in.
+          Vul het formulier in - plak je URL, voer WiFi-gegevens in, of vul de vereiste data in.
         </li>
       </ol>
       <p>
-        Je ziet nu al een werkende QR code in de preview — maar nog zonder styling of logo.
+        Je ziet nu al een werkende QR code in de preview - maar nog zonder styling of logo.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -2968,7 +2968,7 @@ export function QrCodeMetLogoMakenPost() {
         </li>
       </ul>
       <p>
-        Houd het contrast hoog — donkere modules op een lichte achtergrond scannen
+        Houd het contrast hoog - donkere modules op een lichte achtergrond scannen
         het beste. Lichte codes op donkere achtergronden werken ook, maar vermijd
         subtiele kleurverschillen.
       </p>
@@ -2997,7 +2997,7 @@ export function QrCodeMetLogoMakenPost() {
       <p>
         Klik op <strong className="text-[var(--foreground)]">PNG</strong> voor
         digitaal gebruik of <strong className="text-[var(--foreground)]">SVG</strong>{" "}
-        voor drukwerk. SVG schaalt oneindig zonder kwaliteitsverlies — ideaal voor
+        voor drukwerk. SVG schaalt oneindig zonder kwaliteitsverlies - ideaal voor
         visitekaartjes, posters en verpakkingen.
       </p>
 
@@ -3060,7 +3060,7 @@ export function QrCodeMetLogoMakenPost() {
         >
           dynamische QR code
         </Link>{" "}
-        codeert een korte redirect-link die je achteraf kunt aanpassen — handig
+        codeert een korte redirect-link die je achteraf kunt aanpassen - handig
         als je de bestemming wilt wijzigen zonder opnieuw te drukken, of als je
         scanstatistieken wilt bijhouden.
       </p>
@@ -3155,7 +3155,7 @@ export function QrCodesWithLogoMoreScansPost() {
       <p>
         &quot;Does adding a logo actually help?&quot; is one of the most common questions
         small businesses ask before investing time in branded QR codes. Until
-        recently, the answer was mostly anecdote. Now there&apos;s data — and the
+        recently, the answer was mostly anecdote. Now there&apos;s data - and the
         short answer is{" "}
         <strong className="text-[var(--foreground)]">yes, but the logo alone isn&apos;t the whole story</strong>.
       </p>
@@ -3187,7 +3187,7 @@ export function QrCodesWithLogoMoreScansPost() {
         <strong className="text-[var(--foreground)]">
           5.06% of codes produced 94.5% of all scans
         </strong>
-        . The winners weren&apos;t just branded — they were better in several ways.
+        . The winners weren&apos;t just branded - they were better in several ways.
       </p>
 
       <h2 className="text-2xl font-semibold text-[var(--foreground)]">
@@ -3209,13 +3209,13 @@ export function QrCodesWithLogoMoreScansPost() {
       <p>
         Logo QR codes also benefit from simple visual distinction. A field of
         black-and-white squares blends into the background. A colored, branded
-        code pops — and something that pops gets noticed.
+        code pops - and something that pops gets noticed.
       </p>
       <p>
         {siteConfig.name} Studio makes adding a logo straightforward: upload
         your mark, adjust the size, and export. We automatically raise error
         correction to H so the code stays scannable despite the center overlay.
-        For design guidelines — logo size, placement, contrast — see our{" "}
+        For design guidelines - logo size, placement, contrast - see our{" "}
         <Link
           href="/blog/qr-code-logo-design-best-practices"
           className="text-[var(--brand-2)] underline"
@@ -3241,14 +3241,14 @@ export function QrCodesWithLogoMoreScansPost() {
         <strong className="text-[var(--foreground)]">
           purpose-built product pages averaged 28,914 scans
         </strong>{" "}
-        — versus just 4,017 for codes redirecting to a generic website homepage.
+        - versus just 4,017 for codes redirecting to a generic website homepage.
         Similarly, how-to or tutorial video destinations averaged 19,181 scans.
       </p>
       <p>
         A logo might earn the scan, but the destination earns the engagement.
         Sending someone to a dense homepage after they&apos;ve scanned a package is
-        a wasted opportunity. A dedicated landing page — product info, a quick
-        video, an exclusive offer — delivers value and justifies the effort of
+        a wasted opportunity. A dedicated landing page - product info, a quick
+        video, an exclusive offer - delivers value and justifies the effort of
         pulling out a phone.
       </p>
       <p>
@@ -3298,7 +3298,7 @@ export function QrCodesWithLogoMoreScansPost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">Size:</strong> Use the
-          ~10:1 rule — code width should be roughly 1/10 of the expected scan
+          ~10:1 rule - code width should be roughly 1/10 of the expected scan
           distance. A 2 cm code works at 20 cm but fails from a meter away.
         </li>
         <li>
@@ -3325,7 +3325,7 @@ export function QrCodesWithLogoMoreScansPost() {
         >
           why pretty QR codes fail
         </Link>{" "}
-        — it covers how error correction works and why oversized logos or low
+        - it covers how error correction works and why oversized logos or low
         contrast burn through your safety margin.
       </p>
 
@@ -3367,7 +3367,7 @@ export function QrCodesWithLogoMoreScansPost() {
             Add a clear call to action.
           </strong>{" "}
           &quot;Scan for care instructions,&quot; &quot;Watch the setup video,&quot; &quot;Get 15% off&quot;
-          — tell people why to scan.
+          - tell people why to scan.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">
@@ -3396,7 +3396,7 @@ export function QrCodesWithLogoMoreScansPost() {
         The bottom line
       </h2>
       <p>
-        Adding a logo to your QR code is a quick, free win — customized codes
+        Adding a logo to your QR code is a quick, free win - customized codes
         get more scans. But the data is clear: a logo alone won&apos;t turn a
         mediocre campaign into a success. The codes earning thousands of scans
         combine branding with a compelling destination, a clear call to action,
@@ -3414,7 +3414,7 @@ export function QrCodesWithLogoMoreScansPost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           {siteConfig.name} Studio
         </Link>{" "}
-        — it&apos;s free for static codes, and Pro unlocks unlimited dynamics with
+        - it&apos;s free for static codes, and Pro unlocks unlimited dynamics with
         full scan analytics.
       </p>
       <p>
@@ -3433,7 +3433,7 @@ export function Gs1Sunrise2027Post() {
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
         By the end of 2027, most major retailers want their point-of-sale
-        systems able to scan 2D barcodes — including QR codes — alongside the
+        systems able to scan 2D barcodes - including QR codes - alongside the
         familiar UPC stripes. The transition is called{" "}
         <strong className="text-[var(--foreground)]">GS1 Sunrise 2027</strong>,
         and it represents the biggest change to product packaging barcodes in
@@ -3449,7 +3449,7 @@ export function Gs1Sunrise2027Post() {
         What is GS1 Sunrise 2027?
       </h2>
       <p>
-        GS1 — the organization that issues UPC barcodes — has set an industry
+        GS1 - the organization that issues UPC barcodes - has set an industry
         goal: by the end of 2027, retail POS scanners should be capable of
         reading 2D barcodes (QR codes and Data Matrix) at checkout, not just
         the traditional 1D UPC stripes.
@@ -3473,7 +3473,7 @@ export function Gs1Sunrise2027Post() {
         <strong className="text-[var(--foreground)]">
           &quot;a sunrise, not a sunset&quot;
         </strong>{" "}
-        — UPC barcodes aren&apos;t going away. As{" "}
+        - UPC barcodes aren&apos;t going away. As{" "}
         <a
           href="https://www.nacsmagazine.com/issues/october-2026/setting-up-the-sunrise"
           className="text-[var(--brand-2)] underline"
@@ -3513,7 +3513,7 @@ export function Gs1Sunrise2027Post() {
       </p>
       <p>
         This dual function is the key shift: the QR on your packaging
-        isn&apos;t just a marketing link anymore — it can also be the checkout
+        isn&apos;t just a marketing link anymore - it can also be the checkout
         barcode.
       </p>
 
@@ -3521,7 +3521,7 @@ export function Gs1Sunrise2027Post() {
         Why retailers are adopting 2D codes
       </h2>
       <p>
-        The traditional UPC barcode encodes only a GTIN — a product identifier.
+        The traditional UPC barcode encodes only a GTIN - a product identifier.
         A 2D code can encode far more data in the same space. Retailers see
         several benefits:
       </p>
@@ -3560,12 +3560,12 @@ export function Gs1Sunrise2027Post() {
       <p>
         During the transition, brands need to print both a UPC barcode and a 2D
         code on packaging. Per Packaging Dive, this dual-coding squeezes
-        packaging real estate — you&apos;re adding a QR code without removing the
+        packaging real estate - you&apos;re adding a QR code without removing the
         UPC, at least until retailer readiness is high enough.
       </p>
       <p>
-        NACS Magazine recommends that retailers review all their scanners —
-        POS, self-checkout, inventory — to ensure 2D readiness. For brands,
+        NACS Magazine recommends that retailers review all their scanners -
+        POS, self-checkout, inventory - to ensure 2D readiness. For brands,
         the implication is clear: don&apos;t assume the QR will replace the UPC
         yet, but do plan for where both will fit on your pack.
       </p>
@@ -3576,7 +3576,7 @@ export function Gs1Sunrise2027Post() {
       <p>
         A GS1 Digital Link QR code can scan at checkout, but most consumers
         won&apos;t scan your package QR unless there&apos;s a reason. As Packaging Dive
-        notes, &quot;there has to be value in even performing the scan&quot; — and
+        notes, &quot;there has to be value in even performing the scan&quot; - and
         incentives like discounts can help.
       </p>
       <p>
@@ -3619,14 +3619,14 @@ export function Gs1Sunrise2027Post() {
         1. Get your GTIN from GS1
       </h3>
       <p>
-        GS1 Digital Link QR codes require a GS1-licensed GTIN — the same
+        GS1 Digital Link QR codes require a GS1-licensed GTIN - the same
         number in your UPC barcode. If you&apos;re already selling at retail, you
         have this. If not, you&apos;ll need to join GS1 and obtain GTINs for your
         products.{" "}
         <strong className="text-[var(--foreground)]">
           {siteConfig.name} does not issue GTINs
         </strong>{" "}
-        — you get those directly from GS1.
+        - you get those directly from GS1.
       </p>
 
       <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
@@ -3634,13 +3634,13 @@ export function Gs1Sunrise2027Post() {
       </h3>
       <p>
         A GS1 Digital Link URL must be hosted on a resolver that can parse the
-        GTIN and route requests appropriately — one response for a retail
+        GTIN and route requests appropriately - one response for a retail
         scanner, another for a consumer&apos;s browser. GS1 itself provides resolver
         services, and there are third-party options.{" "}
         <strong className="text-[var(--foreground)]">
           {siteConfig.name} is a static, in-browser QR generator
         </strong>{" "}
-        — it does not host Digital Link resolvers. We can generate the QR
+        - it does not host Digital Link resolvers. We can generate the QR
         code image once you have the Digital Link URL, but the URL itself
         comes from your resolver.
       </p>
@@ -3727,7 +3727,7 @@ export function Gs1Sunrise2027Post() {
       </p>
       <p>
         If your Digital Link resolver supports it, you can serve different
-        content based on the scanning context — richer info for consumers,
+        content based on the scanning context - richer info for consumers,
         structured data for B2B partners.
       </p>
 
@@ -3735,7 +3735,7 @@ export function Gs1Sunrise2027Post() {
         6. Consider dynamic vs static for non-GS1 codes
       </h3>
       <p>
-        A GS1 Digital Link code is essentially static — the URL encodes the
+        A GS1 Digital Link code is essentially static - the URL encodes the
         GTIN and doesn&apos;t change. But if you&apos;re adding a separate marketing QR
         (not the Digital Link), you may want a{" "}
         <Link
@@ -3763,16 +3763,16 @@ export function Gs1Sunrise2027Post() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">{siteConfig.name} generates QR code images</strong>{" "}
-          — static PNG/SVG for any URL, including a GS1 Digital Link URL you
+          - static PNG/SVG for any URL, including a GS1 Digital Link URL you
           provide.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">We do not issue GTINs</strong>{" "}
-          — get those from GS1.
+          - get those from GS1.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">We do not host a Digital Link resolver</strong>{" "}
-          — that requires a GS1-conformant resolver service.
+          - that requires a GS1-conformant resolver service.
         </li>
         <li>
           We offer{" "}
@@ -3819,7 +3819,7 @@ export function Gs1Sunrise2027Post() {
       <p>
         For brands already in retail, talk to your retail partners about their
         2D scanner rollout timeline. For small businesses selling direct, you
-        have more flexibility — but the same principles apply if you
+        have more flexibility - but the same principles apply if you
         eventually want shelf placement.
       </p>
 
@@ -3902,10 +3902,10 @@ export function QuishingFakeQrCodeScamsPost() {
       <p>
         As the 2026 holiday season approaches, scammers are ramping up a tactic
         that exploits the trust people place in QR codes:{" "}
-        <strong className="text-[var(--foreground)]">quishing</strong> — QR code
+        <strong className="text-[var(--foreground)]">quishing</strong> - QR code
         phishing. A fake sticker over a parking meter, a tampered code on a
         restaurant bill, a convincing email with a QR that leads to a credential
-        harvester — these attacks are growing globally, and they spike during
+        harvester - these attacks are growing globally, and they spike during
         high-traffic shopping and travel periods.
       </p>
       <p>
@@ -3924,7 +3924,7 @@ export function QuishingFakeQrCodeScamsPost() {
         designed to steal credentials or money.
       </p>
       <p>
-        The technique works because QR codes obscure the destination URL — you
+        The technique works because QR codes obscure the destination URL - you
         cannot read the link before scanning, and many people tap through
         without checking where they land.
       </p>
@@ -4022,7 +4022,7 @@ export function QuishingFakeQrCodeScamsPost() {
         </li>
       </ul>
       <p>
-        The pattern is clear: quishing is a global, active threat — not a future
+        The pattern is clear: quishing is a global, active threat - not a future
         concern.
       </p>
 
@@ -4066,7 +4066,7 @@ export function QuishingFakeQrCodeScamsPost() {
           <code>paypal.com</code>, or <code>parking-dubai-pay.xyz</code> instead
           of the official municipal site.</li>
         <li>Be wary of URL shorteners (<code>bit.ly</code>, <code>tinyurl.com</code>,
-          etc.) on payment or login codes — legitimate businesses usually use
+          etc.) on payment or login codes - legitimate businesses usually use
           their own domain.</li>
       </ul>
 
@@ -4084,8 +4084,8 @@ export function QuishingFakeQrCodeScamsPost() {
       </h3>
       <p>
         If a QR code leads to a page asking for your bank login, credit card
-        number, national ID, or password — and you did not initiate a payment
-        yourself — stop. Go directly to the official app or website instead.
+        number, national ID, or password - and you did not initiate a payment
+        yourself - stop. Go directly to the official app or website instead.
       </p>
 
       <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
@@ -4111,8 +4111,8 @@ export function QuishingFakeQrCodeScamsPost() {
         Part 2: How to protect the QR codes your business prints
       </h2>
       <p>
-        If you run a business that uses QR codes — menus, payment, product info,
-        check-in — scammers can target your customers by overlaying fake codes
+        If you run a business that uses QR codes - menus, payment, product info,
+        check-in - scammers can target your customers by overlaying fake codes
         on your materials. Here is how to make your codes harder to spoof and
         easier for customers to trust.
       </p>
@@ -4123,7 +4123,7 @@ export function QuishingFakeQrCodeScamsPost() {
       <p>
         A plain black-and-white QR code is easy to replace without anyone
         noticing. A branded code with your logo embedded and your brand colors
-        is much harder to fake — customers will notice if a sticker looks
+        is much harder to fake - customers will notice if a sticker looks
         different from your usual materials.
       </p>
       <p>
@@ -4157,7 +4157,7 @@ export function QuishingFakeQrCodeScamsPost() {
         <code>menu.yourrestaurant.com</code> or <code>pay.yourshop.com</code>.
         This lets cautious customers verify where the code should go. If a
         scammer sticks a fake code over yours, the printed URL will not match
-        the destination — an obvious tell.
+        the destination - an obvious tell.
       </p>
 
       <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
@@ -4169,7 +4169,7 @@ export function QuishingFakeQrCodeScamsPost() {
         <li>Print codes directly onto materials rather than using adhesive
           labels when possible.</li>
         <li>Recess codes into signage or behind protective covers.</li>
-        <li>Inspect your public-facing codes regularly — weekly or daily for
+        <li>Inspect your public-facing codes regularly - weekly or daily for
           high-traffic locations.</li>
       </ul>
 
@@ -4236,7 +4236,7 @@ export function QuishingFakeQrCodeScamsPost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           QR code generator
         </Link>{" "}
-        that runs client-side for static codes — your data stays in your
+        that runs client-side for static codes - your data stays in your
         browser. You can add a logo, choose brand colors, and export SVG or PNG
         without creating an account.
       </p>
@@ -4343,7 +4343,7 @@ export function FacebookQrCodeGuidePost() {
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
         Facebook remains one of the most popular platforms for businesses,
-        creators, and community organizers — and a{" "}
+        creators, and community organizers - and a{" "}
         <strong className="text-[var(--foreground)]">Facebook QR code</strong>{" "}
         bridges the physical world to your Page, profile, or event. Instead of
         spelling out URLs or searching through dozens of similar business names,
@@ -4356,7 +4356,7 @@ export function FacebookQrCodeGuidePost() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           {siteConfig.name} Studio
         </Link>{" "}
-        — with tips for window stickers, flyers, menus, packaging, and business
+        - with tips for window stickers, flyers, menus, packaging, and business
         cards.
       </p>
 
@@ -4381,13 +4381,13 @@ export function FacebookQrCodeGuidePost() {
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/YourPageName
           </code>{" "}
-          — clean vanity URL
+          - clean vanity URL
         </li>
         <li>
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/@YourPageName
           </code>{" "}
-          — newer @ handle format (also works)
+          - newer @ handle format (also works)
         </li>
       </ul>
       <p className="mt-4">
@@ -4419,7 +4419,7 @@ export function FacebookQrCodeGuidePost() {
       </ol>
       <p className="mt-4">
         <strong className="text-[var(--foreground)]">Tip:</strong> Avoid
-        encoding the long numeric ID format in your QR code — it&apos;s not
+        encoding the long numeric ID format in your QR code - it&apos;s not
         human-readable on print materials, and it creates a denser QR pattern.
         Set a vanity username first.
       </p>
@@ -4436,13 +4436,13 @@ export function FacebookQrCodeGuidePost() {
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/yourname
           </code>{" "}
-          — if you&apos;ve set a custom username
+          - if you&apos;ve set a custom username
         </li>
         <li>
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/profile.php?id=123456789
           </code>{" "}
-          — numeric ID (less clean)
+          - numeric ID (less clean)
         </li>
       </ul>
       <p className="mt-4">
@@ -4468,21 +4468,21 @@ export function FacebookQrCodeGuidePost() {
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/events/123456789
           </code>{" "}
-          — useful for conference posters, workshop flyers, or party invites
+          - useful for conference posters, workshop flyers, or party invites
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Post:</strong>{" "}
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/YourPageName/posts/123456789
           </code>{" "}
-          — direct link to a specific announcement or photo
+          - direct link to a specific announcement or photo
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Review tab:</strong>{" "}
           <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
             https://facebook.com/YourPageName/reviews
           </code>{" "}
-          — shortcut to your reviews section
+          - shortcut to your reviews section
         </li>
       </ul>
       <p className="mt-4">
@@ -4511,7 +4511,7 @@ export function FacebookQrCodeGuidePost() {
       </p>
       <p>
         <strong className="text-[var(--foreground)]">Limitations:</strong> The
-        design is fixed — you cannot add a logo, change colors, or get a vector
+        design is fixed - you cannot add a logo, change colors, or get a vector
         file. The export is typically a PNG at limited resolution, which can
         look blurry on large prints.
       </p>
@@ -4530,7 +4530,7 @@ export function FacebookQrCodeGuidePost() {
           Meta Business Suite
         </a>{" "}
         sometimes includes a QR code generator under Settings or a dedicated QR
-        codes section. The interface changes frequently — look for &quot;QR
+        codes section. The interface changes frequently - look for &quot;QR
         code,&quot; &quot;Nametag,&quot; or check{" "}
         <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
           business.facebook.com/qr_codes
@@ -4548,7 +4548,7 @@ export function FacebookQrCodeGuidePost() {
       </ul>
       <p className="mt-4">
         <strong className="text-[var(--foreground)]">Limitations:</strong> The
-        design is still basic — a plain QR code, no logo embedding, limited
+        design is still basic - a plain QR code, no logo embedding, limited
         color options. The feature may not appear for all accounts, and Meta
         moves these UI paths often. If you don&apos;t see it, try the direct
         URL above or fall back to a third-party generator.
@@ -4568,7 +4568,7 @@ export function FacebookQrCodeGuidePost() {
         <strong className="text-[var(--foreground)]">
           Do not confuse this with a Facebook Page QR.
         </strong>{" "}
-        They serve different purposes — one opens a chat, the other opens your
+        They serve different purposes - one opens a chat, the other opens your
         Page.
       </p>
 
@@ -4577,8 +4577,8 @@ export function FacebookQrCodeGuidePost() {
       </h2>
       <p>
         Meta&apos;s built-in options work for quick sharing, but for
-        professional print materials — menus, window stickers, business cards,
-        event posters — a custom QR code from{" "}
+        professional print materials - menus, window stickers, business cards,
+        event posters - a custom QR code from{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           {siteConfig.name} Studio
         </Link>{" "}
@@ -4601,7 +4601,7 @@ export function FacebookQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">SVG export:</strong>{" "}
-          Vector files scale perfectly for any print size — window decals,
+          Vector files scale perfectly for any print size - window decals,
           posters, banners, or tiny business card codes. No blur.
         </li>
         <li>
@@ -4622,7 +4622,7 @@ export function FacebookQrCodeGuidePost() {
           >
             dynamic QR code
           </Link>
-          , you can change the destination after printing — redirect from a
+          , you can change the destination after printing - redirect from a
           limited-time event to your main Page, or swap to a new promotion
           without reprinting. Plus you get scan analytics. Free includes 1
           dynamic code; Pro ($12/month) unlocks unlimited dynamics with full
@@ -4632,7 +4632,7 @@ export function FacebookQrCodeGuidePost() {
           <strong className="text-[var(--foreground)]">
             Design customization:
           </strong>{" "}
-          Dot styles, corner frames, gradients, and error correction levels —
+          Dot styles, corner frames, gradients, and error correction levels -
           fine-tune the look to match your materials.
         </li>
       </ul>
@@ -4666,7 +4666,7 @@ export function FacebookQrCodeGuidePost() {
             Choose the URL type:
           </strong>{" "}
           In the type picker, select 🔗 URL. (The Studio also supports Text,
-          WiFi, vCard, Email, SMS, Phone, Image, and Location — but URL is what
+          WiFi, vCard, Email, SMS, Phone, Image, and Location - but URL is what
           you need for Facebook links.)
         </li>
         <li>
@@ -4684,7 +4684,7 @@ export function FacebookQrCodeGuidePost() {
           </strong>{" "}
           Leave the &quot;Dynamic QR&quot; switch OFF for a permanent static
           code that works forever and never depends on an account. Turn it ON
-          if you want to track scans or change the destination later — dynamic
+          if you want to track scans or change the destination later - dynamic
           requires sign-in. Free includes 1 dynamic code; Pro unlocks more plus
           full analytics.
         </li>
@@ -4701,7 +4701,7 @@ export function FacebookQrCodeGuidePost() {
               <strong>Presets:</strong> Quick starting points
             </li>
             <li>
-              <strong>Foreground:</strong> Set the module color — Facebook blue
+              <strong>Foreground:</strong> Set the module color - Facebook blue
               (#1877F2) matches the brand
             </li>
             <li>
@@ -4721,7 +4721,7 @@ export function FacebookQrCodeGuidePost() {
             </li>
             <li>
               <strong>Error correction:</strong> Higher levels tolerate more
-              damage or logo coverage — see our{" "}
+              damage or logo coverage - see our{" "}
               <Link
                 href="/blog/error-correction-logos-pretty-qr-fail"
                 className="text-[var(--brand-2)] underline"
@@ -4777,7 +4777,7 @@ export function FacebookQrCodeGuidePost() {
         <li>You don&apos;t need scan analytics</li>
       </ul>
       <p className="mt-4">
-        Static is simpler — no account, no ongoing cost, works forever.
+        Static is simpler - no account, no ongoing cost, works forever.
       </p>
 
       <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
@@ -4793,7 +4793,7 @@ export function FacebookQrCodeGuidePost() {
           on a post vs the main Page
         </li>
         <li>
-          Long-run print materials on retail shelves — update the destination
+          Long-run print materials on retail shelves - update the destination
           remotely if needed
         </li>
         <li>
@@ -4809,7 +4809,7 @@ export function FacebookQrCodeGuidePost() {
         When to add a logo
       </h2>
       <p>
-        A QR code with your logo looks more professional and builds trust — but
+        A QR code with your logo looks more professional and builds trust - but
         logos take up space that the code needs for error correction. Follow
         these guidelines:
       </p>
@@ -4821,7 +4821,7 @@ export function FacebookQrCodeGuidePost() {
           Use a higher error correction level (H is safest) when adding a logo
         </li>
         <li>
-          Simple logo shapes with solid backgrounds work best — avoid complex
+          Simple logo shapes with solid backgrounds work best - avoid complex
           gradients
         </li>
         <li>
@@ -4860,7 +4860,7 @@ export function FacebookQrCodeGuidePost() {
       <p>
         A storefront code with &quot;Follow us on Facebook&quot; catches
         walk-by traffic. Use a weather-resistant vinyl sticker with the QR
-        printed large enough for scanning from a few feet away — at least 5–7
+        printed large enough for scanning from a few feet away - at least 5–7
         cm for pedestrians. Export SVG for crisp edges at any size.
       </p>
 
@@ -4870,7 +4870,7 @@ export function FacebookQrCodeGuidePost() {
       <p>
         Add a code to the bottom of the menu or a table tent card with
         &quot;Like us for specials.&quot; Size at least 2 cm for hand-held
-        scanning distances. Laminated menus can cause glare — test under
+        scanning distances. Laminated menus can cause glare - test under
         realistic lighting.
       </p>
 
@@ -4899,7 +4899,7 @@ export function FacebookQrCodeGuidePost() {
       </h3>
       <p>
         A Facebook QR on your card lets contacts follow you instantly. Size at
-        least 2 × 2 cm — smaller codes with logos struggle on older phone
+        least 2 × 2 cm - smaller codes with logos struggle on older phone
         cameras. Use the back of the card for the code, paired with a LinkedIn
         QR or vCard on the front. See our{" "}
         <Link
@@ -4915,7 +4915,7 @@ export function FacebookQrCodeGuidePost() {
         Print checklist
       </h2>
       <p>
-        QR codes fail silently — they look fine until nobody can scan them. Run
+        QR codes fail silently - they look fine until nobody can scan them. Run
         through this checklist before printing. Full details in our{" "}
         <Link
           href="/blog/print-qr-codes-that-scan"
@@ -4932,7 +4932,7 @@ export function FacebookQrCodeGuidePost() {
           </strong>{" "}
           Code width ≈ expected scan distance ÷ 10. A poster at 2 m needs at
           least 20 cm; a business card held at arm&apos;s length needs at least
-          2 cm — more with a logo.
+          2 cm - more with a logo.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
@@ -4941,7 +4941,7 @@ export function FacebookQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
-          Leave at least 4 modules of empty margin around the code — no text or
+          Leave at least 4 modules of empty margin around the code - no text or
           graphics touching the edges.
         </li>
         <li>
@@ -5023,8 +5023,8 @@ export function FacebookQrCodeGuidePost() {
         Wrapping up
       </h2>
       <p>
-        A Facebook QR code turns physical touchpoints — storefronts, menus,
-        flyers, packaging, business cards — into Page followers and community
+        A Facebook QR code turns physical touchpoints - storefronts, menus,
+        flyers, packaging, business cards - into Page followers and community
         members. Start with a clean vanity URL, decide whether static or
         dynamic fits your campaign, create a branded code in the{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -5102,7 +5102,7 @@ export function InstagramQrCodeGuidePost() {
   return (
     <article className="space-y-6 text-[var(--muted)] leading-relaxed">
       <p>
-        Instagram remains one of the most visual, engagement-driven platforms —
+        Instagram remains one of the most visual, engagement-driven platforms -
         and an{" "}
         <strong className="text-[var(--foreground)]">Instagram QR code</strong>{" "}
         turns offline moments into profile visits, follows, and content views.
@@ -5197,7 +5197,7 @@ export function InstagramQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">No brand colors:</strong>{" "}
-          Color themes are preset — you cannot match your exact brand palette.
+          Color themes are preset - you cannot match your exact brand palette.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">No scan analytics:</strong>{" "}
@@ -5205,7 +5205,7 @@ export function InstagramQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Profile only:</strong>{" "}
-          The built-in QR links to your profile — not to a specific post, Reel,
+          The built-in QR links to your profile - not to a specific post, Reel,
           or Story highlight.
         </li>
       </ul>
@@ -5315,8 +5315,8 @@ export function InstagramQrCodeGuidePost() {
         <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
           https://instagram.com/stories/highlights/HIGHLIGHTID/
         </code>
-        . Use this when you want to surface curated content — product tutorials,
-        testimonials, FAQs — without sending people to your whole profile.
+        . Use this when you want to surface curated content - product tutorials,
+        testimonials, FAQs - without sending people to your whole profile.
       </p>
 
       <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
@@ -5325,7 +5325,7 @@ export function InstagramQrCodeGuidePost() {
       <p>
         <strong className="text-[var(--foreground)]">Private accounts:</strong>{" "}
         If your Instagram account is set to private, scanners who are not
-        approved followers will see a restricted view — a locked profile with no
+        approved followers will see a restricted view - a locked profile with no
         content visible. For marketing materials, always use a{" "}
         <strong className="text-[var(--foreground)]">public</strong> business or
         creator account.
@@ -5354,7 +5354,7 @@ export function InstagramQrCodeGuidePost() {
           {siteConfig.name} Studio
         </Link>{" "}
         lets you create a custom Instagram QR code with your colors, logo, and
-        export options — free for static codes, with Pro features for dynamic
+        export options - free for static codes, with Pro features for dynamic
         redirects and analytics.
       </p>
 
@@ -5377,7 +5377,7 @@ export function InstagramQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">
-            Optional — enable Dynamic:
+            Optional - enable Dynamic:
           </strong>{" "}
           Toggle on Dynamic QR if you want to track scans or update the
           destination later without reprinting.
@@ -5388,13 +5388,13 @@ export function InstagramQrCodeGuidePost() {
           <ul className="list-disc space-y-1 pl-5 mt-2">
             <li>
               <strong>Foreground color:</strong> Instagram gradient colors work
-              well — try #E1306C (pink) or #833AB4 (purple) for on-brand codes
+              well - try #E1306C (pink) or #833AB4 (purple) for on-brand codes
             </li>
             <li>
               <strong>Background:</strong> White or light for best contrast
             </li>
             <li>
-              <strong>Dot style:</strong> Square, Rounded, Dots — rounded can
+              <strong>Dot style:</strong> Square, Rounded, Dots - rounded can
               soften the look to match Instagram&apos;s aesthetic
             </li>
             <li>
@@ -5434,23 +5434,23 @@ export function InstagramQrCodeGuidePost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">Profile:</strong> Best
-          for ongoing follower growth — business cards, packaging, permanent
+          for ongoing follower growth - business cards, packaging, permanent
           signage. Scanners see your full feed and can follow with one tap.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Post:</strong> Best for
-          campaign-specific content — a product launch, contest announcement, or
+          campaign-specific content - a product launch, contest announcement, or
           featured collaboration. Limited lifespan if you archive or delete the
           post.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Reel:</strong> Best for
-          video-first engagement — tutorials, demos, behind-the-scenes. Opens
+          video-first engagement - tutorials, demos, behind-the-scenes. Opens
           directly in the Reels player on mobile.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Story Highlight:</strong>{" "}
-          Best for curated evergreen content — FAQ highlights, product
+          Best for curated evergreen content - FAQ highlights, product
           tutorials, testimonials. Stays available as long as you keep the
           Highlight pinned.
         </li>
@@ -5458,7 +5458,7 @@ export function InstagramQrCodeGuidePost() {
       <p className="mt-4">
         <strong className="text-[var(--foreground)]">Tip:</strong> For long-lived
         print materials (packaging, menus, signage), linking to your profile is
-        usually safest — it always works as long as your account exists. For
+        usually safest - it always works as long as your account exists. For
         short-term campaigns (event posters, limited drops), a post or Reel link
         can drive focused engagement.
       </p>
@@ -5487,7 +5487,7 @@ export function InstagramQrCodeGuidePost() {
         <li>You do not need scan analytics</li>
       </ul>
       <p className="mt-4">
-        Static is simpler — no account required, no ongoing cost, works forever
+        Static is simpler - no account required, no ongoing cost, works forever
         as long as the destination exists.
       </p>
 
@@ -5522,7 +5522,7 @@ export function InstagramQrCodeGuidePost() {
         Print and scan checklist
       </h2>
       <p>
-        QR codes fail silently — they look fine until nobody can scan them. Run
+        QR codes fail silently - they look fine until nobody can scan them. Run
         through this checklist before printing. Full details in our{" "}
         <Link
           href="/blog/print-qr-codes-that-scan"
@@ -5537,7 +5537,7 @@ export function InstagramQrCodeGuidePost() {
           <strong className="text-[var(--foreground)]">Size for distance:</strong>{" "}
           Code width ≈ expected scan distance ÷ 10. A poster viewed from 2 m
           needs at least 20 cm; a business card held at arm&apos;s length needs
-          at least 2 cm — more if you add a logo.
+          at least 2 cm - more if you add a logo.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
@@ -5546,7 +5546,7 @@ export function InstagramQrCodeGuidePost() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
-          Leave at least 4 modules of empty margin around the code — no text or
+          Leave at least 4 modules of empty margin around the code - no text or
           graphics touching the edges.
         </li>
         <li>
@@ -5576,7 +5576,7 @@ export function InstagramQrCodeGuidePost() {
       <ul className="list-disc space-y-2 pl-5">
         <li>
           <strong className="text-[var(--foreground)]">Product hang tags and packaging:</strong>{" "}
-          &quot;See it styled on IG&quot; — fashion, beauty, and home goods
+          &quot;See it styled on IG&quot; - fashion, beauty, and home goods
           brands use this heavily
         </li>
         <li>
@@ -5616,13 +5616,13 @@ export function InstagramQrCodeGuidePost() {
         Security note: Instagram QR is never a login
       </h2>
       <p>
-        Legitimate Instagram QR codes link to public content — profiles, posts,
+        Legitimate Instagram QR codes link to public content - profiles, posts,
         Reels. They{" "}
         <strong className="text-[var(--foreground)]">
           never ask you to log in
         </strong>{" "}
         via the QR code itself. If you scan a code and land on a page asking for
-        your Instagram password, stop — it&apos;s a phishing attempt.
+        your Instagram password, stop - it&apos;s a phishing attempt.
       </p>
       <p className="mt-4">
         QR code phishing (&quot;quishing&quot;) increases during holiday seasons
@@ -5698,8 +5698,8 @@ export function InstagramQrCodeGuidePost() {
         Wrapping up
       </h2>
       <p>
-        An Instagram QR code turns physical touchpoints — packaging, signage,
-        business cards, event materials — into profile follows and content
+        An Instagram QR code turns physical touchpoints - packaging, signage,
+        business cards, event materials - into profile follows and content
         engagement. Start with a clean public URL (profile for follower growth,
         post or Reel for campaigns), decide whether static or dynamic fits your
         use case, create a branded code in{" "}

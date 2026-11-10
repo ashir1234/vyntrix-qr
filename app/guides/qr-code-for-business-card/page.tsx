@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Should I use a vCard or a link on my business card?",
-    a: "A vCard QR saves your contact instantly offline — ideal when you want a one-tap “Add to Contacts” experience. A URL QR (especially dynamic) lets you update your landing page, track scans, and send people to a portfolio or booking page. Many professionals use a dynamic link for flexibility.",
+    a: "A vCard QR saves your contact instantly offline - ideal when you want a one-tap “Add to Contacts” experience. A URL QR (especially dynamic) lets you update your landing page, track scans, and send people to a portfolio or booking page. Many professionals use a dynamic link for flexibility.",
   },
   {
     q: "How small can the QR code be on a card?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I put the QR on the back of the card?",
-    a: "Yes — many designers place contact details on the front and a scannable code on the back with a short label like “Scan to save contact.” Just keep the back uncluttered and high-contrast.",
+    a: "Yes - many designers place contact details on the front and a scannable code on the back with a short label like “Scan to save contact.” Just keep the back uncluttered and high-contrast.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function BusinessCardGuidePage() {
           QR code to your business card
         </strong>{" "}
         turns a handshake into a saved contact, a portfolio view, or a booked
-        meeting — without anyone typing your URL or phone number. Freelancers,
+        meeting - without anyone typing your URL or phone number. Freelancers,
         sales reps, agents, and founders use them at conferences, client dinners,
         and everyday networking. Create a print-ready code in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -91,7 +91,7 @@ export default function BusinessCardGuidePage() {
       <GuideCta label="Create a business card QR code" />
 
       <h2 className="mt-10 text-2xl font-semibold">
-        vCard QR vs link QR — which to pick
+        vCard QR vs link QR - which to pick
       </h2>
       <p className="mt-3 text-[var(--muted)]">
         A{" "}
@@ -102,7 +102,7 @@ export default function BusinessCardGuidePage() {
           vCard QR
         </Link>{" "}
         embeds your name, phone, email, and company directly in the code. When
-        someone scans it, their phone offers to save you as a contact — no
+        someone scans it, their phone offers to save you as a contact - no
         website visit, no login. That is the fastest “Add to Contacts” path and
         works well when your details rarely change.
       </p>
@@ -122,7 +122,7 @@ export default function BusinessCardGuidePage() {
         >
           dynamic QR
         </Link>{" "}
-        and you can change the destination after cards are printed — useful if
+        and you can change the destination after cards are printed - useful if
         you switch roles or want scan analytics from each event.
       </p>
 
@@ -160,7 +160,7 @@ export default function BusinessCardGuidePage() {
         </li>
         <li>
           In Design, match brand colors. Keep dark modules on a light background
-          — see{" "}
+          - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -171,7 +171,7 @@ export default function BusinessCardGuidePage() {
         </li>
         <li>
           Download SVG for your printer (or PNG at 300 DPI). Size at least 2 × 2
-          cm —{" "}
+          cm -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -186,7 +186,7 @@ export default function BusinessCardGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Design and placement tips</h2>
       <p className="mt-3 text-[var(--muted)]">
         Standard cards are small. Give the QR a dedicated corner or the full
-        back — do not squeeze it between two paragraphs of 8 pt text. Add a
+        back - do not squeeze it between two paragraphs of 8 pt text. Add a
         one-line label (“Scan to connect”) so people know what happens. Matte
         finishes scan better than high-gloss lamination that catches light.
       </p>
@@ -202,7 +202,7 @@ export default function BusinessCardGuidePage() {
         <li>Keep the code at least 2 × 2 cm with a clear quiet zone (empty margin).</li>
         <li>Test on iPhone and Android before printing 500 cards.</li>
         <li>Use a dynamic link if your role, number, or portfolio URL may change.</li>
-        <li>Still print your email and phone as text — not everyone scans.</li>
+        <li>Still print your email and phone as text - not everyone scans.</li>
         <li>Prefer SVG from Studio so the printer scales without pixelation.</li>
         <li>
           Compare{" "}
@@ -235,7 +235,7 @@ export default function BusinessCardGuidePage() {
           >
             vCard QR code
           </Link>{" "}
-          — one-tap contact save
+          - one-tap contact save
         </li>
         <li>
           <Link
@@ -244,7 +244,7 @@ export default function BusinessCardGuidePage() {
           >
             LinkedIn QR code
           </Link>{" "}
-          — profile on a card back
+          - profile on a card back
         </li>
         <li>
           <Link
@@ -253,7 +253,7 @@ export default function BusinessCardGuidePage() {
           >
             Email signature QR
           </Link>{" "}
-          — match card and inbox branding
+          - match card and inbox branding
         </li>
       </ul>
 

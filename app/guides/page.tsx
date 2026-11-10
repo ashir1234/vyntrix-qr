@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 import { absoluteUrl, breadcrumbJsonLd, guides } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR Code Guides — How to Create WiFi, Logo & Dynamic QR Codes",
+  title: "QR Code Guides - How to Create WiFi, Logo & Dynamic QR Codes",
   description:
     "Step-by-step guides for creating free QR codes: WiFi, vCard, logo branding, and dynamic editable QR codes with analytics. Powered by Vyntrix QR.",
   keywords: [

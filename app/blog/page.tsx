@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Blog — QR Codes, Print & Privacy",
+  title: "Blog - QR Codes, Print & Privacy",
   description: `Practical articles from the ${siteConfig.name} team on QR design, print reliability, privacy, and static vs dynamic strategy.`,
   alternates: { canonical: "/blog" },
   openGraph: {
@@ -39,7 +39,7 @@ export default function BlogIndexPage() {
           Blog
         </h1>
         <p className="mt-3 text-[var(--muted)]">
-          Original notes from the {siteConfig.name} team — print reliability,
+          Original notes from the {siteConfig.name} team - print reliability,
           privacy, and when dynamic codes are worth it. For step-by-step
           tutorials, see{" "}
           <Link href="/guides" className="text-[var(--brand-2)] underline">

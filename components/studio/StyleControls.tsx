@@ -166,7 +166,7 @@ export function StyleControls() {
         />
       </Field>
 
-      <Field label={`Quiet-zone margin — ${style.margin}px`}>
+      <Field label={`Quiet-zone margin - ${style.margin}px`}>
         <Slider
           ariaLabel="Margin"
           value={style.margin}
@@ -202,7 +202,7 @@ export function StyleControls() {
           )}
         </div>
         {style.logoDataUrl && (
-          <Field label={`Logo size — ${Math.round(style.logoSize * 100)}%`}>
+          <Field label={`Logo size - ${Math.round(style.logoSize * 100)}%`}>
             <Slider
               ariaLabel="Logo size"
               value={style.logoSize}

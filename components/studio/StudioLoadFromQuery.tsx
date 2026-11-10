@@ -104,7 +104,7 @@ export function StudioLoadFromQuery() {
             },
           );
           setMessage(
-            "Link loaded. This code has no saved design yet — style it and tap Save design.",
+            "Link loaded. This code has no saved design yet - style it and tap Save design.",
           );
         } else {
           applySavedDesign(design, {

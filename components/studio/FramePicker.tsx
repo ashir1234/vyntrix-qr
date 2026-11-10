@@ -53,7 +53,7 @@ export function FramePicker() {
       </button>
 
       {open && (
-        <Field label={`Choose frame — ${FRAME_META.length} styles`}>
+        <Field label={`Choose frame - ${FRAME_META.length} styles`}>
           <div className="grid max-h-72 grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4">
             {FRAME_META.map((f) => {
               const active = frame === f.id;

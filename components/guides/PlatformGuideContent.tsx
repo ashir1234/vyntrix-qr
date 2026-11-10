@@ -25,7 +25,7 @@ function categoryExtras(category: QrPlatformCategory, name: string) {
     case "music":
       return {
         why: [
-          `A ${name} QR opens a track, album, or playlist instantly — ideal for merch, gigs, and venue playlists.`,
+          `A ${name} QR opens a track, album, or playlist instantly - ideal for merch, gigs, and venue playlists.`,
           "Playlist links are easier to update than single-track codes when you use a dynamic QR.",
           "Pair the code with a short line like “Scan for the playlist.”",
         ],
@@ -51,7 +51,7 @@ function categoryExtras(category: QrPlatformCategory, name: string) {
     case "forms":
       return {
         why: [
-          `QR codes for ${name} send people straight into a form — surveys, sign-ups, or feedback.`,
+          `QR codes for ${name} send people straight into a form - surveys, sign-ups, or feedback.`,
           "Test the form on mobile before you print.",
           "Dynamic QRs let you swap forms without new print runs.",
         ],

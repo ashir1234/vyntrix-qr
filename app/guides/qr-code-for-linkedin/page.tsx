@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Can I switch between profile and company page later?",
-    a: "With a dynamic QR, yes — update the redirect destination without reprinting badges or booth panels.",
+    a: "With a dynamic QR, yes - update the redirect destination without reprinting badges or booth panels.",
   },
   {
     q: "Should I use LinkedIn QR or vCard QR on a business card?",
@@ -77,7 +77,7 @@ export default function LinkedInGuidePage() {
         A <strong className="text-[var(--foreground)]">LinkedIn QR code</strong>{" "}
         replaces awkward name spelling at conferences, job fairs, and client
         meetings. One scan opens your profile or company page so the other person
-        can connect, message, or follow — without hunting through duplicate
+        can connect, message, or follow - without hunting through duplicate
         names. Create a crisp, print-ready code in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Vyntrix QR Studio
@@ -117,7 +117,7 @@ export default function LinkedInGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
           <strong className="text-[var(--foreground)]">Personal (/in/):</strong>{" "}
-          networking events, speaker intros, consultants, job seekers — copy
+          networking events, speaker intros, consultants, job seekers - copy
           from Public profile settings
         </li>
         <li>
@@ -130,7 +130,7 @@ export default function LinkedInGuidePage() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Vanity URLs:</strong>{" "}
-          claim a short linkedin.com/in/name before printing — long default URLs
+          claim a short linkedin.com/in/name before printing - long default URLs
           still work but look messy on small cards
         </li>
       </ul>
@@ -153,7 +153,7 @@ export default function LinkedInGuidePage() {
           company page mid-campaign, or want scan counts per event.
         </li>
         <li>
-          Add a subtle logo or brand color in Design — keep modules dark on
+          Add a subtle logo or brand color in Design - keep modules dark on
           light stock for reliability; see{" "}
           <Link
             href="/guides/qr-code-with-logo"
@@ -171,7 +171,7 @@ export default function LinkedInGuidePage() {
           >
             sizing guidance
           </Link>{" "}
-          — lanyard cards need smaller but still scannable modules.
+          - lanyard cards need smaller but still scannable modules.
         </li>
       </ol>
 
@@ -187,7 +187,7 @@ export default function LinkedInGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
-          Refresh headline, photo, and featured section before a major event —
+          Refresh headline, photo, and featured section before a major event -
           scanners judge quickly.
         </li>
         <li>
@@ -198,7 +198,7 @@ export default function LinkedInGuidePage() {
           audience.
         </li>
         <li>
-          Test scans under conference hall lighting — glossy badge holders
+          Test scans under conference hall lighting - glossy badge holders
           glare.
         </li>
         <li>

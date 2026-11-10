@@ -1,6 +1,6 @@
-# Vyntrix QR — Free 3D QR Code Generator
+# Vyntrix QR - Free 3D QR Code Generator
 
-A production-grade, immersive QR code studio. Design branded QR codes with logos, colors, and gradients, preview them live on a rotatable 3D tile, and export print-ready PNG/SVG — all client-side, no sign-up.
+A production-grade, immersive QR code studio. Design branded QR codes with logos, colors, and gradients, preview them live on a rotatable 3D tile, and export print-ready PNG/SVG - all client-side, no sign-up.
 
 ## Tech stack
 
@@ -48,7 +48,7 @@ npm run build && npm start   # production
 Enable the **Dynamic QR** toggle in the studio (URL type) to mint a short link
 that you can re-point anytime without reprinting, plus scan analytics (count over
 time, device/browser/OS breakdown, recent feed). Storage uses **libSQL**
-(`@libsql/client` in `lib/db.ts`) — the same SQLite SQL, with a connection that
+(`@libsql/client` in `lib/db.ts`) - the same SQLite SQL, with a connection that
 adapts to your environment:
 
 - **Local dev / persistent host:** a SQLite file at `./data/vyntrix.db` (override
@@ -56,12 +56,12 @@ adapts to your environment:
 - **Serverless (Vercel):** set `TURSO_DATABASE_URL` + `TURSO_AUTH_TOKEN` to use
   **Turso** (hosted libSQL). When these are set, the file path is ignored.
 
-Access is secured with a per-code **edit token** returned at creation — no
+Access is secured with a per-code **edit token** returned at creation - no
 accounts needed. Keep it safe; it's the only key to edit a code or view its stats.
 
 ### Deploying dynamic features to Vercel (Turso)
 
-Vercel has an **ephemeral filesystem**, so a local SQLite file won't persist —
+Vercel has an **ephemeral filesystem**, so a local SQLite file won't persist -
 use Turso (free tier is plenty to start):
 
 ```bash

@@ -6,7 +6,7 @@ import { PlanAwareAd } from "@/components/ads/PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "QR Code Design Gallery — Examples & Templates",
+  title: "QR Code Design Gallery - Examples & Templates",
   description:
     "Browse beautiful QR code design templates and color styles. Tap any example to open it in the free Vyntrix QR studio and customize it.",
   alternates: { canonical: "/gallery" },

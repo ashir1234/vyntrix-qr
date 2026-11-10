@@ -428,7 +428,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
-/** Preview thumbnail SVG (no real QR — placeholder modules). */
+/** Preview thumbnail SVG (no real QR - placeholder modules). */
 export function frameThumbSvg(frame: FrameKind): string {
   const fakeQr =
     "data:image/svg+xml," +

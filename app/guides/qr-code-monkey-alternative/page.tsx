@@ -15,7 +15,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Why look for a QR Code Monkey alternative?",
-    a: "People often want clearer dynamic QR pricing, scan analytics, project folders, or a modern studio with 3D preview — without giving up free static branding.",
+    a: "People often want clearer dynamic QR pricing, scan analytics, project folders, or a modern studio with 3D preview - without giving up free static branding.",
   },
   {
     q: "Does Vyntrix QR support logos and colors?",
@@ -83,7 +83,7 @@ export default function QrCodeMonkeyAltPage() {
 
       <h2 className="mt-10 text-2xl font-semibold">What you get here</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Free static QR codes with logo and colors — no watermark</li>
+        <li>Free static QR codes with logo and colors - no watermark</li>
         <li>Live 2D + immersive 3D preview</li>
         <li>Dynamic QR codes with scan analytics (Free: 1; Pro: unlimited)</li>
         <li>WiFi, vCard, URL, and more content types</li>
@@ -112,7 +112,7 @@ export default function QrCodeMonkeyAltPage() {
           editable destinations
         </Link>
         , scan history, and honest pricing. That is where {siteConfig.name}{" "}
-        focuses — see{" "}
+        focuses - see{" "}
         <Link href="/pricing" className="text-[var(--brand-2)] underline">
           Pricing
         </Link>{" "}
@@ -125,7 +125,7 @@ export default function QrCodeMonkeyAltPage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Quick evaluation</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
-        <li>Create a logo QR and export SVG — check for watermarks.</li>
+        <li>Create a logo QR and export SVG - check for watermarks.</li>
         <li>Create one dynamic link and change the destination.</li>
         <li>
           Skim{" "}

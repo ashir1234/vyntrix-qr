@@ -132,7 +132,7 @@ export function DashboardClient({
       trackEvent("project_assign", { slug });
       router.refresh();
     } catch {
-      /* ignore — panel will show state on refresh */
+      /* ignore - panel will show state on refresh */
     } finally {
       setAssigning(null);
     }

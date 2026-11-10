@@ -530,7 +530,7 @@ export async function getAllScans(slug: string): Promise<ScanInput[]> {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Users (signed-in accounts — record keeping)                                */
+/* Users (signed-in accounts - record keeping)                                */
 /* -------------------------------------------------------------------------- */
 
 export interface AppUserRow {
@@ -741,7 +741,7 @@ export async function countProjectsByUser(userId: string): Promise<number> {
   return num(res.rows[0]?.c);
 }
 
-/** Delete folder only — codes are unassigned, not deleted. */
+/** Delete folder only - codes are unassigned, not deleted. */
 export async function deleteProject(
   id: string,
   userId: string,

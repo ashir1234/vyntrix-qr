@@ -77,7 +77,7 @@ export default function SpotifyGuidePage() {
         A <strong className="text-[var(--foreground)]">Spotify QR code</strong>{" "}
         turns physical touchpoints into instant listening. Bands print them on
         gig posters, cafés embed them in table cards, and podcasters add them to
-        show notes flyers — one scan opens the exact track, album, or playlist.
+        show notes flyers - one scan opens the exact track, album, or playlist.
         Build a branded code in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Vyntrix QR Studio
@@ -95,7 +95,7 @@ export default function SpotifyGuidePage() {
         <span className="font-mono text-sm text-[var(--foreground)]">
           open.spotify.com
         </span>{" "}
-        web URL. A URL QR encodes that address — when scanned, the phone opens
+        web URL. A URL QR encodes that address - when scanned, the phone opens
         Spotify (if installed) or the web player. This is separate from
         Spotify&apos;s own Spotify Code graphics, which only scan inside the
         Spotify app and cannot be recolored for your brand guidelines.
@@ -133,7 +133,7 @@ export default function SpotifyGuidePage() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Playlist:</strong> hotels,
-          gyms, restaurants — update tracks in Spotify without touching print
+          gyms, restaurants - update tracks in Spotify without touching print
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Artist:</strong> festival
@@ -168,7 +168,7 @@ export default function SpotifyGuidePage() {
           to a new release later.
         </li>
         <li>
-          Style in Design — many artists use black modules on neon posters; keep
+          Style in Design - many artists use black modules on neon posters; keep
           enough contrast per{" "}
           <Link
             href="/guides/qr-code-with-logo"
@@ -179,7 +179,7 @@ export default function SpotifyGuidePage() {
           .
         </li>
         <li>
-          Download PNG or SVG. Size for viewing distance — wall posters need
+          Download PNG or SVG. Size for viewing distance - wall posters need
           larger modules than cup sleeves; see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
@@ -203,14 +203,14 @@ export default function SpotifyGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
-          Prefer playlists for any surface you cannot reprint monthly — edit
+          Prefer playlists for any surface you cannot reprint monthly - edit
           tracks in Spotify, not at the printer.
         </li>
         <li>
           Caption clearly: “Scan to listen” or “Scan for the playlist.”
         </li>
         <li>
-          Confirm licensing for public playback in commercial spaces — QR gets
+          Confirm licensing for public playback in commercial spaces - QR gets
           people to the music; venue licenses are still your responsibility.
         </li>
         <li>
@@ -230,7 +230,7 @@ export default function SpotifyGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Using spotify: URI schemes instead of https links cameras recognize</li>
         <li>Linking to a private or collaborative playlist guests cannot open</li>
-        <li>Encoding a track removed from Spotify — playlists fail softer</li>
+        <li>Encoding a track removed from Spotify - playlists fail softer</li>
         <li>Confusing Spotify Codes with standard QR in design templates</li>
         <li>Printing too small on cup sleeves scanned at awkward angles</li>
         <li>Region-locked releases that fail for international tourists</li>

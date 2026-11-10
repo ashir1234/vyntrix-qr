@@ -102,7 +102,7 @@ export function ProjectsPanel({
   const removeProject = async (id: string, name: string) => {
     if (
       !confirm(
-        `Delete project “${name}”? Your QR codes stay — they just leave the folder.`,
+        `Delete project “${name}”? Your QR codes stay - they just leave the folder.`,
       )
     )
       return;
@@ -186,7 +186,7 @@ export function ProjectsPanel({
         <div>
           <h2 className="font-semibold">Projects</h2>
           <p className="mt-0.5 text-xs text-[var(--muted)]">
-            Folders for campaigns — each project can hold many QR codes.
+            Folders for campaigns - each project can hold many QR codes.
           </p>
         </div>
       </div>
@@ -258,7 +258,7 @@ export function ProjectsPanel({
                   <div className="border-t border-[var(--border)] px-3 py-3">
                     {p.codes.length === 0 ? (
                       <p className="mb-3 text-xs text-[var(--muted)]">
-                        Empty — add a dynamic code below.
+                        Empty - add a dynamic code below.
                       </p>
                     ) : (
                       <ul className="mb-3 divide-y divide-[var(--border)]">

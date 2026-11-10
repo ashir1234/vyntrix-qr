@@ -3,7 +3,7 @@
 import { PlanAwareAd } from "./PlanAwareAd";
 import { siteConfig } from "@/lib/site";
 
-/** Guide-page ad unit — hidden for Pro. */
+/** Guide-page ad unit - hidden for Pro. */
 export function GuideAd() {
   return (
     <PlanAwareAd

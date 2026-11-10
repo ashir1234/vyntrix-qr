@@ -13,7 +13,7 @@ import {
 } from "@/lib/qr-platforms";
 
 export const metadata: Metadata = {
-  title: "QR Code for… — Free Generators by Use Case",
+  title: "QR Code for… - Free Generators by Use Case",
   description:
     "Create a free QR code for Spotify, TikTok, LinkedIn, Google Forms, App Store, packaging, real estate, and dozens more use cases. Download PNG or SVG instantly.",
   keywords: [
@@ -61,7 +61,7 @@ export default function QrCodeForHubPage() {
       </h1>
       <p className="mt-3 text-[var(--muted)]">
         Pick a destination, open the studio, and download a branded PNG or SVG.
-        {qrPlatforms.length}+ use cases — each with steps, tips, and FAQs.
+        {qrPlatforms.length}+ use cases - each with steps, tips, and FAQs.
       </p>
 
       <p className="mt-4 text-sm text-[var(--muted)]">

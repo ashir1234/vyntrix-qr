@@ -77,7 +77,7 @@ export default function InstagramGuidePage() {
         An <strong className="text-[var(--foreground)]">Instagram QR code</strong>{" "}
         turns offline attention into profile visits and follows. Retail tags,
         café table tents, event badges, and product inserts can all carry a
-        scannable link — no one has to type{" "}
+        scannable link - no one has to type{" "}
         <span className="font-mono text-sm text-[var(--foreground)]">
           @yourhandle
         </span>{" "}
@@ -96,7 +96,7 @@ export default function InstagramGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         Unlike Instagram&apos;s in-app Nametag, a standard QR encodes a normal
         HTTPS URL. When someone scans with their phone camera, the device opens
-        that link — typically your profile or a specific post. Instagram&apos;s
+        that link - typically your profile or a specific post. Instagram&apos;s
         servers handle the rest: logged-in users land in the app; others see the
         mobile web view and can install the app from there.
       </p>
@@ -123,11 +123,11 @@ export default function InstagramGuidePage() {
           <span className="font-mono text-sm text-[var(--foreground)]">
             https://instagram.com/yourusername
           </span>{" "}
-          — best for ongoing follower growth
+          - best for ongoing follower growth
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Single post or reel:</strong>{" "}
-          tap Share on the post → Copy link — ideal for launch-day signage
+          tap Share on the post → Copy link - ideal for launch-day signage
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Avoid:</strong>{" "}
@@ -165,7 +165,7 @@ export default function InstagramGuidePage() {
         </li>
         <li>
           Open <strong className="text-[var(--foreground)]">Design</strong> to
-          match brand colors or add a small logo — see{" "}
+          match brand colors or add a small logo - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -200,7 +200,7 @@ export default function InstagramGuidePage() {
         <strong className="text-[var(--foreground)]">Dynamic (Pro):</strong> the
         printed QR points at a short redirect link. You can update where it
         goes, A/B test profile vs post links, and see how many people scanned
-        from each placement — useful when the same poster runs for months.
+        from each placement - useful when the same poster runs for months.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Where it works well</h2>
@@ -219,7 +219,7 @@ export default function InstagramGuidePage() {
           behind-the-scenes.”
         </li>
         <li>
-          Keep the account public and the bio filled out before you print — the
+          Keep the account public and the bio filled out before you print - the
           scan should feel worth it immediately.
         </li>
         <li>
@@ -235,7 +235,7 @@ export default function InstagramGuidePage() {
           a large run.
         </li>
         <li>
-          If you rebrand or change handles, static codes need reprinting — or
+          If you rebrand or change handles, static codes need reprinting - or
           use dynamic from the start.
         </li>
       </ul>
@@ -243,7 +243,7 @@ export default function InstagramGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Common mistakes</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Encoding a private account URL on public marketing materials</li>
-        <li>Typos in the username — Instagram handles are not forgiving</li>
+        <li>Typos in the username - Instagram handles are not forgiving</li>
         <li>Linking to an expired story or deleted post on long-lived print</li>
         <li>Printing too small on narrow packaging (see size guide above)</li>
         <li>Assuming Nametag screenshots work outside the Instagram app</li>

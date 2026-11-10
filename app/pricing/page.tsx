@@ -10,12 +10,12 @@ const pro = PLAN_LIMITS.pro;
 const free = PLAN_LIMITS.free;
 
 export const metadata: Metadata = {
-  title: "Pricing — Free & Pro Plans",
+  title: "Pricing - Free & Pro Plans",
   description:
     "Vyntrix QR is free forever for static QR codes. Upgrade to Pro for unlimited dynamic QR codes, cloud Studio sync, projects, bulk create, print pack, full analytics, and no ads.",
   alternates: { canonical: "/pricing" },
   openGraph: {
-    title: `Pricing — ${siteConfig.name}`,
+    title: `Pricing - ${siteConfig.name}`,
     description:
       "Free forever for static QR codes. Pro unlocks unlimited dynamic codes, cloud sync, projects, bulk create, print pack, and full analytics.",
     type: "website",

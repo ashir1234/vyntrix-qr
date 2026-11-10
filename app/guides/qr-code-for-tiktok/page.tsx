@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Should I link my profile or a specific video?",
-    a: "Profile links (tiktok.com/@handle) are best for long-term follower growth on packaging and signage. Video links suit limited campaigns — a challenge, product launch, or influencer collab where one clip is the hero.",
+    a: "Profile links (tiktok.com/@handle) are best for long-term follower growth on packaging and signage. Video links suit limited campaigns - a challenge, product launch, or influencer collab where one clip is the hero.",
   },
   {
     q: "Will the QR open the TikTok app?",
@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Can I change the video later without reprinting?",
-    a: "Yes — use a dynamic QR that redirects to your TikTok URL. Update the destination in your dashboard while the printed code stays identical.",
+    a: "Yes - use a dynamic QR that redirects to your TikTok URL. Update the destination in your dashboard while the printed code stays identical.",
   },
   {
     q: "Can I measure how many people scanned?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Does TikTok have its own QR format?",
-    a: "TikTok shows profile QR codes inside the app for in-person follows. A standard URL QR is what you want for branded print — any camera can read it, and you control colors and logo placement.",
+    a: "TikTok shows profile QR codes inside the app for in-person follows. A standard URL QR is what you want for branded print - any camera can read it, and you control colors and logo placement.",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function TikTokGuidePage() {
         How TikTok QR codes work
       </h2>
       <p className="mt-3 text-[var(--muted)]">
-        TikTok profile and video pages have public HTTPS URLs — typically{" "}
+        TikTok profile and video pages have public HTTPS URLs - typically{" "}
         <span className="font-mono text-sm text-[var(--foreground)]">
           https://www.tiktok.com/@username
         </span>{" "}
@@ -110,7 +110,7 @@ export default function TikTokGuidePage() {
         >
           dynamic redirect
         </Link>{" "}
-        — useful when the same shelf talker should promote different hashtag
+        - useful when the same shelf talker should promote different hashtag
         challenges each quarter.
       </p>
 
@@ -120,7 +120,7 @@ export default function TikTokGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
           <strong className="text-[var(--foreground)]">Profile:</strong> default
-          for packaging, hang tags, and permanent signage — every scan is a
+          for packaging, hang tags, and permanent signage - every scan is a
           follow opportunity
         </li>
         <li>
@@ -157,7 +157,7 @@ export default function TikTokGuidePage() {
         </li>
         <li>
           Design pass: bold contrast beats trendy low-contrast palettes on small
-          labels. Optional logo — see{" "}
+          labels. Optional logo - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -191,7 +191,7 @@ export default function TikTokGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
-          Write the handle next to the code as backup — some users still type
+          Write the handle next to the code as backup - some users still type
           instead of scan.
         </li>
         <li>
@@ -210,7 +210,7 @@ export default function TikTokGuidePage() {
           update when the clip ages out.
         </li>
         <li>
-          Align offline creative with what viewers see first on your profile —
+          Align offline creative with what viewers see first on your profile -
           mismatched tone hurts follow-through.
         </li>
       </ul>
@@ -221,7 +221,7 @@ export default function TikTokGuidePage() {
         <li>Using a personal account URL when the brand account is the focus</li>
         <li>Printing in-app QR screenshots that cannot be recolored or resized cleanly</li>
         <li>Codes too small on cosmetics boxes scanned at arm’s length</li>
-        <li>Promoting a trending sound video after the trend ends — use dynamic links</li>
+        <li>Promoting a trending sound video after the trend ends - use dynamic links</li>
         <li>Neon-on-neon design that looks on-brand but fails in dim club lighting</li>
       </ul>
 

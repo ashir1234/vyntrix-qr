@@ -28,7 +28,7 @@ type LemonWebhook = {
 /**
  * Only these events carry a *subscription* object with status like
  * active / cancelled. Events such as `subscription_payment_success` are
- * invoices (`status: "paid"`) — writing that over the subscription row
+ * invoices (`status: "paid"`) - writing that over the subscription row
  * incorrectly drops the user back to Free.
  */
 const SUBSCRIPTION_EVENTS = new Set([

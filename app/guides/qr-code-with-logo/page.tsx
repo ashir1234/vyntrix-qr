@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: "Can I put the logo in a corner?",
-    a: "No — never cover the three large finder squares in the corners. Center logos are the safe default.",
+    a: "No - never cover the three large finder squares in the corners. Center logos are the safe default.",
   },
   {
     q: "Do branded colors hurt scanning?",
@@ -81,7 +81,7 @@ export default function LogoGuidePage() {
           Vyntrix QR
         </Link>
         , you can embed your mark, pick brand colors, and preview the result in
-        2D and 3D before you download — without a watermark on free static
+        2D and 3D before you download - without a watermark on free static
         codes.
       </p>
 
@@ -94,7 +94,7 @@ export default function LogoGuidePage() {
         QR codes include error correction so scanners can recover data even when
         some modules are missing or damaged. Placing a logo in the center
         intentionally “damages” part of the code; higher error-correction levels
-        compensate. That is why generators raise EC when a logo is present —
+        compensate. That is why generators raise EC when a logo is present -
         and why oversized logos still fail.
       </p>
 
@@ -158,8 +158,8 @@ export default function LogoGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Colors, frames, and 3D preview</h2>
       <p className="mt-3 text-[var(--muted)]">
         Brand colors and frames help codes feel on-brand on packaging and
-        posters, but scanners care about contrast first. Use the live preview —
-        including 3D materials if you like — to judge aesthetics, then verify
+        posters, but scanners care about contrast first. Use the live preview -
+        including 3D materials if you like - to judge aesthetics, then verify
         with a real camera scan. A beautiful code that does not open is wasted
         print budget.
       </p>

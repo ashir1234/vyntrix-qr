@@ -8,12 +8,12 @@ import { siteConfig } from "@/lib/site";
 import { faqJsonLd, guides, howToJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
+  title: `${siteConfig.name} - Free QR Code Generator with Logo & 3D Preview`,
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${siteConfig.name} — Free QR Code Generator with Logo & 3D Preview`,
+    title: `${siteConfig.name} - Free QR Code Generator with Logo & 3D Preview`,
     description: siteConfig.description,
     url: siteConfig.url,
   },
@@ -56,7 +56,7 @@ const FEATURES = [
   {
     icon: "📶",
     title: "Every QR type",
-    body: "URL, WiFi, vCard, email, SMS, phone, image, and location — structured forms create the right payload automatically.",
+    body: "URL, WiFi, vCard, email, SMS, phone, image, and location - structured forms create the right payload automatically.",
   },
   {
     icon: "⚡",
@@ -77,7 +77,7 @@ const FAQS = [
   },
   {
     q: "Is Vyntrix QR really free?",
-    a: "Yes for static QR codes — create, customize, and download unlimited codes with no watermark. Dynamic QR codes require signing in (Free: 1 dynamic code). Pro is $12/month for unlimited dynamic codes and advanced features.",
+    a: "Yes for static QR codes - create, customize, and download unlimited codes with no watermark. Dynamic QR codes require signing in (Free: 1 dynamic code). Pro is $12/month for unlimited dynamic codes and advanced features.",
   },
   {
     q: "Do the QR codes expire?",
@@ -129,7 +129,7 @@ export default function Home() {
               <span className="gradient-text">Generator</span>
             </h1>
             <p className="mt-5 max-w-md text-lg text-[var(--muted)]">
-              Create custom QR codes with your logo, colors, and gradients —
+              Create custom QR codes with your logo, colors, and gradients -
               then preview them live in 3D. Download print-ready PNG or SVG.
               Sign in for dynamic links; upgrade to Pro for unlimited dynamics,
               analytics, and more.
@@ -182,7 +182,7 @@ export default function Home() {
             How it works
           </h2>
           <p className="mx-auto mt-2 max-w-md text-center text-[var(--muted)]">
-            Three simple steps — no design skills needed.
+            Three simple steps - no design skills needed.
           </p>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {STEPS.map((s) => (
@@ -200,7 +200,7 @@ export default function Home() {
               href="/studio"
               className="btn-primary inline-block rounded-xl px-6 py-3 font-semibold"
             >
-              Start now — it&apos;s free
+              Start now - it&apos;s free
             </Link>
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function Home() {
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-[var(--muted)]">
               Jump into the studio and watch your design come to life in real
-              time — in full 3D.
+              time - in full 3D.
             </p>
             <Link
               href="/studio"

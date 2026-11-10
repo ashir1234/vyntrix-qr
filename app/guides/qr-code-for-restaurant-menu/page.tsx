@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I track how many people open the menu?",
-    a: "Yes with a dynamic QR — scan analytics show interest. They do not tell you which dish someone ordered.",
+    a: "Yes with a dynamic QR - scan analytics show interest. They do not tell you which dish someone ordered.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function RestaurantMenuGuidePage() {
       <h1 className="text-4xl font-bold tracking-tight">{guide.h1}</h1>
       <p className="mt-4 text-lg text-[var(--muted)]">
         A <strong className="text-[var(--foreground)]">QR code menu</strong> lets
-        diners view your menu on their own phone — no app, no shared paper. Link
+        diners view your menu on their own phone - no app, no shared paper. Link
         it to a web page or PDF and update it anytime with a{" "}
         <Link
           href="/guides/dynamic-qr-code"
@@ -92,7 +92,7 @@ export default function RestaurantMenuGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         Prices and seasonal dishes change faster than printed booklets. A QR on
         the table points at a page you control. Dynamic codes mean you reprint
-        table tents once and keep editing the destination — useful for lunch vs
+        table tents once and keep editing the destination - useful for lunch vs
         dinner menus, allergen updates, and sold-out items.
       </p>
 
@@ -143,7 +143,7 @@ export default function RestaurantMenuGuidePage() {
         <li>Caption the code: “Scan for today’s menu.”</li>
         <li>Print at least 2×2 cm for table use; larger for windows.</li>
         <li>Laminate table codes so they survive spills and cleaning.</li>
-        <li>Keep high contrast — dark code on light pad, not on food photos.</li>
+        <li>Keep high contrast - dark code on light pad, not on food photos.</li>
         <li>Offer paper menus as a backup for guests who prefer them.</li>
       </ul>
 

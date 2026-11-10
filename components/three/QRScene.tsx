@@ -127,7 +127,7 @@ function QrTile({
   );
 }
 
-/** Cursor chases the QR — it flees when you get close. */
+/** Cursor chases the QR - it flees when you get close. */
 function RunawayScene() {
   const group = useRef<THREE.Group>(null);
   const pos = useRef(new THREE.Vector3(0, 0, 0));
@@ -217,7 +217,7 @@ function CartoonEye({
   );
 }
 
-/** Chibi cartoon buddy holding the QR — not a stick-figure of capsules. */
+/** Chibi cartoon buddy holding the QR - not a stick-figure of capsules. */
 function BuddyScene() {
   const body = useRef<THREE.Group>(null);
   const reducedMotion = useQrStore((s) => s.settings.reducedMotion);
@@ -534,7 +534,7 @@ function Burst() {
   );
 }
 
-/** Cursor magnet — QR sticks to / follows the pointer. */
+/** Cursor magnet - QR sticks to / follows the pointer. */
 function StickyScene() {
   const group = useRef<THREE.Group>(null);
   const { pointer, viewport } = useThree();
@@ -909,7 +909,7 @@ function SandwichScene() {
 
   return (
     <group ref={stack} position={[0, -0.15, 0]}>
-      {/* bottom bun — soft rounded loaf */}
+      {/* bottom bun - soft rounded loaf */}
       <mesh position={[0, -0.72, 0]} scale={[1, 0.55, 1]}>
         <sphereGeometry args={[1.15, 32, 24]} />
         <meshStandardMaterial color="#e8c48a" roughness={0.85} />
@@ -924,7 +924,7 @@ function SandwichScene() {
         <meshStandardMaterial color="#d4a66a" roughness={0.9} />
       </mesh>
 
-      {/* lettuce — ruffled layers */}
+      {/* lettuce - ruffled layers */}
       {[0, 1, 2, 3, 4].map((i) => {
         const a = (i / 5) * Math.PI * 2;
         return (
@@ -961,7 +961,7 @@ function SandwichScene() {
         </mesh>
       ))}
 
-      {/* cheese — slightly melted overhang */}
+      {/* cheese - slightly melted overhang */}
       <mesh position={[0.05, 0.0, 0.02]} rotation={[0.02, 0.12, 0.04]}>
         <RoundedBox args={[2.0, 0.06, 2.0]} radius={0.04}>
           <meshStandardMaterial color="#f5c542" roughness={0.45} metalness={0.05} />

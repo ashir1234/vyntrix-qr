@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Should I use a dynamic QR on yard signs?",
-    a: "Yes. Listings go pending, prices change, and open-house times shift. Dynamic QR lets you update the destination without reprinting signs — especially valuable for multi-listing agents.",
+    a: "Yes. Listings go pending, prices change, and open-house times shift. Dynamic QR lets you update the destination without reprinting signs - especially valuable for multi-listing agents.",
   },
   {
     q: "Zillow/Realtor.com vs my own site?",
@@ -22,11 +22,11 @@ const FAQS = [
   },
   {
     q: "How big should the code be on a yard sign?",
-    a: "Scanning often happens from the sidewalk — several centimeters on a side, high contrast, with a caption like “Scan for photos & details.” See the print size guide for distance rules.",
+    a: "Scanning often happens from the sidewalk - several centimeters on a side, high contrast, with a caption like “Scan for photos & details.” See the print size guide for distance rules.",
   },
   {
     q: "Can I link to a virtual tour?",
-    a: "Absolutely. Matterport, video walkthroughs, or a landing page with gallery + contact form all work. Test mobile load on LTE — buyers scan from the curb.",
+    a: "Absolutely. Matterport, video walkthroughs, or a landing page with gallery + contact form all work. Test mobile load on LTE - buyers scan from the curb.",
   },
   {
     q: "Will rain ruin the QR on outdoor signs?",
@@ -77,7 +77,7 @@ export default function RealEstateGuidePage() {
         A{" "}
         <strong className="text-[var(--foreground)]">real estate QR code</strong>{" "}
         on a yard sign or flyer turns drive-by curiosity into listing photos,
-        virtual tours, and lead forms — without cramming phone numbers onto a
+        virtual tours, and lead forms - without cramming phone numbers onto a
         18 × 24 inch board. Agents and brokerages use them on signs, open-house
         arrows, and mailers. Build a weather-ready code in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -92,7 +92,7 @@ export default function RealEstateGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         A yard sign may sit for weeks. Status flips from “Just Listed” to
         “Pending” to “Sold.” Price drops and open-house schedules change. A
-        static QR locked to one URL forces new print runs — or worse, sends
+        static QR locked to one URL forces new print runs - or worse, sends
         buyers to stale info.
       </p>
       <p className="mt-3 text-[var(--muted)]">
@@ -149,7 +149,7 @@ export default function RealEstateGuidePage() {
         </li>
         <li>Use high-contrast black and white for outdoor readability.</li>
         <li>
-          Export large PNG/SVG for the sign shop — size for sidewalk distance in{" "}
+          Export large PNG/SVG for the sign shop - size for sidewalk distance in{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -169,17 +169,17 @@ export default function RealEstateGuidePage() {
         third-party widgets that slow load on street-side LTE.
       </p>
       <p className="mt-3 text-[var(--muted)]">
-        When the listing sells, redirect the same dynamic link to a “Sold — see
-        similar homes” page instead of a 404 — you keep capturing buyer interest.
+        When the listing sells, redirect the same dynamic link to a “Sold - see
+        similar homes” page instead of a 404 - you keep capturing buyer interest.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Weather-resistant print and matte or low-glare laminate.</li>
-        <li>Large modules — buyers scan from 3–5 meters away.</li>
+        <li>Large modules - buyers scan from 3–5 meters away.</li>
         <li>Separate QR per listing to read scan analytics clearly.</li>
         <li>Brokerage branding optional; scannability beats decoration outdoors.</li>
-        <li>Comply with local sign regulations — QR does not exempt size rules.</li>
+        <li>Comply with local sign regulations - QR does not exempt size rules.</li>
         <li>
           See also the{" "}
           <Link
@@ -196,9 +196,9 @@ export default function RealEstateGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Static QR still pointing at a sold listing in spring</li>
         <li>Code too small on a sign meant to be read from the car</li>
-        <li>Glossy laminate glare at sunset — scan failures spike</li>
+        <li>Glossy laminate glare at sunset - scan failures spike</li>
         <li>Portal page with login prompts before photos load</li>
-        <li>One agent QR on every sign — cannot tell which property scanned</li>
+        <li>One agent QR on every sign - cannot tell which property scanned</li>
         <li>Low-resolution art from a screenshot instead of SVG export</li>
       </ul>
 
@@ -211,7 +211,7 @@ export default function RealEstateGuidePage() {
           >
             PDF QR code
           </Link>{" "}
-          — digital brochure on flyers
+          - digital brochure on flyers
         </li>
         <li>
           <Link
@@ -220,7 +220,7 @@ export default function RealEstateGuidePage() {
           >
             Business card QR
           </Link>{" "}
-          — same listing on card backs
+          - same listing on card backs
         </li>
         <li>
           <Link
@@ -229,7 +229,7 @@ export default function RealEstateGuidePage() {
           >
             Google review QR
           </Link>{" "}
-          — post-closing follow-up
+          - post-closing follow-up
         </li>
       </ul>
 

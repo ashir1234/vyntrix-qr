@@ -47,7 +47,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Copy the share link from the Spotify app or web player",
     urlExample: "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
     intro:
-      "A Spotify QR code lets fans open your track, album, playlist, or artist page with one scan — no typing search terms. Ideal for merch, gig posters, restaurant playlists, and packaging.",
+      "A Spotify QR code lets fans open your track, album, playlist, or artist page with one scan - no typing search terms. Ideal for merch, gig posters, restaurant playlists, and packaging.",
     tips: [
       "Use the official open.spotify.com share link so every device opens the app or web player correctly.",
       "For events, prefer a playlist URL so you can update tracks without reprinting.",
@@ -64,7 +64,7 @@ export const qrPlatforms: QrPlatform[] = [
       },
       {
         q: "Can I change the song later?",
-        a: "With a dynamic QR code, yes — update the destination anytime. Static codes are locked to the original URL.",
+        a: "With a dynamic QR code, yes - update the destination anytime. Static codes are locked to the original URL.",
       },
     ],
     relatedGuideSlug: "qr-code-for-spotify",
@@ -152,7 +152,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Open your profile → copy the linkedin.com/in/… URL",
     urlExample: "https://www.linkedin.com/in/your-name",
     intro:
-      "A LinkedIn QR code helps people connect with you in one scan at conferences, meetups, and client meetings — faster than spelling your name.",
+      "A LinkedIn QR code helps people connect with you in one scan at conferences, meetups, and client meetings - faster than spelling your name.",
     tips: [
       "Use your vanity URL (linkedin.com/in/you) when possible.",
       "Put the code on the back of your business card or name badge.",
@@ -222,7 +222,7 @@ export const qrPlatforms: QrPlatform[] = [
     intro:
       "An X (Twitter) QR code sends scanners to your profile or a specific post. Handy for press kits, talks, and product launches.",
     tips: [
-      "Use x.com/handle for profiles — it works across devices.",
+      "Use x.com/handle for profiles - it works across devices.",
       "For launches, link a pinned announcement post.",
       "Add your handle as a caption under the code.",
     ],
@@ -270,11 +270,11 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Use your public profile or landing link if available",
     urlExample: "https://www.snapchat.com/add/yourusername",
     intro:
-      "A standard Snapchat QR (URL) works with any camera — unlike Snapcodes that need the Snapchat app. Great for youth brands and campus events.",
+      "A standard Snapchat QR (URL) works with any camera - unlike Snapcodes that need the Snapchat app. Great for youth brands and campus events.",
     tips: [
       "Prefer snapchat.com/add/username links when possible.",
       "Explain “Open camera → scan” for people unfamiliar with Snap.",
-      "Style the code in brand yellow/black carefully — keep contrast high.",
+      "Style the code in brand yellow/black carefully - keep contrast high.",
     ],
     faqs: [
       {
@@ -349,10 +349,10 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Copy the reddit.com link for a subreddit or post",
     urlExample: "https://www.reddit.com/r/yoursubreddit",
     intro:
-      "A Reddit QR code sends scanners to a subreddit, post, or profile — useful for community-led brands and AMA promotions.",
+      "A Reddit QR code sends scanners to a subreddit, post, or profile - useful for community-led brands and AMA promotions.",
     tips: [
       "Link the subreddit for ongoing discovery, or a sticky post for campaigns.",
-      "Test old.reddit and app deep links aren’t required — standard URLs work.",
+      "Test old.reddit and app deep links aren’t required - standard URLs work.",
     ],
     faqs: [
       {
@@ -378,9 +378,9 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Form → Send → Link → Copy",
     urlExample: "https://docs.google.com/forms/d/e/FORM_ID/viewform",
     intro:
-      "A Google Form QR code makes surveys and RSVPs frictionless — guests scan and answer on their phone. Ideal for events, classrooms, and storefront feedback.",
+      "A Google Form QR code makes surveys and RSVPs frictionless - guests scan and answer on their phone. Ideal for events, classrooms, and storefront feedback.",
     tips: [
-      "Shorten nothing critical — use the official docs.google.com link.",
+      "Shorten nothing critical - use the official docs.google.com link.",
       "Place codes near the call-to-action (“Scan to RSVP”).",
       "Dynamic QR helps if you swap forms between events.",
     ],
@@ -416,7 +416,7 @@ export const qrPlatforms: QrPlatform[] = [
     faqs: [
       {
         q: "Does the QR collect responses?",
-        a: "No — Typeform collects responses. The QR only opens the form URL.",
+        a: "No - Typeform collects responses. The QR only opens the form URL.",
       },
     ],
   },
@@ -464,7 +464,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "App Store Connect or public apps.apple.com link",
     urlExample: "https://apps.apple.com/app/id1234567890",
     intro:
-      "An App Store QR code sends iPhone users straight to your app’s listing. Pair it with a Play Store code — or a smart landing page — for Android.",
+      "An App Store QR code sends iPhone users straight to your app’s listing. Pair it with a Play Store code - or a smart landing page - for Android.",
     tips: [
       "Use the official apps.apple.com URL.",
       "For mixed audiences, link a landing page that detects device and redirects.",
@@ -523,7 +523,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Use a short URL, booking link, or contact page",
     urlExample: "https://example.com/book",
     intro:
-      "An email-signature QR code turns every outgoing message into a scannable CTA — book a call, save a contact, or visit your site.",
+      "An email-signature QR code turns every outgoing message into a scannable CTA - book a call, save a contact, or visit your site.",
     tips: [
       "Keep the image small (≈100–130 px) so signatures stay tidy.",
       "PNG with transparent background works best in most clients.",
@@ -553,7 +553,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Copy your Calendly event link",
     urlExample: "https://calendly.com/yourname/30min",
     intro:
-      "A Calendly QR code removes friction from booking — scan, pick a slot, done. Perfect for sales, recruiting, and consulting.",
+      "A Calendly QR code removes friction from booking - scan, pick a slot, done. Perfect for sales, recruiting, and consulting.",
     tips: [
       "Use an event-type link, not your home page, when you want a specific meeting length.",
       "Dynamic QR lets you change event types after printing cards.",
@@ -657,7 +657,7 @@ export const qrPlatforms: QrPlatform[] = [
       "A Venmo QR code is popular for tip jars, roommate payments, and small-business checkout in the US.",
     tips: [
       "Confirm the username on a test payment before printing.",
-      "US-focused — have a backup method for international guests.",
+      "US-focused - have a backup method for international guests.",
     ],
     faqs: [
       {
@@ -682,7 +682,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Listing URL, virtual tour, or landing page",
     urlExample: "https://example.com/listings/123-main-st",
     intro:
-      "A real-estate QR code on a yard sign turns drive-by interest into listing views. Link photos, price, and a contact form without reprinting when details change — use a dynamic code.",
+      "A real-estate QR code on a yard sign turns drive-by interest into listing views. Link photos, price, and a contact form without reprinting when details change - use a dynamic code.",
     tips: [
       "Always use a dynamic QR for listings that may change price or status.",
       "Make the code large and high-contrast for viewing from a car.",
@@ -712,7 +712,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Support page, manual PDF, reorder link, or brand story",
     urlExample: "https://example.com/products/sku-123/support",
     intro:
-      "A packaging QR code connects physical products to digital help — manuals, how-to videos, warranties, and refill links — without crowding the label.",
+      "A packaging QR code connects physical products to digital help - manuals, how-to videos, warranties, and refill links - without crowding the label.",
     tips: [
       "Follow quiet-zone and minimum size rules for small labels.",
       "Prefer dynamic codes so support URLs can change after products ship.",
@@ -744,7 +744,7 @@ export const qrPlatforms: QrPlatform[] = [
     intro:
       "A resume QR code lets recruiters open your portfolio or LinkedIn without typing. Keep it subtle and professional.",
     tips: [
-      "Link a personal site or LinkedIn — not a fragile file-sharing URL.",
+      "Link a personal site or LinkedIn - not a fragile file-sharing URL.",
       "Place it in a corner; don’t let it dominate the CV.",
       "Ensure the destination stays online for months after applying.",
     ],
@@ -776,7 +776,7 @@ export const qrPlatforms: QrPlatform[] = [
     tips: [
       "One primary wedding-site link is clearer than many codes.",
       "Use dynamic QR if vendors change galleries after the day.",
-      "Match colors carefully — soft pastels need stronger contrast for scanning.",
+      "Match colors carefully - soft pastels need stronger contrast for scanning.",
     ],
     faqs: [
       {
@@ -809,7 +809,7 @@ export const qrPlatforms: QrPlatform[] = [
     faqs: [
       {
         q: "Is this different from a table tent menu QR?",
-        a: "Same idea — larger viewing distance on boards means a bigger printed code.",
+        a: "Same idea - larger viewing distance on boards means a bigger printed code.",
       },
     ],
     relatedGuideSlug: "qr-code-for-restaurant-menu",
@@ -829,7 +829,7 @@ export const qrPlatforms: QrPlatform[] = [
       "An NFT or collectible QR code bridges physical merch and on-chain or gallery pages. Common on drop posters and packaging.",
     tips: [
       "Prefer your own landing page so you can change marketplaces later.",
-      "Warn buyers about phishing — show your official domain next to the code.",
+      "Warn buyers about phishing - show your official domain next to the code.",
     ],
     faqs: [
       {
@@ -850,7 +850,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "github.com/user or github.com/user/repo",
     urlExample: "https://github.com/vercel/next.js",
     intro:
-      "A GitHub QR code sends developers to your profile or repository instantly — useful on conference slides and meetup stickers.",
+      "A GitHub QR code sends developers to your profile or repository instantly - useful on conference slides and meetup stickers.",
     tips: [
       "Link the repo README for projects; profile for personal branding.",
       "Use high-contrast black codes on light slide backgrounds.",
@@ -868,13 +868,13 @@ export const qrPlatforms: QrPlatform[] = [
     category: "other",
     title: "How to Create a Notion Page QR Code",
     description:
-      "Make a free QR code that opens a public Notion page — wikis, menus, handbooks, and event briefs.",
+      "Make a free QR code that opens a public Notion page - wikis, menus, handbooks, and event briefs.",
     h1: "How to Create a Notion QR Code",
     keywords: ["Notion QR code", "QR code for Notion page"],
     urlHint: "Share → Copy link (page must be public or accessible)",
     urlExample: "https://username.notion.site/your-page",
     intro:
-      "A Notion QR code is a flexible way to share living documents — handbooks, menus, and itineraries you can edit after printing.",
+      "A Notion QR code is a flexible way to share living documents - handbooks, menus, and itineraries you can edit after printing.",
     tips: [
       "Confirm share permissions before printing.",
       "Dynamic QR helps if you migrate off Notion later.",
@@ -902,7 +902,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Storefront or product URL",
     urlExample: "https://yourstore.myshopify.com/products/example",
     intro:
-      "A Shopify QR code connects retail displays and packaging to your online product page — ideal for pop-ups and wholesale catalogs.",
+      "A Shopify QR code connects retail displays and packaging to your online product page - ideal for pop-ups and wholesale catalogs.",
     tips: [
       "Link the exact product for SKU-specific packaging.",
       "Use UTM parameters on the URL if you want campaign analytics in addition to QR scans.",
@@ -978,7 +978,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "twitch.tv/yourchannel",
     urlExample: "https://www.twitch.tv/yourchannel",
     intro:
-      "A Twitch QR code helps IRL fans follow your channel without typing your handle — great for meetups and merch tables.",
+      "A Twitch QR code helps IRL fans follow your channel without typing your handle - great for meetups and merch tables.",
     tips: [
       "Put the code on stream starting soon screens too.",
       "Track panel/merch scans with a dynamic QR.",
@@ -1056,7 +1056,7 @@ export const qrPlatforms: QrPlatform[] = [
     intro:
       "A Linktree QR code is ideal when you want one printed code that offers shop, socials, and contact options.",
     tips: [
-      "Keep the Linktree tidy — too many links reduce conversions.",
+      "Keep the Linktree tidy - too many links reduce conversions.",
       "Dynamic QR + Linktree gives two layers of editability.",
     ],
     faqs: [
@@ -1072,7 +1072,7 @@ export const qrPlatforms: QrPlatform[] = [
     category: "business",
     title: "How to Create a Google Business Profile QR Code",
     description:
-      "Make a free QR code that opens your Google Business Profile — hours, directions, and reviews.",
+      "Make a free QR code that opens your Google Business Profile - hours, directions, and reviews.",
     h1: "How to Create a Google Business Profile QR Code",
     keywords: [
       "Google Business QR code",
@@ -1082,7 +1082,7 @@ export const qrPlatforms: QrPlatform[] = [
     urlHint: "Share your Business Profile link from Maps or Search",
     urlExample: "https://maps.app.goo.gl/example",
     intro:
-      "A Google Business Profile QR code helps customers find hours, directions, and reviews — and complements a dedicated review QR.",
+      "A Google Business Profile QR code helps customers find hours, directions, and reviews - and complements a dedicated review QR.",
     tips: [
       "For reviews specifically, use a review-link guide and URL.",
       "Place codes at the register and on receipts.",
@@ -1130,7 +1130,7 @@ export const qrPlatforms: QrPlatform[] = [
     category: "forms",
     title: "How to Create a QR Code That Opens a PDF",
     description:
-      "Link any hosted PDF with a free QR code — menus, manuals, price lists, and brochures.",
+      "Link any hosted PDF with a free QR code - menus, manuals, price lists, and brochures.",
     h1: "How to Create a QR Code for a PDF",
     keywords: ["PDF QR code", "QR code to PDF", "open PDF QR"],
     urlHint: "Direct HTTPS link to your PDF file",
@@ -1155,7 +1155,7 @@ export const qrPlatforms: QrPlatform[] = [
     category: "other",
     title: "How to Create a Guest WiFi QR Code",
     description:
-      "Create a free WiFi QR code — or a Pro dynamic WiFi landing page with open tracking — for cafés, offices, and events.",
+      "Create a free WiFi QR code - or a Pro dynamic WiFi landing page with open tracking - for cafés, offices, and events.",
     h1: "How to Create a Guest WiFi QR Code",
     keywords: [
       "guest WiFi QR code",

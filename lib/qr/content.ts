@@ -66,7 +66,7 @@ export function buildQrData(type: QrContentType, f: QrFields): string {
       const lng = f.locLng.trim();
       const label = f.locLabel.trim();
       if (!lat || !lng) return "";
-      // HTTPS Maps link — opens reliably in phone cameras / browsers
+      // HTTPS Maps link - opens reliably in phone cameras / browsers
       const query = label
         ? `${label} @${lat},${lng}`
         : `${lat},${lng}`;

@@ -14,11 +14,11 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "What size should the QR be in an email signature?",
-    a: "About 100–130 pixels wide keeps signatures tidy while remaining scannable on phone screens. Avoid going below 80 px — modules become too dense for some cameras.",
+    a: "About 100–130 pixels wide keeps signatures tidy while remaining scannable on phone screens. Avoid going below 80 px - modules become too dense for some cameras.",
   },
   {
     q: "What should it open?",
-    a: "Popular choices: Calendly or booking page, company website, LinkedIn profile, or a vCard/contact page. Pick one primary action — not three competing destinations.",
+    a: "Popular choices: Calendly or booking page, company website, LinkedIn profile, or a vCard/contact page. Pick one primary action - not three competing destinations.",
   },
   {
     q: "Will Gmail and Outlook show it?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I use a vCard QR in email?",
-    a: "Yes. A compact vCard QR works well for sales and field teams. See the vCard guide for field limits — very long addresses may need a short landing page instead.",
+    a: "Yes. A compact vCard QR works well for sales and field teams. See the vCard guide for field limits - very long addresses may need a short landing page instead.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function EmailSignatureGuidePage() {
         <strong className="text-[var(--foreground)]">
           email signature QR code
         </strong>{" "}
-        turns every outgoing message into a scannable call-to-action — book a
+        turns every outgoing message into a scannable call-to-action - book a
         call, save a contact, or visit your site without hunting for links.
         Sales teams, recruiters, consultants, and founders add them beside a
         logo or social icons. Generate a compact PNG in{" "}
@@ -93,7 +93,7 @@ export default function EmailSignatureGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Why put a QR in email?</h2>
       <p className="mt-3 text-[var(--muted)]">
         Email links work on desktop, but mobile recipients often read on a
-        phone where tapping tiny URLs is awkward — especially in long thread
+        phone where tapping tiny URLs is awkward - especially in long thread
         quotes. A QR in the signature lets someone on a second device (or a
         colleague across the desk) scan and land on your booking page instantly.
       </p>
@@ -114,7 +114,7 @@ export default function EmailSignatureGuidePage() {
         <li>High-touch sales where booking speed matters</li>
         <li>Recruiters linking to open roles or scheduling screens</li>
         <li>Freelancers with a portfolio or case-study page</li>
-        <li>Support leads who want WhatsApp or chat — pair with channel-specific guides</li>
+        <li>Support leads who want WhatsApp or chat - pair with channel-specific guides</li>
         <li>Events staff whose signature promotes registration or feedback forms</li>
       </ul>
 
@@ -164,7 +164,7 @@ export default function EmailSignatureGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Layout tips</h2>
       <p className="mt-3 text-[var(--muted)]">
-        Place the QR to the right of your contact block or below social icons —
+        Place the QR to the right of your contact block or below social icons -
         not in the middle of legal disclaimers. Add a 2–3 word label (“Book a
         call”) in alt text for accessibility and for clients that hide images.
       </p>
@@ -176,7 +176,7 @@ export default function EmailSignatureGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Prefer PNG with strong contrast; skip decorative gradients at small sizes.</li>
-        <li>One clear CTA — do not stack booking, LinkedIn, and survey codes.</li>
+        <li>One clear CTA - do not stack booking, LinkedIn, and survey codes.</li>
         <li>Host the image on HTTPS if your client requires a URL rather than embed.</li>
         <li>Use dynamic links for team rollouts you may update quarterly.</li>
         <li>
@@ -198,7 +198,7 @@ export default function EmailSignatureGuidePage() {
         <li>Linking to a page that requires login before booking</li>
         <li>Using a personal Calendly on a shared support@ address</li>
         <li>Heavy logo inside the code at signature dimensions</li>
-        <li>Forgetting alt text — recipients see a broken-image box</li>
+        <li>Forgetting alt text - recipients see a broken-image box</li>
         <li>Static QR to a campaign URL that expires after the promo</li>
       </ul>
 
@@ -211,7 +211,7 @@ export default function EmailSignatureGuidePage() {
           >
             vCard QR code
           </Link>{" "}
-          — save contact from a scan
+          - save contact from a scan
         </li>
         <li>
           <Link
@@ -220,7 +220,7 @@ export default function EmailSignatureGuidePage() {
           >
             Business card QR
           </Link>{" "}
-          — same link on card and email
+          - same link on card and email
         </li>
         <li>
           <Link
@@ -229,7 +229,7 @@ export default function EmailSignatureGuidePage() {
           >
             Google Form QR
           </Link>{" "}
-          — feedback after support threads
+          - feedback after support threads
         </li>
       </ul>
 

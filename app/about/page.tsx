@@ -7,7 +7,7 @@ import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: `About ${siteConfig.name}`,
-  description: `${siteConfig.name} is a free QR code generator with logo branding, 3D preview, and optional dynamic links — built by ${siteConfig.parentCompany.name}.`,
+  description: `${siteConfig.name} is a free QR code generator with logo branding, 3D preview, and optional dynamic links - built by ${siteConfig.parentCompany.name}.`,
   alternates: { canonical: "/about" },
   openGraph: {
     title: `About ${siteConfig.name}`,
@@ -38,7 +38,7 @@ export default function AboutPage() {
         <p className="mt-4 text-lg text-[var(--muted)] leading-relaxed">
           {siteConfig.name} is a web-based QR code generator at{" "}
           <strong className="text-[var(--foreground)]">{siteConfig.domain}</strong>.
-          We help people and small businesses create scannable, branded codes —
+          We help people and small businesses create scannable, branded codes -
           without watermarks on static downloads, and without forcing an account
           for everyday use.
         </p>

@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Should I export PNG or SVG for print?",
-    a: "SVG is best — it's vector and stays sharp at any size. If you use PNG, export at high resolution (300 DPI at final print size).",
+    a: "SVG is best - it's vector and stays sharp at any size. If you use PNG, export at high resolution (300 DPI at final print size).",
   },
   {
     q: "Does a logo mean I need a bigger code?",
@@ -91,7 +91,7 @@ export default function PrintSizeGuidePage() {
         </strong>
         . Someone standing 30 cm from a flyer needs roughly a 3 cm code; someone
         3 m from a poster needs about 30 cm. Real-world lighting, phone cameras,
-        and glossy finishes can require going larger — treat 10:1 as a minimum,
+        and glossy finishes can require going larger - treat 10:1 as a minimum,
         not a maximum.
       </p>
 
@@ -139,7 +139,7 @@ export default function PrintSizeGuidePage() {
       </h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
-          <strong className="text-[var(--foreground)]">Logo overlays</strong> —
+          <strong className="text-[var(--foreground)]">Logo overlays</strong> -
           cover modules and need higher error correction; see{" "}
           <Link
             href="/guides/qr-code-with-logo"
@@ -150,7 +150,7 @@ export default function PrintSizeGuidePage() {
           .
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Long URLs</strong> — denser
+          <strong className="text-[var(--foreground)]">Long URLs</strong> - denser
           patterns. Prefer short links or a{" "}
           <Link
             href="/guides/dynamic-qr-code"
@@ -161,15 +161,15 @@ export default function PrintSizeGuidePage() {
           .
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Low contrast</strong> —
+          <strong className="text-[var(--foreground)]">Low contrast</strong> -
           colored or photographic backgrounds reduce effective readability.
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Motion / distance</strong>{" "}
-          — vehicle wraps and hallway signs need extra margin beyond 10:1.
+          - vehicle wraps and hallway signs need extra margin beyond 10:1.
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Curved surfaces</strong> —
+          <strong className="text-[var(--foreground)]">Curved surfaces</strong> -
           bottles and cans distort modules; print larger and test on the real
           object.
         </li>
@@ -181,7 +181,7 @@ export default function PrintSizeGuidePage() {
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           SVG
         </Link>{" "}
-        whenever your printer accepts vector files — it scales cleanly to any
+        whenever your printer accepts vector files - it scales cleanly to any
         size. If you must use PNG, size the image so that at final print
         dimensions you still have about{" "}
         <strong className="text-[var(--foreground)]">300 DPI</strong>. Upscaling
@@ -189,7 +189,7 @@ export default function PrintSizeGuidePage() {
       </p>
       <p className="mt-3 text-[var(--muted)]">
         Pro plans also include higher-resolution print pack options (4K PNG and
-        PDF) when you need press-ready assets —{" "}
+        PDF) when you need press-ready assets -{" "}
         <Link href="/pricing" className="text-[var(--brand-2)] underline">
           see Pricing
         </Link>

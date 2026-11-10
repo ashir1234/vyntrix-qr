@@ -36,7 +36,7 @@ export function WifiLandingClient({
       </p>
       <h1 className="mt-1 text-2xl font-bold tracking-tight">{title}</h1>
       <p className="mt-2 text-sm text-[var(--muted)]">
-        Connect using the details below. Scan analytics count page opens — not
+        Connect using the details below. Scan analytics count page opens - not
         whether you joined the network.
       </p>
 

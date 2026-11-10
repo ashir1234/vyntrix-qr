@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Can one QR work for iPhone and Android?",
-    a: "Not with a single store URL — App Store and Play Store links differ. Print two labeled codes, or use one smart landing page that detects the device and redirects to the correct store.",
+    a: "Not with a single store URL - App Store and Play Store links differ. Print two labeled codes, or use one smart landing page that detects the device and redirects to the correct store.",
   },
   {
     q: "Where do I get the official store links?",
@@ -76,7 +76,7 @@ export default function AppDownloadGuidePage() {
       <p className="mt-4 text-lg text-[var(--muted)]">
         An{" "}
         <strong className="text-[var(--foreground)]">app download QR code</strong>{" "}
-        sends people straight to the App Store or Google Play — posters, product
+        sends people straight to the App Store or Google Play - posters, product
         boxes, receipts, and booth banners become install prompts. Because iOS and
         Android use different store URLs, you either print two codes or one smart
         link. Create both in{" "}
@@ -91,7 +91,7 @@ export default function AppDownloadGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Why store links need planning</h2>
       <p className="mt-3 text-[var(--muted)]">
         A QR is just encoded text. If you paste an App Store URL, Android users
-        land in the wrong place — and vice versa. Marketing teams solve this
+        land in the wrong place - and vice versa. Marketing teams solve this
         with dual codes (“Download for iPhone” / “Download for Android”) or a
         lightweight landing page that reads the user agent and redirects.
       </p>
@@ -123,7 +123,7 @@ export default function AppDownloadGuidePage() {
         <li>Printed manuals that replace paper with an in-app experience</li>
       </ul>
 
-      <h2 className="mt-10 text-2xl font-semibold">Option A — Two store codes</h2>
+      <h2 className="mt-10 text-2xl font-semibold">Option A - Two store codes</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>Copy your official App Store and Play Store URLs from developer consoles.</li>
         <li>
@@ -154,11 +154,11 @@ export default function AppDownloadGuidePage() {
         <li>Test each code on the matching device before mass print.</li>
       </ol>
 
-      <h2 className="mt-10 text-2xl font-semibold">Option B — One smart link</h2>
+      <h2 className="mt-10 text-2xl font-semibold">Option B - One smart link</h2>
       <p className="mt-3 text-[var(--muted)]">
         Host a tiny page on your domain: detect iOS vs Android, show both buttons
         as fallback, redirect automatically when confident. Encode that single
-        HTTPS URL in one QR — cleaner packaging, slightly more setup.
+        HTTPS URL in one QR - cleaner packaging, slightly more setup.
       </p>
       <p className="mt-3 text-[var(--muted)]">
         Add UTM parameters (
@@ -174,7 +174,7 @@ export default function AppDownloadGuidePage() {
         <li>Paste the page URL into Studio; enable dynamic if you expect changes.</li>
         <li>Brand the QR; download SVG for label printers.</li>
         <li>
-          Size for scan distance —{" "}
+          Size for scan distance -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -188,7 +188,7 @@ export default function AppDownloadGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Always use official store URLs — never unofficial APK mirrors.</li>
+        <li>Always use official store URLs - never unofficial APK mirrors.</li>
         <li>Keep codes large enough for arm-length scans on packaging.</li>
         <li>Show app name and star rating on the landing page for trust.</li>
         <li>Localize store badges if you ship in multiple countries.</li>
@@ -207,12 +207,12 @@ export default function AppDownloadGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Common mistakes</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Single App Store QR on global packaging — Android users bounce</li>
+        <li>Single App Store QR on global packaging - Android users bounce</li>
         <li>Short links that break when the marketing domain expires</li>
         <li>Linking to a developer beta TestFlight URL on retail boxes</li>
         <li>Tiny codes on curved bottle labels</li>
         <li>No fallback buttons when auto-redirect fails on tablets</li>
-        <li>Counting QR scans as installs — they measure different funnel steps</li>
+        <li>Counting QR scans as installs - they measure different funnel steps</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Related guides</h2>
@@ -224,7 +224,7 @@ export default function AppDownloadGuidePage() {
           >
             Product packaging QR
           </Link>{" "}
-          — label placement
+          - label placement
         </li>
         <li>
           <Link
@@ -233,7 +233,7 @@ export default function AppDownloadGuidePage() {
           >
             Dynamic QR code
           </Link>{" "}
-          — editable smart links
+          - editable smart links
         </li>
         <li>
           <Link
@@ -242,7 +242,7 @@ export default function AppDownloadGuidePage() {
           >
             QR code with logo
           </Link>{" "}
-          — brand on retail print
+          - brand on retail print
         </li>
       </ul>
 

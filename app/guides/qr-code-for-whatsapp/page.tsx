@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "What link opens a WhatsApp chat?",
-    a: "Use https://wa.me/<number> with the full international number and no plus sign, spaces, or dashes — for example https://wa.me/14155552671.",
+    a: "Use https://wa.me/<number> with the full international number and no plus sign, spaces, or dashes - for example https://wa.me/14155552671.",
   },
   {
     q: "Can I pre-fill a message?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I track scans?",
-    a: "Yes — create a dynamic QR that redirects to your wa.me link. You will see scan counts while the printed code stays the same.",
+    a: "Yes - create a dynamic QR that redirects to your wa.me link. You will see scan counts while the printed code stays the same.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function WhatsappGuidePage() {
       <h1 className="text-4xl font-bold tracking-tight">{guide.h1}</h1>
       <p className="mt-4 text-lg text-[var(--muted)]">
         A <strong className="text-[var(--foreground)]">WhatsApp QR code</strong>{" "}
-        opens a chat with your number — optionally with a message already typed.
+        opens a chat with your number - optionally with a message already typed.
         Support desks, sales teams, clinics, and creators use them on posters,
         packaging, and receipts so customers never hunt for the right contact.
       </p>
@@ -88,7 +88,7 @@ export default function WhatsappGuidePage() {
         <span className="font-mono text-sm text-[var(--foreground)]">
           https://wa.me/&lt;number&gt;
         </span>
-        . The number must be full international format with digits only — no{" "}
+        . The number must be full international format with digits only - no{" "}
         <span className="font-mono text-[var(--foreground)]">+</span>, spaces, or
         dashes. Example: US{" "}
         <span className="font-mono text-sm text-[var(--foreground)]">
@@ -107,7 +107,7 @@ export default function WhatsappGuidePage() {
         </span>{" "}
         and URL-encoded spaces (%20). Example:{" "}
         <span className="break-all font-mono text-sm text-[var(--foreground)]">
-          https://wa.me/14155552671?text=Hi%20—%20I%20saw%20your%20poster
+          https://wa.me/14155552671?text=Hi%20-%20I%20saw%20your%20poster
         </span>
         .
       </p>
@@ -134,7 +134,7 @@ export default function WhatsappGuidePage() {
         </li>
         <li>Add brand colors or a logo, then download PNG or SVG.</li>
         <li>
-          Size for print distance —{" "}
+          Size for print distance -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -151,7 +151,7 @@ export default function WhatsappGuidePage() {
         <li>Keep pre-filled messages short and friendly.</li>
         <li>Label the code (“Chat with support on WhatsApp”) so intent is clear.</li>
         <li>Use a Business number for customer-facing materials when possible.</li>
-        <li>Staff the inbox — a QR that opens chat creates expectation of reply.</li>
+        <li>Staff the inbox - a QR that opens chat creates expectation of reply.</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Where it works well</h2>

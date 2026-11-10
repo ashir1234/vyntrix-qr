@@ -18,11 +18,11 @@ const FAQS = [
   },
   {
     q: "Can I start playback at a specific timestamp?",
-    a: "Yes. Copy the share link with ?t=90s or &t=1m30s appended. The QR opens the video at that moment — handy for conference handouts that reference one demo segment.",
+    a: "Yes. Copy the share link with ?t=90s or &t=1m30s appended. The QR opens the video at that moment - handy for conference handouts that reference one demo segment.",
   },
   {
     q: "Can I change which video the code points to?",
-    a: "With a dynamic QR, yes — update the destination in your dashboard without reprinting posters or packaging.",
+    a: "With a dynamic QR, yes - update the destination in your dashboard without reprinting posters or packaging.",
   },
   {
     q: "Can I track scans on my YouTube QR code?",
@@ -77,7 +77,7 @@ export default function YoutubeGuidePage() {
         A <strong className="text-[var(--foreground)]">YouTube QR code</strong>{" "}
         bridges print and video. Product manuals can link to setup tutorials,
         musicians can put a release on gig posters, and educators can point
-        syllabus pages at lecture recordings — all with one scan. Build yours in{" "}
+        syllabus pages at lecture recordings - all with one scan. Build yours in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Vyntrix QR Studio
         </Link>
@@ -92,7 +92,7 @@ export default function YoutubeGuidePage() {
       </h2>
       <p className="mt-3 text-[var(--muted)]">
         The QR stores a standard YouTube HTTPS URL. There is no proprietary
-        YouTube QR format required — unlike broadcast “QR moments” that flash
+        YouTube QR format required - unlike broadcast “QR moments” that flash
         on screen, your printed code is just a link that any camera understands.
         When scanned, the device hands off to YouTube&apos;s app or website,
         which loads the video, playlist, or channel you encoded.
@@ -121,12 +121,12 @@ export default function YoutubeGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
           <strong className="text-[var(--foreground)]">Single video:</strong>{" "}
-          packaging inserts, how-to labels, event handouts — copy Share → Copy
+          packaging inserts, how-to labels, event handouts - copy Share → Copy
           link from YouTube
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Channel (@handle):</strong>{" "}
-          business cards, banner stands — best when you publish regularly
+          business cards, banner stands - best when you publish regularly
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Playlist:</strong> course
@@ -160,7 +160,7 @@ export default function YoutubeGuidePage() {
           featured video without reprinting.
         </li>
         <li>
-          Style the code in Design — brand colors and a small logo are fine if
+          Style the code in Design - brand colors and a small logo are fine if
           contrast stays strong (see{" "}
           <Link
             href="/guides/qr-code-with-logo"
@@ -171,7 +171,7 @@ export default function YoutubeGuidePage() {
           ).
         </li>
         <li>
-          Download PNG or SVG. Size for distance — a code on a billboard needs
+          Download PNG or SVG. Size for distance - a code on a billboard needs
           more modules than one on a business card; see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
@@ -196,7 +196,7 @@ export default function YoutubeGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Caption the action: “Scan to watch the tutorial” or “See it in action.”</li>
         <li>
-          Link to public, embeddable videos — private or age-restricted content
+          Link to public, embeddable videos - private or age-restricted content
           frustrates scanners.
         </li>
         <li>

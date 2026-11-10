@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: "Will the code still work if I change my router password?",
-    a: "A static WiFi QR encodes the password permanently. If you change the password, print a new code — or use a dynamic WiFi landing page so you can update credentials without reprinting the physical QR.",
+    a: "A static WiFi QR encodes the password permanently. If you change the password, print a new code - or use a dynamic WiFi landing page so you can update credentials without reprinting the physical QR.",
   },
   {
     q: "Can I brand the WiFi QR with my logo and colors?",
@@ -90,7 +90,7 @@ export default function WifiGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">How WiFi QR codes work</h2>
       <p className="mt-3 text-[var(--muted)]">
         The QR does not magically “open WiFi.” It encodes a standard WiFi
-        configuration string that phones understand — typically including network
+        configuration string that phones understand - typically including network
         name (SSID), security type (WPA, WEP, or none), and password. When the
         camera app recognizes that format, it offers to join the network. No
         website visit is required for a classic static WiFi code.
@@ -112,7 +112,7 @@ export default function WifiGuidePage() {
           and select <strong className="text-[var(--foreground)]">WiFi</strong>.
         </li>
         <li>
-          Enter your network name (SSID) exactly as it appears on phones —
+          Enter your network name (SSID) exactly as it appears on phones -
           including capitalization and spaces.
         </li>
         <li>
@@ -145,7 +145,7 @@ export default function WifiGuidePage() {
         </strong>{" "}
         the printed QR points at a short link that shows WiFi details (and can
         track opens). You can update credentials without reprinting. Opens are
-        not the same as successful network joins — phones do not report that back
+        not the same as successful network joins - phones do not report that back
         to the QR service.
       </p>
       <p className="mt-3 text-[var(--muted)]">
@@ -180,7 +180,7 @@ export default function WifiGuidePage() {
         </li>
         <li>Test with both iPhone and Android before a print run.</li>
         <li>
-          Size for scan distance — roughly one-tenth of how far away people stand.
+          Size for scan distance - roughly one-tenth of how far away people stand.
           See{" "}
           <Link
             href="/guides/qr-code-size-for-print"
@@ -191,7 +191,7 @@ export default function WifiGuidePage() {
           .
         </li>
         <li>
-          If you add a logo, keep it modest and high-contrast —{" "}
+          If you add a logo, keep it modest and high-contrast -{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"

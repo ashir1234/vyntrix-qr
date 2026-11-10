@@ -492,7 +492,7 @@ export function renderPatternQrSvg(
 </svg>`;
 }
 
-/* —— Back-compat aliases used by older imports —— */
+/* -- Back-compat aliases used by older imports -- */
 export const renderHeartQrToCanvas = renderPatternQrToCanvas;
 export const heartQrToBlob = patternQrToBlob;
 export const heartQrToDataUrl = patternQrToDataUrl;

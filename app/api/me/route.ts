@@ -33,7 +33,7 @@ export async function GET() {
   });
 }
 
-/** Same as GET — used by the client sync beacon after sign-in. */
+/** Same as GET - used by the client sync beacon after sign-in. */
 export async function POST() {
   return GET();
 }

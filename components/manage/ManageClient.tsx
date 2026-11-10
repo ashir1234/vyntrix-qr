@@ -170,7 +170,7 @@ export function ManageClient({
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Failed to rename.");
       if (json.slug !== slug) {
-        // Slug changed — jump to the new manage URL so bookmarks stay valid.
+        // Slug changed - jump to the new manage URL so bookmarks stay valid.
         window.location.href = json.manageUrl;
         return;
       }
@@ -248,8 +248,8 @@ export function ManageClient({
           "Last 7 days",
           data.byDay.slice(-7).reduce((a, b) => a + b.count, 0),
         )}
-        {stat("Top device", data.byDevice[0]?.name ?? "—")}
-        {stat("Top browser", data.byBrowser[0]?.name ?? "—")}
+        {stat("Top device", data.byDevice[0]?.name ?? "-")}
+        {stat("Top browser", data.byBrowser[0]?.name ?? "-")}
       </div>
 
       {/* Plan-aware toolbar: retention notice (free) / CSV export (pro) */}
@@ -374,7 +374,7 @@ export function ManageClient({
           <h2 className="font-semibold">Custom short link</h2>
           <p className="mt-1 text-xs text-[var(--muted)]">
             Change the path of your short URL. Printed QR codes that already use
-            the old link will stop working — update them if needed.
+            the old link will stop working - update them if needed.
           </p>
           <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
             <div className="flex min-w-0 flex-1 items-center gap-1.5">
@@ -398,7 +398,7 @@ export function ManageClient({
       ) : (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface-2)] px-4 py-3 text-sm">
           <span className="text-[var(--muted)]">
-            Short link: <span className="font-mono">/r/{data.slug}</span> —
+            Short link: <span className="font-mono">/r/{data.slug}</span> -
             upgrade to Pro for a custom slug like{" "}
             <span className="font-mono">/r/my-menu</span>.
           </span>

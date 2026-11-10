@@ -34,7 +34,7 @@ export const guides = [
     slug: "dynamic-qr-code",
     title: "What Is a Dynamic QR Code? (Editable + Analytics)",
     description:
-      "Learn how dynamic QR codes let you change the destination after printing and track scans. Create editable QRs on Vyntrix QR — Free includes 1 dynamic code; Pro unlocks unlimited codes and full analytics.",
+      "Learn how dynamic QR codes let you change the destination after printing and track scans. Create editable QRs on Vyntrix QR - Free includes 1 dynamic code; Pro unlocks unlimited codes and full analytics.",
     keywords: [
       "dynamic QR code",
       "editable QR code",
@@ -118,7 +118,7 @@ export const guides = [
     slug: "qr-code-for-pdf",
     title: "How to Create a QR Code for a PDF",
     description:
-      "Turn any PDF into a scannable QR code. Host the file, link it, and update the document later with a dynamic QR code — no reprinting required.",
+      "Turn any PDF into a scannable QR code. Host the file, link it, and update the document later with a dynamic QR code - no reprinting required.",
     keywords: [
       "QR code for PDF",
       "PDF QR code",
@@ -146,7 +146,7 @@ export const guides = [
     slug: "qr-code-size-for-print",
     title: "QR Code Size for Print: The Complete Guide",
     description:
-      "Learn the right QR code size for print — from business cards to billboards. Use the 10:1 distance rule, quiet zone, and DPI tips for reliable scans.",
+      "Learn the right QR code size for print - from business cards to billboards. Use the 10:1 distance rule, quiet zone, and DPI tips for reliable scans.",
     keywords: [
       "QR code size",
       "QR code size for print",
@@ -160,7 +160,7 @@ export const guides = [
     slug: "qr-code-for-youtube",
     title: "How to Create a QR Code for a YouTube Video or Channel",
     description:
-      "Make a free QR code that opens your YouTube video or channel. Perfect for thumbnails, packaging, and events — track scans with a dynamic QR code.",
+      "Make a free QR code that opens your YouTube video or channel. Perfect for thumbnails, packaging, and events - track scans with a dynamic QR code.",
     keywords: [
       "YouTube QR code",
       "QR code for YouTube",
@@ -188,7 +188,7 @@ export const guides = [
     slug: "static-vs-dynamic-qr-code",
     title: "Static vs Dynamic QR Codes: Which Should You Use?",
     description:
-      "Understand the difference between static and dynamic QR codes — editability, scan analytics, and cost — so you pick the right one for your project.",
+      "Understand the difference between static and dynamic QR codes - editability, scan analytics, and cost - so you pick the right one for your project.",
     keywords: [
       "static vs dynamic QR code",
       "difference static dynamic QR",
@@ -202,7 +202,7 @@ export const guides = [
     slug: "qr-code-for-spotify",
     title: "How to Create a Spotify QR Code (Song, Album, Playlist)",
     description:
-      "Make a free Spotify QR code that opens a song, album, playlist, or artist. Download PNG or SVG for posters, merch, and menus — track scans with a dynamic link.",
+      "Make a free Spotify QR code that opens a song, album, playlist, or artist. Download PNG or SVG for posters, merch, and menus - track scans with a dynamic link.",
     keywords: [
       "Spotify QR code",
       "QR code for Spotify",
@@ -242,7 +242,7 @@ export const guides = [
     slug: "qr-code-for-tiktok",
     title: "How to Create a TikTok QR Code",
     description:
-      "Make a free TikTok QR code for your profile or video. Add it to packaging, posters, and stickers — optional dynamic tracking included.",
+      "Make a free TikTok QR code for your profile or video. Add it to packaging, posters, and stickers - optional dynamic tracking included.",
     keywords: [
       "TikTok QR code",
       "QR code for TikTok",

@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Do recruiters actually scan resume QR codes?",
-    a: "Some do — especially in design, tech, and creative fields where portfolios matter. Many still rely on PDF text search and ATS. Always keep your URL typed out as plain text too.",
+    a: "Some do - especially in design, tech, and creative fields where portfolios matter. Many still rely on PDF text search and ATS. Always keep your URL typed out as plain text too.",
   },
   {
     q: "What should it link to?",
@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: "How big should the QR be on a resume?",
-    a: "About 2 × 2 cm in a corner — large enough to scan from a printed page, small enough not to dominate. Skip decorative frames that shrink the quiet zone.",
+    a: "About 2 × 2 cm in a corner - large enough to scan from a printed page, small enough not to dominate. Skip decorative frames that shrink the quiet zone.",
   },
   {
     q: "Should my resume QR be static or dynamic?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I link to a PDF instead of a website?",
-    a: "Yes. Host the PDF on your site or a stable cloud link. See the PDF QR guide for hosting tips — broken links on a resume look worse than no code at all.",
+    a: "Yes. Host the PDF on your site or a stable cloud link. See the PDF QR guide for hosting tips - broken links on a resume look worse than no code at all.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function ResumeGuidePage() {
         >
           LinkedIn
         </Link>{" "}
-        — without typing a long URL on a printed page. Used well, it signals
+        - without typing a long URL on a printed page. Used well, it signals
         polish in design and tech roles. Used poorly, it clutters an ATS-friendly
         layout. Generate a clean code in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -95,7 +95,7 @@ export default function ResumeGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">What recruiters expect</h2>
       <p className="mt-3 text-[var(--muted)]">
-        Applicant tracking systems parse text — not QR images. Your name, email,
+        Applicant tracking systems parse text - not QR images. Your name, email,
         phone, and role keywords must remain selectable text. The QR is a bonus
         for humans reviewing a printed stack or for hiring managers who want to
         see work samples immediately.
@@ -124,7 +124,7 @@ export default function ResumeGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
-        <li>Choose a stable HTTPS URL — your domain beats a temporary file host.</li>
+        <li>Choose a stable HTTPS URL - your domain beats a temporary file host.</li>
         <li>
           Optional: use a{" "}
           <Link
@@ -140,7 +140,7 @@ export default function ResumeGuidePage() {
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
           </Link>{" "}
-          — avoid heavy styling on a small print area.
+          - avoid heavy styling on a small print area.
         </li>
         <li>Place in the top or bottom corner; duplicate the URL as text nearby.</li>
         <li>Export PDF from Word, Google Docs, or InDesign; print-test the scan.</li>
@@ -159,7 +159,7 @@ export default function ResumeGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Destination ideas</h2>
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">Portfolio site:</strong>{" "}
-        best for visual roles — lead with three strong projects above the fold.
+        best for visual roles - lead with three strong projects above the fold.
       </p>
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">LinkedIn:</strong> familiar
@@ -167,7 +167,7 @@ export default function ResumeGuidePage() {
       </p>
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">Hosted PDF:</strong> useful
-        when you need a fixed snapshot — follow the{" "}
+        when you need a fixed snapshot - follow the{" "}
         <Link
           href="/guides/qr-code-for-pdf"
           className="text-[var(--brand-2)] underline"
@@ -180,7 +180,7 @@ export default function ResumeGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Never replace contact details with only a QR.</li>
-        <li>Use a personal domain or long-lived URL — not fragile share links.</li>
+        <li>Use a personal domain or long-lived URL - not fragile share links.</li>
         <li>Label subtly: “Portfolio” or “Work samples” under the code.</li>
         <li>Ensure the destination works without login walls.</li>
         <li>Update the landing page before you update the QR (if static).</li>
@@ -193,7 +193,7 @@ export default function ResumeGuidePage() {
         <li>Link to a generic homepage with no portfolio section</li>
         <li>Password-protected portfolio on a student hosting plan</li>
         <li>Low-contrast colored modules that fail on office printers</li>
-        <li>QR only — recruiters on desktop cannot scan a PDF attachment</li>
+        <li>QR only - recruiters on desktop cannot scan a PDF attachment</li>
         <li>Forgetting to update content for six months during an active search</li>
       </ul>
 
@@ -206,7 +206,7 @@ export default function ResumeGuidePage() {
           >
             LinkedIn QR code
           </Link>{" "}
-          — profile at networking events
+          - profile at networking events
         </li>
         <li>
           <Link
@@ -215,7 +215,7 @@ export default function ResumeGuidePage() {
           >
             Business card QR
           </Link>{" "}
-          — same link on card and CV
+          - same link on card and CV
         </li>
         <li>
           <Link
@@ -224,7 +224,7 @@ export default function ResumeGuidePage() {
           >
             PDF QR code
           </Link>{" "}
-          — hosted CV downloads
+          - hosted CV downloads
         </li>
       </ul>
 

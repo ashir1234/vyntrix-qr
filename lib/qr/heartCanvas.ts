@@ -1,4 +1,4 @@
-/** @deprecated Prefer `@/lib/qr/patternCanvas` — kept for import compatibility. */
+/** @deprecated Prefer `@/lib/qr/patternCanvas` - kept for import compatibility. */
 export {
   renderPatternQrToCanvas as renderHeartQrToCanvas,
   patternQrToBlob as heartQrToBlob,

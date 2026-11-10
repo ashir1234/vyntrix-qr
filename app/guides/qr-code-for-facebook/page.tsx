@@ -75,7 +75,7 @@ export default function FacebookGuidePage() {
       <h1 className="text-4xl font-bold tracking-tight">{guide.h1}</h1>
       <p className="mt-4 text-lg text-[var(--muted)]">
         A <strong className="text-[var(--foreground)]">Facebook QR code</strong>{" "}
-        sends scanners straight to your Page, Group, or Event — one tap instead
+        sends scanners straight to your Page, Group, or Event - one tap instead
         of searching a common business name and hoping they pick the right
         result. Restaurants, nonprofits, retailers, and community organizers use
         them on storefronts, flyers, and receipts. Create a branded code in{" "}
@@ -91,7 +91,7 @@ export default function FacebookGuidePage() {
         How Facebook QR codes work
       </h2>
       <p className="mt-3 text-[var(--muted)]">
-        The QR encodes a normal web URL — for example{" "}
+        The QR encodes a normal web URL - for example{" "}
         <span className="font-mono text-sm text-[var(--foreground)]">
           https://facebook.com/YourPage
         </span>
@@ -113,7 +113,7 @@ export default function FacebookGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
           <strong className="text-[var(--foreground)]">Facebook Page:</strong>{" "}
-          default for businesses — hours, reviews, Messenger, and “Follow” in
+          default for businesses - hours, reviews, Messenger, and “Follow” in
           one place
         </li>
         <li>
@@ -122,7 +122,7 @@ export default function FacebookGuidePage() {
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Group:</strong> community
-          building, clubs, neighborhood boards — confirm join rules first
+          building, clubs, neighborhood boards - confirm join rules first
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Event:</strong> posters
@@ -158,7 +158,7 @@ export default function FacebookGuidePage() {
           the same printed code at different landing pages over time.
         </li>
         <li>
-          Customize colors or add your Page logo in Design — keep strong
+          Customize colors or add your Page logo in Design - keep strong
           contrast per our{" "}
           <Link
             href="/guides/qr-code-with-logo"
@@ -196,7 +196,7 @@ export default function FacebookGuidePage() {
           shortcut.
         </li>
         <li>
-          Complete your Page profile — photo, hours, and a recent post — before
+          Complete your Page profile - photo, hours, and a recent post - before
           printing so scans convert to follows.
         </li>
         <li>Caption clearly: “Follow us on Facebook” or “Join our community.”</li>
@@ -209,7 +209,7 @@ export default function FacebookGuidePage() {
           feedback on.
         </li>
         <li>
-          Pair physical QR with a Meta pixel or Page insights separately — QR
+          Pair physical QR with a Meta pixel or Page insights separately - QR
           scan stats only appear if you use dynamic tracking.
         </li>
       </ul>

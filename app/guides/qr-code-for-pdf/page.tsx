@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "Can a QR code store a PDF file directly?",
-    a: "No. QR codes hold a limited amount of text — typically a URL. Host the PDF online (or on your site) and encode that link. The scan opens the file in the browser or downloads it depending on the host.",
+    a: "No. QR codes hold a limited amount of text - typically a URL. Host the PDF online (or on your site) and encode that link. The scan opens the file in the browser or downloads it depending on the host.",
   },
   {
     q: "Where can I host a PDF for free?",
@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "How do I update the PDF later?",
-    a: "Use a dynamic QR code. Upload a new file or point the short link at a new URL — the printed QR stays the same. Static codes require reprinting whenever the file changes.",
+    a: "Use a dynamic QR code. Upload a new file or point the short link at a new URL - the printed QR stays the same. Static codes require reprinting whenever the file changes.",
   },
   {
     q: "Will the PDF open on every phone?",
@@ -30,11 +30,11 @@ const FAQS = [
   },
   {
     q: "Should I link to the PDF or a web page?",
-    a: "A web page with an embedded viewer or download button often reads better on phones — you control layout, analytics, and updates. Pure PDF links are fine for manuals and one-off documents.",
+    a: "A web page with an embedded viewer or download button often reads better on phones - you control layout, analytics, and updates. Pure PDF links are fine for manuals and one-off documents.",
   },
   {
     q: "Can I track how many people opened the PDF?",
-    a: "Yes with a dynamic QR — you see scan counts. The host (Drive, your CMS) may also offer download stats. Scans and opens are not always the same person.",
+    a: "Yes with a dynamic QR - you see scan counts. The host (Drive, your CMS) may also offer download stats. Scans and opens are not always the same person.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function PdfGuidePage() {
       <p className="mt-4 text-lg text-[var(--muted)]">
         A <strong className="text-[var(--foreground)]">QR code for a PDF</strong>{" "}
         lets anyone open your brochure, manual, menu, or spec sheet with a scan
-        — no email attachment, no “can you resend the file?” Hotels, manufacturers,
+        - no email attachment, no “can you resend the file?” Hotels, manufacturers,
         consultants, and event organizers use them on posters, packaging, and
         handouts. Build one in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -90,7 +90,7 @@ export default function PdfGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">How PDF QR codes work</h2>
       <p className="mt-3 text-[var(--muted)]">
         The QR does not contain the PDF bytes. It contains a URL that points to
-        where the file lives — your server, cloud storage, or a document
+        where the file lives - your server, cloud storage, or a document
         platform. When someone scans, their phone fetches that URL. If the host
         serves the file correctly, the PDF opens or downloads immediately.
       </p>
@@ -120,7 +120,7 @@ export default function PdfGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
-          Upload the PDF to a stable, public URL. Copy the direct link — not a
+          Upload the PDF to a stable, public URL. Copy the direct link - not a
           folder view that requires clicks.
         </li>
         <li>
@@ -146,7 +146,7 @@ export default function PdfGuidePage() {
         </li>
         <li>Style the code, then download PNG for quick print or SVG for large runs.</li>
         <li>
-          Size for viewing distance — see{" "}
+          Size for viewing distance - see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -176,7 +176,7 @@ export default function PdfGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">Dynamic short link:</strong>{" "}
         the printed QR points at your redirect. Swap the PDF URL in the dashboard
-        when you publish v2 — signs and boxes stay valid.
+        when you publish v2 - signs and boxes stay valid.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
@@ -203,7 +203,7 @@ export default function PdfGuidePage() {
         <li>Sharing a Drive link that opens an editor instead of the file</li>
         <li>Static QR on a document you revise every month</li>
         <li>50 MB files that timeout on hotel WiFi</li>
-        <li>No call-to-action text — people scan without knowing what they get</li>
+        <li>No call-to-action text - people scan without knowing what they get</li>
         <li>Password-protected PDFs that mobile viewers cannot open</li>
         <li>Printing before testing with a real phone camera</li>
       </ul>
@@ -217,7 +217,7 @@ export default function PdfGuidePage() {
           >
             Resume QR code
           </Link>{" "}
-          — link to a hosted CV PDF
+          - link to a hosted CV PDF
         </li>
         <li>
           <Link
@@ -226,7 +226,7 @@ export default function PdfGuidePage() {
           >
             Restaurant menu QR
           </Link>{" "}
-          — seasonal PDF menus
+          - seasonal PDF menus
         </li>
         <li>
           <Link
@@ -235,7 +235,7 @@ export default function PdfGuidePage() {
           >
             Product packaging QR
           </Link>{" "}
-          — manuals on the box
+          - manuals on the box
         </li>
       </ul>
 

@@ -27,14 +27,14 @@ const FAQS = [
   },
   {
     q: "Will free codes expire?",
-    a: "Static codes do not expire — the data is in the pattern. Dynamic short links depend on the service remaining available; keep account access if you rely on them.",
+    a: "Static codes do not expire - the data is in the pattern. Dynamic short links depend on the service remaining available; keep account access if you rely on them.",
   },
   {
     q: "Are free generators safe for business use?",
     a: "Yes if privacy and terms are clear, static generation is client-side when claimed, and you control destinations. Avoid tools that force unclear upsells or inject tracking without disclosure.",
   },
   {
-    q: "PNG or SVG — which should I download?",
+    q: "PNG or SVG - which should I download?",
     a: "SVG for print and scaling; PNG for quick digital use. See our print size guide for DPI and distance rules.",
   },
 ];
@@ -80,7 +80,7 @@ export default function BestFreeGeneratorGuidePage() {
           best free QR code generator
         </strong>
         ? Focus on watermarks, branding, exports, privacy, and whether dynamic
-        codes are honest about pricing — not on stuffing keyword lists or
+        codes are honest about pricing - not on stuffing keyword lists or
         chasing every gimmick feature.
       </p>
 
@@ -94,7 +94,7 @@ export default function BestFreeGeneratorGuidePage() {
         <li>Logo, colors, and print-ready PNG/SVG</li>
         <li>Optional dynamic codes with clear Free vs Pro limits</li>
         <li>Privacy you can explain (static in-browser vs stored dynamics)</li>
-        <li>Guides for real use cases — WiFi, menus, packaging, social</li>
+        <li>Guides for real use cases - WiFi, menus, packaging, social</li>
         <li>Works on modern phones without forcing a proprietary scanner app</li>
       </ul>
 
@@ -186,7 +186,7 @@ export default function BestFreeGeneratorGuidePage() {
             <tr>
               <td className="py-2 pr-4">One permanent link</td>
               <td className="py-2">
-                Static URL — see{" "}
+                Static URL - see{" "}
                 <Link
                   href="/guides/static-vs-dynamic-qr-code"
                   className="text-[var(--brand-2)] underline"
@@ -203,7 +203,7 @@ export default function BestFreeGeneratorGuidePage() {
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>Create a URL QR with your logo and brand color.</li>
         <li>Download SVG and PNG; open SVG in a browser or design tool.</li>
-        <li>Scan from phone lock-screen camera — no special app.</li>
+        <li>Scan from phone lock-screen camera - no special app.</li>
         <li>Check whether a watermark appeared.</li>
         <li>
           Skim privacy: does static stay local? Are dynamics explained?

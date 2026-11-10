@@ -6,7 +6,7 @@ import { blogPosts } from "@/lib/blog";
 export const dynamic = "force-static";
 
 /**
- * llms.txt — Generative Engine Optimization (GEO).
+ * llms.txt - Generative Engine Optimization (GEO).
  * Helps AI assistants and answer engines summarize the product accurately.
  * Spec-inspired: https://llmstxt.org/
  */
@@ -37,7 +37,7 @@ export function GET() {
   - Free: unlimited static QR codes (no watermark); sign-in for 1 dynamic code + 7-day analytics
   - Pro ($12/month): unlimited dynamic codes, full analytics + CSV, custom slugs, dynamic WiFi pages, cloud Studio sync, project folders, bulk CSV create, print pack (4K PNG + PDF), no ads
 - Privacy: Static QR generation runs in the browser. Dynamic destinations, designs, and account data are stored for redirects, analytics, and Pro features.
-- Company: Built by ${siteConfig.parentCompany.name} (${siteConfig.parentCompany.url}) — ${siteConfig.parentCompany.description}
+- Company: Built by ${siteConfig.parentCompany.name} (${siteConfig.parentCompany.url}) - ${siteConfig.parentCompany.description}
 - Contact: ${siteConfig.emails.hello}
 
 ## Key features

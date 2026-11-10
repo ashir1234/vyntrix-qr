@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Is it against Google's policy to ask for reviews?",
-    a: "Asking customers for honest reviews is allowed. Offering incentives for reviews is not — keep it neutral.",
+    a: "Asking customers for honest reviews is allowed. Offering incentives for reviews is not - keep it neutral.",
   },
   {
     q: "Should staff watch customers leave the review?",
@@ -79,7 +79,7 @@ export default function GoogleReviewsGuidePage() {
           Google review QR code
         </strong>{" "}
         takes customers straight to your review form. Put it on receipts, tables,
-        and flyers to collect more reviews with a single scan — without making
+        and flyers to collect more reviews with a single scan - without making
         people search for your listing.
       </p>
 
@@ -116,7 +116,7 @@ export default function GoogleReviewsGuidePage() {
         </li>
         <li>Brand it with your colors and download PNG or SVG.</li>
         <li>
-          Size for the placement —{" "}
+          Size for the placement -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -132,7 +132,7 @@ export default function GoogleReviewsGuidePage() {
         <li>Caption: “Loved it? Leave us a review.”</li>
         <li>Place codes where customers wait or pay.</li>
         <li>Never offer rewards in exchange for reviews.</li>
-        <li>Respond to reviews you receive — the QR starts the loop, service closes it.</li>
+        <li>Respond to reviews you receive - the QR starts the loop, service closes it.</li>
         <li>Train staff to invite, not pressure.</li>
       </ul>
 

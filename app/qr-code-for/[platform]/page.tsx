@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: platform.description,
     keywords: [...platform.keywords],
     alternates: { canonical },
-    // Consolidate indexing on the deeper /guides article when one exists —
+    // Consolidate indexing on the deeper /guides article when one exists -
     // reduces thin duplicate URLs for search / AdSense quality.
     robots: hasDeepGuide ? { index: false, follow: true } : undefined,
     openGraph: {

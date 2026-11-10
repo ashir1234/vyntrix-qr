@@ -14,7 +14,7 @@ const guide = getGuide(slug)!;
 const FAQS = [
   {
     q: "What does a vCard QR code do?",
-    a: "When scanned, it lets someone save your name, phone, email, company, and website as a contact on their phone — no typing.",
+    a: "When scanned, it lets someone save your name, phone, email, company, and website as a contact on their phone - no typing.",
   },
   {
     q: "Are vCard QR codes free?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Can I brand a vCard QR with my logo?",
-    a: "Yes — use Design in Studio. Keep the logo modest and contrast high so scanners still read the code.",
+    a: "Yes - use Design in Studio. Keep the logo modest and contrast high so scanners still read the code.",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function VcardGuidePage() {
       <p className="mt-4 text-lg text-[var(--muted)]">
         A{" "}
         <strong className="text-[var(--foreground)]">vCard QR code</strong>{" "}
-        shares your contact details with one scan — perfect for business cards,
+        shares your contact details with one scan - perfect for business cards,
         badges, networking events, and email signatures. Build yours free in the{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Studio
@@ -91,7 +91,7 @@ export default function VcardGuidePage() {
         A vCard (or MECARD-style) payload can include name, organization, title,
         phone, email, website, and address. Phones map those fields into the
         Contacts app. Unlike a website QR, the recipient does not need a data
-        connection after the scan to store the card — useful at conferences with
+        connection after the scan to store the card - useful at conferences with
         weak WiFi.
       </p>
 
@@ -111,7 +111,7 @@ export default function VcardGuidePage() {
         </li>
         <li>Customize colors or add a logo under Design.</li>
         <li>
-          Download PNG/SVG. For cards, keep the code around 2×2 cm minimum —
+          Download PNG/SVG. For cards, keep the code around 2×2 cm minimum -
           see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
@@ -151,10 +151,10 @@ export default function VcardGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Tips</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Shorter payloads scan more reliably at small sizes.</li>
-        <li>Keep work and personal numbers intentional — do not mix by accident.</li>
+        <li>Keep work and personal numbers intentional - do not mix by accident.</li>
         <li>Match brand colors carefully; contrast beats cleverness.</li>
         <li>
-          For email signatures, prefer a small PNG and a visible URL fallback —
+          For email signatures, prefer a small PNG and a visible URL fallback -
           {" "}
           <Link
             href="/guides/qr-code-for-email-signature"

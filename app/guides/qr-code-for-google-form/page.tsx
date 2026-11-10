@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "How do scans relate to responses?",
-    a: "Dynamic QR analytics count link opens. Google Forms counts submitted responses. Many people scan but do not finish — expect scans to exceed submissions.",
+    a: "Dynamic QR analytics count link opens. Google Forms counts submitted responses. Many people scan but do not finish - expect scans to exceed submissions.",
   },
   {
     q: "Should the form QR be static or dynamic?",
@@ -76,7 +76,7 @@ export default function GoogleFormGuidePage() {
       <p className="mt-4 text-lg text-[var(--muted)]">
         A{" "}
         <strong className="text-[var(--foreground)]">Google Form QR code</strong>{" "}
-        opens your survey, RSVP, or feedback form in one scan — no typing long
+        opens your survey, RSVP, or feedback form in one scan - no typing long
         URLs on a phone. Teachers, event hosts, retailers, and HR teams use them
         on posters, receipts, and classroom walls. Turn any form link into a
         scannable code in{" "}
@@ -99,7 +99,7 @@ export default function GoogleFormGuidePage() {
         connection in the form settings.
       </p>
       <p className="mt-3 text-[var(--muted)]">
-        The QR does not embed the form itself — if you delete the form or change
+        The QR does not embed the form itself - if you delete the form or change
         permissions, the code breaks. Always copy the responder link, not the
         editor URL.
       </p>
@@ -148,7 +148,7 @@ export default function GoogleFormGuidePage() {
         </li>
         <li>Download PNG for slides or SVG for large posters.</li>
         <li>
-          Size for the room —{" "}
+          Size for the room -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -168,7 +168,7 @@ export default function GoogleFormGuidePage() {
         know how much is left.
       </p>
       <p className="mt-3 text-[var(--muted)]">
-        Add a confirmation message thanking them — and a link to your site if
+        Add a confirmation message thanking them - and a link to your site if
         the form is post-purchase feedback.
       </p>
 
@@ -193,10 +193,10 @@ export default function GoogleFormGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Common mistakes</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Encoding the edit URL — scanners see “request access”</li>
+        <li>Encoding the edit URL - scanners see “request access”</li>
         <li>Requiring Google login when guests use personal Gmail inconsistently</li>
-        <li>20-minute surveys on a exit poster — completion rates collapse</li>
-        <li>Static QR on a template poster — forgot to change form link</li>
+        <li>20-minute surveys on a exit poster - completion rates collapse</li>
+        <li>Static QR on a template poster - forgot to change form link</li>
         <li>QR hidden in a slide corner too small for the back row</li>
         <li>Closing the form while posters still hang in the building</li>
       </ul>
@@ -210,7 +210,7 @@ export default function GoogleFormGuidePage() {
           >
             Event ticket QR
           </Link>{" "}
-          — registration before the form
+          - registration before the form
         </li>
         <li>
           <Link
@@ -219,7 +219,7 @@ export default function GoogleFormGuidePage() {
           >
             Google review QR
           </Link>{" "}
-          — public reviews vs private feedback
+          - public reviews vs private feedback
         </li>
         <li>
           <Link
@@ -228,7 +228,7 @@ export default function GoogleFormGuidePage() {
           >
             Dynamic QR code
           </Link>{" "}
-          — reuse printed signage
+          - reuse printed signage
         </li>
       </ul>
 

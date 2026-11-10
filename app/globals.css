@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Vyntrix QR — soft dusk hybrid.
+/* Vyntrix QR - soft dusk hybrid.
    Labs depth (dark atmosphere) + lighter elevated panels + emerald product accents. */
 :root {
   --background: #182a24;
@@ -76,7 +76,7 @@ body {
 }
 
 .glass {
-  /* Frosted “light panel” feel on a dark base — the hybrid look */
+  /* Frosted “light panel” feel on a dark base - the hybrid look */
   background: color-mix(in oklab, var(--surface) 78%, #e8f6f0 8%, transparent);
   backdrop-filter: blur(16px);
   border: 1px solid color-mix(in oklab, var(--border) 70%, #e8f6f0 30%);
@@ -128,7 +128,7 @@ body {
   color: var(--muted);
 }
 
-/* —— 2D fun preview modes —— */
+/* -- 2D fun preview modes -- */
 .qr2d-neon {
   animation: qr2d-neon-pulse 1.8s ease-in-out infinite;
   box-shadow:

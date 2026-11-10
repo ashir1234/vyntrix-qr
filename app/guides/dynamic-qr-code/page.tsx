@@ -77,7 +77,7 @@ export default function DynamicGuidePage() {
         A{" "}
         <strong className="text-[var(--foreground)]">dynamic QR code</strong>{" "}
         points to a short redirect link instead of baking the final URL into the
-        pattern. You can edit the destination after printing and track scans —
+        pattern. You can edit the destination after printing and track scans -
         ideal for campaigns, menus, packaging, and posters. Create one in the{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
           Vyntrix QR Studio
@@ -110,7 +110,7 @@ export default function DynamicGuidePage() {
       </ul>
       <p className="mt-3 text-[var(--muted)]">
         Prefer static when the payload never changes and you want zero server
-        dependency — for example a permanent personal site, a{" "}
+        dependency - for example a permanent personal site, a{" "}
         <Link
           href="/guides/vcard-qr-code"
           className="text-[var(--brand-2)] underline"
@@ -143,7 +143,7 @@ export default function DynamicGuidePage() {
           </Link>{" "}
           with type set to URL (or another type that supports dynamic).
         </li>
-        <li>Sign in if you are not already — dynamic links need an account.</li>
+        <li>Sign in if you are not already - dynamic links need an account.</li>
         <li>
           Enable <strong className="text-[var(--foreground)]">Dynamic QR</strong>{" "}
           and create a short link with your destination URL.
@@ -161,7 +161,7 @@ export default function DynamicGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Free vs Pro dynamics</h2>
       <p className="mt-3 text-[var(--muted)]">
         Free includes <strong className="text-[var(--foreground)]">1</strong>{" "}
-        dynamic code with short analytics retention — enough to try the workflow
+        dynamic code with short analytics retention - enough to try the workflow
         on a real poster or menu.{" "}
         <Link href="/pricing" className="text-[var(--brand-2)] underline">
           Pro ($12/month)
@@ -183,7 +183,7 @@ export default function DynamicGuidePage() {
           edit access.
         </li>
         <li>
-          Size print correctly for scan distance —{" "}
+          Size print correctly for scan distance -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -193,7 +193,7 @@ export default function DynamicGuidePage() {
           .
         </li>
         <li>
-          Brand carefully so the code still scans —{" "}
+          Brand carefully so the code still scans -{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -208,7 +208,7 @@ export default function DynamicGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Printing a static code by mistake when you needed editable URLs</li>
         <li>Pointing at a page that will move without updating the destination</li>
-        <li>Assuming scan counts equal conversions — they measure interest, not purchases</li>
+        <li>Assuming scan counts equal conversions - they measure interest, not purchases</li>
         <li>Losing manage access and being unable to edit (keep the dashboard bookmark)</li>
       </ul>
 

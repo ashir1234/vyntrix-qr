@@ -81,7 +81,7 @@ export default async function DashboardPage() {
             <h1 className="text-2xl font-bold">Dashboard temporarily unavailable</h1>
             <p className="mx-auto mt-2 max-w-md text-sm text-[var(--muted)]">
               We couldn&apos;t load your codes right now. This is usually a
-              database connection issue — reload in a moment.
+              database connection issue - reload in a moment.
             </p>
             <p className="mt-3 font-mono text-xs text-red-400/80">{dbError}</p>
             <Link

@@ -19,7 +19,7 @@ export function Footer() {
           </div>
           <p className="mt-3 max-w-xs">
             Free online QR code generator with logo, colors, 3D preview, and
-            optional dynamic links — available worldwide.
+            optional dynamic links - available worldwide.
           </p>
           <p className="mt-3 text-xs">
             A product by{" "}
@@ -31,7 +31,7 @@ export function Footer() {
             >
               {siteConfig.parentCompany.name}
             </a>{" "}
-            — AI automation, agents &amp; custom software.
+            - AI automation, agents &amp; custom software.
           </p>
         </div>
         <div>

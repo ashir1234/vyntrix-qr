@@ -22,10 +22,10 @@ const FAQS = [
   },
   {
     q: "Do attendees need an app to scan?",
-    a: "No — any modern phone camera opens the link. Only door staff need a check-in tool (often the ticketing platform’s scanner app or a web dashboard).",
+    a: "No - any modern phone camera opens the link. Only door staff need a check-in tool (often the ticketing platform’s scanner app or a web dashboard).",
   },
   {
-    q: "Digital ticket or printed — which is better?",
+    q: "Digital ticket or printed - which is better?",
     a: "Digital PDFs and wallet passes are standard. Printed codes on badges still help when phone batteries die. Offer both when budget allows.",
   },
   {
@@ -78,7 +78,7 @@ export default function EventTicketsGuidePage() {
           QR codes on event tickets
         </strong>{" "}
         make check-in fast and contactless. Attendees show a code on a phone or
-        badge; staff scan to validate — no clipboard, no “what name is it under?”
+        badge; staff scan to validate - no clipboard, no “what name is it under?”
         Concerts, conferences, galas, and school events rely on them daily. Design
         scannable codes in{" "}
         <Link href="/studio" className="text-[var(--brand-2)] underline">
@@ -95,7 +95,7 @@ export default function EventTicketsGuidePage() {
           Ticketing platform codes:
         </strong>{" "}
         Eventbrite, Ticketmaster, and similar tools generate unique QR per order
-        or attendee. You export tickets as PDF or wallet passes — the platform
+        or attendee. You export tickets as PDF or wallet passes - the platform
         handles validation. Your job is print quality and door lighting.
       </p>
       <p className="mt-3 text-[var(--muted)]">
@@ -142,9 +142,9 @@ export default function EventTicketsGuidePage() {
           </Link>{" "}
           or batch via your ticketing export.
         </li>
-        <li>Brand with event colors — keep modules dark on light for door scans.</li>
+        <li>Brand with event colors - keep modules dark on light for door scans.</li>
         <li>
-          Export PNG/SVG. Size badges at least 2.5 × 2.5 cm —{" "}
+          Export PNG/SVG. Size badges at least 2.5 × 2.5 cm -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -160,7 +160,7 @@ export default function EventTicketsGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Check-in day tips</h2>
       <p className="mt-3 text-[var(--muted)]">
         Open the scanner app before the queue forms. Bright sunlight on phone
-        screens washes out codes — offer shade or increase screen brightness.
+        screens washes out codes - offer shade or increase screen brightness.
         Lanyard badges should hang flat; creased codes fail more often.
       </p>
       <p className="mt-3 text-[var(--muted)]">
@@ -181,12 +181,12 @@ export default function EventTicketsGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Common mistakes</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
-        <li>Same static QR on every ticket — no way to stop pass-back entry</li>
+        <li>Same static QR on every ticket - no way to stop pass-back entry</li>
         <li>Codes too small on wristbands or crumpled paper stubs</li>
         <li>Linking to a generic homepage instead of a check-in token</li>
         <li>No backup list when WiFi drops at the venue</li>
         <li>Inverted colors or low-contrast brand palettes on badges</li>
-        <li>Forgetting time-zone and date in the ticket email — guests arrive wrong day</li>
+        <li>Forgetting time-zone and date in the ticket email - guests arrive wrong day</li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Related guides</h2>
@@ -198,7 +198,7 @@ export default function EventTicketsGuidePage() {
           >
             Google Form QR
           </Link>{" "}
-          — RSVPs before tickets ship
+          - RSVPs before tickets ship
         </li>
         <li>
           <Link
@@ -207,7 +207,7 @@ export default function EventTicketsGuidePage() {
           >
             Dynamic QR code
           </Link>{" "}
-          — track poster campaigns
+          - track poster campaigns
         </li>
         <li>
           <Link
@@ -216,7 +216,7 @@ export default function EventTicketsGuidePage() {
           >
             QR size for print
           </Link>{" "}
-          — badge and poster sizing
+          - badge and poster sizing
         </li>
       </ul>
 

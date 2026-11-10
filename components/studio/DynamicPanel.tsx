@@ -197,7 +197,7 @@ export function DynamicPanel() {
 
   const destinationChanged = dynamic
     ? isWifi
-      ? true // always allow "save wifi & design" — we don't fingerprint wifi in store
+      ? true // always allow "save wifi & design" - we don't fingerprint wifi in store
       : url !== dynamic.destination
     : false;
 
@@ -228,7 +228,7 @@ export function DynamicPanel() {
               <p className="text-xs text-[var(--muted)]">
                 {isWifi
                   ? "Creates a short link to a WiFi landing page. Guests see SSID + password; you see scan analytics."
-                  : "Generates a short link that redirects to your URL. You can change where it points anytime — no reprinting."}
+                  : "Generates a short link that redirects to your URL. You can change where it points anytime - no reprinting."}
               </p>
 
               {isWifi && !isPro && authEnabled ? (
@@ -240,7 +240,7 @@ export function DynamicPanel() {
                   >
                     Upgrade
                   </Link>{" "}
-                  to track opens — or leave this off for a static WiFi QR.
+                  to track opens - or leave this off for a static WiFi QR.
                 </p>
               ) : null}
 
@@ -302,7 +302,7 @@ export function DynamicPanel() {
               )}
               <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-2">
                 <p className="text-[11px] text-amber-300/90">
-                  Save your edit token — it&apos;s the only way to edit this code
+                  Save your edit token - it&apos;s the only way to edit this code
                   or view its analytics.
                 </p>
                 <input

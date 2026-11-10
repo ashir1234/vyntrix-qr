@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Which is better for marketing?",
-    a: "Dynamic — you can fix typos, change campaigns, and measure scans without reprinting.",
+    a: "Dynamic - you can fix typos, change campaigns, and measure scans without reprinting.",
   },
   {
     q: "Are static codes always free?",
@@ -82,7 +82,7 @@ export default function StaticVsDynamicGuidePage() {
           dynamic QR codes
         </Link>{" "}
         scan the same way on a phone camera. The difference is what is encoded
-        behind the pattern — and whether you can change it later without
+        behind the pattern - and whether you can change it later without
         reprinting.
       </p>
 
@@ -92,7 +92,7 @@ export default function StaticVsDynamicGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">Static:</strong> the QR
         contains the final payload (full URL, WiFi string, vCard, text). What
-        you print is what you get — forever.
+        you print is what you get - forever.
       </p>
       <p className="mt-3 text-[var(--muted)]">
         <strong className="text-[var(--foreground)]">Dynamic:</strong> the QR
@@ -180,7 +180,7 @@ export default function StaticVsDynamicGuidePage() {
         <li>Menus, offers, and event pages that change seasonally</li>
         <li>Team workflows where one person prints and another updates the URL</li>
         <li>
-          Custom short slugs and Pro tools — see{" "}
+          Custom short slugs and Pro tools - see{" "}
           <Link href="/pricing" className="text-[var(--brand-2)] underline">
             Pricing
           </Link>
@@ -203,7 +203,7 @@ export default function StaticVsDynamicGuidePage() {
       <p className="mt-3 text-[var(--muted)]">
         Static generation for one-off downloads runs in your browser. Dynamic
         destinations and scan events are stored so redirects and analytics can
-        work — details in the{" "}
+        work - details in the{" "}
         <Link href="/privacy" className="text-[var(--brand-2)] underline">
           Privacy Policy
         </Link>

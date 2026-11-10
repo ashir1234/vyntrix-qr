@@ -62,7 +62,7 @@ export default function ContactPage() {
           >
             {siteConfig.parentCompany.name}
           </a>
-          . Email us at the address below — typically within 1–2 business days.
+          . Email us at the address below - typically within 1–2 business days.
         </p>
 
         <div className="glass mt-10 rounded-2xl p-5">
@@ -71,7 +71,7 @@ export default function ContactPage() {
           </h2>
           <p className="mt-1.5 text-sm text-[var(--muted)]">
             Product questions, support, billing, privacy, partnerships, and
-            feedback — one inbox for everything.
+            feedback - one inbox for everything.
           </p>
           <a
             href={`mailto:${siteConfig.emails.hello}`}

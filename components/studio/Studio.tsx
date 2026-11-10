@@ -41,12 +41,12 @@ const SCENES: { value: SceneMode; label: string; hint: string }[] = [
   {
     value: "runaway",
     label: "Runaway",
-    hint: "Move your cursor near the QR — it flees!",
+    hint: "Move your cursor near the QR - it flees!",
   },
   {
     value: "sticky",
     label: "Magnet",
-    hint: "Opposite of runaway — the QR sticks to your cursor",
+    hint: "Opposite of runaway - the QR sticks to your cursor",
   },
   {
     value: "buddy",
@@ -66,7 +66,7 @@ const SCENES: { value: SceneMode; label: string; hint: string }[] = [
   {
     value: "rocket",
     label: "Rocket",
-    hint: "QR strapped to a rocket — 3… 2… 1…",
+    hint: "QR strapped to a rocket - 3… 2… 1…",
   },
   {
     value: "disco",
