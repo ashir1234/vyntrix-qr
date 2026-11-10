@@ -446,7 +446,7 @@ export function ManageClient({
             <YAxis allowDecimals={false} tick={{ fill: "#8fb5a8", fontSize: 11 }} />
             <Tooltip
               contentStyle={{
-                background: "#15241f",
+                background: "#233831",
                 border: "1px solid #23284d",
                 borderRadius: 12,
                 color: "#eef0ff",
@@ -478,7 +478,7 @@ export function ManageClient({
               <Tooltip
                 cursor={{ fill: "rgba(124,92,255,0.1)" }}
                 contentStyle={{
-                  background: "#15241f",
+                  background: "#233831",
                   border: "1px solid #23284d",
                   borderRadius: 12,
                   color: "#eef0ff",

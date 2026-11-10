@@ -81,6 +81,11 @@ export default async function BlogPostPage({ params }: Props) {
   const Body = BODY[slug];
   if (!post || !Body) notFound();
 
+  const sorted = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date));
+  const index = sorted.findIndex((p) => p.slug === slug);
+  const newer = index > 0 ? sorted[index - 1] : null;
+  const older = index >= 0 && index < sorted.length - 1 ? sorted[index + 1] : null;
+
   return (
     <>
       <script
@@ -139,7 +144,29 @@ export default async function BlogPostPage({ params }: Props) {
           <Body />
         </div>
 
-        <p className="mt-12 border-t border-[var(--border)] pt-6 text-sm text-[var(--muted)]">
+        <nav
+          aria-label="More posts"
+          className="mt-12 grid gap-3 border-t border-[var(--border)] pt-6 text-sm sm:grid-cols-2"
+        >
+          {newer ? (
+            <Link href={`/blog/${newer.slug}`} className="transition hover:text-[var(--foreground)]">
+              <span className="block text-xs text-[var(--muted)]">Newer</span>
+              {newer.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {older ? (
+            <Link
+              href={`/blog/${older.slug}`}
+              className="transition hover:text-[var(--foreground)] sm:text-right"
+            >
+              <span className="block text-xs text-[var(--muted)]">Older</span>
+              {older.title}
+            </Link>
+          ) : null}
+        </nav>
+        <p className="mt-6 text-sm text-[var(--muted)]">
           <Link href="/blog" className="text-[var(--brand-2)] underline">
             ← All posts
           </Link>

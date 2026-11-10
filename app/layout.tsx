@@ -85,7 +85,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c1613",
+  themeColor: "#182a24",
   colorScheme: "dark",
 };
 
@@ -128,9 +128,9 @@ export default function RootLayout({
             appearance={{
               variables: {
                 colorPrimary: "#10b981",
-                colorBackground: "#0c1613",
+                colorBackground: "#182a24",
                 colorForeground: "#eef4f1",
-                colorInput: "#15241f",
+                colorInput: "#233831",
                 borderRadius: "0.75rem",
               },
             }}

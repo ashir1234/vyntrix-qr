@@ -120,6 +120,11 @@ export function Footer() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/site-map" className="transition hover:text-[var(--foreground)]">
+                Sitemap
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -3,10 +3,10 @@
 /* Vyntrix QR — soft dusk hybrid.
    Labs depth (dark atmosphere) + lighter elevated panels + emerald product accents. */
 :root {
-  --background: #0c1613;
-  --surface: #15241f;
-  --surface-2: #1e322c;
-  --border: #2f4a40;
+  --background: #182a24;
+  --surface: #233831;
+  --surface-2: #2e463c;
+  --border: #426254;
   --foreground: #e8f6f0;
   --muted: #8fb5a8;
   --brand: #10b981;
@@ -229,7 +229,7 @@ body {
   padding: 10px;
   background:
     radial-gradient(circle, var(--accent) 1.5px, transparent 1.6px) 0 0 / 10px 10px,
-    #1e322c;
+    var(--surface-2);
   border: 3px solid #e8f6f0;
   box-shadow: 6px 6px 0 var(--brand);
 }
