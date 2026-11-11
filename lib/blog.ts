@@ -288,6 +288,23 @@ export const blogPosts: BlogPost[] = [
       "whatsapp group qr code",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-tiktok",
+    title: "How to Make a QR Code for TikTok (Profile, Video & Print)",
+    description:
+      "A practical guide to creating TikTok QR codes - TikTok's built-in profile QR and its limits, finding your profile and video URLs, creating branded codes with logos and colors, static vs dynamic for campaigns, and a print checklist for packaging, posters, and events.",
+    date: "2026-11-11",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a qr code for tiktok",
+      "tiktok qr code",
+      "how to get my tiktok qr code",
+      "qr code for tiktok profile",
+      "qr code for tiktok video",
+      "tiktok qr code generator",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
