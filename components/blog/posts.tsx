@@ -6461,3 +6461,613 @@ export function WhatsAppQrCodeGuidePost() {
     </article>
   );
 }
+
+export function TikTokQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        TikTok is one of the fastest-growing platforms for creators and
+        businesses - and a{" "}
+        <strong className="text-[var(--foreground)]">TikTok QR code</strong>{" "}
+        lets you turn real-world touchpoints into profile visits, follows, and
+        video views. Whether you want to grow your audience, drive traffic to a
+        specific video, or add a scannable code to packaging, merch, or event
+        signage, this guide covers everything you need.
+      </p>
+      <p>
+        We will walk through TikTok&apos;s built-in profile QR code (where to
+        find it and its limitations), how to get your profile and video URLs,
+        creating a branded custom QR in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , static vs dynamic codes for campaigns, where to place TikTok QR codes,
+        and a print/scan checklist.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        TikTok&apos;s built-in profile QR code
+      </h2>
+      <p>
+        TikTok includes a native QR code feature that lets users share their
+        profile with one scan. You can find it in the app:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the TikTok app on iOS or Android.</li>
+        <li>
+          Go to your profile (tap the{" "}
+          <strong className="text-[var(--foreground)]">Profile</strong> icon at
+          the bottom right).
+        </li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">menu</strong>{" "}
+          (three lines or dots in the top-right corner).
+        </li>
+        <li>
+          Look for a <strong className="text-[var(--foreground)]">QR code</strong>{" "}
+          or <strong className="text-[var(--foreground)]">Share profile</strong>{" "}
+          option - the exact wording and placement can vary with app updates.
+        </li>
+        <li>
+          TikTok displays your personal QR code, which you can save to your
+          camera roll or share directly.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Limitations of TikTok&apos;s built-in QR
+      </h3>
+      <p>
+        TikTok&apos;s native QR code is convenient for quick sharing between
+        friends, but it has limits for professional and marketing use:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">TikTok-styled design:</strong>{" "}
+          The code comes with TikTok&apos;s branding and colors - you cannot
+          match your own brand palette.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No custom logo:</strong>{" "}
+          You cannot embed your business logo in the center of the QR code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG only:</strong>{" "}
+          The export is a raster image at a fixed resolution. Scaling it up for
+          posters or banners leads to blurry edges.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Profile only:</strong>{" "}
+          The built-in QR links only to your profile - not to a specific video.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No scan analytics:</strong>{" "}
+          TikTok does not tell you how many people scanned the code, when, or
+          from where.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For print materials, packaging, or campaigns where branding, resolution,
+        and tracking matter, generating a custom QR code gives you more control.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Finding your TikTok profile URL
+      </h2>
+      <p>
+        To create a QR code for your TikTok profile, you need the direct URL.
+        TikTok profile URLs follow this format:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded">
+        https://www.tiktok.com/@yourusername
+      </p>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">How to find it:</strong>
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">From the app:</strong>{" "}
+          Go to your profile → tap the menu (three lines or dots) → Share
+          profile → Copy link. This gives you your full profile URL.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">From a browser:</strong>{" "}
+          Open{" "}
+          <a
+            href="https://www.tiktok.com"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            tiktok.com
+          </a>
+          , log in, navigate to your profile, and copy the URL from the address
+          bar.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Manually:</strong>{" "}
+          If you know your username, construct the URL:{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.tiktok.com/@yourusername
+          </code>
+        </li>
+      </ul>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Tip:</strong> Double-check
+        spelling. If the username is wrong, the QR code leads to a 404 or the
+        wrong creator&apos;s profile.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Finding a TikTok video URL
+      </h2>
+      <p>
+        To link a QR code to a specific TikTok video (not just your profile),
+        you need that video&apos;s direct URL:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the TikTok video you want to share.</li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">Share</strong>{" "}
+          button (arrow icon).
+        </li>
+        <li>
+          Tap <strong className="text-[var(--foreground)]">Copy link</strong>.
+        </li>
+      </ol>
+      <p className="mt-4">
+        The copied URL will look something like:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://www.tiktok.com/@username/video/1234567890123456789
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Cleaning tracking parameters
+      </h3>
+      <p>
+        TikTok&apos;s share links often include tracking parameters after the
+        video ID (e.g.,{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          ?is_from_webapp=1&sender_device=pc
+        </code>
+        ). For a cleaner QR code with a simpler pattern, you can remove
+        everything after the video ID number:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://www.tiktok.com/@username/video/1234567890123456789
+      </p>
+      <p className="mt-4">
+        The video will still load correctly, and the shorter URL creates a less
+        dense QR code that scans more reliably at smaller sizes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a branded TikTok QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        For print materials, professional marketing, and consistent branding,
+        create a custom TikTok QR code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . You can add your logo, match your brand colors, and export in SVG for
+        crisp prints at any size.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Step-by-step
+      </h3>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Open Studio:</strong>{" "}
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            vyntrixqr.app/studio
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Paste your URL:</strong>{" "}
+          Enter your TikTok profile URL or video URL in the URL field.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Optional - enable Dynamic:
+          </strong>{" "}
+          Toggle on Dynamic QR if you want to track scans or update the
+          destination video later without reprinting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Design your code:</strong>{" "}
+          Customize the look:
+          <ul className="list-disc space-y-1 pl-5 mt-2">
+            <li>
+              <strong>Colors:</strong> TikTok&apos;s brand colors include
+              black/dark with pink/red accents - but match your own brand if
+              that fits better
+            </li>
+            <li>
+              <strong>Background:</strong> White or light for best contrast
+            </li>
+            <li>
+              <strong>Dot style:</strong> Square, Rounded, or Dots - choose what
+              fits your aesthetic
+            </li>
+            <li>
+              <strong>Logo:</strong> Add your business logo or a TikTok icon -
+              see{" "}
+              <Link
+                href="/blog/qr-code-with-logo-guide"
+                className="text-[var(--brand-2)] underline"
+              >
+                How to Create a QR Code with a Logo
+              </Link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Set error correction:</strong>{" "}
+          If you add a logo, use at least{" "}
+          <strong className="text-[var(--foreground)]">Medium (M)</strong> or{" "}
+          <strong className="text-[var(--foreground)]">High (H)</strong> error
+          correction. Higher levels add redundancy so the code scans even with a
+          logo covering part of it. See{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>{" "}
+          for the details.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test the code:</strong>{" "}
+          Use your phone&apos;s camera (both iOS and Android if possible) to
+          scan the preview. Confirm it opens the correct TikTok profile or video.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong>{" "}
+          Export as PNG for digital use (social posts, emails, screens) or SVG
+          for print materials (posters, packaging, business cards). SVG scales
+          cleanly to any size without pixelation.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic QR codes for TikTok
+      </h2>
+      <p>
+        When you create a QR code, you have two options:{" "}
+        <strong className="text-[var(--foreground)]">static</strong> (the URL is
+        encoded directly) or{" "}
+        <strong className="text-[var(--foreground)]">dynamic</strong> (the code
+        points to a short link that redirects to your TikTok URL).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When static works fine
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>You are linking to your profile (unlikely to change)</li>
+        <li>The material is short-term (event signage, a single campaign)</li>
+        <li>You do not need scan analytics</li>
+        <li>Budget matters - static codes are free</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When to choose dynamic
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Video campaigns:</strong>{" "}
+          You print a QR code on packaging or merch and want to swap the
+          destination video later (e.g., seasonal content, new product launch)
+          without reprinting
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan tracking:</strong>{" "}
+          You want to know how many scans, when, and from where
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Long-term print:</strong>{" "}
+          Packaging, permanent signage, or materials that will be in circulation
+          for months or years - if you ever need to change the link, you can
+        </li>
+      </ul>
+      <p className="mt-4">
+        For a deeper breakdown, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to place a TikTok QR code
+      </h2>
+      <p>
+        A TikTok QR code bridges offline touchpoints to your content. Here are
+        practical placements:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Product packaging
+      </h3>
+      <p>
+        Print a QR code on your product packaging that links to tutorial videos,
+        unboxing content, or behind-the-scenes footage. Customers scan, watch,
+        and (ideally) follow - turning a one-time purchase into an ongoing
+        audience relationship.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Posters and signage
+      </h3>
+      <p>
+        Event posters, storefront windows, trade show booths, and campus
+        bulletin boards are all opportunities. Make the QR code large enough to
+        scan from the expected viewing distance - the 10:1 rule (code width ≈
+        expected scan distance ÷ 10) is a good starting point.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Merch and apparel
+      </h3>
+      <p>
+        T-shirts, tote bags, stickers, and hats can carry your TikTok QR. Keep
+        contrast high and test that the printing method (screen print, heat
+        transfer, embroidery) produces a scannable code. Fabric texture can
+        reduce scannability.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Events and conferences
+      </h3>
+      <p>
+        Badges, lanyards, table tents, or presentation slides can include a QR
+        code so attendees follow you or watch a specific video. For live events,
+        consider linking to a profile rather than a single video.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Business cards
+      </h3>
+      <p>
+        A TikTok QR code on your business card lets contacts see your content
+        with one scan - useful for creators, influencers, social media managers,
+        and anyone whose TikTok presence is part of their professional identity.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Storefront windows
+      </h3>
+      <p>
+        Retail locations can display a QR code inviting passersby to follow on
+        TikTok for sales, new arrivals, or store content. Position it at eye
+        level and ensure lighting does not create glare on the glass.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan checklist
+      </h2>
+      <p>
+        Before printing TikTok QR codes at scale, run through this checklist to
+        avoid costly reprints.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Size
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum:</strong> At
+          least 2 cm (0.8 in) for close-up scanning (business cards, packaging).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Distance rule:</strong>{" "}
+          For posters or signage, code width should be roughly 1/10 of the
+          expected scan distance. A poster viewed from 2 meters away needs a
+          code at least 20 cm wide.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contrast
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Dark on light works best.
+          </strong>{" "}
+          Black on white is safest. Colored foregrounds work if contrast is
+          high enough.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid light-on-dark or low-contrast combinations.
+          </strong>{" "}
+          White on black is harder to scan. Subtle color differences (navy on
+          black, pale pink on white) often fail.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            No gradients or textures over modules.
+          </strong>{" "}
+          Keep the dots/modules solid.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Quiet zone
+      </h3>
+      <p>
+        Leave at least 4 modules of empty space (the &quot;quiet zone&quot;)
+        around all edges of the QR code. Crowding the code against borders,
+        text, or images makes it harder to scan.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Test on real devices
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Scan a printed proof with an iPhone camera (not just a QR app)</li>
+        <li>Scan with an Android phone camera</li>
+        <li>Test in the lighting conditions where it will be seen (indoor, outdoor, under event lighting)</li>
+        <li>If it fails any test, revisit size, contrast, or error correction</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Export format
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">SVG</strong> for print -
+          scales to any size without losing quality
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG</strong> at high
+          resolution for digital use or if your printer cannot handle SVG
+        </li>
+      </ul>
+      <p className="mt-4">
+        For more detail, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a QR code for someone else&apos;s TikTok profile or video?
+      </h3>
+      <p>
+        Yes. TikTok profiles and public videos have public URLs. You can create
+        a QR code for any public TikTok content - useful for curated lists,
+        influencer partnerships, or sharing content you did not create.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What happens if I delete or make a video private?
+      </h3>
+      <p>
+        If the video linked in your QR code is deleted, made private, or removed
+        by TikTok, anyone scanning the code will see an error page or
+        &quot;video not available&quot; message. For long-term print materials,
+        either link to your profile (more stable) or use a dynamic QR so you can
+        redirect to a different video if needed.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code open the TikTok app or a browser?
+      </h3>
+      <p>
+        On mobile devices with TikTok installed, the link typically opens
+        directly in the TikTok app. On devices without TikTok, it opens in a web
+        browser. The experience is seamless for most users.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I track how many people scanned my TikTok QR code?
+      </h3>
+      <p>
+        With a static QR code, no - the code is just an encoded URL with no
+        analytics. With a dynamic QR code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name}
+        </Link>{" "}
+        (Pro plan), you can track scan counts, locations, and devices over time.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use the short vm.tiktok.com links?
+      </h3>
+      <p>
+        TikTok&apos;s share function sometimes generates short{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          vm.tiktok.com
+        </code>{" "}
+        links. These work, but they add a redirect and tracking parameters. For
+        cleaner QR codes, use the full{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          tiktok.com/@username
+        </code>{" "}
+        or{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          tiktok.com/@username/video/ID
+        </code>{" "}
+        format.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your TikTok QR code now
+      </h2>
+      <p>
+        Ready to turn offline moments into TikTok follows and views?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your TikTok profile or video URL, customize your design, and
+        download a print-ready code in under a minute. Static codes are free.
+        Upgrade to Pro for dynamic links, scan analytics, and editable
+        destinations.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-instagram"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Instagram (Profile, Post, Reel & Print)
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about TikTok QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
