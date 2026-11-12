@@ -6461,3 +6461,1259 @@ export function WhatsAppQrCodeGuidePost() {
     </article>
   );
 }
+
+export function TikTokQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        TikTok is one of the fastest-growing platforms for creators and
+        businesses - and a{" "}
+        <strong className="text-[var(--foreground)]">TikTok QR code</strong>{" "}
+        lets you turn real-world touchpoints into profile visits, follows, and
+        video views. Whether you want to grow your audience, drive traffic to a
+        specific video, or add a scannable code to packaging, merch, or event
+        signage, this guide covers everything you need.
+      </p>
+      <p>
+        We will walk through TikTok&apos;s built-in profile QR code (where to
+        find it and its limitations), how to get your profile and video URLs,
+        creating a branded custom QR in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , static vs dynamic codes for campaigns, where to place TikTok QR codes,
+        and a print/scan checklist.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        TikTok&apos;s built-in profile QR code
+      </h2>
+      <p>
+        TikTok includes a native QR code feature that lets users share their
+        profile with one scan. You can find it in the app:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the TikTok app on iOS or Android.</li>
+        <li>
+          Go to your profile (tap the{" "}
+          <strong className="text-[var(--foreground)]">Profile</strong> icon at
+          the bottom right).
+        </li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">menu</strong>{" "}
+          (three lines or dots in the top-right corner).
+        </li>
+        <li>
+          Look for a <strong className="text-[var(--foreground)]">QR code</strong>{" "}
+          or <strong className="text-[var(--foreground)]">Share profile</strong>{" "}
+          option - the exact wording and placement can vary with app updates.
+        </li>
+        <li>
+          TikTok displays your personal QR code, which you can save to your
+          camera roll or share directly.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Limitations of TikTok&apos;s built-in QR
+      </h3>
+      <p>
+        TikTok&apos;s native QR code is convenient for quick sharing between
+        friends, but it has limits for professional and marketing use:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">TikTok-styled design:</strong>{" "}
+          The code comes with TikTok&apos;s branding and colors - you cannot
+          match your own brand palette.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No custom logo:</strong>{" "}
+          You cannot embed your business logo in the center of the QR code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG only:</strong>{" "}
+          The export is a raster image at a fixed resolution. Scaling it up for
+          posters or banners leads to blurry edges.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Profile only:</strong>{" "}
+          The built-in QR links only to your profile - not to a specific video.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No scan analytics:</strong>{" "}
+          TikTok does not tell you how many people scanned the code, when, or
+          from where.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For print materials, packaging, or campaigns where branding, resolution,
+        and tracking matter, generating a custom QR code gives you more control.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Finding your TikTok profile URL
+      </h2>
+      <p>
+        To create a QR code for your TikTok profile, you need the direct URL.
+        TikTok profile URLs follow this format:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded">
+        https://www.tiktok.com/@yourusername
+      </p>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">How to find it:</strong>
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">From the app:</strong>{" "}
+          Go to your profile → tap the menu (three lines or dots) → Share
+          profile → Copy link. This gives you your full profile URL.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">From a browser:</strong>{" "}
+          Open{" "}
+          <a
+            href="https://www.tiktok.com"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            tiktok.com
+          </a>
+          , log in, navigate to your profile, and copy the URL from the address
+          bar.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Manually:</strong>{" "}
+          If you know your username, construct the URL:{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.tiktok.com/@yourusername
+          </code>
+        </li>
+      </ul>
+      <p className="mt-4">
+        <strong className="text-[var(--foreground)]">Tip:</strong> Double-check
+        spelling. If the username is wrong, the QR code leads to a 404 or the
+        wrong creator&apos;s profile.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Finding a TikTok video URL
+      </h2>
+      <p>
+        To link a QR code to a specific TikTok video (not just your profile),
+        you need that video&apos;s direct URL:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the TikTok video you want to share.</li>
+        <li>
+          Tap the <strong className="text-[var(--foreground)]">Share</strong>{" "}
+          button (arrow icon).
+        </li>
+        <li>
+          Tap <strong className="text-[var(--foreground)]">Copy link</strong>.
+        </li>
+      </ol>
+      <p className="mt-4">
+        The copied URL will look something like:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://www.tiktok.com/@username/video/1234567890123456789
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Cleaning tracking parameters
+      </h3>
+      <p>
+        TikTok&apos;s share links often include tracking parameters after the
+        video ID (e.g.,{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          ?is_from_webapp=1&sender_device=pc
+        </code>
+        ). For a cleaner QR code with a simpler pattern, you can remove
+        everything after the video ID number:
+      </p>
+      <p className="font-mono text-[var(--foreground)] bg-[var(--surface)] px-3 py-2 rounded text-sm break-all">
+        https://www.tiktok.com/@username/video/1234567890123456789
+      </p>
+      <p className="mt-4">
+        The video will still load correctly, and the shorter URL creates a less
+        dense QR code that scans more reliably at smaller sizes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a branded TikTok QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        For print materials, professional marketing, and consistent branding,
+        create a custom TikTok QR code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . You can add your logo, match your brand colors, and export in SVG for
+        crisp prints at any size.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Step-by-step
+      </h3>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Open Studio:</strong>{" "}
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            vyntrixqr.app/studio
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Paste your URL:</strong>{" "}
+          Enter your TikTok profile URL or video URL in the URL field.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Optional - enable Dynamic:
+          </strong>{" "}
+          Toggle on Dynamic QR if you want to track scans or update the
+          destination video later without reprinting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Design your code:</strong>{" "}
+          Customize the look:
+          <ul className="list-disc space-y-1 pl-5 mt-2">
+            <li>
+              <strong>Colors:</strong> TikTok&apos;s brand colors include
+              black/dark with pink/red accents - but match your own brand if
+              that fits better
+            </li>
+            <li>
+              <strong>Background:</strong> White or light for best contrast
+            </li>
+            <li>
+              <strong>Dot style:</strong> Square, Rounded, or Dots - choose what
+              fits your aesthetic
+            </li>
+            <li>
+              <strong>Logo:</strong> Add your business logo or a TikTok icon -
+              see{" "}
+              <Link
+                href="/blog/qr-code-with-logo-guide"
+                className="text-[var(--brand-2)] underline"
+              >
+                How to Create a QR Code with a Logo
+              </Link>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Set error correction:</strong>{" "}
+          If you add a logo, use at least{" "}
+          <strong className="text-[var(--foreground)]">Medium (M)</strong> or{" "}
+          <strong className="text-[var(--foreground)]">High (H)</strong> error
+          correction. Higher levels add redundancy so the code scans even with a
+          logo covering part of it. See{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>{" "}
+          for the details.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test the code:</strong>{" "}
+          Use your phone&apos;s camera (both iOS and Android if possible) to
+          scan the preview. Confirm it opens the correct TikTok profile or video.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong>{" "}
+          Export as PNG for digital use (social posts, emails, screens) or SVG
+          for print materials (posters, packaging, business cards). SVG scales
+          cleanly to any size without pixelation.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic QR codes for TikTok
+      </h2>
+      <p>
+        When you create a QR code, you have two options:{" "}
+        <strong className="text-[var(--foreground)]">static</strong> (the URL is
+        encoded directly) or{" "}
+        <strong className="text-[var(--foreground)]">dynamic</strong> (the code
+        points to a short link that redirects to your TikTok URL).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When static works fine
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>You are linking to your profile (unlikely to change)</li>
+        <li>The material is short-term (event signage, a single campaign)</li>
+        <li>You do not need scan analytics</li>
+        <li>Budget matters - static codes are free</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        When to choose dynamic
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Video campaigns:</strong>{" "}
+          You print a QR code on packaging or merch and want to swap the
+          destination video later (e.g., seasonal content, new product launch)
+          without reprinting
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Scan tracking:</strong>{" "}
+          You want to know how many scans, when, and from where
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Long-term print:</strong>{" "}
+          Packaging, permanent signage, or materials that will be in circulation
+          for months or years - if you ever need to change the link, you can
+        </li>
+      </ul>
+      <p className="mt-4">
+        For a deeper breakdown, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to place a TikTok QR code
+      </h2>
+      <p>
+        A TikTok QR code bridges offline touchpoints to your content. Here are
+        practical placements:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Product packaging
+      </h3>
+      <p>
+        Print a QR code on your product packaging that links to tutorial videos,
+        unboxing content, or behind-the-scenes footage. Customers scan, watch,
+        and (ideally) follow - turning a one-time purchase into an ongoing
+        audience relationship.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Posters and signage
+      </h3>
+      <p>
+        Event posters, storefront windows, trade show booths, and campus
+        bulletin boards are all opportunities. Make the QR code large enough to
+        scan from the expected viewing distance - the 10:1 rule (code width ≈
+        expected scan distance ÷ 10) is a good starting point.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Merch and apparel
+      </h3>
+      <p>
+        T-shirts, tote bags, stickers, and hats can carry your TikTok QR. Keep
+        contrast high and test that the printing method (screen print, heat
+        transfer, embroidery) produces a scannable code. Fabric texture can
+        reduce scannability.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Events and conferences
+      </h3>
+      <p>
+        Badges, lanyards, table tents, or presentation slides can include a QR
+        code so attendees follow you or watch a specific video. For live events,
+        consider linking to a profile rather than a single video.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Business cards
+      </h3>
+      <p>
+        A TikTok QR code on your business card lets contacts see your content
+        with one scan - useful for creators, influencers, social media managers,
+        and anyone whose TikTok presence is part of their professional identity.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Storefront windows
+      </h3>
+      <p>
+        Retail locations can display a QR code inviting passersby to follow on
+        TikTok for sales, new arrivals, or store content. Position it at eye
+        level and ensure lighting does not create glare on the glass.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan checklist
+      </h2>
+      <p>
+        Before printing TikTok QR codes at scale, run through this checklist to
+        avoid costly reprints.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Size
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum:</strong> At
+          least 2 cm (0.8 in) for close-up scanning (business cards, packaging).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Distance rule:</strong>{" "}
+          For posters or signage, code width should be roughly 1/10 of the
+          expected scan distance. A poster viewed from 2 meters away needs a
+          code at least 20 cm wide.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contrast
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Dark on light works best.
+          </strong>{" "}
+          Black on white is safest. Colored foregrounds work if contrast is
+          high enough.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid light-on-dark or low-contrast combinations.
+          </strong>{" "}
+          White on black is harder to scan. Subtle color differences (navy on
+          black, pale pink on white) often fail.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            No gradients or textures over modules.
+          </strong>{" "}
+          Keep the dots/modules solid.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Quiet zone
+      </h3>
+      <p>
+        Leave at least 4 modules of empty space (the &quot;quiet zone&quot;)
+        around all edges of the QR code. Crowding the code against borders,
+        text, or images makes it harder to scan.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Test on real devices
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Scan a printed proof with an iPhone camera (not just a QR app)</li>
+        <li>Scan with an Android phone camera</li>
+        <li>Test in the lighting conditions where it will be seen (indoor, outdoor, under event lighting)</li>
+        <li>If it fails any test, revisit size, contrast, or error correction</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Export format
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">SVG</strong> for print -
+          scales to any size without losing quality
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG</strong> at high
+          resolution for digital use or if your printer cannot handle SVG
+        </li>
+      </ul>
+      <p className="mt-4">
+        For more detail, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a QR code for someone else&apos;s TikTok profile or video?
+      </h3>
+      <p>
+        Yes. TikTok profiles and public videos have public URLs. You can create
+        a QR code for any public TikTok content - useful for curated lists,
+        influencer partnerships, or sharing content you did not create.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What happens if I delete or make a video private?
+      </h3>
+      <p>
+        If the video linked in your QR code is deleted, made private, or removed
+        by TikTok, anyone scanning the code will see an error page or
+        &quot;video not available&quot; message. For long-term print materials,
+        either link to your profile (more stable) or use a dynamic QR so you can
+        redirect to a different video if needed.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code open the TikTok app or a browser?
+      </h3>
+      <p>
+        On mobile devices with TikTok installed, the link typically opens
+        directly in the TikTok app. On devices without TikTok, it opens in a web
+        browser. The experience is seamless for most users.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I track how many people scanned my TikTok QR code?
+      </h3>
+      <p>
+        With a static QR code, no - the code is just an encoded URL with no
+        analytics. With a dynamic QR code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name}
+        </Link>{" "}
+        (Pro plan), you can track scan counts, locations, and devices over time.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use the short vm.tiktok.com links?
+      </h3>
+      <p>
+        TikTok&apos;s share function sometimes generates short{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          vm.tiktok.com
+        </code>{" "}
+        links. These work, but they add a redirect and tracking parameters. For
+        cleaner QR codes, use the full{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          tiktok.com/@username
+        </code>{" "}
+        or{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          tiktok.com/@username/video/ID
+        </code>{" "}
+        format.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your TikTok QR code now
+      </h2>
+      <p>
+        Ready to turn offline moments into TikTok follows and views?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your TikTok profile or video URL, customize your design, and
+        download a print-ready code in under a minute. Static codes are free.
+        Upgrade to Pro for dynamic links, scan analytics, and editable
+        destinations.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-instagram"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Instagram (Profile, Post, Reel & Print)
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about TikTok QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
+
+export function GoogleFormQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Google Forms is one of the most popular tools for collecting responses -
+        surveys, sign-ups, RSVPs, feedback, quizzes, and lead capture. A{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for your Google Form
+        </strong>{" "}
+        lets people open the form with a single scan, no typing required. Print
+        it on event badges, table tents, posters, packaging, or handouts, and
+        responses start rolling in.
+      </p>
+      <p>
+        This guide covers how to get the correct share link from Google Forms,
+        Google&apos;s built-in QR option vs a branded code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , static vs dynamic QR codes, practical use cases, print tips, making
+        your form mobile-friendly, and the permissions settings that can block
+        scanners.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get the correct Google Form share link
+      </h2>
+      <p>
+        Before creating a QR code, you need the right URL. Google Forms has
+        multiple link types - and using the wrong one is a common mistake.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        The share link (respondent link)
+      </h3>
+      <p>This is the link you want for your QR code:</p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open your Google Form in edit mode.</li>
+        <li>
+          Click the{" "}
+          <strong className="text-[var(--foreground)]">Send</strong> button
+          (top-right corner).
+        </li>
+        <li>
+          In the Send form dialog, click the{" "}
+          <strong className="text-[var(--foreground)]">link icon</strong> (the
+          chain icon, second from left).
+        </li>
+        <li>
+          Optionally check{" "}
+          <strong className="text-[var(--foreground)]">Shorten URL</strong> to
+          get a shorter link like{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            forms.gle/abc123
+          </code>{" "}
+          instead of the full URL.
+        </li>
+        <li>
+          Click <strong className="text-[var(--foreground)]">Copy</strong>.
+        </li>
+      </ol>
+      <p className="mt-4">
+        The share link format looks like:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://docs.google.com/forms/d/e/FORM_ID/viewform
+        </code>{" "}
+        or the shortened{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://forms.gle/abc123
+        </code>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Avoid the edit link
+      </h3>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Never use the URL from your browser&apos;s address bar while editing.
+        </strong>{" "}
+        That link ends in{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          /edit
+        </code>{" "}
+        and gives anyone who scans it editor access to your form. If you print
+        this link on 500 flyers, anyone can delete questions, view responses, or
+        change settings. Always use the Send dialog to get the respondent link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Pre-filled links
+      </h3>
+      <p>
+        Google Forms also supports pre-filled links where certain fields are
+        already populated. These are useful for tracking sources (e.g., a hidden
+        field with &quot;from_flyer&quot;) or reducing friction. To create one:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Click the three-dot menu (top-right) → Get pre-filled link.
+        </li>
+        <li>Fill in the values you want pre-populated.</li>
+        <li>Click Get link and copy it.</li>
+      </ol>
+      <p className="mt-4">
+        Pre-filled links are longer, which creates denser QR patterns. If
+        you&apos;re printing at small sizes, keep pre-filled data minimal.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Google&apos;s built-in QR code option
+      </h2>
+      <p>
+        Google recently added a native QR code feature to Google Forms. When you
+        click Send → link icon, you may see a QR code preview or a &quot;Show QR
+        code&quot; option below the link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Pros
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Built directly into Google Forms - no external tool needed</li>
+        <li>Quick to access and download</li>
+        <li>Free</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Cons
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">No customization:</strong>{" "}
+          Plain black-and-white design, no colors, no logo
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG only:</strong>{" "}
+          Limited resolution, not ideal for large-format print
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Static only:</strong> If
+          you need to swap the form later (e.g., next year&apos;s survey),
+          you&apos;ll need to reprint
+        </li>
+      </ul>
+      <p className="mt-4">
+        For quick internal use, Google&apos;s built-in QR works. For anything
+        branded, print-ready, or potentially needing updates, use a dedicated
+        generator.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a branded Google Form QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        A branded QR code with your colors, logo, and a cleaner design gets more
+        scans and looks professional on printed materials. Here&apos;s how:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Paste your Google Form share link (the{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            forms.gle
+          </code>{" "}
+          or{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            docs.google.com/forms
+          </code>{" "}
+          URL).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Style the code:</strong>{" "}
+          Choose foreground and background colors that match your brand. Adjust
+          module shape (rounded, square, dots). Add a logo if desired - see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test:</strong> Use your
+          phone&apos;s camera to scan the preview. Confirm the form opens
+          correctly.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong> Export
+          as SVG for print (scales cleanly to any size) or PNG for digital use.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: which type for Google Forms?
+      </h2>
+      <p>
+        Most Google Form URLs are stable - the form link does not change unless
+        you delete the form and create a new one. This makes{" "}
+        <strong className="text-[var(--foreground)]">static QR codes</strong>{" "}
+        suitable for many use cases.
+      </p>
+      <p>
+        However, consider a{" "}
+        <strong className="text-[var(--foreground)]">dynamic QR code</strong> if:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            You may swap forms later:
+          </strong>{" "}
+          Running the same feedback survey every quarter? A dynamic code lets
+          you point to next quarter&apos;s form without reprinting signs.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            You want scan analytics:
+          </strong>{" "}
+          Dynamic codes track how many scans, when, and from where - useful for
+          measuring campaign reach.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            The form might close or change:
+          </strong>{" "}
+          If you close the form after a deadline, you can redirect the QR to a
+          &quot;submissions closed&quot; page instead of showing an error.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Long-term print materials:
+          </strong>{" "}
+          Permanent signage, engraved plaques, or expensive print runs where
+          reprinting is costly.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For a deeper breakdown, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Use cases for Google Form QR codes
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Event check-in and sign-ups
+      </h3>
+      <p>
+        Print QR codes on event badges, registration tables, or entrance
+        signage. Attendees scan to check in, sign waivers, or register for
+        sessions. Faster than typing a URL, no app download required.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Customer feedback at the counter
+      </h3>
+      <p>
+        Restaurants, retail stores, and service businesses place QR codes on
+        receipts, table tents, or checkout counters. Customers scan while
+        waiting or after a purchase, and feedback arrives in your Google Sheet
+        instantly.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Classroom quizzes and assignments
+      </h3>
+      <p>
+        Teachers project a QR code on the board or print it on handouts.
+        Students scan with their phones to take a quiz, submit answers, or
+        complete an assignment - no need to dictate a long URL.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        RSVPs and invitations
+      </h3>
+      <p>
+        Wedding invitations, party flyers, and event posters can include a QR
+        code linking to an RSVP form. Guests scan and respond immediately,
+        reducing lost responses and follow-up emails.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Lead capture at trade shows
+      </h3>
+      <p>
+        Print a QR code on booth banners, flyers, or business cards. Prospects
+        scan to fill out a contact form, and leads flow directly into your
+        spreadsheet or CRM integration.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contact forms on product packaging
+      </h3>
+      <p>
+        Include a QR code on packaging that links to a warranty registration,
+        product feedback, or support request form. Customers scan after unboxing
+        rather than hunting for a website.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan checklist
+      </h2>
+      <p>
+        Before printing QR codes at scale, run through this checklist. For the
+        full guide, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Size
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum:</strong> At
+          least 2 cm (0.8 in) for close-up scanning (table tents, handouts).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Distance rule:</strong>{" "}
+          Code width should be roughly 1/10 of the expected scan distance. A
+          poster viewed from 2 meters needs a code at least 20 cm wide.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contrast
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Dark on light works best.
+          </strong>{" "}
+          Black on white is safest. Brand colors work if contrast is high.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid light-on-dark.
+          </strong>{" "}
+          White on black or subtle color differences often fail.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No gradients.</strong>{" "}
+          Keep modules solid.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Quiet zone
+      </h3>
+      <p>
+        Leave at least 4 modules of empty space around all edges. Crowding the
+        code against borders or text makes it harder to scan.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Test on real devices
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Print a proof at final size.</li>
+        <li>Scan with both iPhone and Android camera apps.</li>
+        <li>Test in the lighting conditions where it will be seen.</li>
+        <li>Confirm the form opens correctly and is usable on mobile.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Export format
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">SVG</strong> for print -
+          scales to any size without pixelation.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG</strong> at high
+          resolution for digital use or if your printer cannot handle SVG.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Make your Google Form mobile-friendly
+      </h2>
+      <p>
+        A QR code is useless if people scan it, see the form, and abandon it
+        because it is frustrating on mobile. Most QR scans happen on
+        smartphones, so optimize accordingly:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Keep forms short.
+          </strong>{" "}
+          Every extra field increases abandonment. Ask only what you need.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Use multiple choice and dropdowns.
+          </strong>{" "}
+          Tapping options is faster than typing on a phone keyboard.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Break long forms into sections.
+          </strong>{" "}
+          Google Forms&apos; section feature shows progress and reduces
+          overwhelm.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Preview on a phone.
+          </strong>{" "}
+          Open your form on mobile before printing QR codes. Check font sizes,
+          tap targets, and scroll behavior.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid required file uploads.
+          </strong>{" "}
+          Uploading files on mobile is friction-heavy. If you need files,
+          consider making that field optional or using a follow-up workflow.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Permissions that block scanners
+      </h2>
+      <p>
+        Google Forms has sharing and access settings that can prevent people
+        from filling out your form. Before printing QR codes, check these:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        &quot;Restrict to users in your organization&quot;
+      </h3>
+      <p>
+        In Google Workspace (business/education accounts), forms can be
+        restricted to users in your organization. If this is enabled, anyone
+        outside your organization who scans the QR code will see a &quot;You
+        need permission&quot; error.
+      </p>
+      <p className="mt-2">
+        To fix: Open the form → Settings → Responses →{" "}
+        <strong className="text-[var(--foreground)]">uncheck</strong>{" "}
+        &quot;Restrict to users in [your organization]&quot; if you want public
+        responses.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        &quot;Limit to 1 response&quot; with sign-in required
+      </h3>
+      <p>
+        If you enable &quot;Limit to 1 response,&quot; Google requires sign-in
+        to track who has responded. This blocks anyone without a Google account
+        (or who is not signed in). They will see a login prompt before the form.
+      </p>
+      <p className="mt-2">
+        If you need one response per person but want to allow non-signed-in
+        users, you will need an alternative approach (e.g., a hidden field for
+        tracking, or accepting that some duplicates may occur).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Form closed / not accepting responses
+      </h3>
+      <p>
+        If your form is closed (Settings → Responses → toggle off &quot;Accepting
+        responses&quot;), scanners will see a &quot;This form is no longer
+        accepting responses&quot; message. Make sure to check this before events
+        and after deadlines.
+      </p>
+      <p className="mt-2">
+        <strong className="text-[var(--foreground)]">Tip:</strong> If you use a
+        dynamic QR code, you can redirect scanners to a custom page when the
+        form closes, rather than showing Google&apos;s default error.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Security note
+      </h2>
+      <p>
+        QR code scams (phishing via QR, or &quot;quishing&quot;) are on the
+        rise. If you are distributing QR codes publicly, scanners may be wary -
+        especially of codes placed over existing signage. For guidance on making
+        your codes trustworthy and spotting tampered codes, see{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          Quishing Season: How to Spot a Fake QR Code
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a QR code for a Google Form that requires a file upload?
+      </h3>
+      <p>
+        Yes, but file uploads require the respondent to be signed in to a Google
+        account. If your form has file upload questions, only signed-in users
+        can submit. This may reduce response rates from people who are not
+        logged in or do not have Google accounts.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What happens if I edit the form after printing QR codes?
+      </h3>
+      <p>
+        Editing questions, adding sections, or changing settings does not change
+        the form URL. Your existing QR codes will still work and show the
+        updated form. However, if you delete the form and create a new one, the
+        URL changes and your printed codes will break.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code track who scanned it?
+      </h3>
+      <p>
+        A static QR code is just an encoded URL - it has no tracking built in.
+        Google Forms tracks responses (and respondent email if sign-in is
+        required), but the QR code itself does not know who scanned it. For scan
+        analytics (counts, locations, devices), use a dynamic QR code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name}
+        </Link>{" "}
+        (Pro plan).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I use a short URL like forms.gle?
+      </h3>
+      <p>
+        Yes. Google&apos;s shortened{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          forms.gle
+        </code>{" "}
+        links work fine and produce slightly simpler QR patterns. However, the
+        difference is minimal for most print sizes. Use whichever is more
+        convenient.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I password-protect a Google Form?
+      </h3>
+      <p>
+        Google Forms does not have built-in password protection. The common
+        workaround is to add a short-answer question at the top asking for a
+        password, then use form validation to check the answer before allowing
+        submission. This is not secure - the form content is visible to anyone
+        with the link - but it adds a light barrier.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use the shortened forms.gle link or the full URL?
+      </h3>
+      <p>
+        Either works. The shortened link produces a marginally less dense QR
+        pattern, but modern phones scan both equally well at typical print
+        sizes. Use the short link if you also plan to display the URL as text
+        (easier to type manually as a fallback).
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your Google Form QR code now
+      </h2>
+      <p>
+        Ready to turn your Google Form into a scannable link?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your form&apos;s share link, customize the design with your
+        brand colors and logo, and download a print-ready code in under a
+        minute. Static codes are free. Upgrade to Pro for dynamic links, scan
+        analytics, and the ability to swap forms without reprinting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/finish-the-qr-workflow"
+            className="text-[var(--brand-2)] underline"
+          >
+            Building a QR Workflow People Actually Finish
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about Google Form QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

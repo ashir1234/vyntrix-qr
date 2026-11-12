@@ -8,6 +8,7 @@ import {
   ErrorCorrectionLogosPost,
   FacebookQrCodeGuidePost,
   FinishTheQrWorkflowPost,
+  GoogleFormQrCodeGuidePost,
   Gs1Sunrise2027Post,
   InstagramQrCodeGuidePost,
   LinkedInQrCodeGuidePost,
@@ -20,6 +21,7 @@ import {
   SmallBusinessQrPlaybookPost,
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
+  TikTokQrCodeGuidePost,
   WhatsAppQrCodeGuidePost,
   YouTubeQrCodeGuidePost,
 } from "@/components/blog/posts";
@@ -51,6 +53,8 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-generate-qr-code-for-facebook": () => <FacebookQrCodeGuidePost />,
   "how-to-make-qr-code-for-instagram": () => <InstagramQrCodeGuidePost />,
   "how-to-make-whatsapp-qr-code": () => <WhatsAppQrCodeGuidePost />,
+  "how-to-make-qr-code-for-tiktok": () => <TikTokQrCodeGuidePost />,
+  "how-to-make-qr-code-for-google-form": () => <GoogleFormQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
