@@ -7071,3 +7071,649 @@ export function TikTokQrCodeGuidePost() {
     </article>
   );
 }
+
+export function GoogleFormQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Google Forms is one of the most popular tools for collecting responses -
+        surveys, sign-ups, RSVPs, feedback, quizzes, and lead capture. A{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for your Google Form
+        </strong>{" "}
+        lets people open the form with a single scan, no typing required. Print
+        it on event badges, table tents, posters, packaging, or handouts, and
+        responses start rolling in.
+      </p>
+      <p>
+        This guide covers how to get the correct share link from Google Forms,
+        Google&apos;s built-in QR option vs a branded code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , static vs dynamic QR codes, practical use cases, print tips, making
+        your form mobile-friendly, and the permissions settings that can block
+        scanners.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get the correct Google Form share link
+      </h2>
+      <p>
+        Before creating a QR code, you need the right URL. Google Forms has
+        multiple link types - and using the wrong one is a common mistake.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        The share link (respondent link)
+      </h3>
+      <p>This is the link you want for your QR code:</p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open your Google Form in edit mode.</li>
+        <li>
+          Click the{" "}
+          <strong className="text-[var(--foreground)]">Send</strong> button
+          (top-right corner).
+        </li>
+        <li>
+          In the Send form dialog, click the{" "}
+          <strong className="text-[var(--foreground)]">link icon</strong> (the
+          chain icon, second from left).
+        </li>
+        <li>
+          Optionally check{" "}
+          <strong className="text-[var(--foreground)]">Shorten URL</strong> to
+          get a shorter link like{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            forms.gle/abc123
+          </code>{" "}
+          instead of the full URL.
+        </li>
+        <li>
+          Click <strong className="text-[var(--foreground)]">Copy</strong>.
+        </li>
+      </ol>
+      <p className="mt-4">
+        The share link format looks like:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://docs.google.com/forms/d/e/FORM_ID/viewform
+        </code>{" "}
+        or the shortened{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://forms.gle/abc123
+        </code>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Avoid the edit link
+      </h3>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Never use the URL from your browser&apos;s address bar while editing.
+        </strong>{" "}
+        That link ends in{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          /edit
+        </code>{" "}
+        and gives anyone who scans it editor access to your form. If you print
+        this link on 500 flyers, anyone can delete questions, view responses, or
+        change settings. Always use the Send dialog to get the respondent link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Pre-filled links
+      </h3>
+      <p>
+        Google Forms also supports pre-filled links where certain fields are
+        already populated. These are useful for tracking sources (e.g., a hidden
+        field with &quot;from_flyer&quot;) or reducing friction. To create one:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Click the three-dot menu (top-right) → Get pre-filled link.
+        </li>
+        <li>Fill in the values you want pre-populated.</li>
+        <li>Click Get link and copy it.</li>
+      </ol>
+      <p className="mt-4">
+        Pre-filled links are longer, which creates denser QR patterns. If
+        you&apos;re printing at small sizes, keep pre-filled data minimal.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Google&apos;s built-in QR code option
+      </h2>
+      <p>
+        Google recently added a native QR code feature to Google Forms. When you
+        click Send → link icon, you may see a QR code preview or a &quot;Show QR
+        code&quot; option below the link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Pros
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Built directly into Google Forms - no external tool needed</li>
+        <li>Quick to access and download</li>
+        <li>Free</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Cons
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">No customization:</strong>{" "}
+          Plain black-and-white design, no colors, no logo
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG only:</strong>{" "}
+          Limited resolution, not ideal for large-format print
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Static only:</strong> If
+          you need to swap the form later (e.g., next year&apos;s survey),
+          you&apos;ll need to reprint
+        </li>
+      </ul>
+      <p className="mt-4">
+        For quick internal use, Google&apos;s built-in QR works. For anything
+        branded, print-ready, or potentially needing updates, use a dedicated
+        generator.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Creating a branded Google Form QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        A branded QR code with your colors, logo, and a cleaner design gets more
+        scans and looks professional on printed materials. Here&apos;s how:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Paste your Google Form share link (the{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            forms.gle
+          </code>{" "}
+          or{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            docs.google.com/forms
+          </code>{" "}
+          URL).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Style the code:</strong>{" "}
+          Choose foreground and background colors that match your brand. Adjust
+          module shape (rounded, square, dots). Add a logo if desired - see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Test:</strong> Use your
+          phone&apos;s camera to scan the preview. Confirm the form opens
+          correctly.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download:</strong> Export
+          as SVG for print (scales cleanly to any size) or PNG for digital use.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: which type for Google Forms?
+      </h2>
+      <p>
+        Most Google Form URLs are stable - the form link does not change unless
+        you delete the form and create a new one. This makes{" "}
+        <strong className="text-[var(--foreground)]">static QR codes</strong>{" "}
+        suitable for many use cases.
+      </p>
+      <p>
+        However, consider a{" "}
+        <strong className="text-[var(--foreground)]">dynamic QR code</strong> if:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            You may swap forms later:
+          </strong>{" "}
+          Running the same feedback survey every quarter? A dynamic code lets
+          you point to next quarter&apos;s form without reprinting signs.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            You want scan analytics:
+          </strong>{" "}
+          Dynamic codes track how many scans, when, and from where - useful for
+          measuring campaign reach.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            The form might close or change:
+          </strong>{" "}
+          If you close the form after a deadline, you can redirect the QR to a
+          &quot;submissions closed&quot; page instead of showing an error.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Long-term print materials:
+          </strong>{" "}
+          Permanent signage, engraved plaques, or expensive print runs where
+          reprinting is costly.
+        </li>
+      </ul>
+      <p className="mt-4">
+        For a deeper breakdown, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Use cases for Google Form QR codes
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Event check-in and sign-ups
+      </h3>
+      <p>
+        Print QR codes on event badges, registration tables, or entrance
+        signage. Attendees scan to check in, sign waivers, or register for
+        sessions. Faster than typing a URL, no app download required.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Customer feedback at the counter
+      </h3>
+      <p>
+        Restaurants, retail stores, and service businesses place QR codes on
+        receipts, table tents, or checkout counters. Customers scan while
+        waiting or after a purchase, and feedback arrives in your Google Sheet
+        instantly.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Classroom quizzes and assignments
+      </h3>
+      <p>
+        Teachers project a QR code on the board or print it on handouts.
+        Students scan with their phones to take a quiz, submit answers, or
+        complete an assignment - no need to dictate a long URL.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        RSVPs and invitations
+      </h3>
+      <p>
+        Wedding invitations, party flyers, and event posters can include a QR
+        code linking to an RSVP form. Guests scan and respond immediately,
+        reducing lost responses and follow-up emails.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Lead capture at trade shows
+      </h3>
+      <p>
+        Print a QR code on booth banners, flyers, or business cards. Prospects
+        scan to fill out a contact form, and leads flow directly into your
+        spreadsheet or CRM integration.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contact forms on product packaging
+      </h3>
+      <p>
+        Include a QR code on packaging that links to a warranty registration,
+        product feedback, or support request form. Customers scan after unboxing
+        rather than hunting for a website.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan checklist
+      </h2>
+      <p>
+        Before printing QR codes at scale, run through this checklist. For the
+        full guide, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Size
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum:</strong> At
+          least 2 cm (0.8 in) for close-up scanning (table tents, handouts).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Distance rule:</strong>{" "}
+          Code width should be roughly 1/10 of the expected scan distance. A
+          poster viewed from 2 meters needs a code at least 20 cm wide.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Contrast
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Dark on light works best.
+          </strong>{" "}
+          Black on white is safest. Brand colors work if contrast is high.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid light-on-dark.
+          </strong>{" "}
+          White on black or subtle color differences often fail.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No gradients.</strong>{" "}
+          Keep modules solid.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Quiet zone
+      </h3>
+      <p>
+        Leave at least 4 modules of empty space around all edges. Crowding the
+        code against borders or text makes it harder to scan.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Test on real devices
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Print a proof at final size.</li>
+        <li>Scan with both iPhone and Android camera apps.</li>
+        <li>Test in the lighting conditions where it will be seen.</li>
+        <li>Confirm the form opens correctly and is usable on mobile.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Export format
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">SVG</strong> for print -
+          scales to any size without pixelation.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">PNG</strong> at high
+          resolution for digital use or if your printer cannot handle SVG.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Make your Google Form mobile-friendly
+      </h2>
+      <p>
+        A QR code is useless if people scan it, see the form, and abandon it
+        because it is frustrating on mobile. Most QR scans happen on
+        smartphones, so optimize accordingly:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Keep forms short.
+          </strong>{" "}
+          Every extra field increases abandonment. Ask only what you need.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Use multiple choice and dropdowns.
+          </strong>{" "}
+          Tapping options is faster than typing on a phone keyboard.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Break long forms into sections.
+          </strong>{" "}
+          Google Forms&apos; section feature shows progress and reduces
+          overwhelm.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Preview on a phone.
+          </strong>{" "}
+          Open your form on mobile before printing QR codes. Check font sizes,
+          tap targets, and scroll behavior.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Avoid required file uploads.
+          </strong>{" "}
+          Uploading files on mobile is friction-heavy. If you need files,
+          consider making that field optional or using a follow-up workflow.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Permissions that block scanners
+      </h2>
+      <p>
+        Google Forms has sharing and access settings that can prevent people
+        from filling out your form. Before printing QR codes, check these:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        &quot;Restrict to users in your organization&quot;
+      </h3>
+      <p>
+        In Google Workspace (business/education accounts), forms can be
+        restricted to users in your organization. If this is enabled, anyone
+        outside your organization who scans the QR code will see a &quot;You
+        need permission&quot; error.
+      </p>
+      <p className="mt-2">
+        To fix: Open the form → Settings → Responses →{" "}
+        <strong className="text-[var(--foreground)]">uncheck</strong>{" "}
+        &quot;Restrict to users in [your organization]&quot; if you want public
+        responses.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        &quot;Limit to 1 response&quot; with sign-in required
+      </h3>
+      <p>
+        If you enable &quot;Limit to 1 response,&quot; Google requires sign-in
+        to track who has responded. This blocks anyone without a Google account
+        (or who is not signed in). They will see a login prompt before the form.
+      </p>
+      <p className="mt-2">
+        If you need one response per person but want to allow non-signed-in
+        users, you will need an alternative approach (e.g., a hidden field for
+        tracking, or accepting that some duplicates may occur).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Form closed / not accepting responses
+      </h3>
+      <p>
+        If your form is closed (Settings → Responses → toggle off &quot;Accepting
+        responses&quot;), scanners will see a &quot;This form is no longer
+        accepting responses&quot; message. Make sure to check this before events
+        and after deadlines.
+      </p>
+      <p className="mt-2">
+        <strong className="text-[var(--foreground)]">Tip:</strong> If you use a
+        dynamic QR code, you can redirect scanners to a custom page when the
+        form closes, rather than showing Google&apos;s default error.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Security note
+      </h2>
+      <p>
+        QR code scams (phishing via QR, or &quot;quishing&quot;) are on the
+        rise. If you are distributing QR codes publicly, scanners may be wary -
+        especially of codes placed over existing signage. For guidance on making
+        your codes trustworthy and spotting tampered codes, see{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          Quishing Season: How to Spot a Fake QR Code
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a QR code for a Google Form that requires a file upload?
+      </h3>
+      <p>
+        Yes, but file uploads require the respondent to be signed in to a Google
+        account. If your form has file upload questions, only signed-in users
+        can submit. This may reduce response rates from people who are not
+        logged in or do not have Google accounts.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What happens if I edit the form after printing QR codes?
+      </h3>
+      <p>
+        Editing questions, adding sections, or changing settings does not change
+        the form URL. Your existing QR codes will still work and show the
+        updated form. However, if you delete the form and create a new one, the
+        URL changes and your printed codes will break.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code track who scanned it?
+      </h3>
+      <p>
+        A static QR code is just an encoded URL - it has no tracking built in.
+        Google Forms tracks responses (and respondent email if sign-in is
+        required), but the QR code itself does not know who scanned it. For scan
+        analytics (counts, locations, devices), use a dynamic QR code from{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name}
+        </Link>{" "}
+        (Pro plan).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I use a short URL like forms.gle?
+      </h3>
+      <p>
+        Yes. Google&apos;s shortened{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          forms.gle
+        </code>{" "}
+        links work fine and produce slightly simpler QR patterns. However, the
+        difference is minimal for most print sizes. Use whichever is more
+        convenient.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I password-protect a Google Form?
+      </h3>
+      <p>
+        Google Forms does not have built-in password protection. The common
+        workaround is to add a short-answer question at the top asking for a
+        password, then use form validation to check the answer before allowing
+        submission. This is not secure - the form content is visible to anyone
+        with the link - but it adds a light barrier.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use the shortened forms.gle link or the full URL?
+      </h3>
+      <p>
+        Either works. The shortened link produces a marginally less dense QR
+        pattern, but modern phones scan both equally well at typical print
+        sizes. Use the short link if you also plan to display the URL as text
+        (easier to type manually as a fallback).
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your Google Form QR code now
+      </h2>
+      <p>
+        Ready to turn your Google Form into a scannable link?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your form&apos;s share link, customize the design with your
+        brand colors and logo, and download a print-ready code in under a
+        minute. Static codes are free. Upgrade to Pro for dynamic links, scan
+        analytics, and the ability to swap forms without reprinting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/finish-the-qr-workflow"
+            className="text-[var(--brand-2)] underline"
+          >
+            Building a QR Workflow People Actually Finish
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about Google Form QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

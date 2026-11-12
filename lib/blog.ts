@@ -305,6 +305,23 @@ export const blogPosts: BlogPost[] = [
       "tiktok qr code generator",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-google-form",
+    title: "How to Make a QR Code for a Google Form (Survey, Sign-Up & Print)",
+    description:
+      "A practical guide to creating QR codes for Google Forms - getting the right share link, Google's built-in QR vs branded codes, static vs dynamic for form swaps, use cases from event sign-ins to classroom quizzes, print tips, mobile-friendly forms, and permissions that block scanners.",
+    date: "2026-11-12",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a qr code for a google form",
+      "google form qr code",
+      "qr code for google forms",
+      "google forms qr code generator",
+      "google form survey qr code",
+      "google form sign up qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
