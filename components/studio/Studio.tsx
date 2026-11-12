@@ -171,24 +171,18 @@ export function Studio() {
   const [view, setView] = useState<"3d" | "2d">("3d");
   const [scanning, setScanning] = useState(false);
   const [flip, setFlip] = useState(false);
-  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
-    try {
-      setShowHint(localStorage.getItem("vyntrix_onboarded") !== "1");
-    } catch {
-      setShowHint(true);
-    }
     trackEvent("studio_start");
   }, []);
 
   const dismissHint = () => {
-    setShowHint(false);
     try {
       localStorage.setItem("vyntrix_onboarded", "1");
     } catch {
       /* storage unavailable */
     }
+    document.documentElement.dataset.onboarded = "1";
   };
 
   const data = useMemo(
@@ -213,8 +207,7 @@ export function Studio() {
 
   return (
     <>
-      {showHint && (
-        <div className="mx-auto mt-4 w-[min(1200px,95vw)]">
+      <div className="onboard-hint mx-auto mt-4 w-[min(1200px,95vw)]">
           <div className="glass flex flex-col items-start justify-between gap-3 rounded-2xl px-4 py-3 sm:flex-row sm:items-center">
             <p className="text-sm text-[var(--muted)]">
               <span className="font-medium text-[var(--foreground)]">
@@ -234,7 +227,6 @@ export function Studio() {
             </button>
           </div>
         </div>
-      )}
       <div className="mx-auto grid w-[min(1200px,95vw)] gap-5 py-6 lg:grid-cols-[minmax(0,380px)_1fr]">
         {/* Left: controls */}
       <div className="glass rounded-2xl p-4">

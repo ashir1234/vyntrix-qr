@@ -39,6 +39,10 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+html[data-onboarded="1"] .onboard-hint {
+  display: none;
+}
+
 body {
   background-image:
     radial-gradient(55rem 55rem at 8% -12%, rgba(16, 185, 129, 0.2), transparent 58%),

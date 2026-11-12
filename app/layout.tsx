@@ -107,6 +107,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* Before first paint, so a dismissed studio hint never pushes the grid. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("vyntrix_onboarded")==="1")document.documentElement.dataset.onboarded="1"}catch(e){}`,
+          }}
+        />
         {/* JSON-LD is static + identical on server and client, safe in head */}
         <script
           type="application/ld+json"
