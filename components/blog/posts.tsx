@@ -7717,3 +7717,542 @@ export function GoogleFormQrCodeGuidePost() {
     </article>
   );
 }
+
+export function WifiQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A WiFi QR code lets guests connect to your network by pointing their
+        phone camera at a printed code - no spelling out the password, no
+        &quot;is that an uppercase or lowercase L?&quot; A café can tape one by
+        the counter.
+        An Airbnb can frame one on the bedside table. A home office can stick
+        one on the fridge. This guide covers how WiFi QR codes work, the payload
+        format phones expect, how to create one in {siteConfig.name}, and what
+        to know about guest networks, reprinting, and troubleshooting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What a WiFi QR code is
+      </h2>
+      <p>
+        When you scan a WiFi QR code, your phone reads a specially formatted
+        text string that tells it the network name (SSID), password, and
+        security type. The phone then offers to join that network automatically.
+        iPhone (iOS 11+) and Android (8.0+) both support this natively - no app
+        required, just the default camera or the built-in WiFi settings share
+        feature.
+      </p>
+      <p>
+        This is different from a URL QR code. A WiFi code does not send you to a
+        website; it configures a network connection directly. Once the phone
+        joins, it stays connected until you leave range or forget the network.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        The WIFI: payload format
+      </h2>
+      <p>
+        The standard format that phones recognize looks like this:
+      </p>
+      <pre className="bg-[var(--surface)] p-4 rounded text-sm overflow-x-auto text-[var(--foreground)]">
+        WIFI:T:WPA;S:MyNetwork;P:MyPassword;H:false;;
+      </pre>
+      <p>
+        Each part means:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            T:
+          </code>{" "}
+          - Security type: <strong>WPA</strong> (covers WPA, WPA2, and WPA3),{" "}
+          <strong>WEP</strong>, or <strong>nopass</strong> for open networks.
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            S:
+          </code>{" "}
+          - The SSID (network name), exactly as it appears in your router
+          settings.
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            P:
+          </code>{" "}
+          - The password. Omit this field entirely for open networks.
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            H:
+          </code>{" "}
+          - Hidden network flag: <strong>true</strong> if your SSID is hidden
+          (not broadcast), <strong>false</strong> otherwise.
+        </li>
+      </ul>
+      <p>
+        The double semicolon at the end is required by the spec.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Security types explained
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong>WPA</strong> - Use this for WPA, WPA2, or WPA3 networks (which
+          is nearly every modern home router). The QR format uses &quot;WPA&quot;
+          as a catch-all.
+        </li>
+        <li>
+          <strong>WEP</strong> - An old, insecure standard. If your network
+          still uses WEP, the QR code will work, but you should upgrade your
+          router security.
+        </li>
+        <li>
+          <strong>nopass</strong> - For open networks with no password. The
+          P: field is omitted entirely.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Escaping special characters
+      </h3>
+      <p>
+        If your SSID or password contains special characters, they must be
+        escaped with a backslash. The characters that need escaping are:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            ;
+          </code>{" "}
+          → <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">\;</code>
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            ,
+          </code>{" "}
+          → <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">\,</code>
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            :
+          </code>{" "}
+          → <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">\:</code>
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            \
+          </code>{" "}
+          → <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">\\</code>
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            &quot;
+          </code>{" "}
+          → <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">\&quot;</code>
+        </li>
+      </ul>
+      <p>
+        For example, if your password is{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          P@ss:word;123
+        </code>
+        , it becomes{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          P@ss\:word\;123
+        </code>{" "}
+        in the payload. {siteConfig.name} handles this escaping automatically
+        when you enter your credentials in the WiFi code builder.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How phones handle WiFi QR codes
+      </h2>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        iPhone (iOS 11+)
+      </h3>
+      <p>
+        Open the Camera app and point it at the QR code. A notification banner
+        appears: &quot;Join [Network Name]?&quot; Tap it, and the phone connects. No
+        separate QR scanner app needed. You can also scan from Control Center by
+        long-pressing the WiFi/Bluetooth panel and tapping the QR icon.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Android (8.0+)
+      </h3>
+      <p>
+        Most Android phones recognize WiFi QR codes through the default Camera
+        app. Some manufacturers (Samsung, Pixel, OnePlus) also let you share
+        your current WiFi connection as a QR code from Settings → WiFi →
+        tap your connected network → Share. This generates the same WIFI:
+        format for someone else to scan.
+      </p>
+      <p>
+        Older Android versions or budget phones may require Google Lens or a
+        dedicated QR scanner app.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: creating a WiFi QR code in {siteConfig.name}
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong>Open the Studio:</strong>{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+        </li>
+        <li>
+          <strong>Select WiFi code type:</strong> In the code type selector,
+          choose &quot;WiFi.&quot;
+        </li>
+        <li>
+          <strong>Enter network details:</strong> Type your SSID exactly as it
+          appears in your router settings. Enter the password. Select WPA (for
+          WPA/WPA2/WPA3), WEP, or None for open networks. Check &quot;Hidden
+          network&quot; if your SSID is not broadcast.
+        </li>
+        <li>
+          <strong>Customize appearance:</strong> Pick colors, add a logo if
+          desired, adjust the module shape. The preview updates live.
+        </li>
+        <li>
+          <strong>Test the scan:</strong> Use your phone camera on the preview
+          to confirm it connects to the right network.
+        </li>
+        <li>
+          <strong>Download:</strong> Export as SVG (ideal for print) or PNG.
+          Static WiFi codes are free and unlimited.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Guest network security advice
+      </h2>
+      <p>
+        If you&apos;re printing a WiFi QR code for guests - whether at a
+        business or at home - use a separate guest network, not your main one.
+        Here&apos;s why:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong>Network isolation:</strong> A guest network keeps visitors off
+          your primary network where your computers, printers, and smart home
+          devices live. Most routers let you enable &quot;client isolation&quot;
+          or &quot;AP isolation&quot; so guests cannot see each other either.
+        </li>
+        <li>
+          <strong>Bandwidth limits:</strong> Many routers let you cap guest
+          bandwidth so one user streaming video does not slow everyone else.
+        </li>
+        <li>
+          <strong>Simpler password rotation:</strong> When you change the guest
+          password, you do not have to reconnect every device you own.
+        </li>
+      </ul>
+      <p>
+        The trade-off: a WiFi QR code is static. The password is embedded in the
+        code at generation time. If you rotate the password, you need to reprint
+        the code. For high-traffic locations like cafés, reprinting a small card
+        quarterly is minor maintenance. For a home fridge card, you may never
+        need to change it.
+      </p>
+      <p>
+        Learn more about when reprinting static codes outweighs dynamic
+        alternatives in{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Privacy: static generation keeps your password local
+      </h2>
+      <p>
+        When you create a WiFi QR code in {siteConfig.name}, the code is
+        generated entirely in your browser. Your SSID and password are not sent
+        to our servers. This is the same client-side approach we use for all
+        static codes - your credentials stay on your device until you download
+        the image.
+      </p>
+      <p>
+        This matters for WiFi codes more than most: you are literally encoding
+        network access. Using a privacy-respecting generator means one fewer
+        place your password could leak. For more on how this works, see{" "}
+        <Link
+          href="/blog/static-qr-privacy-in-the-browser"
+          className="text-[var(--brand-2)] underline"
+        >
+          How Static QR Generation Stays Private in Your Browser
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Printing tips for different settings
+      </h2>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Cafés and restaurants
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Print on a small tent card or sticker for each table. Laminate if
+          possible - coffee spills happen.
+        </li>
+        <li>
+          Size: 3-4 cm minimum for table-top scanning distance.
+        </li>
+        <li>
+          Include the network name as text below the code for guests who prefer
+          to type manually.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Airbnbs and vacation rentals
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Frame a card with the QR code near the router or on the bedside table.
+        </li>
+        <li>
+          Include brief instructions: &quot;Scan with your phone camera to
+          connect.&quot;
+        </li>
+        <li>
+          Consider adding the code to your digital welcome guide PDF as well.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Offices and coworking spaces
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Post in reception areas, conference rooms, and common areas.
+        </li>
+        <li>
+          For multiple networks (guest vs. internal), print separate codes with
+          clear labels.
+        </li>
+        <li>
+          If the guest network password rotates monthly, consider a dynamic QR
+          code that redirects to a page showing the current credentials -
+          though this adds a step for the user.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Home fridge card
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          A simple card on the fridge handles visiting family, babysitters, or
+          contractors.
+        </li>
+        <li>
+          No need for fancy design - a clean printout works fine.
+        </li>
+        <li>
+          If you rarely change your guest password, one printout can last years.
+        </li>
+      </ul>
+      <p>
+        For detailed print specs - sizing for distance, SVG vs PNG, quiet zones,
+        contrast - see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Troubleshooting: why a WiFi QR code won&apos;t connect
+      </h2>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        1. Wrong security type
+      </h3>
+      <p>
+        If you selected WPA but your router actually uses WEP (or vice versa),
+        the phone will try to connect with the wrong protocol and fail. Check
+        your router admin page for the exact security mode.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        2. Typo in SSID or password
+      </h3>
+      <p>
+        The SSID must match exactly - including capitalization and any trailing
+        spaces. Same for the password. Copy-paste from your router settings if
+        possible, rather than typing from memory.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        3. Hidden network not flagged
+      </h3>
+      <p>
+        If your network is hidden (does not broadcast its SSID) but you left
+        H:false in the QR code, some phones will fail to connect because they
+        cannot find a network matching that name. Set H:true when generating the
+        code.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        4. Special characters not escaped
+      </h3>
+      <p>
+        If your password contains semicolons, colons, commas, backslashes, or
+        quotes, they must be escaped. {siteConfig.name} does this automatically,
+        but if you generated the code elsewhere or manually, double-check the
+        payload format.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        5. QR code is too small or damaged
+      </h3>
+      <p>
+        A worn, faded, or undersized print may not scan reliably. Reprint at a
+        larger size or higher quality. Laminate cards in high-traffic areas.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        6. Outdated phone OS
+      </h3>
+      <p>
+        iPhones need iOS 11+ and Android phones need 8.0+ for native WiFi QR
+        support. Older devices may need a third-party scanner app like Google
+        Lens.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        7. Enterprise networks (802.1X)
+      </h3>
+      <p>
+        The standard WIFI: format does not support enterprise authentication
+        with certificates or RADIUS. These networks require manual setup or
+        mobile device management (MDM) profiles.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Frequently asked questions
+      </h2>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does a WiFi QR code expire?
+      </h3>
+      <p>
+        No. The QR code itself is just an encoded text string - it does not
+        expire. However, if you change your WiFi password, the old code becomes
+        useless because it contains the old password. You will need to generate
+        and print a new code.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is it safe to post a WiFi QR code publicly?
+      </h3>
+      <p>
+        Only for a guest network you intend to share. Anyone who scans it gets
+        the password. Do not post a code for your primary network where
+        sensitive devices are connected. Use network isolation on your router to
+        keep guest traffic separate.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I create a WiFi QR code without revealing the password?
+      </h3>
+      <p>
+        No. The password is embedded in the code - that is how the phone can
+        connect automatically. If you do not want to share the password, you
+        cannot use a WiFi QR code. Consider a captive portal or manual entry
+        instead.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I add a logo to a WiFi QR code?
+      </h3>
+      <p>
+        Yes. {siteConfig.name} lets you add a centered logo. Keep it small
+        (under 20% of the code area) and test scanning after adding it. Error
+        correction gives some headroom, but a large logo can interfere with
+        scanning.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR code store my password forever?
+      </h3>
+      <p>
+        The password is in the printed code. Anyone who has the printed card has
+        the password. Treat it accordingly. If you need to revoke access, change
+        the password on your router and reprint the code.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your WiFi QR code now
+      </h2>
+      <p>
+        Ready to let guests connect without spelling out your password?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , select WiFi as the code type, enter your network details, customize
+        the design if you like, and download a print-ready code in under a
+        minute. Static WiFi codes are free - no account required, no password
+        sent to our servers.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related guides
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-qr-privacy-in-the-browser"
+            className="text-[var(--brand-2)] underline"
+          >
+            How Static QR Generation Stays Private in Your Browser
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            Quishing Season: How to Spot a Fake QR Code
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about WiFi QR codes or need help with your setup?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

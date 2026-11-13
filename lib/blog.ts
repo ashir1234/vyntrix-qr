@@ -322,6 +322,23 @@ export const blogPosts: BlogPost[] = [
       "google form sign up qr code",
     ],
   },
+  {
+    slug: "how-to-make-wifi-qr-code",
+    title: "How to Make a WiFi QR Code (Home, Guest Network & Print)",
+    description:
+      "A practical guide to creating WiFi QR codes - the WIFI: payload format for WPA/WPA2/WPA3/WEP/open networks, hidden SSIDs, escaping special characters, step-by-step creation in Vyntrix QR, guest network security tips, printing for cafes/Airbnbs/offices/home, and troubleshooting why codes won't connect.",
+    date: "2026-11-13",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a wifi qr code",
+      "wifi qr code generator",
+      "share wifi password with qr code",
+      "guest wifi qr code",
+      "wifi qr code",
+      "qr code for wifi password",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
