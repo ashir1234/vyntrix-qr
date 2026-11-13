@@ -23,6 +23,7 @@ import {
   StaticVsDynamicCostPost,
   TikTokQrCodeGuidePost,
   WhatsAppQrCodeGuidePost,
+  WifiQrCodeGuidePost,
   YouTubeQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
@@ -55,6 +56,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-whatsapp-qr-code": () => <WhatsAppQrCodeGuidePost />,
   "how-to-make-qr-code-for-tiktok": () => <TikTokQrCodeGuidePost />,
   "how-to-make-qr-code-for-google-form": () => <GoogleFormQrCodeGuidePost />,
+  "how-to-make-wifi-qr-code": () => <WifiQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
