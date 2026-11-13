@@ -107,6 +107,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <script
+          async
+          src="https://news.google.com/swg/js/v1/publisher.js"
+        />
         {/* Before first paint, so a dismissed studio hint never pushes the grid. */}
         <script
           dangerouslySetInnerHTML={{
