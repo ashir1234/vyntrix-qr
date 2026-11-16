@@ -8256,3 +8256,543 @@ export function WifiQrCodeGuidePost() {
     </article>
   );
 }
+
+export function GoogleReviewsQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A QR code for Google reviews takes the friction out of collecting
+        feedback. Instead of asking customers to &quot;search for us on
+        Google,&quot; you give them a scan that opens your review form
+        directly - one tap to leave a star rating and comment.
+      </p>
+      <p>
+        This guide walks through finding your Google Business Profile review
+        link, creating a branded QR code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Vyntrix QR Studio
+        </Link>
+        , printing it for maximum scans, and staying compliant with Google&apos;s
+        review policies.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Find your Google review link
+      </h2>
+      <p>
+        Google provides a direct review link from your Business Profile. This
+        link opens the review composer - not your listing - so customers land
+        one tap away from leaving feedback.
+      </p>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        On a computer (required for the QR code)
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Sign in to the Google account that manages your Business Profile.
+        </li>
+        <li>
+          Go to{" "}
+          <a
+            href="https://business.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--brand-2)] underline"
+          >
+            business.google.com
+          </a>{" "}
+          or search your business name on Google while signed in.
+        </li>
+        <li>
+          Select <strong className="text-[var(--foreground)]">Read reviews</strong>,
+          then <strong className="text-[var(--foreground)]">Get more reviews</strong>.
+          Some profiles show an &quot;Ask for reviews&quot; button instead - it
+          opens the same panel.
+        </li>
+        <li>
+          Click <strong className="text-[var(--foreground)]">Copy</strong> to
+          copy your unique review link.
+        </li>
+      </ol>
+      <p>
+        Your link will look like{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          g.page/r/XXXXX/review
+        </code>{" "}
+        or use the Place ID format:{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          search.google.com/local/writereview?placeid=YOUR_PLACE_ID
+        </code>
+        . Both open the same review form.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">Important:</strong> Google
+        notes that review QR codes can only be generated on a computer browser,
+        not on mobile devices. If you are on your phone, copy the link now and
+        make the code later on a computer. See{" "}
+        <a
+          href="https://support.google.com/business/answer/16816815"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--brand-2)] underline"
+        >
+          Google&apos;s official help page
+        </a>{" "}
+        for the current steps.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Verify before you print
+      </h3>
+      <p>
+        Open the link in an incognito window (signed out) to confirm it opens
+        your business&apos;s review form - not a similarly named competitor.
+        Customers need to be signed in to their Google account to submit a
+        review; the link may prompt them to sign in first.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Create your QR code in Vyntrix QR Studio
+      </h2>
+      <p>
+        While Google offers its own built-in QR code in the &quot;Get more
+        reviews&quot; panel (right-click to save), you may want a branded code
+        with your logo, colors, or a custom frame. Here is how to create one:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Vyntrix QR Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Select <strong className="text-[var(--foreground)]">URL</strong> as
+          the code type.
+        </li>
+        <li>
+          Paste your Google review link into the URL field.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Optional - make it
+          dynamic:</strong> Enable &quot;Dynamic QR&quot; if you want to track
+          scan counts or change the destination later without reprinting. This
+          creates a short link that redirects to your review URL.
+        </li>
+        <li>
+          Customize the design: add your logo (centered, keep it small), choose
+          brand colors, adjust the pattern style.
+        </li>
+        <li>
+          Download as <strong className="text-[var(--foreground)]">SVG</strong>{" "}
+          for print (scales perfectly) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          use.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 3: Test before you print
+      </h2>
+      <p>
+        Before ordering a print run, test your code on multiple devices:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Scan with both iPhone and Android camera apps.
+        </li>
+        <li>
+          Confirm the Google review form opens correctly.
+        </li>
+        <li>
+          If you added a logo, verify it does not interfere with scanning. Keep
+          the logo under 20% of the code area and test at the final print size.
+        </li>
+        <li>
+          Print a test proof at actual size and scan from the expected distance.
+        </li>
+      </ul>
+      <p>
+        For detailed scan testing and print specs, see{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 4: Where to place your review QR code
+      </h2>
+      <p>
+        The best placement catches customers when their experience is fresh and
+        positive. Here are proven spots:
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Counters and checkout areas
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          A small tent card or sticker near the register where customers pay.
+        </li>
+        <li>
+          Caption: &quot;Loved your visit? Leave us a review.&quot;
+        </li>
+        <li>
+          Keep it subtle - you are inviting, not pressuring.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Receipts
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Print the QR code at the bottom of paper receipts.
+        </li>
+        <li>
+          Many point-of-sale systems support adding a custom image to receipts.
+        </li>
+        <li>
+          Size it at least 2 cm (about 0.8 inches) wide for reliable scanning.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Table tents and menus (restaurants, cafes)
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          A small table tent near the check presenter or at the table edge.
+        </li>
+        <li>
+          Customers can scan while waiting for the bill - when the meal is still
+          fresh in mind.
+        </li>
+        <li>
+          For menu QR codes and review QR codes on the same table, use different
+          frames or colors to avoid confusion.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Invoices and proposals
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Add the QR code to PDF invoices or printed estimates for service
+          businesses.
+        </li>
+        <li>
+          Clients reviewing a completed project can scan and share feedback.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Product packaging
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Include a card inside the package or print on the box itself.
+        </li>
+        <li>
+          &quot;Love your purchase? Tell us on Google.&quot;
+        </li>
+        <li>
+          For e-commerce, consider a dynamic QR code so you can update the link
+          if you move platforms or add additional review destinations.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Follow-up emails and text messages
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Include the review link (not the QR code image) in email signatures
+          and follow-up messages.
+        </li>
+        <li>
+          Send a day or two after the service while the experience is fresh.
+        </li>
+        <li>
+          Keep the ask simple: &quot;If you have a minute, an honest review helps
+          people nearby decide to call us.&quot;
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print size and contrast tips
+      </h2>
+      <p>
+        A QR code that does not scan is a wasted opportunity. Follow these
+        basics:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Minimum size:</strong> At
+          least 2 cm (0.8 inches) for hand-held scanning. Use the 10:1 rule -
+          scan distance divided by 10 equals minimum code width.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background (black on white is safest). Avoid
+          placing codes on busy photos or patterned surfaces.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Keep
+          at least 4 modules of blank space around the code. Do not crowd it
+          with text or graphics.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Matte finish:</strong>{" "}
+          Glossy lamination can cause glare under store lights. Matte works
+          better for codes placed under overhead lighting.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">SVG for print:</strong>{" "}
+          Vector files scale without losing quality. Export SVG for anything
+          going to a print shop.
+        </li>
+      </ul>
+      <p>
+        For more print guidance, see our{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Google&apos;s review policy: what you can and cannot do
+      </h2>
+      <p>
+        Asking for reviews is allowed. Incentivizing or gating reviews is not.
+        Google&apos;s{" "}
+        <a
+          href="https://support.google.com/contributionpolicy/answer/7400114"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--brand-2)] underline"
+        >
+          Prohibited and Restricted Content policy
+        </a>{" "}
+        makes this clear:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Prohibited:</strong>{" "}
+          Offering payment, discounts, free goods, or services in exchange for
+          reviews.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Prohibited:</strong>{" "}
+          Asking customers to revise or remove negative reviews in exchange for
+          incentives.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Prohibited:</strong>{" "}
+          Pressuring or requiring customers to leave reviews while on the
+          premises, or requesting specific content.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Allowed:</strong>{" "}
+          Soliciting reviews that represent genuine experiences, without
+          offering incentives or attempting to influence the rating or content.
+        </li>
+      </ul>
+      <p>
+        Violations can result in reviews being removed, your profile displaying
+        a warning about fake reviews, or your Business Profile being temporarily
+        restricted from receiving new reviews. See{" "}
+        <a
+          href="https://support.google.com/business/answer/14114287"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--brand-2)] underline"
+        >
+          Google&apos;s Business Profile restrictions page
+        </a>{" "}
+        for the full list of consequences.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">In practice:</strong> Place
+        the QR code, invite customers to share honest feedback, and step back.
+        Never hover or watch them type. Train staff to ask - not pressure.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs. dynamic QR for review codes
+      </h2>
+      <p>
+        A static QR code embeds your Google review URL directly. If you ever
+        need to change the link (e.g., business moves, new Google listing),
+        you will need to reprint.
+      </p>
+      <p>
+        A dynamic QR code encodes a short redirect link. You can change the
+        destination without reprinting - useful if you sell the business or
+        merge locations. Dynamic codes also track scan counts, so you can see
+        how many people scanned (though not how many actually left reviews -
+        Google does not share that data externally).
+      </p>
+      <p>
+        For most small businesses printing a few table tents, static is fine.
+        For large print runs (thousands of receipts, packaging), dynamic reduces
+        risk. See{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          A Small-Business QR Playbook: Five Codes That Matter
+        </Link>{" "}
+        for more context on when dynamic codes are worth it.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Frequently asked questions
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Where do I get my Google review link?
+      </h3>
+      <p>
+        Sign in to the Google account that manages your Business Profile, go to
+        your profile, select &quot;Read reviews&quot; then &quot;Get more
+        reviews&quot; (or &quot;Ask for reviews&quot;), and click Copy to copy
+        your unique link. See{" "}
+        <a
+          href="https://support.google.com/business/answer/16816815"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[var(--brand-2)] underline"
+        >
+          Google&apos;s official instructions
+        </a>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I offer a discount for leaving a review?
+      </h3>
+      <p>
+        No. Google explicitly prohibits incentivizing reviews with payment,
+        discounts, or free goods/services. This includes &quot;review for a
+        10% off coupon&quot; offers. Violations can result in reviews being
+        removed and your profile being restricted.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I change the link after printing the QR code?
+      </h3>
+      <p>
+        Only if you use a dynamic QR code. Static codes embed the URL directly -
+        to change it, you must reprint. Dynamic codes use a redirect, so you can
+        update the destination anytime.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I know how many people scanned vs. left reviews?
+      </h3>
+      <p>
+        A dynamic QR code tracks scans. Google does not share per-link review
+        counts externally, so you cannot directly correlate scans to submitted
+        reviews. You can see total review counts in your Business Profile
+        dashboard.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Do customers need a Google account to leave a review?
+      </h3>
+      <p>
+        Yes. Customers must be signed in to a Google account to submit a review.
+        The link may prompt them to sign in first.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What if the link opens my Google Maps listing instead of the review form?
+      </h3>
+      <p>
+        Some phones hand the link to the Google Maps app, which may open your
+        listing instead of the review composer. If this happens, add
+        instructions: &quot;If Maps opens, tap Reviews, then tap the stars to
+        leave feedback.&quot;
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How small can I print the QR code?
+      </h3>
+      <p>
+        At least 2 cm (0.8 inches) wide for reliable hand-held scanning. If you
+        add a logo, consider going slightly larger to maintain scan reliability.
+        Test at the final print size before committing to a large run.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your Google review QR code now
+      </h2>
+      <p>
+        Ready to start collecting more reviews?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open Vyntrix QR Studio
+        </Link>
+        , paste your Google review link, customize the design, and download a
+        print-ready code in under a minute. Static URL codes are free - no
+        account required.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            Quishing Season: How to Spot a Fake QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-form"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for a Google Form
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about Google review QR codes or need help with placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

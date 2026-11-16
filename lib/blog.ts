@@ -339,6 +339,23 @@ export const blogPosts: BlogPost[] = [
       "qr code for wifi password",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-google-reviews",
+    title: "How to Make a QR Code for Google Reviews (Get More 5-Star Reviews)",
+    description:
+      "A practical guide to creating Google review QR codes - finding your Google Business Profile review link, making a branded QR code step by step, where to place it (counter, receipts, table tents, invoices, packaging), print tips, and staying compliant with Google's review policies.",
+    date: "2026-11-16",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a qr code for google reviews",
+      "google review qr code",
+      "qr code for google reviews",
+      "google business profile qr code",
+      "get more google reviews",
+      "review qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
