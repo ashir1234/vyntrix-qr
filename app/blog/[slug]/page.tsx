@@ -9,6 +9,7 @@ import {
   FacebookQrCodeGuidePost,
   FinishTheQrWorkflowPost,
   GoogleFormQrCodeGuidePost,
+  GoogleReviewsQrCodeGuidePost,
   Gs1Sunrise2027Post,
   InstagramQrCodeGuidePost,
   LinkedInQrCodeGuidePost,
@@ -57,6 +58,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-qr-code-for-tiktok": () => <TikTokQrCodeGuidePost />,
   "how-to-make-qr-code-for-google-form": () => <GoogleFormQrCodeGuidePost />,
   "how-to-make-wifi-qr-code": () => <WifiQrCodeGuidePost />,
+  "how-to-make-qr-code-for-google-reviews": () => <GoogleReviewsQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
