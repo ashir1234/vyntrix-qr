@@ -23,6 +23,7 @@ import {
   StaticQrPrivacyPost,
   StaticVsDynamicCostPost,
   TikTokQrCodeGuidePost,
+  VCardQrCodeGuidePost,
   WhatsAppQrCodeGuidePost,
   WifiQrCodeGuidePost,
   YouTubeQrCodeGuidePost,
@@ -59,6 +60,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-qr-code-for-google-form": () => <GoogleFormQrCodeGuidePost />,
   "how-to-make-wifi-qr-code": () => <WifiQrCodeGuidePost />,
   "how-to-make-qr-code-for-google-reviews": () => <GoogleReviewsQrCodeGuidePost />,
+  "how-to-make-vcard-qr-code": () => <VCardQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {

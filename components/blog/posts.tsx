@@ -8796,3 +8796,465 @@ export function GoogleReviewsQrCodeGuidePost() {
     </article>
   );
 }
+
+export function VCardQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A vCard QR code (also called a contact QR code) lets someone save your
+        name, phone, email, company, and website with one camera scan - no
+        typing, no business-card pile to dig through later. This guide covers
+        what a vCard QR stores, how to create one in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Vyntrix QR Studio
+        </Link>
+        , where to use it on business cards, email signatures, and events, plus
+        print tips and when static vs dynamic makes sense.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What a vCard QR code is
+      </h2>
+      <p>
+        A vCard QR encodes a small contact card in a standard format phones
+        already understand. When someone points their camera at the code, the
+        phone offers to add you as a contact. The details land in their Contacts
+        app - first name, last name, organization, job title, phone, email, and
+        website - without opening a website or needing a data connection after
+        the scan.
+      </p>
+      <p>
+        That offline save is the main advantage over a URL QR. A link can open a
+        portfolio or booking page, but a vCard QR&apos;s job is simpler: get
+        your details into their phone before the handshake ends. Modern iPhone
+        and Android camera apps recognize these payloads natively; you do not
+        need a separate scanner app.
+      </p>
+      <p>
+        Inside the code, {siteConfig.name} builds a{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          BEGIN:VCARD
+        </code>{" "}
+        /{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          VERSION:3.0
+        </code>{" "}
+        block with the fields you fill in. Extra fields make a denser pattern,
+        so include only what people need - shorter payloads scan more reliably
+        at business-card sizes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: create a vCard QR in Vyntrix QR Studio
+      </h2>
+      <p>
+        The studio supports a dedicated vCard type with first name, last name,
+        organization, title, phone, email, and website. Here is the workflow:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Vyntrix QR Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Select <strong className="text-[var(--foreground)]">vCard</strong> as
+          the code type.
+        </li>
+        <li>
+          Fill in the contact fields:
+          <ul className="mt-2 list-disc space-y-1 pl-5">
+            <li>
+              <strong className="text-[var(--foreground)]">First name</strong>{" "}
+              and{" "}
+              <strong className="text-[var(--foreground)]">Last name</strong>
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Organization</strong>{" "}
+              (company or brand)
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Title</strong> (job
+              title or role)
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Phone</strong> - use{" "}
+              <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+                +country code
+              </code>{" "}
+              format when you network internationally
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Email</strong> - a
+              work address you actually check
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Website</strong> -
+              homepage, LinkedIn, or booking page
+            </li>
+          </ul>
+        </li>
+        <li>
+          Optional: open Design to set brand colors, module style, or a small
+          logo. Keep contrast high and logos modest so scanners still read the
+          code. For logo placement rules, see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+          .
+        </li>
+        <li>
+          Download <strong className="text-[var(--foreground)]">SVG</strong> for
+          print (scales cleanly) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for email
+          signatures and slides.
+        </li>
+        <li>
+          Test-scan on both an iPhone and an Android before you order cards or
+          paste the image into your signature.
+        </li>
+      </ol>
+      <p>
+        Static vCard codes generate in the browser - no account required for a
+        free, watermark-free download.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Business cards: the classic use case
+      </h2>
+      <p>
+        A vCard QR on a business card turns a handshake into a saved contact.
+        Place the code where it has breathing room - often the back of the card
+        or a clear corner on the front - with a short label like &quot;Scan to
+        save contact.&quot;
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Aim for about 2×2 cm (roughly 0.8 inches) minimum so phones can lock
+          on quickly.
+        </li>
+        <li>
+          Keep a quiet zone (blank margin) around the code; do not crowd it with
+          logos or hairline borders that touch the modules.
+        </li>
+        <li>
+          Prefer dark modules on a light background. Low contrast on textured or
+          colored stock is a common reason cards fail at events.
+        </li>
+        <li>
+          Decide intentionally which phone and email go on the card - a personal
+          number you plan to retire is a poor fit for a static print run.
+        </li>
+      </ul>
+      <p>
+        Some professionals print a vCard QR for contact save and a separate
+        LinkedIn or portfolio URL for discovery. If that second code needs to
+        change later, make it dynamic. For networking-focused LinkedIn setup,
+        see{" "}
+        <Link
+          href="/blog/linkedin-qr-code-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Make a LinkedIn QR Code
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Email signatures
+      </h2>
+      <p>
+        A compact vCard QR in your email signature helps recipients save you
+        without scrolling for a phone number. It works especially well for sales,
+        recruiting, and field teams who send a lot of first-touch email.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Use a small PNG (not a huge SVG blob) so clients render it reliably.
+        </li>
+        <li>
+          Place it beside your contact block or under social icons - one primary
+          action, not three competing destinations.
+        </li>
+        <li>
+          Keep a plain-text name, phone, and email next to the image as a
+          fallback for clients that strip images.
+        </li>
+        <li>
+          Re-export and re-test after you change jobs, numbers, or domains -
+          static codes embed the old payload until you replace the image.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Events, badges, and booths
+      </h2>
+      <p>
+        Conferences and trade shows are where contact QR codes earn their keep.
+        Weak venue WiFi is common; a vCard still saves offline after the scan.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Print the code on name badges, booth backs, table tents, or slide
+          footers so attendees can scan from a few feet away (size up
+          accordingly).
+        </li>
+        <li>
+          Use international phone format if you meet people from multiple
+          countries.
+        </li>
+        <li>
+          If your booth also needs WiFi for demos, that is a separate code type -
+          see{" "}
+          <Link
+            href="/blog/how-to-make-wifi-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a WiFi QR Code
+          </Link>
+          .
+        </li>
+        <li>
+          For a broader small-business rollout that pairs contact, review, and
+          WiFi codes, see{" "}
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+          .
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and scan tips
+      </h2>
+      <p>
+        A contact QR that does not scan wastes a networking moment. Before a
+        large print order:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> At least
+          ~2 cm wide for hand-held scanning; larger if people will scan from
+          farther away (rough 10:1 distance-to-width rule).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          on light is safest. Avoid placing the code on busy photos or dark
+          backgrounds with dark modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          blank margin around all four sides - do not crop into the pattern.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Finish:</strong> Matte
+          beats glossy under booth lights that cause glare.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Proof:</strong> Print a
+          real-size test and scan with iOS Camera and an Android camera before
+          ordering hundreds of cards.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">File format:</strong> SVG
+          for print shops; PNG for email and slides.
+        </li>
+      </ul>
+      <p>
+        For a full pre-press checklist, read{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan: A Field Checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic for contact codes
+      </h2>
+      <p>
+        A <strong className="text-[var(--foreground)]">static</strong> vCard QR
+        embeds your contact fields directly in the pattern. It works offline,
+        needs no redirect server, and is the right default for most business
+        cards and signatures. The tradeoff: if your phone number or email
+        changes, you must regenerate and reprint (or re-upload the signature
+        image).
+      </p>
+      <p>
+        A <strong className="text-[var(--foreground)]">dynamic</strong> QR
+        encodes a short redirect URL you can edit later and often includes scan
+        analytics. That shines for campaign links, menus, and packaging - less
+        so for classic &quot;save my contact&quot; moments, because a redirect
+        needs a network connection and usually opens a page rather than the
+        native Add Contact sheet.
+      </p>
+      <p>
+        Practical rule: use a static vCard when the goal is instant contact
+        save. Use a dynamic URL when you want an updatable landing page,
+        booking link, or scan counts. Many people print both. For the cost and
+        reprinting tradeoffs, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Frequently asked questions
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What is the difference between a vCard QR and a contact QR code?
+      </h3>
+      <p>
+        They refer to the same idea: a QR that stores contact fields so a phone
+        can offer &quot;Add to Contacts.&quot; &quot;vCard&quot; names the
+        payload format; &quot;contact QR&quot; is the everyday search phrase.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Do iPhone and Android both support vCard QR codes?
+      </h3>
+      <p>
+        Yes. Modern camera apps recognize vCard-style payloads and offer to
+        save the contact. Always test both platforms before a print run -
+        camera UI wording differs slightly by OS and manufacturer.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Which fields should I include?
+      </h3>
+      <p>
+        In Vyntrix QR Studio you can set first name, last name, organization,
+        title, phone, email, and website. Include only what scanners need.
+        Longer payloads create denser codes that need slightly larger print
+        sizes.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I put a vCard or a LinkedIn link on my business card?
+      </h3>
+      <p>
+        Use vCard when you want one-tap contact save. Use a LinkedIn (or
+        portfolio) URL when you want people to see recommendations, posts, or a
+        live profile. Many professionals put vCard on one side and LinkedIn on
+        the other.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I brand the code with my logo and colors?
+      </h3>
+      <p>
+        Yes - use Design in Studio. Keep the logo small, centered, and contrast
+        high. If scans get flaky, remove the logo or enlarge the code. See the{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          logo QR guide
+        </Link>{" "}
+        for step-by-step design checks.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Are vCard QR codes free?
+      </h3>
+      <p>
+        Yes. Static vCard codes on {siteConfig.name} download without a
+        watermark. Sign in only if you need dynamic codes, cloud saves, or
+        analytics.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What if my phone number or email changes later?
+      </h3>
+      <p>
+        For a static vCard, create a new code and replace printed materials or
+        signature images. If you expect frequent changes and prefer a landing
+        page you can edit, use a dynamic URL QR instead of embedding the contact
+        card itself.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your vCard QR code now
+      </h2>
+      <p>
+        Ready to share a contact people can save in one scan?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open Vyntrix QR Studio
+        </Link>
+        , choose vCard, fill in first name, last name, organization, title,
+        phone, email, and website, customize the design if you like, and
+        download a print-ready SVG or PNG. Static contact codes are free - no
+        account required.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan: A Field Checklist
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/linkedin-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a LinkedIn QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about vCard QR codes or need help with placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

@@ -356,6 +356,24 @@ export const blogPosts: BlogPost[] = [
       "review qr code",
     ],
   },
+  {
+    slug: "how-to-make-vcard-qr-code",
+    title:
+      "How to Make a vCard QR Code (Save Contact, Business Card & Email Signature)",
+    description:
+      "A practical guide to creating vCard (contact) QR codes - what a vCard QR stores, step-by-step creation in Vyntrix QR Studio with name, organization, title, phone, email, and website, use on business cards, email signatures and events, print/scan tips, and static vs dynamic considerations.",
+    date: "2026-11-17",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a vcard qr code",
+      "contact qr code",
+      "vcard qr code",
+      "qr code save contact",
+      "business card qr code vcard",
+      "vcard qr code for email signature",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
