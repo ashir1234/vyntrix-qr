@@ -403,6 +403,27 @@ export const blogPosts: BlogPost[] = [
       "facebook recommendations qr code",
     ],
   },
+  {
+    slug: "how-to-create-qr-code-for-website",
+    title: "How to Create a QR Code for a Website URL (Free, Step-by-Step)",
+    description:
+      "A practical guide to creating a free QR code for a website URL - clean https links, optional UTM tags, static vs dynamic, size and contrast, testing on iPhone and Android, print tips, and common mistakes.",
+    date: "2026-11-18",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to create a qr code for a website",
+      "qr code for website url",
+      "make a qr code for a link",
+      "free qr code for website",
+      "create qr code for url",
+      "website qr code generator",
+      "qr code for a website link",
+      "how to make a qr code for a website",
+      "free website qr code",
+      "generate qr code from url",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
