@@ -9917,3 +9917,485 @@ export function FacebookPageQrBusinessGuidePost() {
     </article>
   );
 }
+
+export function WebsiteUrlQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Want to know{" "}
+        <strong className="text-[var(--foreground)]">
+          how to create a QR code for a website
+        </strong>
+        ? A{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for a website URL
+        </strong>{" "}
+        turns any link into a scannable square - posters, packaging, business
+        cards, menus, slides, and storefront stickers. This free, step-by-step
+        guide shows how to{" "}
+        <strong className="text-[var(--foreground)]">
+          make a QR code for a link
+        </strong>
+        , choose a clean destination URL, generate it in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , and print a code that actually scans.
+      </p>
+      <p>
+        You do not need a design degree or paid software. A{" "}
+        <strong className="text-[var(--foreground)]">
+          free QR code for a website
+        </strong>{" "}
+        is enough for most marketing and print jobs - as long as the URL is
+        correct and the print basics (size, contrast, quiet zone) are right.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get the right website URL
+      </h2>
+      <p>
+        The QR code only encodes what you paste. Garbage in, garbage out. Before
+        you generate anything, clean up the destination link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Prefer https and the canonical page
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Use{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://
+          </code>
+          , not{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            http://
+          </code>
+          . Modern phones and browsers expect secure links; some will warn or
+          block plain HTTP.
+        </li>
+        <li>
+          Encode the{" "}
+          <strong className="text-[var(--foreground)]">canonical URL</strong> -
+          the final public address after redirects. Open the page in a private
+          window, let redirects settle, then copy the address bar.
+        </li>
+        <li>
+          Prefer a short, stable path such as{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://example.com/menu
+          </code>{" "}
+          over a long CMS preview or staging host.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Strip session tokens and tracking junk
+      </h3>
+      <p>
+        Links copied from an email, ads dashboard, or analytics report often
+        carry session IDs, click IDs, or temporary tokens. Those can expire or
+        personalize the page for the wrong visitor. Remove parameters you do not
+        intentionally need - especially anything that looks like{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          sid=
+        </code>
+        ,{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          session=
+        </code>
+        , or one-time share tokens.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Optional: add UTM tags for campaign tracking
+      </h3>
+      <p>
+        If you want to measure which flyer, booth, or packaging batch drove
+        traffic, append intentional UTM parameters - for example{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          ?utm_source=flyer&amp;utm_medium=qr&amp;utm_campaign=spring
+        </code>
+        . Keep them short; longer URLs make denser QR patterns that need more
+        print space. Use the same UTM scheme across a campaign so analytics stay
+        comparable.
+      </p>
+      <p>
+        Paste the finished URL into an incognito window and confirm: correct
+        page, mobile-friendly layout, no login wall, no &quot;link expired&quot;
+        message.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Generate the QR code in {siteConfig.name} Studio
+      </h2>
+      <p>
+        Here is the fast path to{" "}
+        <strong className="text-[var(--foreground)]">
+          create a free QR code for a website URL
+        </strong>
+        :
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Choose a website / URL content type and paste your cleaned link.
+        </li>
+        <li>
+          Style the code: brand colors, module shape, and optional logo. For
+          logos, follow{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>{" "}
+          so the center mark does not wreck scan reliability.
+        </li>
+        <li>
+          Preview on screen, then download SVG for print (scales cleanly) or PNG
+          for digital slides and social posts.
+        </li>
+      </ol>
+      <p>
+        Static website QR codes can be generated free in the browser - no
+        watermark required for a basic download. That is usually all you need to{" "}
+        <strong className="text-[var(--foreground)]">
+          make a QR code for a link
+        </strong>{" "}
+        on a one-off flyer or card.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: when a URL change means reprinting
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">static QR code</strong>{" "}
+        encodes the website URL directly in the pattern. Change the destination
+        later and every printed copy becomes stale - you must reprint. A{" "}
+        <strong className="text-[var(--foreground)]">dynamic QR code</strong>{" "}
+        points at a short redirect you control, so you can update the landing
+        page without reprinting packaging or signage.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Choose static</strong>{" "}
+          when the URL is permanent (homepage, evergreen product page) and print
+          runs are cheap to replace.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Choose dynamic</strong>{" "}
+          when campaigns rotate, seasonal menus change, or you need scan
+          analytics and the ability to fix a wrong destination after print.
+        </li>
+      </ul>
+      <p>
+        For the cost trade-off - reprints vs a redirect plan - read{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Size, quiet zone, and contrast
+      </h2>
+      <p>
+        Phones fail more often from print choices than from the generator.
+        Before you send files to a printer:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> As a
+          rule of thumb, keep the QR at least ~2 cm (about 0.8 in) on short-range
+          materials like business cards; go larger for posters viewed from a
+          distance.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          a clear margin of empty space around the code - roughly four modules
+          wide. Crowding text or graphics against the edge breaks scanners.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Low-contrast pastels, busy photo
+          backgrounds, and inverted light-on-dark designs are common failure
+          modes.
+        </li>
+      </ul>
+      <p>
+        Use our full field checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        . If you push styling hard (heavy logos, fancy modules), also skim{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          Error Correction, Logos, and Why Pretty QR Codes Fail
+        </Link>{" "}
+        so you do not burn the error-correction budget.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Test on iPhone and Android before you print
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Print a small proof (or display the SVG/PNG at final size on a
+          calibrated screen).
+        </li>
+        <li>
+          Scan with the built-in camera on at least one iPhone and one Android
+          device - not only a dedicated QR app.
+        </li>
+        <li>
+          Confirm the website opens, the page is mobile-friendly, and any UTM
+          tags appear in your analytics as expected.
+        </li>
+        <li>
+          Retry in bright light, low light, and at a slight angle - the
+          conditions your customers will use.
+        </li>
+      </ol>
+      <p>
+        Fix contrast, size, or URL issues now. Reprints after a 5,000-piece run
+        are expensive.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print and placement tips
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Place the code where hands and eyes naturally pause: counter, table
+          tent, packaging panel, poster at chest height - not behind glass glare
+          or at ankle level.
+        </li>
+        <li>
+          Add a short caption (&quot;Scan for the menu&quot;, &quot;Scan to
+          visit our site&quot;) so people know what happens after the scan.
+        </li>
+        <li>
+          Prefer matte finishes over high-gloss laminate that reflects phone
+          flashlights.
+        </li>
+        <li>
+          For public stickers and outdoor posters, protect against{" "}
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            quishing / fake QR overlays
+          </Link>{" "}
+          - inspect stickers regularly and prefer placements that are hard to
+          cover without notice.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Make the landing page mobile-friendly
+      </h2>
+      <p>
+        Creating the QR is only half the job. Almost every scan happens on a
+        phone. Your website URL should land on a page that:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Loads fast on mobile data</li>
+        <li>Uses readable type and tap-friendly buttons</li>
+        <li>Does not trap scanners behind an unexpected login or paywall</li>
+        <li>
+          Matches the promise on the print (menu, booking, product info - not a
+          generic homepage dump)
+        </li>
+      </ul>
+      <p>
+        If the printed promise is specific, deep-link to that page. Encoding the
+        homepage &quot;just in case&quot; adds friction and drops conversions.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes when making a QR code for a website
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>Encoding a staging URL, localhost, or logged-in-only admin link</li>
+        <li>Leaving session or click-tracking junk in the query string</li>
+        <li>Printing too small or cropping the quiet zone in the layout</li>
+        <li>
+          Choosing pretty low-contrast colors that look great in Figma and fail
+          outdoors
+        </li>
+        <li>
+          Using a static code for a URL you know will change next month - then
+          discovering every poster is wrong
+        </li>
+        <li>Skipping a real phone test before the print deadline</li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is there a free QR code for a website?
+      </h3>
+      <p>
+        Yes. In{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        you can create a static website URL QR for free and download it without
+        a watermark for typical one-off use. Dynamic codes (editable destination
+        + analytics) are the paid tier when you need them.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I make a QR code for a link that is not my homepage?
+      </h3>
+      <p>
+        Paste the full deep link - product page, booking form, PDF, or campaign
+        landing page - instead of the root domain. Confirm it opens correctly on
+        mobile before you print.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I change the website URL after printing?
+      </h3>
+      <p>
+        Only if you used a dynamic QR code. Static codes bake the URL into the
+        pattern; changing the site path means reprinting. See{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static vs dynamic cost
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I put a logo in my website QR code?
+      </h3>
+      <p>
+        You can, if you keep the logo small, raise error correction, and retest
+        scans. Start with{" "}
+        <Link
+          href="/blog/qr-code-with-logo-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          the logo guide
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Why won&apos;t my website QR code scan?
+      </h3>
+      <p>
+        Most failures are size, contrast, missing quiet zone, glossy glare, or a
+        bad URL - not the phone camera. Walk the checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free website URL QR code now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          create a QR code for a website URL
+        </strong>
+        ?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your https link, style the code, test on your phone, and
+        download a print-ready SVG. Static website codes are free - no account
+        required for a basic download.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            Quishing Season: How to Spot a Fake QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about website URL QR codes or print placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
