@@ -27,6 +27,7 @@ import {
   WhatsAppQrCodeGuidePost,
   WifiQrCodeGuidePost,
   YouTubeQrCodeGuidePost,
+  FacebookPageQrBusinessGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -61,6 +62,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-wifi-qr-code": () => <WifiQrCodeGuidePost />,
   "how-to-make-qr-code-for-google-reviews": () => <GoogleReviewsQrCodeGuidePost />,
   "how-to-make-vcard-qr-code": () => <VCardQrCodeGuidePost />,
+  "how-to-make-qr-code-for-facebook-page": () => <FacebookPageQrBusinessGuidePost />,
 };
 
 export function generateStaticParams() {

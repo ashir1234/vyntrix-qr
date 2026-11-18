@@ -9258,3 +9258,662 @@ export function VCardQrCodeGuidePost() {
     </article>
   );
 }
+
+export function FacebookPageQrBusinessGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Looking for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make a QR code for a Facebook Page
+        </strong>
+        ? This business guide shows how to create a QR code for your Facebook
+        Page so customers can{" "}
+        <strong className="text-[var(--foreground)]">
+          scan to like or follow
+        </strong>{" "}
+        - or leave Facebook reviews / recommendations - from a storefront
+        sticker, menu, receipt, or flyer. You will find your Facebook Page URL
+        (username / vanity URL) in today&apos;s Meta Business Suite UI, compare
+        Facebook&apos;s built-in option to a branded custom QR code with logo,
+        and print a code that actually scans.
+      </p>
+      <p>
+        For profiles, events, posts, and a broader overview, see our general
+        guide:{" "}
+        <Link
+          href="/blog/how-to-generate-qr-code-for-facebook"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Generate a QR Code for Facebook (Page, Profile &amp; Print)
+        </Link>
+        . This article stays focused on{" "}
+        <strong className="text-[var(--foreground)]">
+          Facebook business Page QR codes
+        </strong>{" "}
+        for small businesses promoting a public Page - not a personal profile.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Why use a QR code for your Facebook Page?
+      </h2>
+      <p>
+        A QR code for Facebook Page growth turns offline traffic into follows.
+        Spelling out{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          facebook.com/YourBusiness
+        </code>{" "}
+        on a flyer is slow; a scan opens the Page in the Facebook app (when
+        installed) or the browser. Pair it with a clear caption -
+        &quot;Scan to follow us on Facebook&quot; or &quot;Scan to like our
+        Page&quot; - so people know the next step.
+      </p>
+      <p>
+        Local shops, restaurants, clinics, and service businesses often combine
+        a Facebook Page QR with review asks and other social codes. If you are
+        rolling out several codes at once, our{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          Small-Business QR Playbook
+        </Link>{" "}
+        covers which five codes usually matter first.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How do I find my Facebook Page URL, username, or vanity URL?
+      </h2>
+      <p>
+        Encode a clean public Facebook Page URL - the vanity URL / username -
+        not a personal profile and not a mobile{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          m.facebook.com
+        </code>{" "}
+        link. Meta documents usernames in{" "}
+        <a
+          href="https://www.facebook.com/help/121237621291199"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Facebook Help: create a username for your Page
+        </a>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What does a good Facebook Page URL look like?
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.facebook.com/YourPageUsername
+          </code>{" "}
+          - preferred vanity URL
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.facebook.com/@YourPageUsername
+          </code>{" "}
+          - @username format also works
+        </li>
+        <li>
+          Avoid long{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            profile.php?id=
+          </code>{" "}
+          links when a username is available - denser QR patterns and harder to
+          verify on print proofs
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How to copy your Page link in Meta Business Suite or on Facebook
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <a
+            href="https://business.facebook.com"
+            className="text-[var(--brand-2)] underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Meta Business Suite
+          </a>{" "}
+          or Facebook on a computer and switch into the Page you manage.
+        </li>
+        <li>
+          Open the Page&apos;s public profile view. Check the browser address
+          bar - that is your Facebook Page URL. The @username also appears under
+          the Page name when a username is set.
+        </li>
+        <li>
+          On mobile: open the Page → three-dot menu → look for{" "}
+          <strong className="text-[var(--foreground)]">Your Page link</strong>{" "}
+          / <strong className="text-[var(--foreground)]">Copy link</strong>.
+          Prefer the{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            www.facebook.com/...
+          </code>{" "}
+          form over{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            m.facebook.com
+          </code>
+          .
+        </li>
+        <li>
+          Paste the link into an incognito window while signed out. Confirm you
+          land on the public business Page - not a login wall, unpublished
+          Page, or personal profile.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I create or edit a Facebook Page username (vanity URL)?
+      </h3>
+      <p>
+        Per Meta&apos;s help center (desktop):
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Click your profile photo → See all profiles → select the Page.</li>
+        <li>
+          Open the Page photo menu → Settings &amp; privacy → Settings.
+        </li>
+        <li>
+          Left menu:{" "}
+          <strong className="text-[var(--foreground)]">Page setup</strong> →{" "}
+          <strong className="text-[var(--foreground)]">Name</strong> → Edit
+          next to Username.
+        </li>
+        <li>
+          Enter an available username and save. You need Page admin/editor
+          access; Meta may require the Page to meet eligibility rules before a
+          custom username is allowed.
+        </li>
+      </ol>
+      <p>
+        Meta moves menus often. If labels differ, search Settings for
+        &quot;Username&quot; or &quot;Page setup,&quot; or claim the vanity URL
+        before you design the print QR code.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Does Facebook have a built-in Page QR code?
+      </h2>
+      <p>
+        Sometimes. Facebook and Meta Business Suite have shipped Page QR /
+        poster tools and a general URL QR generator - and they relocate or hide
+        those buttons regularly. Treat native tools as optional; a Facebook
+        Page QR code generator you control is the reliable path for print.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Where to look for Facebook&apos;s own Page QR option
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Classic Publishing Tools path (desktop, when still available):
+          </strong>{" "}
+          open the Page you administer → look for Publishing Tools / professional
+          dashboard → QR Code → download posters if offered. You typically need
+          Page admin access; this path is not always present on newer Page
+          experiences.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Meta Business Suite QR Codes:
+          </strong>{" "}
+          some portfolios expose a QR tool under Business settings → Data
+          Sources → QR Codes, or at{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            business.facebook.com/qr_codes
+          </code>
+          . That tool creates a URL (or Wi‑Fi) code - paste your Page URL
+          yourself. It is not always a one-click &quot;Page QR.&quot;
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Facebook app:</strong>{" "}
+          open your Page → share or three-dot menu → QR code / nametag if
+          listed → save the image. Design is fixed; resolution is often weak for
+          large print.
+        </li>
+      </ul>
+      <p>
+        <strong className="text-[var(--foreground)]">Limits of native
+        codes:</strong>{" "}
+        little or no logo control, limited brand colors, weak vector export for
+        storefront prints, and UI that may vanish after a Meta redesign. For a
+        Facebook QR code with logo, brand colors, SVG print files, and optional
+        UTM tracking, use a custom branded QR code in Studio instead.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How to create a QR code for a Facebook Page in Vyntrix QR Studio
+      </h2>
+      <p>
+        Use our free QR code generator when you need a branded Facebook business
+        Page QR code you can reprint and own:
+      </p>
+      <ol className="list-decimal space-y-3 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Vyntrix QR Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Choose <strong className="text-[var(--foreground)]">URL</strong> as
+          the type.
+        </li>
+        <li>
+          Paste your public Facebook Page URL (vanity URL). Optionally append
+          UTM parameters for campaign tracking (see below).
+        </li>
+        <li>
+          Leave Dynamic off for a permanent static print QR code. Turn Dynamic
+          on if you need scan counts or the ability to change the destination
+          later without reprinting.
+        </li>
+        <li>
+          Design a branded / custom QR code: brand colors, corner styles, and a
+          centered logo (Facebook QR code with logo). Keep the logo modest and
+          raise error correction. Details in our{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR code with logo guide
+          </Link>
+          .
+        </li>
+        <li>
+          Download <strong className="text-[var(--foreground)]">SVG</strong>{" "}
+          for print shops or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          use. Static URL codes export without a watermark.
+        </li>
+      </ol>
+      <p>
+        <strong className="text-[var(--foreground)]">Ready to design it?</strong>{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open Vyntrix QR Studio
+        </Link>{" "}
+        and create your Facebook Page QR code now - free static export, optional
+        logo, SVG for print.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What happens when someone scans - app open vs browser?
+      </h2>
+      <p>
+        Deep-link behavior depends on the phone:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          If the Facebook app is installed, many phones hand{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            facebook.com/...
+          </code>{" "}
+          URLs to the app and open your Page there - ideal for scan-to-follow.
+        </li>
+        <li>
+          Without the app, the camera opens the mobile browser on the public
+          Page.
+        </li>
+        <li>
+          Logged-out or restricted visitors may see a limited preview or a
+          sign-in prompt. That is why the Page must be published and public
+          before you print.
+        </li>
+        <li>
+          Do not encode{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            m.facebook.com
+          </code>{" "}
+          links copied from a phone browser - normalize to{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.facebook.com/YourPageUsername
+          </code>
+          .
+        </li>
+      </ul>
+      <p>
+        Always test with iPhone and Android cameras, with and without the
+        Facebook app installed, before a print run.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How do I get more Page likes, follows, and Facebook reviews?
+      </h2>
+      <p>
+        The QR only opens the door - the caption and destination do the rest.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Scan to like / follow:
+          </strong>{" "}
+          Point the code at the main Page URL. Caption: &quot;Scan to follow us
+          on Facebook for offers &amp; hours.&quot;
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Facebook reviews / recommendations:
+          </strong>{" "}
+          When your Page shows reviews or recommendations, you can encode a
+          reviews deep link such as{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.facebook.com/YourPageUsername/reviews
+          </code>{" "}
+          (labeling varies by region and Page type). Verify the link while
+          signed out. Invite honest feedback - do not incentivize reviews in
+          ways that violate Meta&apos;s rules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Separate codes for separate jobs:
+          </strong>{" "}
+          One storefront code for follows, one counter card for reviews, so
+          analytics stay clean. For Google review codes specifically, see{" "}
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-reviews"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Google Reviews
+          </Link>
+          .
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How do I track Facebook Page QR scans with UTM parameters?
+      </h2>
+      <p>
+        Facebook Page vanity URLs accept query strings. Add UTM tracking so
+        Meta Pixel / your analytics (or a dynamic QR dashboard) can attribute
+        print placements:
+      </p>
+      <p>
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+          https://www.facebook.com/YourPageUsername?utm_source=qr&amp;utm_medium=print&amp;utm_campaign=storefront
+        </code>
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Use different{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            utm_campaign
+          </code>{" "}
+          values per placement (menu, receipt, packaging, event booth).
+        </li>
+        <li>
+          Keep one UTM set per printed design - changing UTMs changes the
+          encoded URL, so static codes need a reprint (or use dynamic QR).
+        </li>
+        <li>
+          Test the full UTM URL before encoding; confirm Facebook still opens
+          the correct Page.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where should small businesses place a print QR code for Facebook?
+      </h2>
+      <p>
+        Place the print QR code where people already pause - and label it.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Storefront / door:</strong>{" "}
+          Vinyl or window cling; size for walking distance (often 5–7+ cm).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Menus &amp; table tents:</strong>{" "}
+          At least ~2 cm; matte laminate reduces glare.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Receipts:</strong>{" "}
+          Footer logo + &quot;Scan to follow us on Facebook.&quot;
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Packaging &amp; inserts:</strong>{" "}
+          Follow ask after purchase; dynamic helps if the Page URL may change.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Flyers &amp; posters:</strong>{" "}
+          Clear quiet zone; scale with viewing distance (~width ≈ distance ÷
+          10).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Business cards:</strong>{" "}
+          Back-side Page QR; keep ≥2 cm if you add a logo.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Event booths:</strong>{" "}
+          Large booth poster plus a handout code with a unique UTM campaign.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What print size and tests should I run before ordering?
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Minimum ~2 cm (0.8 in) for hand-held scans; larger with a logo or for
+          distance scanning.
+        </li>
+        <li>Dark modules on a light background; keep a 4-module quiet zone.</li>
+        <li>Export SVG for professional print; avoid stretching a tiny PNG.</li>
+        <li>
+          Proof at final size on iPhone and Android, indoors and near windows.
+        </li>
+      </ul>
+      <p>
+        Full field checklist:{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What mistakes break a Facebook business Page QR code?
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Linking a personal profile:
+          </strong>{" "}
+          Customers hit friend limits and privacy walls. Use the business Page.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Encoding m.facebook.com URLs:
+          </strong>{" "}
+          Normalize to www / vanity URL first.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Unpublished, restricted, or country-blocked Pages:
+          </strong>{" "}
+          Signed-out scanners see nothing useful - test incognito.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">No caption:</strong>{" "}
+          Always say scan to like / follow (or leave a review).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Oversized logo / low contrast:
+          </strong>{" "}
+          Pretty codes that fail to scan waste the print run.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Frequently asked questions
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I make a QR code for my Facebook Page?
+      </h3>
+      <p>
+        Copy your public Facebook Page URL (username / vanity URL), open a
+        Facebook Page QR code generator such as{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Vyntrix QR Studio
+        </Link>
+        , paste the URL, optionally brand it with a logo and colors, then
+        download SVG or PNG. That is the reliable way to create a QR code for a
+        Facebook Page for print.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I create a QR code for a Facebook business Page?
+      </h3>
+      <p>
+        Same workflow - but double-check you copied the business Page link, not
+        your personal profile. Switch into the Page in Meta Business Suite,
+        copy the address-bar URL, and verify it while signed out.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is there a free QR code generator for a Facebook Page QR code with logo?
+      </h3>
+      <p>
+        Yes. Vyntrix QR Studio lets you build a free static Facebook QR code with
+        logo and brand colors, then export without a watermark. Dynamic codes
+        (scan analytics / editable destination) need an account.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can people scan to like or follow my Facebook Page?
+      </h3>
+      <p>
+        Yes. A Page URL QR opens the Page; visitors tap Like or Follow
+        themselves. Use a clear &quot;scan to follow on Facebook&quot; caption.
+        The code cannot force a like.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I make a QR code for Facebook reviews or recommendations?
+      </h3>
+      <p>
+        Often. If your Page supports reviews/recommendations, encode the reviews
+        URL (commonly{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          /reviews
+        </code>{" "}
+        on the Page) after confirming it loads for signed-out users. Keep review
+        asks honest and compliant with Meta policies.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use Meta Business Suite&apos;s QR tool or a custom branded QR
+        code?
+      </h3>
+      <p>
+        Use Meta&apos;s tool for a quick unbranded URL code when the menu is
+        available. Use a custom branded QR code when you need logo, colors, SVG
+        print files, or stable tooling that does not depend on Meta moving the
+        button.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How is this different from your general Facebook QR guide?
+      </h3>
+      <p>
+        This article is the business Page playbook (vanity URL, storefront
+        placement, UTM tracking, follows &amp; reviews). The general guide -{" "}
+        <Link
+          href="/blog/how-to-generate-qr-code-for-facebook"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Generate a QR Code for Facebook
+        </Link>{" "}
+        - also covers profiles, events, posts, and broader Meta options.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your Facebook business Page QR code now
+      </h2>
+      <p>
+        Ready to print a QR code for your Facebook Page?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open Vyntrix QR Studio
+        </Link>
+        , paste your Page vanity URL, add a logo if you want a branded code, and
+        download a print-ready SVG. Static codes are free - no account required.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-generate-qr-code-for-facebook"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Generate a QR Code for Facebook (Page, Profile &amp; Print)
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-instagram"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Instagram
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-reviews"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Google Reviews
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about Facebook business Page QR codes or print placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

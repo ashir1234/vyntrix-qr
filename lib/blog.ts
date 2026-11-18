@@ -374,6 +374,35 @@ export const blogPosts: BlogPost[] = [
       "vcard qr code for email signature",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-facebook-page",
+    title: "How to Make a QR Code for Your Facebook Page (Business Guide)",
+    description:
+      "How to create a QR code for a Facebook Page - find your Page URL / username (vanity URL) in Meta Business Suite, compare Facebook's built-in option to a branded Facebook QR code with logo from a free QR code generator, add UTM tracking, print for small-business storefronts, and drive scan-to-follow / Facebook reviews.",
+    date: "2026-11-18",
+    readingMinutes: 11,
+    topic: "Guide",
+    keywords: [
+      "how to make qr code for facebook page",
+      "how to create a qr code for facebook page",
+      "qr code for facebook page",
+      "facebook business page qr code",
+      "facebook page qr code",
+      "facebook page qr code generator",
+      "facebook qr code with logo",
+      "scan to like facebook page",
+      "scan to follow on facebook",
+      "meta business suite qr code",
+      "facebook page vanity url",
+      "branded qr code facebook page",
+      "custom qr code for facebook page",
+      "print qr code facebook page",
+      "qr code for small business facebook",
+      "utm tracking facebook page qr",
+      "facebook reviews qr code",
+      "facebook recommendations qr code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
