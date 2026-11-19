@@ -29,6 +29,7 @@ import {
   YouTubeQrCodeGuidePost,
   FacebookPageQrBusinessGuidePost,
   WebsiteUrlQrCodeGuidePost,
+  PdfQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -65,6 +66,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-vcard-qr-code": () => <VCardQrCodeGuidePost />,
   "how-to-make-qr-code-for-facebook-page": () => <FacebookPageQrBusinessGuidePost />,
   "how-to-create-qr-code-for-website": () => <WebsiteUrlQrCodeGuidePost />,
+  "how-to-make-qr-code-for-pdf": () => <PdfQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
