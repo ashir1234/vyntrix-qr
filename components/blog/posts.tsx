@@ -10399,3 +10399,490 @@ export function WebsiteUrlQrCodeGuidePost() {
     </article>
   );
 }
+
+export function PdfQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Looking for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make a QR code for a PDF
+        </strong>
+        ? A{" "}
+        <strong className="text-[var(--foreground)]">PDF QR code</strong> does
+        not embed the file inside the square - it encodes a{" "}
+        <strong className="text-[var(--foreground)]">URL</strong> that opens
+        your document. Upload the PDF somewhere that gives a stable public link,
+        paste that link into{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , style the code, download PNG or SVG, then print. This guide is the
+        honest, practical path for menus, brochures, manuals, flyers, resumes,
+        and event programs.
+      </p>
+      <p>
+        {siteConfig.name} generates{" "}
+        <strong className="text-[var(--foreground)]">
+          static QR codes that encode a URL
+        </strong>{" "}
+        in your browser. We do not host your PDF for you. If you need a
+        refresher on encoding any website link the same way, see{" "}
+        <Link
+          href="/blog/how-to-create-qr-code-for-website"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Create a QR Code for a Website URL
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        How a PDF QR code actually works
+      </h2>
+      <p>
+        Phones open what the QR contains. For a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for a PDF file
+        </strong>
+        , that payload is almost always an{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://
+        </code>{" "}
+        link to the document (or a preview page that offers download). The
+        workflow is:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Host the PDF where scanners can reach it without signing in.</li>
+        <li>Copy a stable share / preview / direct link.</li>
+        <li>
+          Paste the URL into{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Studio
+          </Link>
+          , style, and download.
+        </li>
+        <li>Test-scan on real phones, then print.</li>
+      </ol>
+      <p>
+        That is the entire product path for a free static{" "}
+        <strong className="text-[var(--foreground)]">pdf qr code</strong>. The
+        hard parts are hosting choices, link stability, privacy, and print
+        quality - not the generator.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Upload the PDF and get a public link
+      </h2>
+      <p>
+        Pick a host that gives you a durable public URL. Common options:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Google Drive</strong> -
+          upload the file, set sharing to{" "}
+          <strong className="text-[var(--foreground)]">
+            Anyone with the link
+          </strong>{" "}
+          (Viewer), then copy the link. Prefer a preview-friendly share URL
+          over a private &quot;Restricted&quot; link.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dropbox</strong> - create
+          a share link; for a more direct file response, some workflows use the
+          raw/direct form of the link (test it - Dropbox formats change).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">OneDrive</strong> - share
+          with &quot;Anyone with the link&quot; and copy the share URL.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Your own website</strong>{" "}
+          - upload to{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://yoursite.com/files/menu.pdf
+          </code>{" "}
+          (or similar). Short, stable paths make cleaner QR patterns.
+        </li>
+      </ul>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Tip: use a direct or preview link, then test it hard
+      </h3>
+      <p>
+        Before you generate anything, open the share link in a{" "}
+        <strong className="text-[var(--foreground)]">private / incognito</strong>{" "}
+        window and again on a phone over{" "}
+        <strong className="text-[var(--foreground)]">mobile data</strong> (not
+        only Wi‑Fi that is already logged into your cloud account). Confirm:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>No login wall or &quot;request access&quot; screen</li>
+        <li>The PDF opens or downloads as you expect</li>
+        <li>The experience is usable on a small screen</li>
+      </ul>
+      <p>
+        If the private-window test fails, scanners will fail too - fix sharing
+        first.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Keep the link stable when the file changes
+      </h2>
+      <p>
+        A static QR encodes the URL permanently in the printed pattern. If you
+        delete the file, move it, or generate a brand-new share URL, every flyer
+        and menu becomes a dead end. Prefer workflows where you can{" "}
+        <strong className="text-[var(--foreground)]">
+          replace the file without changing the URL
+        </strong>
+        :
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          On Google Drive, use{" "}
+          <strong className="text-[var(--foreground)]">Manage versions</strong>{" "}
+          (or upload a new version to the same file) so the existing share link
+          keeps working.
+        </li>
+        <li>
+          On your own site, overwrite the same path (
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            /files/menu.pdf
+          </code>
+          ) instead of publishing{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            menu-v3-final.pdf
+          </code>
+          .
+        </li>
+        <li>
+          Avoid renaming the file or creating a fresh share link every time you
+          edit copy.
+        </li>
+      </ul>
+      <p>
+        If the destination URL itself must change often and you cannot keep one
+        stable path, that is when a redirect-based (dynamic) QR can help - see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        . For most PDF menus and manuals, a stable host URL plus a static code is
+        enough.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 3: Create the QR in {siteConfig.name} Studio
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>Choose a website / URL content type and paste your PDF share link.</li>
+        <li>
+          Style colors, module shape, and an optional logo - keep contrast high
+          and logos modest so scans stay reliable.
+        </li>
+        <li>
+          Download{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          (scales cleanly) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          slides and social posts.
+        </li>
+        <li>
+          Test-scan with the built-in camera on at least one iPhone and one
+          Android device before you send anything to press.
+        </li>
+      </ol>
+      <p>
+        Static URL codes for a one-off download can be created free in the
+        browser. Generation for that path stays client-side - more on what that
+        means in{" "}
+        <Link
+          href="/blog/static-qr-privacy-in-the-browser"
+          className="text-[var(--brand-2)] underline"
+        >
+          How Static QR Generation Stays Private in Your Browser
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        File size and mobile-friendliness
+      </h2>
+      <p>
+        Almost every scan happens on a phone, often on cellular data. Heavy
+        PDFs frustrate people before they finish reading:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Compress images and export a web-friendly PDF when possible - aim for
+          something that opens in a few seconds on mid-range phones.
+        </li>
+        <li>
+          Prefer a short document or a clear first page; people scanning a flyer
+          rarely want a 40 MB catalog dump.
+        </li>
+        <li>
+          Check that mobile browsers can preview or download without a desktop-only
+          plugin experience.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Privacy: anyone with the code can open it
+      </h2>
+      <p>
+        A public share link is public. Anyone who photographs the printed QR -
+        customers, competitors, people who find a discarded flyer - can open the
+        PDF. Do not put confidential contracts, internal pricing, or personal
+        data behind a &quot;anyone with the link&quot; URL unless you accept that
+        risk. For sensitive files, use authenticated hosting your audience
+        already has access to, or skip print QR distribution entirely.
+      </p>
+      <p>
+        Remember the split:{" "}
+        <strong className="text-[var(--foreground)]">
+          generating the static QR
+        </strong>{" "}
+        can stay private in your browser, but{" "}
+        <strong className="text-[var(--foreground)]">
+          the PDF host and the printed code
+        </strong>{" "}
+        determine who can read the document afterward.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Use cases for a QR code for a PDF file
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Menus</strong> - table
+          tents and window stickers that open the current PDF menu.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Brochures</strong> -
+          trade-show cards that skip paper waste for the full catalog.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Manuals</strong> -
+          packaging inserts that open setup guides or warranty PDFs.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Flyers</strong> - event
+          details, schedules, or registration packets.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Resumes</strong> -
+          networking cards that open your latest CV PDF.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Event programs</strong> -
+          agendas, speaker bios, and venue maps without reprinting every edit.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Printing: size, contrast, and quiet zone
+      </h2>
+      <p>
+        Print failures kill more PDF QR campaigns than generators do. Before you
+        order a run:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> Keep the
+          code at least ~2 cm (about 0.8 in) on short-range pieces like cards;
+          go larger for posters viewed from farther away.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Avoid busy photo fills and low-contrast
+          pastels.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          empty margin around the code - roughly four modules - so layouts do not
+          crop the edge.
+        </li>
+        <li>
+          Prefer matte finishes; glossy laminate can glare under phone
+          flashlights.
+        </li>
+      </ul>
+      <p>
+        Walk the full field checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Encoding a{" "}
+          <strong className="text-[var(--foreground)]">private</strong> Drive /
+          Dropbox / OneDrive link that only your account can open
+        </li>
+        <li>
+          Deleting or renaming the file after print - and breaking every scan
+        </li>
+        <li>
+          Pasting a{" "}
+          <strong className="text-[var(--foreground)]">very long URL</strong>{" "}
+          (nested folders, tracking junk, duplicate query params) that makes a
+          dense, harder-to-scan code
+        </li>
+        <li>Skipping the private-window and mobile-data link test</li>
+        <li>Printing too small or with weak contrast</li>
+        <li>
+          Putting confidential PDFs behind a public share link because the QR
+          looked convenient
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I make a free QR code for a PDF?
+      </h3>
+      <p>
+        Yes. Host the PDF with a public link, then create a static URL QR in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . The generator encodes the link; it does not upload or store the PDF
+        file for you.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the QR contain the PDF itself?
+      </h3>
+      <p>
+        No. Practical{" "}
+        <strong className="text-[var(--foreground)]">pdf qr codes</strong>{" "}
+        encode a URL. Embedding an entire PDF as raw data would make an enormous,
+        nearly unscannable pattern.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I update the PDF without reprinting?
+      </h3>
+      <p>
+        Keep the same public URL and replace the file contents (Drive version
+        history, same path on your site). If the URL must change and print is
+        already out, you need a redirect you control - covered in{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static vs dynamic cost
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is a Google Drive PDF QR code safe for customers?
+      </h3>
+      <p>
+        It is fine for public materials (menus, programs) when sharing is set to
+        Anyone with the link and you have tested the URL logged out. It is not
+        appropriate for confidential documents.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Why won&apos;t my PDF QR code open the file?
+      </h3>
+      <p>
+        Usually the share permission is wrong, the file was deleted, or the
+        printed code is too small / low contrast. Retest the link in a private
+        window, then re-check print basics in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          the print checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free PDF QR code now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          make a QR code for a PDF
+        </strong>
+        ? Upload the file to a host with a stable public link, then{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          open {siteConfig.name} Studio
+        </Link>
+        , paste the URL, style the code, test-scan, and download a print-ready
+        SVG or PNG.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-create-qr-code-for-website"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code for a Website URL
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-qr-privacy-in-the-browser"
+            className="text-[var(--brand-2)] underline"
+          >
+            How Static QR Generation Stays Private in Your Browser
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about PDF QR codes or print placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}

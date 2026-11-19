@@ -424,6 +424,27 @@ export const blogPosts: BlogPost[] = [
       "generate qr code from url",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-pdf",
+    title: "How to Make a QR Code for a PDF (Free, Step-by-Step)",
+    description:
+      "A practical guide to creating a free PDF QR code - host your file with a stable public link, paste the URL into Vyntrix QR Studio, style and download PNG/SVG, then print. Covers Drive/Dropbox/OneDrive tips, privacy, file size, print size, and common mistakes.",
+    date: "2026-11-19",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "how to make a qr code for a pdf",
+      "pdf qr code",
+      "qr code for pdf file",
+      "qr code to pdf",
+      "make qr code for pdf",
+      "free pdf qr code generator",
+      "qr code link to pdf",
+      "create qr code for pdf document",
+      "google drive pdf qr code",
+      "print qr code for pdf",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
