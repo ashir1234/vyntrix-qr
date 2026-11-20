@@ -445,6 +445,33 @@ export const blogPosts: BlogPost[] = [
       "print qr code for pdf",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-google-maps-location",
+    title:
+      "How to Make a QR Code for a Google Maps Location (Free, Step-by-Step)",
+    description:
+      "How to make a QR code for a Google Maps location - copy the share link on desktop, Android, or iPhone (maps.app.goo.gl), choose a Business Profile listing or dropped pin, use GPS coordinates for trailheads and venues, then create a free location QR code in Vyntrix QR Studio.",
+    date: "2026-11-20",
+    readingMinutes: 10,
+    topic: "Guide",
+    keywords: [
+      "google maps qr code",
+      "location qr code",
+      "qr code for address",
+      "qr code for directions",
+      "google maps qr code generator free",
+      "how to create a qr code for a location",
+      "qr code for business location",
+      "share location qr code",
+      "gps coordinates qr code",
+      "google maps share link",
+      "qr code for google business profile",
+      "qr code for event venue",
+      "qr code to open google maps",
+      "static vs dynamic location qr code",
+      "scan qr code for directions",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

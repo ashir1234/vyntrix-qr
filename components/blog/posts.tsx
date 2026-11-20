@@ -10886,3 +10886,602 @@ export function PdfQrCodeGuidePost() {
     </article>
   );
 }
+
+export function GoogleMapsLocationQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Searching for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make a QR code for a Google Maps location
+        </strong>
+        ? A{" "}
+        <strong className="text-[var(--foreground)]">
+          Google Maps QR code
+        </strong>{" "}
+        is simply a{" "}
+        <strong className="text-[var(--foreground)]">location QR code</strong>{" "}
+        that encodes a Maps share link (or coordinates). When someone scans it,
+        their phone opens Google Maps at your pin so they can{" "}
+        <strong className="text-[var(--foreground)]">
+          scan a QR code for directions
+        </strong>
+        , navigate to your storefront, or find an event venue without typing an
+        address. This guide covers Share → Copy link on desktop, Android, and
+        iPhone (
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          maps.app.goo.gl
+        </code>{" "}
+        short links), Business Profile listings vs dropped pins, GPS
+        coordinates for places without a street address, and creating a free
+        code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        .
+      </p>
+      <p>
+        The same URL-encoding idea applies to any website link - see{" "}
+        <Link
+          href="/blog/how-to-create-qr-code-for-website"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Create a QR Code for a Website URL
+        </Link>{" "}
+        if you want the general pattern. Here we focus on Maps destinations:
+        how to get the right{" "}
+        <strong className="text-[var(--foreground)]">
+          Google Maps share link
+        </strong>
+        , when to use a listing vs a pin, and how to print a code that survives
+        a rainy door sticker.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What a Google Maps QR code actually opens
+      </h2>
+      <p>
+        Phones do not &quot;know&quot; your address from the QR pattern alone.
+        They open whatever URL (or Maps payload) you encoded. For a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code to open Google Maps
+        </strong>
+        , that is almost always:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          A place or directions share link from Google Maps (often shortened to{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            maps.app.goo.gl/…
+          </code>
+          )
+        </li>
+        <li>
+          A Google Business Profile / Maps listing URL for your{" "}
+          <strong className="text-[var(--foreground)]">
+            QR code for a business location
+          </strong>
+        </li>
+        <li>
+          A coordinates-based Maps URL - useful as a{" "}
+          <strong className="text-[var(--foreground)]">
+            GPS coordinates QR code
+          </strong>{" "}
+          for trailheads, pop-ups, and venues without a clean street address
+        </li>
+      </ul>
+      <p>
+        In {siteConfig.name} Studio you can paste a share link as a{" "}
+        <strong className="text-[var(--foreground)]">URL</strong> content type,
+        or use the{" "}
+        <strong className="text-[var(--foreground)]">Location</strong> type
+        (latitude, longitude, optional place name) which builds a Google Maps
+        query URL for you. Both produce a static pattern you can style with
+        colors and an optional logo, then download as PNG or SVG.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get the Google Maps share link (desktop, Android, iPhone)
+      </h2>
+      <p>
+        Start in Google Maps and open the place, pin, or directions you want
+        scanners to land on. Then copy the share link:
+      </p>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Desktop (maps.google.com)
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Search for the business, address, or drop a pin on the map.</li>
+        <li>
+          Click{" "}
+          <strong className="text-[var(--foreground)]">Share</strong> (or
+          Share → Send a link).
+        </li>
+        <li>
+          Click{" "}
+          <strong className="text-[var(--foreground)]">Copy link</strong>.
+          Google often gives a short{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            maps.app.goo.gl
+          </code>{" "}
+          URL - that is fine for QR codes and usually denser-friendly than a
+          long query string.
+        </li>
+      </ol>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Android
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the place or pin in the Google Maps app.</li>
+        <li>
+          Tap{" "}
+          <strong className="text-[var(--foreground)]">Share</strong>.
+        </li>
+        <li>
+          Tap{" "}
+          <strong className="text-[var(--foreground)]">Copy link</strong>{" "}
+          (or Copy), then paste it somewhere you can grab it on your computer -
+          or generate the QR on the phone in Studio.
+        </li>
+      </ol>
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        iPhone / iOS
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Open the place or pin in the Google Maps app (or Maps in Safari).</li>
+        <li>
+          Tap{" "}
+          <strong className="text-[var(--foreground)]">Share</strong>.
+        </li>
+        <li>
+          Tap{" "}
+          <strong className="text-[var(--foreground)]">Copy link</strong>.
+          Paste into Notes or AirDrop it to your Mac if you prefer designing on
+          desktop.
+        </li>
+      </ol>
+      <p>
+        Before you encode anything, open the copied link on a second device and
+        confirm it lands on the right pin with the directions options you
+        expect. A wrong share is the most common{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for directions
+        </strong>{" "}
+        failure - not the generator.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Business Profile listing vs a dropped pin
+      </h2>
+      <p>
+        Not every Maps link behaves the same:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Google Business Profile / Maps listing
+          </strong>{" "}
+          - Best for a permanent{" "}
+          <strong className="text-[var(--foreground)]">
+            QR code for a Google Business Profile
+          </strong>{" "}
+          location: hours, photos, and &quot;Directions&quot; sit on the place
+          card customers already trust. Prefer this for storefronts and offices.
+          (If you also want review prompts, that is a different link - see{" "}
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-reviews"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Google Reviews
+          </Link>
+          .)
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dropped pin</strong> -
+          Ideal when there is no listing yet: temporary markets, parking lots,
+          meetup spots, or a precise corner of a large campus. Drop the pin,
+          Share → Copy link, and treat that as your destination.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Directions link</strong>{" "}
+          - Some share flows emphasize turn-by-turn directions from a starting
+          point. For print, a place/pin link that lets the scanner choose
+          walking, driving, or transit is usually clearer than a pre-baked route
+          from your home.
+        </li>
+      </ul>
+      <p>
+        For a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for an address
+        </strong>
+        , search the street address, open the result, and share that place -
+        not a vague city-level zoom.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        GPS coordinates for places without an address
+      </h2>
+      <p>
+        Trailheads, festival fields, beach meetups, and pop-up tents often have
+        no reliable street number. Use coordinates:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          In Google Maps, drop a pin (long-press on mobile, or right-click on
+          desktop) on the exact spot.
+        </li>
+        <li>
+          Copy the latitude and longitude shown, or use Share → Copy link for
+          that pin.
+        </li>
+        <li>
+          In{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Studio
+          </Link>
+          , either paste the share URL as a URL code, or choose{" "}
+          <strong className="text-[var(--foreground)]">Location</strong>, enter
+          lat/lng, and optionally a place name (for example &quot;North
+          trailhead&quot;). Studio builds a Google Maps query URL from those
+          fields.
+        </li>
+      </ol>
+      <p>
+        That workflow is how you{" "}
+        <strong className="text-[var(--foreground)]">
+          create a QR code for a location
+        </strong>{" "}
+        that has no postal address - including a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for an event venue
+        </strong>{" "}
+        parked in a field or plaza.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Create the code in {siteConfig.name} Studio
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          Choose{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          your{" "}
+          <strong className="text-[var(--foreground)]">
+            Google Maps share link
+          </strong>
+          , or choose{" "}
+          <strong className="text-[var(--foreground)]">Location</strong> and
+          enter coordinates.
+        </li>
+        <li>
+          Style foreground/background colors, module shape, and an optional
+          logo. Keep contrast high and logos modest so phones can still read
+          the modules.
+        </li>
+        <li>
+          Download{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          (scales cleanly) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for slides
+          and social posts. Static generation for one-off downloads runs in your
+          browser - no watermark on the free static path.
+        </li>
+      </ol>
+      <p>
+        That is the whole path for a free{" "}
+        <strong className="text-[var(--foreground)]">
+          Google Maps QR code generator
+        </strong>{" "}
+        workflow: get the link, paste it, style, download, test, then print.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic location QR codes
+      </h2>
+      <p>
+        A static{" "}
+        <strong className="text-[var(--foreground)]">
+          share location QR code
+        </strong>{" "}
+        bakes the Maps URL into the printed pattern. If your shop moves, the
+        venue changes, or the short link stops resolving the way you expect, you
+        must reprint. Dynamic codes (account-backed redirects you can edit)
+        let you update the destination without changing the physical sticker -
+        useful for pop-ups that relocate weekly or real-estate signs that cycle
+        listings.
+      </p>
+      <p>
+        For the cost tradeoff and when reprinting hurts more than a plan, read{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        . Permanent storefronts with a stable Business Profile link are usually
+        fine as static; rotating venues lean dynamic. Think of it as{" "}
+        <strong className="text-[var(--foreground)]">
+          static vs dynamic location QR code
+        </strong>{" "}
+        choice before you order a thousand door stickers.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Design and print tips (size, contrast, quiet zone)
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> Aim for
+          at least ~2 cm (about 0.8 in) on business cards; go larger on door
+          signs and yard signs scanned from farther away.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Avoid busy photo fills behind the
+          code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          empty margin around the square (roughly four modules) so borders and
+          logos do not crop the edge.
+        </li>
+        <li>
+          Prefer matte laminate outdoors; glossy stickers glare in sun and under
+          phone flashlights.
+        </li>
+        <li>
+          Short{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            maps.app.goo.gl
+          </code>{" "}
+          links generally produce cleaner patterns than enormous query URLs.
+        </li>
+      </ul>
+      <p>
+        Walk the full pre-press checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Test on iPhone and Android before you print
+      </h2>
+      <p>
+        Camera apps differ. Before any print run:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Scan with at least one iPhone Camera and one Android camera app.</li>
+        <li>
+          Confirm Maps opens the correct pin - not a nearby listing with a
+          similar name.
+        </li>
+        <li>
+          Try walking and driving direction prompts from where a customer would
+          actually stand (parking lot, sidewalk).
+        </li>
+        <li>
+          If you added a logo or colored modules, re-test after every visual
+          change.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where to use a location QR code
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Storefront door</strong>{" "}
+          - &quot;Scan for directions&quot; when the entrance is hard to spot
+          from the street.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Flyers &amp; posters</strong>{" "}
+          - Local ads that skip typed addresses.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Wedding / event invitations
+          </strong>{" "}
+          - Ceremony and reception pins, parking lots, and after-parties.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Business cards</strong> -
+          Pair with your site or vCard so clients can navigate to the office.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Real-estate signs</strong>{" "}
+          - Open house pins or listing map views (prefer dynamic if listings
+          rotate).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Delivery / pickup points
+          </strong>{" "}
+          - Exact curb, alley, or dock pin for couriers and customers.
+        </li>
+      </ul>
+      <p>
+        Location codes sit alongside reviews, WiFi, and social codes in a
+        broader rollout - see the{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          Small-Business QR Playbook
+        </Link>{" "}
+        for how five codes work together on a shop floor.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I make a free Google Maps QR code?
+      </h3>
+      <p>
+        Yes. Copy a Maps share link (or enter coordinates), then create a static
+        URL or Location code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . That is a free{" "}
+        <strong className="text-[var(--foreground)]">
+          google maps qr code generator
+        </strong>{" "}
+        path for one-off downloads - style with colors/logo and export PNG or
+        SVG.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Do I need the long Maps URL or is maps.app.goo.gl OK?
+      </h3>
+      <p>
+        Short{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          maps.app.goo.gl
+        </code>{" "}
+        links from Share → Copy link are what Google hands out and work well in
+        QR codes. Always test the short link once before printing a large run.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I make a QR code for directions if my place has no address?
+      </h3>
+      <p>
+        Drop a pin, copy the share link or lat/lng, and encode that. Studio&apos;s
+        Location type is built for this GPS-first case.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What if my business moves after I print?
+      </h3>
+      <p>
+        A static code cannot change destination. Reprint with the new share
+        link, or use a dynamic (editable) code so the sticker stays the same -
+        details in{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          static vs dynamic cost
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is a location QR the same as a Google review QR?
+      </h3>
+      <p>
+        No. A location / directions code opens Maps at your pin. A review code
+        deep-links into the review form. Use both if you want navigation and
+        ratings - start with the{" "}
+        <Link
+          href="/blog/how-to-make-qr-code-for-google-reviews"
+          className="text-[var(--brand-2)] underline"
+        >
+          Google reviews guide
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Why won&apos;t my printed Maps QR scan outdoors?
+      </h3>
+      <p>
+        Usually size, glare, or contrast - not the share link. Retest on iPhone
+        and Android, then fix print basics with the{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free Google Maps location QR code now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          create a QR code for a location
+        </strong>
+        ? Copy your Google Maps share link (or grab GPS coordinates), then{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          open {siteConfig.name} Studio
+        </Link>
+        , paste it as a URL (or use Location), style the code, test-scan on
+        iPhone and Android, and download a print-ready SVG or PNG.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-create-qr-code-for-website"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code for a Website URL
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-reviews"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for Google Reviews
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about location QR codes or storefront placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
