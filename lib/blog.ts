@@ -472,6 +472,31 @@ export const blogPosts: BlogPost[] = [
       "scan qr code for directions",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-business-card",
+    title: "How to Make a QR Code Business Card (Free, Step-by-Step)",
+    description:
+      "How to make a QR code business card with Vyntrix QR Studio - choose vCard or URL, fill contact fields, customize colors/logo/frame, download PNG or SVG, print tips (size, contrast, quiet zone), testing, common mistakes, and FAQ.",
+    date: "2026-11-23",
+    readingMinutes: 11,
+    topic: "Guide",
+    keywords: [
+      "qr code business card",
+      "business card qr code",
+      "qr code for business card",
+      "how to put a qr code on a business card",
+      "vcard qr code",
+      "digital business card qr code",
+      "contact qr code",
+      "qr code business card generator free",
+      "qr code size for business card",
+      "how to make a qr code business card",
+      "business card with qr code",
+      "scan to save contact",
+      "print qr code on business card",
+      "static vs dynamic business card qr",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
