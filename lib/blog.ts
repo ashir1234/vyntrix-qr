@@ -497,6 +497,25 @@ export const blogPosts: BlogPost[] = [
       "static vs dynamic business card qr",
     ],
   },
+  {
+    slug: "how-to-make-qr-code-for-restaurant-menu",
+    title: "How to Make a QR Code for a Restaurant Menu (Free, Step-by-Step)",
+    description:
+      "How to make a QR code for a restaurant menu - host a digital menu at a stable URL, generate a free menu QR in Vyntrix QR Studio, choose static vs dynamic so you can update prices without reprinting, then print table tents with the right size, contrast, and quiet zone.",
+    date: "2026-11-23",
+    readingMinutes: 8,
+    topic: "How-to",
+    keywords: [
+      "qr code menu",
+      "restaurant menu qr code",
+      "menu qr code generator free",
+      "qr code for menu pdf",
+      "digital menu qr code",
+      "contactless menu",
+      "table tent qr code",
+      "dynamic qr code for menu",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

@@ -32,6 +32,7 @@ import {
   PdfQrCodeGuidePost,
   GoogleMapsLocationQrCodeGuidePost,
   QrCodeBusinessCardGuidePost,
+  RestaurantMenuQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -73,6 +74,9 @@ const BODY: Record<string, () => ReactNode> = {
     <GoogleMapsLocationQrCodeGuidePost />
   ),
   "how-to-make-qr-code-business-card": () => <QrCodeBusinessCardGuidePost />,
+  "how-to-make-qr-code-for-restaurant-menu": () => (
+    <RestaurantMenuQrCodeGuidePost />
+  ),
 };
 
 export function generateStaticParams() {
