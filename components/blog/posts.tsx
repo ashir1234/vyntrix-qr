@@ -11485,3 +11485,638 @@ export function GoogleMapsLocationQrCodeGuidePost() {
     </article>
   );
 }
+
+export function QrCodeBusinessCardGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code business card
+        </strong>{" "}
+        lets someone save your contact or open your digital card with one camera
+        scan - no typing, no lost paper pile. This guide shows the whole method
+        in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        : which type to pick (
+        <strong className="text-[var(--foreground)]">vCard</strong> vs{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>), every field
+        to fill, Design options that actually exist, how to preview and
+        download, then print and test tips so your{" "}
+        <strong className="text-[var(--foreground)]">
+          business card with QR code
+        </strong>{" "}
+        works at networking events.
+      </p>
+      <p>
+        If you only need the contact payload itself, the companion deep-dive{" "}
+        <Link
+          href="/blog/how-to-make-vcard-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Make a vCard QR Code
+        </Link>{" "}
+        covers fields and signatures in more detail. Here the focus is{" "}
+        <strong className="text-[var(--foreground)]">
+          how to put a QR code on a business card
+        </strong>{" "}
+        end-to-end - content choice, styling, export, card layout, and mistakes
+        that kill scans.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        vCard vs URL: which business card QR code should you use?
+      </h2>
+      <p>
+        Studio supports both approaches for a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for a business card
+        </strong>
+        . Pick based on what you want the scan to do:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">vCard</strong> (label in
+          Studio:{" "}
+          <strong className="text-[var(--foreground)]">vCard</strong>, hint
+          &quot;Contact card&quot;) - Encodes a{" "}
+          <strong className="text-[var(--foreground)]">contact QR code</strong> /
+          <strong className="text-[var(--foreground)]">vCard QR code</strong>.
+          The phone offers to save name, organization, title, phone, email, and
+          website into Contacts. Best when the job is{" "}
+          <strong className="text-[var(--foreground)]">
+            scan to save contact
+          </strong>
+          . Works offline after the scan; no website required.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">URL</strong> (hint
+          &quot;Link to any website&quot;) - Opens a{" "}
+          <strong className="text-[var(--foreground)]">
+            digital business card QR code
+          </strong>{" "}
+          destination: portfolio, Link-in-bio, booking page, or LinkedIn. Better
+          when the card should start a conversation online rather than dump
+          fields into Contacts. URL is also the type that can use Studio&apos;s{" "}
+          <strong className="text-[var(--foreground)]">
+            Enable dynamic QR
+          </strong>{" "}
+          option so you can change the destination later without reprinting.
+        </li>
+      </ul>
+      <p>
+        Many people print one vCard for contact save. Some add a second small
+        URL for LinkedIn - see{" "}
+        <Link
+          href="/blog/linkedin-qr-code-guide"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Make a LinkedIn QR Code
+        </Link>
+        . Do not cram two large codes on a tiny front; use the back or a clear
+        corner for the primary code.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What info to include on a contact / vCard QR
+      </h2>
+      <p>
+        Shorter payloads scan more reliably at{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code size for business card
+        </strong>{" "}
+        print. In Studio&apos;s vCard form, include only what you want strangers
+        to keep forever:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">First name</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Last name</strong> -
+          required for a useful save.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Organization</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Title</strong> - company
+          and role people remember from the handshake.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Phone</strong> - prefer{" "}
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            +country code
+          </code>{" "}
+          for international networking; use the number you will still answer in
+          a year.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Email</strong> - a work
+          inbox you monitor.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Website</strong> -
+          homepage, calendar link, or LinkedIn URL.
+        </li>
+      </ul>
+      <p>
+        Skip personal numbers you plan to retire, and skip stuffing every social
+        handle into the vCard if a single Website URL covers discovery. For a
+        URL-based digital card, paste one clean{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          https://…
+        </code>{" "}
+        link into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong> -
+        same idea as{" "}
+        <Link
+          href="/blog/how-to-create-qr-code-for-website"
+          className="text-[var(--brand-2)] underline"
+        >
+          creating a QR code for a website URL
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: make a QR code business card in Vyntrix QR Studio
+      </h2>
+      <p>
+        This is the exact Studio flow (UI labels match the app). The onboard
+        hint says: choose a type &amp; fill the form, open{" "}
+        <strong className="text-[var(--foreground)]">Design</strong> for logo
+        &amp; colors, then hit{" "}
+        <strong className="text-[var(--foreground)]">PNG / SVG</strong> to
+        download.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        1) Open Studio and pick the content type
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            /studio
+          </Link>
+          .
+        </li>
+        <li>
+          In the type row, select{" "}
+          <strong className="text-[var(--foreground)]">vCard</strong> for a
+          contact save, or{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> for a
+          digital card / profile link. (Other types like WiFi, Email, SMS,
+          Phone, Image, and Location exist in Studio but are not the usual
+          business-card primary.)
+        </li>
+        <li>
+          Stay on the{" "}
+          <strong className="text-[var(--foreground)]">content</strong> tab
+          (the left panel toggles{" "}
+          <strong className="text-[var(--foreground)]">content</strong> /{" "}
+          <strong className="text-[var(--foreground)]">design</strong>).
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        2) Fill every field that applies
+      </h3>
+      <p>
+        For{" "}
+        <strong className="text-[var(--foreground)]">vCard</strong>, complete:
+      </p>
+      <ul className="list-disc space-y-1 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">First name</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Last name</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Organization</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Title</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Phone</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Email</strong>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Website</strong>
+        </li>
+      </ul>
+      <p>
+        For{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, fill{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong>{" "}
+        (hint:{" "}
+        <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+          https://…
+        </code>
+        ). Optionally turn on{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+        under the form if you want an editable short link (dynamic is available
+        for URL and WiFi only - not for vCard).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        3) Customize on the Design tab
+      </h3>
+      <p>
+        Switch to{" "}
+        <strong className="text-[var(--foreground)]">design</strong>. These
+        controls exist in Studio today:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Presets</strong> - quick
+          looks such as Neon, Electric, Glass, Sunset, Chrome, Ink, Aurora,
+          Heart, Diamond, Starlight.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Foreground</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Background</strong>{" "}
+          colors; optional{" "}
+          <strong className="text-[var(--foreground)]">Gradient</strong> toggle
+          with{" "}
+          <strong className="text-[var(--foreground)]">Gradient color</strong>{" "}
+          and{" "}
+          <strong className="text-[var(--foreground)]">Gradient type</strong>{" "}
+          (Linear / Radial).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dot style</strong> -
+          Rounded, Dots, Classy, Classy+, Square, Extra, Heart, Diamond, Star,
+          Cross, Triangle, Hexagon, Leaf, Soft.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Corner frame</strong>{" "}
+          (Square / Dot / Round) and{" "}
+          <strong className="text-[var(--foreground)]">Corner dot</strong>{" "}
+          (Square / Dot).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Error correction</strong>{" "}
+          - L, M, Q, H (hint: &quot;Higher = more logo-friendly&quot;). Uploading
+          a logo auto-bumps low levels to H.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>{" "}
+          slider (0–40px) - keep padding so printers do not crop the edge.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Logo</strong> -{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong> /{" "}
+          <strong className="text-[var(--foreground)]">Replace logo</strong> /{" "}
+          <strong className="text-[var(--foreground)]">Remove</strong>, plus{" "}
+          <strong className="text-[var(--foreground)]">Logo size</strong>{" "}
+          (about 10–60%). Keep logos modest on card-sized codes; see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Frame style</strong> -
+          expand to choose among styles (None, Thick, Thin, Open, Caption, Pill,
+          Bubble, Ticket, Boxed, Rounded, Arrow, Hands, Bag, Gift, Ribbon,
+          Envelope, Scooter, Tray, Coffee, Phone, Chef, Mug, Badge, Poster,
+          Polaroid, Heart, Cloud). When a frame is on, set{" "}
+          <strong className="text-[var(--foreground)]">Frame caption</strong>{" "}
+          (placeholder &quot;Scan Me!&quot;, max 24 characters). On a tight
+          business card,{" "}
+          <strong className="text-[var(--foreground)]">None</strong> or a slim
+          frame is usually safer than a large decorative frame.
+        </li>
+      </ul>
+      <p>
+        Prefer dark modules on a light background for print. Fancy gradients and
+        tiny logos look great on screen and fail under event lighting - the same
+        lesson as{" "}
+        <Link
+          href="/blog/error-correction-logos-pretty-qr-fail"
+          className="text-[var(--brand-2)] underline"
+        >
+          Error Correction, Logos, and Why Pretty QR Codes Fail
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        4) Preview, then download
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Use the right-hand preview: toggle{" "}
+          <strong className="text-[var(--foreground)]">3D</strong> /{" "}
+          <strong className="text-[var(--foreground)]">2D</strong>. Fun scenes
+          and 2D effects are for presentation - they do not change the encoded
+          data. For print judgment,{" "}
+          <strong className="text-[var(--foreground)]">2D</strong> with the{" "}
+          <strong className="text-[var(--foreground)]">Clean</strong> effect is
+          the clearest.
+        </li>
+        <li>
+          Optional:{" "}
+          <strong className="text-[var(--foreground)]">✨ Reveal</strong>{" "}
+          refreshes the generation animation;{" "}
+          <strong className="text-[var(--foreground)]">📱 Test scan</strong>{" "}
+          plays a studio scan animation (still test with a real phone before
+          printing).
+        </li>
+        <li>
+          Download{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>. If a frame
+          is selected, the buttons read{" "}
+          <strong className="text-[var(--foreground)]">PNG + frame</strong> /{" "}
+          <strong className="text-[var(--foreground)]">SVG + frame</strong>. Use
+          SVG for print (scales cleanly) and PNG for digital proofs and email.
+        </li>
+      </ol>
+      <p>
+        Static one-off downloads for these content types generate in your
+        browser - a free{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code business card generator
+        </strong>{" "}
+        path without a watermark on that static export.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Print tips: size, contrast, quiet zone, placement
+      </h2>
+      <p>
+        Knowing{" "}
+        <strong className="text-[var(--foreground)]">
+          how to put a QR code on a business card
+        </strong>{" "}
+        is half content, half print craft:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            QR code size for business card
+          </strong>
+          : Aim for about 2×2 cm (roughly 0.8 in) minimum so phones lock on
+          quickly. Smaller looks tidy and fails in dim rooms.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on light stock. Avoid busy photo fills or low-contrast brand
+          colors behind the modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          blank margin around the square (Studio&apos;s{" "}
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>{" "}
+          helps). Do not let logos, foil edges, or hairline borders touch the
+          modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Placement:</strong> Back
+          of the card or a clear front corner with a short label
+          (&quot;Scan to save contact&quot; or &quot;Scan for my card&quot;). Keep
+          one primary job per card face.
+        </li>
+        <li>
+          Prefer matte finish over heavy gloss if people will scan under
+          overhead lights.
+        </li>
+      </ul>
+      <p>
+        Walk the full pre-press checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>{" "}
+        before you order a large run.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Testing before you print
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Export a proof at the real card size (print a paper mock at 100%).
+        </li>
+        <li>
+          Scan with at least one iPhone Camera and one Android camera app.
+        </li>
+        <li>
+          For vCard: confirm Contacts shows the right name, phone, email, and
+          website. For URL: confirm the digital card or profile loads.
+        </li>
+        <li>
+          Re-test after every logo, color, or error-correction change.
+        </li>
+        <li>
+          If you enabled dynamic URL, open the manage link once and confirm the
+          redirect still points where you expect.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Common mistakes
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Encoding a personal number or temp email you will abandon - static
+          cards cannot update themselves.
+        </li>
+        <li>
+          Printing a URL that needs login, or a digital card page that is still
+          a draft.
+        </li>
+        <li>
+          Oversized logos or decorative frames that eat modules at 2 cm width.
+        </li>
+        <li>
+          Zero quiet zone against foil, die-cuts, or photo backgrounds.
+        </li>
+        <li>
+          Trusting Studio&apos;s{" "}
+          <strong className="text-[var(--foreground)]">Test scan</strong>{" "}
+          animation alone instead of a real phone on a printed proof.
+        </li>
+        <li>
+          Choosing vCard when you actually needed an editable campaign link -
+          use URL + dynamic (or reprint) when destinations change.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I make a QR code business card for free?
+      </h3>
+      <p>
+        Open{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">vCard</strong> or{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, fill the
+        fields, style on Design, and download PNG or SVG. That is a free{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code business card generator
+        </strong>{" "}
+        workflow for static one-off exports.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should my business card QR code be a vCard or a website link?
+      </h3>
+      <p>
+        Use vCard when the goal is{" "}
+        <strong className="text-[var(--foreground)]">
+          scan to save contact
+        </strong>
+        . Use URL for a{" "}
+        <strong className="text-[var(--foreground)]">
+          digital business card QR code
+        </strong>
+        , portfolio, or LinkedIn. URL also unlocks dynamic redirects in Studio.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What is the best QR code size for a business card?
+      </h3>
+      <p>
+        About 2×2 cm (≈0.8 in) minimum with a quiet zone. Larger is safer if
+        cards are scanned in dim venues or at arm&apos;s length.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I put my logo in the business card QR code?
+      </h3>
+      <p>
+        Yes - Design →{" "}
+        <strong className="text-[var(--foreground)]">Upload logo</strong>, keep{" "}
+        <strong className="text-[var(--foreground)]">Error correction</strong>{" "}
+        at H when possible, and keep{" "}
+        <strong className="text-[var(--foreground)]">Logo size</strong> modest.
+        Always proof-scan at print size.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I change the contact details after I print?
+      </h3>
+      <p>
+        A static vCard or static URL is baked into the pattern - you must
+        reprint (or replace the digital destination only if you used a dynamic
+        URL). For the cost tradeoff, see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Why won&apos;t my printed business card QR scan?
+      </h3>
+      <p>
+        Usually size, contrast, quiet zone, or an oversized logo - not the
+        generator. Fix print basics with the{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>
+        , then re-test on iPhone and Android.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free QR code business card now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          make a QR code business card
+        </strong>
+        ?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">vCard</strong> or{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, fill your
+        details, style colors and logo on Design, download SVG or PNG, proof on
+        paper, then send the file to print.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-make-vcard-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a vCard QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/linkedin-qr-code-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a LinkedIn QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about business card QR codes or print placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
