@@ -12120,3 +12120,510 @@ export function QrCodeBusinessCardGuidePost() {
     </article>
   );
 }
+
+export function RestaurantMenuQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Searching for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make a QR code for a restaurant menu
+        </strong>
+        ? A{" "}
+        <strong className="text-[var(--foreground)]">QR code menu</strong> is
+        simply a printed square that opens a{" "}
+        <strong className="text-[var(--foreground)]">
+          digital menu QR code
+        </strong>{" "}
+        destination on the diner&apos;s phone - a{" "}
+        <strong className="text-[var(--foreground)]">contactless menu</strong>{" "}
+        without a special app. The workflow is: put the menu online at a stable
+        URL, generate the code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , decide static vs{" "}
+        <strong className="text-[var(--foreground)]">
+          dynamic QR code for menu
+        </strong>{" "}
+        updates, then print for tables and test on real phones.
+      </p>
+      <p>
+        This walkthrough stays practical for restaurants, cafés, and bars. It
+        avoids invented stats and only describes Studio features that exist
+        today: URL content type, free static PNG/SVG export, optional{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+        for editable short links (sign-in required; Free includes 1 dynamic
+        code), Design colors/logo/frame, and print-ready downloads. For a
+        broader small-business rollout that includes reviews and WiFi alongside
+        menus, see the{" "}
+        <Link
+          href="/blog/small-business-qr-playbook"
+          className="text-[var(--brand-2)] underline"
+        >
+          Small-Business QR Playbook
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get the menu online at a stable URL
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">
+          restaurant menu QR code
+        </strong>{" "}
+        encodes a link - not the dishes themselves. Diners scan, the camera
+        opens a browser (or PDF viewer), and they read. Pick a destination you
+        control and can keep reachable:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Your own website /menu page
+          </strong>{" "}
+          - Best default. A mobile-friendly HTML page (for example{" "}
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            https://yourrestaurant.com/menu
+          </code>
+          ) loads quickly on cellular and is easy to update. Same idea as{" "}
+          <Link
+            href="/blog/how-to-create-qr-code-for-website"
+            className="text-[var(--brand-2)] underline"
+          >
+            creating a QR code for a website URL
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            PDF on your own site
+          </strong>{" "}
+          - Host{" "}
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            /menu.pdf
+          </code>{" "}
+          (or similar) and overwrite the same path when prices change. That is
+          the cleanest{" "}
+          <strong className="text-[var(--foreground)]">
+            qr code for menu pdf
+          </strong>{" "}
+          path; details on PDF hosting live in{" "}
+          <Link
+            href="/blog/how-to-make-qr-code-for-pdf"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for a PDF
+          </Link>
+          . Prefer a light web page when you can - PDFs often need pinch-zoom on
+          phones.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Google Drive public link - pitfalls
+          </strong>{" "}
+          - Works only if sharing is{" "}
+          <strong className="text-[var(--foreground)]">
+            Anyone with the link
+          </strong>{" "}
+          (Viewer) and you keep the same file/version when you edit. Test in a
+          private browser window and on phone mobile data. Login walls,
+          &quot;request access,&quot; and brand-new share URLs after every
+          upload break printed codes.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            POS / online ordering page
+          </strong>{" "}
+          - Fine when the page is public, mobile-ready, and shows the menu (or
+          order flow) without forcing an account first. Avoid deep links that
+          expire or require staff login.
+        </li>
+      </ul>
+      <p>
+        Before you generate anything, open the URL on a guest phone over
+        cellular. If that fails, the{" "}
+        <strong className="text-[var(--foreground)]">scan for menu</strong>{" "}
+        moment will fail too.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Generate the restaurant menu QR code (free)
+      </h2>
+      <p>
+        Use Studio as a free{" "}
+        <strong className="text-[var(--foreground)]">
+          menu QR code generator
+        </strong>
+        :
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            /studio
+          </Link>
+          .
+        </li>
+        <li>
+          Choose content type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> (hint:
+          &quot;Link to any website&quot;).
+        </li>
+        <li>
+          Paste the menu link into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong> (
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            https://…
+          </code>
+          ).
+        </li>
+        <li>
+          Optional: switch to{" "}
+          <strong className="text-[var(--foreground)]">design</strong> for
+          foreground/background colors, presets, dot style, quiet-zone margin,
+          logo upload, and a frame caption such as &quot;Scan for our
+          menu&quot; (frame caption max 24 characters).
+        </li>
+        <li>
+          Download{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          proofs. Static one-off exports for URL codes generate in the browser
+          with no watermark.
+        </li>
+      </ol>
+      <p>
+        Keep contrast high (dark modules on a light background) and logos
+        modest so table scans stay reliable under restaurant lighting.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic: update the menu without reprinting
+      </h2>
+      <p>
+        Menus change - seasonal dishes, supplier prices, sold-out items. That is
+        why restaurants care about a{" "}
+        <strong className="text-[var(--foreground)]">
+          dynamic QR code for menu
+        </strong>{" "}
+        workflows:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Static</strong> - The
+          printed pattern permanently encodes your URL. Free and simple. If the
+          URL itself never changes (you overwrite{" "}
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            /menu
+          </code>{" "}
+          or the same Drive file version), static is enough.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Dynamic</strong> - In
+          Studio, turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          (URL type; sign in). The QR encodes a short redirect link you can
+          retarget later - so{" "}
+          <strong className="text-[var(--foreground)]">
+            how to put a menu on a QR code
+          </strong>{" "}
+          stays the same on every table tent while the destination page or PDF
+          can move. Free includes 1 dynamic code with short analytics; Pro
+          unlocks unlimited dynamics and fuller history.
+        </li>
+      </ul>
+      <p>
+        If you reprint every time a price changes, static stops being free in
+        practice. The cost framing is covered in{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Design and print: table tents, stickers, windows, receipts
+      </h2>
+      <p>
+        Placement matters as much as the generator. Common surfaces for a café
+        or bar{" "}
+        <strong className="text-[var(--foreground)]">
+          table tent QR code
+        </strong>
+        :
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Table tents</strong> -
+          Primary for dine-in. Label clearly: &quot;Scan for our menu.&quot;
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Stickers</strong> - On
+          counters, takeout bags, or laminated cards. Prefer
+          tamper-evident stock when codes sit in public (see security below).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Window decals</strong> -
+          Larger for outdoor/sidewalk distance; still keep contrast and quiet
+          zone.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Receipts</strong> -
+          Useful for takeout or to push a secondary action (reviews, ordering).
+          Keep the print sharp; thermal printers blur tiny modules.
+        </li>
+      </ul>
+      <p>
+        Practical{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code menu size for tables
+        </strong>
+        : aim for about{" "}
+        <strong className="text-[var(--foreground)]">2–3 cm</strong> square
+        minimum for close table scanning; go larger for walls and windows. Leave
+        a quiet zone (blank margin) around the square - Studio&apos;s{" "}
+        <strong className="text-[var(--foreground)]">Quiet-zone margin</strong>{" "}
+        helps. Laminate for durability, but watch glare under bright lights;
+        matte finishes usually scan more consistently. Full pre-press checks
+        live in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Test on iPhone and Android before the dinner rush
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>Print a paper proof at the real size you will use on tables.</li>
+        <li>
+          Scan with at least one iPhone Camera and one Android camera app under
+          your dining-room lighting (not only bright office light).
+        </li>
+        <li>
+          Confirm the menu loads on cellular without login, and that text is
+          readable without aggressive pinch-zoom.
+        </li>
+        <li>
+          If you enabled dynamic QR, open the manage link once and confirm the
+          redirect still points to the current menu.
+        </li>
+        <li>
+          Re-test after any logo, color, frame, or destination change.
+        </li>
+      </ol>
+      <p>
+        Studio&apos;s on-screen{" "}
+        <strong className="text-[var(--foreground)]">Test scan</strong>{" "}
+        animation is helpful for demos - it does not replace a real phone on a
+        printed proof.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Accessibility: keep a few printed menus
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">contactless menu</strong>{" "}
+        should not be the only option. Keep a small stack of printed menus for
+        guests who prefer paper, have low vision that works better with large
+        print, have limited battery or data, or simply do not want to use a
+        phone at the table. Staff should know where those copies live.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Quishing risk: protect table codes from tampering
+      </h2>
+      <p>
+        Public table tents and stickers can be covered with a malicious overlay
+        sticker (quishing). Practical defenses: laminate tents so overlays peel
+        or look wrong, use{" "}
+        <strong className="text-[var(--foreground)]">
+          tamper-evident stickers
+        </strong>
+        , brand the frame with your restaurant name and a &quot;Scan for our
+        menu&quot; caption, and train staff to spot replacements. More context:
+        {" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          Quishing Season: How to Spot a Fake QR Code
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I make a QR code for a restaurant menu for free?
+      </h3>
+      <p>
+        Host the menu at a public URL, open{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, paste the
+        link, style on Design if you want, and download PNG or SVG. That is a
+        free{" "}
+        <strong className="text-[var(--foreground)]">
+          menu QR code generator
+        </strong>{" "}
+        path for static codes.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use a PDF or a web page for the digital menu?
+      </h3>
+      <p>
+        A mobile-friendly web page is usually easier to read on phones. A{" "}
+        <strong className="text-[var(--foreground)]">
+          qr code for menu pdf
+        </strong>{" "}
+        works when the PDF is hosted publicly and kept light; many diners still
+        need to pinch-zoom multi-column PDFs.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I update the menu without reprinting the QR?
+      </h3>
+      <p>
+        Either keep one stable URL and overwrite the page/PDF behind it, or use
+        a{" "}
+        <strong className="text-[var(--foreground)]">
+          dynamic QR code for menu
+        </strong>{" "}
+        (Studio →{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>
+        ) and change the redirect destination when the menu moves.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What size should a table tent QR code be?
+      </h3>
+      <p>
+        For{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code menu size for tables
+        </strong>
+        , about 2–3 cm square minimum with a quiet zone is a solid starting
+        point for arm&apos;s-length scanning. Enlarge for windows and walls.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Do guests need an app to scan for the menu?
+      </h3>
+      <p>
+        No. Built-in camera apps on modern iPhones and Androids open the URL.
+        Keep the destination fast on cellular so{" "}
+        <strong className="text-[var(--foreground)]">scan for menu</strong>{" "}
+        feels instant.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can cafés and bars use the same approach?
+      </h3>
+      <p>
+        Yes - the same{" "}
+        <strong className="text-[var(--foreground)]">
+          restaurant menu QR code
+        </strong>{" "}
+        pattern works for café drink lists, bar cocktail menus, and food trucks.
+        Host once, print once (or use dynamic for seasonal swaps), and keep a
+        few paper backups.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free restaurant menu QR code now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          put a menu on a QR code
+        </strong>
+        ?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , paste your menu URL, optionally enable dynamic so you can update
+        without reprinting, download SVG or PNG, proof on a table tent, then
+        print for service.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-pdf"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for a PDF
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            Quishing Season: How to Spot a Fake QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-create-qr-code-for-website"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code for a Website URL
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about restaurant menu QR codes or print placement?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
