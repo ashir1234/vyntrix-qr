@@ -33,6 +33,7 @@ import {
   GoogleMapsLocationQrCodeGuidePost,
   QrCodeBusinessCardGuidePost,
   RestaurantMenuQrCodeGuidePost,
+  WhichAgencyIssuesUpcAndBrandedQrPost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -76,6 +77,9 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-qr-code-business-card": () => <QrCodeBusinessCardGuidePost />,
   "how-to-make-qr-code-for-restaurant-menu": () => (
     <RestaurantMenuQrCodeGuidePost />
+  ),
+  "which-agency-issues-upc-codes-and-branded-qr-codes": () => (
+    <WhichAgencyIssuesUpcAndBrandedQrPost />
   ),
 };
 

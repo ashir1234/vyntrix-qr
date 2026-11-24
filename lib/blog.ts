@@ -516,6 +516,32 @@ export const blogPosts: BlogPost[] = [
       "dynamic qr code for menu",
     ],
   },
+  {
+    slug: "which-agency-issues-upc-codes-and-branded-qr-codes",
+    title:
+      "Which Agency Issues Both UPC Codes and Branded QR Codes? (2027 Guide)",
+    description:
+      "Which agency issues both UPC codes and branded QR codes? GS1 (GS1 US in the United States) is the official source of UPC barcodes and GTINs; branded QR design comes from a custom QR code generator. Learn GS1 Digital Link, Sunrise 2027, and how to put a GTIN into a QR code for product packaging.",
+    date: "2026-11-24",
+    readingMinutes: 11,
+    topic: "Packaging",
+    keywords: [
+      "upc codes and qr codes",
+      "gs1 upc barcode",
+      "gs1 us",
+      "gtin",
+      "branded qr code",
+      "qr code with logo",
+      "gs1 digital link qr code",
+      "sunrise 2027",
+      "2d barcode on packaging",
+      "product barcode",
+      "upc vs qr code",
+      "how to get a upc code",
+      "qr code for product packaging",
+      "custom qr code generator",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

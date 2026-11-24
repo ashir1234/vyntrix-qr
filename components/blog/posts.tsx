@@ -12627,3 +12627,567 @@ export function RestaurantMenuQrCodeGuidePost() {
     </article>
   );
 }
+
+export function WhichAgencyIssuesUpcAndBrandedQrPost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        People searching{" "}
+        <strong className="text-[var(--foreground)]">
+          upc codes and qr codes
+        </strong>{" "}
+        often assume one office hands out both the linear{" "}
+        <strong className="text-[var(--foreground)]">product barcode</strong>{" "}
+        and a logo-styled square for packaging. The short answer is more precise
+        than that marketing question implies - and getting it wrong can block
+        listings on Amazon, Walmart, and other retailers that verify GS1 company
+        prefixes.
+      </p>
+      <p>
+        This guide answers{" "}
+        <strong className="text-[var(--foreground)]">
+          which agency issues both upc codes and branded qr codes?
+        </strong>{" "}
+        covers{" "}
+        <strong className="text-[var(--foreground)]">upc vs qr code</strong>{" "}
+        differences, explains what{" "}
+        <strong className="text-[var(--foreground)]">GS1 US</strong> (and other
+        GS1 member organizations) actually license, introduces{" "}
+        <strong className="text-[var(--foreground)]">
+          GS1 Digital Link QR code
+        </strong>{" "}
+        formats for{" "}
+        <strong className="text-[var(--foreground)]">Sunrise 2027</strong>, then
+        walks through building a{" "}
+        <strong className="text-[var(--foreground)]">branded QR code</strong>{" "}
+        with a{" "}
+        <strong className="text-[var(--foreground)]">
+          custom QR code generator
+        </strong>{" "}
+        -{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        which agency issues both upc codes and branded qr codes?
+      </h2>
+      <p>
+        <strong className="text-[var(--foreground)]">GS1</strong> -{" "}
+        <strong className="text-[var(--foreground)]">GS1 US</strong> in the
+        United States, and the local GS1 member organization in other countries -
+        is the only official source of{" "}
+        <strong className="text-[var(--foreground)]">GS1 UPC barcode</strong>{" "}
+        numbers (company prefix licenses and single{" "}
+        <strong className="text-[var(--foreground)]">GTIN</strong>s). GS1 also
+        publishes the{" "}
+        <strong className="text-[var(--foreground)]">GS1 Digital Link</strong>{" "}
+        standard so a product&apos;s GTIN can live inside a QR URL - the industry
+        path behind{" "}
+        <strong className="text-[var(--foreground)]">Sunrise 2027</strong> and{" "}
+        <strong className="text-[var(--foreground)]">
+          2D barcode on packaging
+        </strong>{" "}
+        at retail POS.
+      </p>
+      <p>
+        No agency &quot;issues&quot; branded QR codes. Logo, colors, frames, and
+        captions are design choices you make in a QR generator. The practical
+        split: get the UPC/GTIN from GS1, then create a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for product packaging
+        </strong>{" "}
+        (optionally a Digital Link URL that carries the GTIN) with Studio - a{" "}
+        <strong className="text-[var(--foreground)]">
+          qr code with logo
+        </strong>
+        , colors, and print-ready PNG/SVG.
+      </p>
+      <p>
+        Avoid resellers that sell non-GS1 UPCs. Major marketplaces check whether
+        your prefix is a real GS1 company prefix; recycled or unofficial numbers
+        can get listings suspended. Fees and plans change by country and package
+        size - check the current{" "}
+        <a
+          href="https://www.gs1us.org/"
+          className="text-[var(--brand-2)] underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GS1 US
+        </a>{" "}
+        (or your local GS1) site rather than relying on third-party price quotes.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        UPC vs QR code: what each product barcode does
+      </h2>
+      <p>
+        A classic UPC (and the GTIN it represents) is a short numeric identifier
+        for trade items at checkout and in supply-chain systems. A QR code is a
+        2D symbol that can encode a URL, text, or a structured Digital Link. They
+        solve different jobs:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">UPC / GTIN</strong> -
+          Licensed identity for the SKU. Required for most retail listings and
+          POS scan data.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Marketing QR</strong> -
+          Opens a landing page, instructions, warranty form, or recipe - usually
+          a normal HTTPS URL.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            GS1 Digital Link QR
+          </strong>{" "}
+          - A URL structured so scanners can extract the GTIN (and optional
+          batch/expiry) while phones still open a product experience. Detail and
+          dual-coding strategy live in{" "}
+          <Link
+            href="/blog/gs1-sunrise-2027-qr-codes-packaging"
+            className="text-[var(--brand-2)] underline"
+          >
+            GS1 Sunrise 2027: What the Switch to QR Codes on Packaging Means
+          </Link>
+          .
+        </li>
+      </ul>
+      <p>
+        Until retailer POS readiness is widespread, many brands keep printing the
+        linear UPC <em>and</em> a 2D code. That is &quot;a sunrise, not a
+        sunset&quot; - not a forced replacement overnight.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What GS1 does (and does not) do for branded QR codes
+      </h2>
+      <p>
+        When people ask{" "}
+        <strong className="text-[var(--foreground)]">
+          how to get a upc code
+        </strong>
+        , the correct path is a GS1 membership or GTIN license from your country
+        organization - not a QR tool. GS1:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          Issues company prefixes and GTINs used to build a{" "}
+          <strong className="text-[var(--foreground)]">GS1 UPC barcode</strong>.
+        </li>
+        <li>
+          Defines how identifiers appear in barcodes and in{" "}
+          <strong className="text-[var(--foreground)]">
+            GS1 Digital Link
+          </strong>{" "}
+          URIs.
+        </li>
+        <li>
+          Does <em>not</em> design your logo QR, pick brand colors, or export
+          print artwork. That is generator software.
+        </li>
+      </ul>
+      <p>
+        Vyntrix builds QR software only. We do not sell UPCs, verify company
+        prefixes, or replace GS1. If you need a licensed{" "}
+        <strong className="text-[var(--foreground)]">product barcode</strong>,
+        start with GS1; if you need a{" "}
+        <strong className="text-[var(--foreground)]">branded QR code</strong> for
+        packaging or inserts, use Studio after you know the destination URL (or
+        Digital Link URI) you want to encode.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        GS1 Digital Link QR codes and Sunrise 2027
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">
+          GS1 Digital Link QR code
+        </strong>{" "}
+        is still a QR - phones and many cameras read it like any other square.
+        The difference is the payload: a URL that embeds the GTIN (and optionally
+        AI elements like lot or expiry) so retail scanners can treat it as a{" "}
+        <strong className="text-[var(--foreground)]">
+          2D barcode on packaging
+        </strong>{" "}
+        while shoppers open a rich product page.
+      </p>
+      <p>
+        Industry programs under{" "}
+        <strong className="text-[var(--foreground)]">Sunrise 2027</strong> push
+        POS systems to accept those 2D symbols by end of 2027. For brand teams,
+        that usually means: keep your GS1 GTIN clean, decide whether marketing
+        QRs and checkout 2D codes share one Digital Link or stay separate, and
+        print with scan-safe size and contrast. Deeper packaging dual-code
+        guidance is in the{" "}
+        <Link
+          href="/blog/gs1-sunrise-2027-qr-codes-packaging"
+          className="text-[var(--brand-2)] underline"
+        >
+          Sunrise 2027 packaging guide
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: GTIN from GS1, then branded QR in Studio
+      </h2>
+      <p>
+        Use this sequence when you need both a licensed UPC/GTIN and a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for product packaging
+        </strong>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)]">
+        1. Get your GTIN from GS1
+      </h3>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Join or license through{" "}
+          <strong className="text-[var(--foreground)]">GS1 US</strong> (or your
+          local GS1 MO).
+        </li>
+        <li>
+          Assign a{" "}
+          <strong className="text-[var(--foreground)]">GTIN</strong> to the
+          trade item and generate the linear UPC artwork with GS1-compliant tools
+          or your packaging vendor.
+        </li>
+        <li>
+          If you want a Digital Link QR, build the Digital Link URI that
+          includes that GTIN (and any optional AIs your supply chain needs). Host
+          the resolver or product page on a domain you control.
+        </li>
+        <li>
+          Skip unofficial &quot;buy cheap UPCs&quot; marketplaces - retailers
+          validate prefixes.
+        </li>
+      </ol>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)]">
+        2. Create the branded QR in {siteConfig.name} Studio
+      </h3>
+      <p>
+        Open the{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio at /studio
+        </Link>
+        . The onboarding hint matches the workflow: choose a type and fill the
+        form, open{" "}
+        <strong className="text-[var(--foreground)]">Design</strong> for logo
+        and colors, then download with{" "}
+        <strong className="text-[var(--foreground)]">PNG / SVG</strong>.
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Select content type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> (hint:
+          &quot;Link to any website&quot;).
+        </li>
+        <li>
+          Paste your product page or GS1 Digital Link into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong> (
+          <code className="bg-[var(--surface)] px-1.5 py-0.5 rounded text-sm">
+            https://…
+          </code>
+          ).
+        </li>
+        <li>
+          Optional for campaigns that may change destinations: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          under{" "}
+          <strong className="text-[var(--foreground)]">Dynamic QR</strong>{" "}
+          (sign-in; Free includes 1 dynamic code). The printed pattern encodes a
+          short redirect you can retarget later - useful for marketing QRs, not
+          a substitute for a fixed Digital Link GTIN at POS.
+        </li>
+        <li>
+          Switch the left panel tab from{" "}
+          <strong className="text-[var(--foreground)]">content</strong> to{" "}
+          <strong className="text-[var(--foreground)]">design</strong>.
+        </li>
+        <li>
+          Pick a preset if you want a starting look (
+          <strong className="text-[var(--foreground)]">Neon</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Electric</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Glass</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Sunset</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Chrome</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Ink</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Aurora</strong>, and
+          others), or set{" "}
+          <strong className="text-[var(--foreground)]">Foreground</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Background</strong>{" "}
+          colors. Optional{" "}
+          <strong className="text-[var(--foreground)]">Use gradient</strong>{" "}
+          unlocks{" "}
+          <strong className="text-[var(--foreground)]">Gradient color</strong>{" "}
+          and{" "}
+          <strong className="text-[var(--foreground)]">Gradient type</strong>{" "}
+          (Linear / Radial). Prefer dark modules on a light background for
+          packaging.
+        </li>
+        <li>
+          Adjust{" "}
+          <strong className="text-[var(--foreground)]">Dot style</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Corner frame</strong>,
+          and{" "}
+          <strong className="text-[var(--foreground)]">Corner dot</strong> if
+          you want a less plain module look - keep styles modest for POS and
+          warehouse scanners.
+        </li>
+        <li>
+          Set{" "}
+          <strong className="text-[var(--foreground)]">Error correction</strong>{" "}
+          to{" "}
+          <strong className="text-[var(--foreground)]">H</strong> when you add a
+          logo (hint in Studio: &quot;Higher = more logo-friendly&quot;). Uploading
+          a logo while on L or M automatically bumps correction to H.
+        </li>
+        <li>
+          Raise{" "}
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>{" "}
+          with the slider so the code keeps clear space around the modules.
+        </li>
+        <li>
+          Under{" "}
+          <strong className="text-[var(--foreground)]">Logo</strong>, tap{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong>{" "}
+          (or{" "}
+          <strong className="text-[var(--foreground)]">Replace logo</strong>),
+          then set{" "}
+          <strong className="text-[var(--foreground)]">Logo size</strong>. Keep
+          the mark small enough that scanners still recover the pattern - see{" "}
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+          .
+        </li>
+        <li>
+          Optional call-to-action chrome: open{" "}
+          <strong className="text-[var(--foreground)]">Frame style</strong>,
+          choose a frame, and set{" "}
+          <strong className="text-[var(--foreground)]">Frame caption</strong>{" "}
+          (max 24 characters; placeholder &quot;Scan Me!&quot;).
+        </li>
+        <li>
+          Preview in{" "}
+          <strong className="text-[var(--foreground)]">2D</strong> for a clean
+          proof, optionally tap{" "}
+          <strong className="text-[var(--foreground)]">Test scan</strong>, then
+          download{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> (buttons
+          become{" "}
+          <strong className="text-[var(--foreground)]">PNG + frame</strong> /{" "}
+          <strong className="text-[var(--foreground)]">SVG + frame</strong> when
+          a frame is selected). Prefer SVG for print plates; PNG for digital
+          proofs.
+        </li>
+      </ol>
+      <p>
+        That is the full Studio path for a{" "}
+        <strong className="text-[var(--foreground)]">
+          custom QR code generator
+        </strong>{" "}
+        workflow - real labels from the app, not invented menus.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)]">
+        3. Test and print on packaging
+      </h3>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size</strong> - Print
+          large enough for the scan distance (shelf, shipper, or insert). Tiny
+          marks fail first.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast</strong> - Dark
+          foreground on a light, solid background; avoid busy photography under
+          the modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone</strong> -
+          Keep the margin clear of copy, seals, and folds.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Error correction + logo
+          </strong>{" "}
+          - H with a modest logo size; re-test after every art change.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Devices</strong> - Scan
+          with multiple phones and, for Digital Link / POS plans, confirm with
+          your retailer or lab partners. Field checklist:{" "}
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+          .
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ: UPC codes and branded QR codes
+      </h2>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          which agency issues both upc codes and branded qr codes?
+        </strong>
+      </p>
+      <p>
+        GS1 issues official UPC/GTIN identifiers. Nobody &quot;issues&quot;
+        branded QR artwork - you generate that yourself (or with a designer)
+        using a tool like{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . GS1&apos;s role on the QR side is standards (Digital Link), not logo
+        design.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Is a free QR the same as a GS1 UPC barcode?
+        </strong>
+      </p>
+      <p>
+        No. A free marketing QR encodes whatever URL you paste. A{" "}
+        <strong className="text-[var(--foreground)]">GS1 UPC barcode</strong>{" "}
+        carries a licensed GTIN. Confusing the two is how brands end up with
+        packaging that looks modern but fails marketplace verification.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Can I put my logo in a Digital Link QR?
+        </strong>
+      </p>
+      <p>
+        Yes, if error correction and logo size leave enough recoverable modules -
+        same rules as any{" "}
+        <strong className="text-[var(--foreground)]">qr code with logo</strong>.
+        For checkout-critical codes, validate with your retail partners; some
+        prefer plain high-contrast modules without heavy decoration.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Do I still need the linear UPC after Sunrise 2027?
+        </strong>
+      </p>
+      <p>
+        Plan for dual coding until your retailers confirm 2D-only readiness.
+        Sunrise programs aim for POS capability, not an instant sunset of 1D
+        symbols.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Where else do branded packaging QRs show up?
+        </strong>
+      </p>
+      <p>
+        Inserts, shippers, and even{" "}
+        <Link
+          href="/blog/how-to-make-qr-code-business-card"
+          className="text-[var(--brand-2)] underline"
+        >
+          QR code business cards
+        </Link>{" "}
+        for sales teams - still separate from the licensed GTIN on the trade
+        item.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your branded packaging QR
+      </h2>
+      <p>
+        License the GTIN from GS1, then open{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>{" "}
+        to encode your URL or Digital Link, add brand colors and a logo, and
+        export SVG/PNG for packaging. That is the accurate answer to{" "}
+        <strong className="text-[var(--foreground)]">
+          which agency issues both upc codes and branded qr codes?
+        </strong>{" "}
+        - GS1 for the number, your{" "}
+        <strong className="text-[var(--foreground)]">
+          custom QR code generator
+        </strong>{" "}
+        for the branded square.
+      </p>
+
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/gs1-sunrise-2027-qr-codes-packaging"
+            className="text-[var(--brand-2)] underline"
+          >
+            GS1 Sunrise 2027 packaging guide
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/qr-code-with-logo-guide"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Create a QR Code with a Logo
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-business-card"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code Business Card
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about packaging QR design in Studio?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.
+      </p>
+    </article>
+  );
+}
