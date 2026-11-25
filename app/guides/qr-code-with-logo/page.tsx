@@ -118,12 +118,17 @@ export default function LogoGuidePage() {
           if the destination might change after print.
         </li>
         <li>
-          Open the <strong className="text-[var(--foreground)]">Design</strong>{" "}
-          tab and upload your logo (transparent PNG works best).
+          Open the <strong className="text-[var(--foreground)]">design</strong>{" "}
+          tab and click{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong>{" "}
+          (transparent PNG works best).
         </li>
         <li>
-          Adjust logo size carefully. Error correction is raised automatically
-          for reliability.
+          Keep{" "}
+          <strong className="text-[var(--foreground)]">Logo size</strong> around
+          15–30%. Studio raises error correction to{" "}
+          <strong className="text-[var(--foreground)]">H</strong> when a logo is
+          present - leave it there for reliability.
         </li>
         <li>
           Preview, test-scan on a phone, then export PNG or SVG. For print
@@ -143,7 +148,10 @@ export default function LogoGuidePage() {
         <li>Prefer flat marks over detailed photographs</li>
         <li>Use transparency instead of a solid white square when possible</li>
         <li>Simple monochrome or two-color logos scan more reliably</li>
-        <li>Export the logo large enough that it stays sharp when scaled down</li>
+        <li>
+          Start from a square source about 200–400 px (or SVG) so the mark stays
+          sharp when scaled down
+        </li>
       </ul>
 
       <h2 className="mt-10 text-2xl font-semibold">Design tips</h2>

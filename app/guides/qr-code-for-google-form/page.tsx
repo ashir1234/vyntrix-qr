@@ -94,14 +94,42 @@ export default function GoogleFormGuidePage() {
         <span className="font-mono text-sm text-[var(--foreground)]">
           viewform
         </span>{" "}
-        URL. Scan → browser opens → respondent answers on mobile. Responses
-        land in the linked Google Sheet automatically if you enabled that
-        connection in the form settings.
+        URL (or a{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          forms.gle
+        </span>{" "}
+        short link - both are fine). Scan → browser opens → respondent answers
+        on mobile. Responses land in the linked Google Sheet automatically if
+        you enabled that connection in the form settings.
       </p>
       <p className="mt-3 text-[var(--muted)]">
         The QR does not embed the form itself - if you delete the form or change
-        permissions, the code breaks. Always copy the responder link, not the
-        editor URL.
+        permissions, the code breaks. Always copy the Send → Link responder
+        URL; never encode the{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">/edit</span>{" "}
+        link from the address bar while editing.
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">
+        Built-in Forms QR vs Studio
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Google Forms may show a built-in QR under Send → link. It is free and
+        fast, but plain black-and-white, PNG-only, and static. Use{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Studio
+        </Link>{" "}
+        when you need brand colors, a logo, SVG print files, or{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>.
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">
+        Permissions that block scanners
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Workspace “Restrict to users in your organization” and “Limit to 1
+        response” (which forces sign-in) can show login or permission walls to
+        guests. Test signed out before you print public posters.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">When to use one</h2>
@@ -128,25 +156,37 @@ export default function GoogleFormGuidePage() {
           Build the form in Google Forms. Settings → collect emails if needed →
           limit to one response if appropriate.
         </li>
-        <li>Send → Link → copy the URL. Open it on your phone in incognito to verify.</li>
         <li>
-          Paste into the{" "}
-          <Link href="/studio" className="text-[var(--brand-2)] underline">
-            Studio
-          </Link>{" "}
-          URL field.
+          Send → Link → copy the URL (forms.gle is fine). Open it on your phone
+          in incognito to verify.
         </li>
         <li>
-          Optional: wrap with a{" "}
+          In the{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Studio
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
+        </li>
+        <li>
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          to reuse print across events or track scans (
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
           >
-            dynamic QR
-          </Link>{" "}
-          to reuse print across events or track scans.
+            dynamic QR guide
+          </Link>
+          ).
         </li>
-        <li>Download PNG for slides or SVG for large posters.</li>
+        <li>
+          Download <strong className="text-[var(--foreground)]">PNG</strong> for
+          slides or <strong className="text-[var(--foreground)]">SVG</strong> for
+          large posters.
+        </li>
         <li>
           Size for the room -{" "}
           <Link

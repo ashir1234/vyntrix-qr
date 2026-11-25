@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "What security types are supported?",
-    a: "WPA/WPA2 (most common for home and business routers), WEP (legacy), and open networks with no password. Prefer WPA/WPA2 whenever possible.",
+    a: "Studio’s Security options are WPA/WPA2 (covers WPA, WPA2, and WPA3), WEP (legacy), and None for open networks. Prefer WPA/WPA2 whenever possible.",
   },
   {
     q: "Does the QR code reveal my WiFi password to anyone who sees it?",
@@ -112,24 +112,39 @@ export default function WifiGuidePage() {
           and select <strong className="text-[var(--foreground)]">WiFi</strong>.
         </li>
         <li>
-          Enter your network name (SSID) exactly as it appears on phones -
-          including capitalization and spaces.
+          Enter{" "}
+          <strong className="text-[var(--foreground)]">
+            Network name (SSID)
+          </strong>{" "}
+          exactly as phones show it - capitalization and spaces included.
         </li>
         <li>
-          Choose security type (usually{" "}
-          <strong className="text-[var(--foreground)]">WPA/WPA2</strong>) and
-          enter the password carefully. A single typo means every scan fails.
+          Set <strong className="text-[var(--foreground)]">Security</strong> to{" "}
+          <strong className="text-[var(--foreground)]">WPA/WPA2</strong> for
+          almost every modern router (that option covers WPA, WPA2, and WPA3),
+          then enter the{" "}
+          <strong className="text-[var(--foreground)]">Password</strong>{" "}
+          carefully. Turn on{" "}
+          <strong className="text-[var(--foreground)]">Hidden network</strong>{" "}
+          only if the SSID is not broadcast.
         </li>
         <li>
-          Optional: open{" "}
-          <strong className="text-[var(--foreground)]">Design</strong> to match
-          brand colors or add a logo. Prefer dark modules on a light background.
+          Optional: open the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab for
+          colors or a logo. Prefer dark modules on a light background.
         </li>
         <li>
-          Download PNG for everyday print or SVG for large-format signage, then
-          place the code near the entrance, menu, or reception desk.
+          Download <strong className="text-[var(--foreground)]">PNG</strong> for
+          everyday print or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for
+          large-format signage, then place the code near the entrance, menu, or
+          reception desk.
         </li>
       </ol>
+      <p className="mt-3 text-[var(--muted)]">
+        Static WiFi codes generate locally in your browser - the password is not
+        uploaded.
+      </p>
 
       <h2 className="mt-10 text-2xl font-semibold">
         Static WiFi QR vs dynamic WiFi page
@@ -203,6 +218,29 @@ export default function WifiGuidePage() {
         <li>
           Rotate guest passwords periodically and update printed materials (or
           use a dynamic WiFi page).
+        </li>
+      </ul>
+
+      <h2 className="mt-10 text-2xl font-semibold">Troubleshooting</h2>
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
+        <li>
+          Wrong <strong className="text-[var(--foreground)]">Security</strong>{" "}
+          (e.g. WEP vs WPA/WPA2) - match the router setting
+        </li>
+        <li>Typo in SSID or password - copy from router admin when possible</li>
+        <li>
+          Hidden SSID but{" "}
+          <strong className="text-[var(--foreground)]">Hidden network</strong>{" "}
+          left off
+        </li>
+        <li>
+          Special characters in the password - Studio escapes them; regenerate
+          if you typed the WIFI: string by hand elsewhere
+        </li>
+        <li>Code printed too small, faded, or under heavy glare</li>
+        <li>
+          Enterprise 802.1X networks - the standard WiFi QR format does not
+          support them
         </li>
       </ul>
 

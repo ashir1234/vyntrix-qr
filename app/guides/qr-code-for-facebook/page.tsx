@@ -137,29 +137,65 @@ export default function FacebookGuidePage() {
         </li>
       </ul>
 
+      <h2 className="mt-10 text-2xl font-semibold">
+        Claim a vanity username first
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Prefer{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          facebook.com/PageName
+        </span>{" "}
+        over a long{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          profile.php?id=
+        </span>{" "}
+        link. On desktop: Page → Settings → Page info → Username (labels move;
+        search Settings for Username if needed).
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">
+        Follow vs reviews - pick one intent
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Point “Scan to follow” codes at the main Page URL. For recommendations,
+        use{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          facebook.com/PageName/reviews
+        </span>{" "}
+        when that tab exists - and never incentivize Facebook reviews. Optional
+        UTM tracking example:{" "}
+        <span className="break-all font-mono text-sm text-[var(--foreground)]">
+          https://www.facebook.com/YourPageUsername?utm_source=qr&amp;utm_medium=print&amp;utm_campaign=storefront
+        </span>
+        .
+      </p>
+
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
-          On desktop or mobile, open your Page → tap{" "}
-          <strong className="text-[var(--foreground)]">Share</strong> →{" "}
-          <strong className="text-[var(--foreground)]">Copy link</strong>. Avoid
-          one-off share dialog URLs that expire.
+          Copy your public Page vanity URL (Share → Copy link works if it is
+          already clean). Avoid one-off share dialog URLs that expire.
         </li>
         <li>
-          Paste the URL into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field. Test it in an incognito browser tab to confirm it loads
-          without logging in as you.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
+          Test in an incognito tab.
         </li>
         <li>
-          Optional: enable dynamic QR if you want scan analytics or might point
-          the same printed code at different landing pages over time.
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          for scan analytics or destination changes later.
         </li>
         <li>
-          Customize colors or add your Page logo in Design - keep strong
-          contrast per our{" "}
+          Customize on the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab -
+          keep strong contrast per our{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -169,7 +205,8 @@ export default function FacebookGuidePage() {
           .
         </li>
         <li>
-          Export PNG or SVG. Follow{" "}
+          Export <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>. Follow{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"

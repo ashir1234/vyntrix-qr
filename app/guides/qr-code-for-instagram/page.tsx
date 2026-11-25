@@ -91,27 +91,15 @@ export default function InstagramGuidePage() {
       <GuideCta label="Create an Instagram QR code" />
 
       <h2 className="mt-10 text-2xl font-semibold">
-        How Instagram QR codes work
+        Built-in Instagram QR vs Studio
       </h2>
       <p className="mt-3 text-[var(--muted)]">
-        Unlike Instagram&apos;s in-app Nametag, a standard QR encodes a normal
-        HTTPS URL. When someone scans with their phone camera, the device opens
-        that link - typically your profile or a specific post. Instagram&apos;s
-        servers handle the rest: logged-in users land in the app; others see the
-        mobile web view and can install the app from there.
-      </p>
-      <p className="mt-3 text-[var(--muted)]">
-        Most marketing use cases point at a{" "}
-        <strong className="text-[var(--foreground)]">profile URL</strong> so
-        every scan is a chance to follow. Campaign posters sometimes link to one
-        reel or carousel instead. You can switch between those strategies with a{" "}
-        <Link
-          href="/guides/dynamic-qr-code"
-          className="text-[var(--brand-2)] underline"
-        >
-          dynamic QR
-        </Link>{" "}
-        without reprinting physical materials.
+        Instagram&apos;s in-app QR (Profile → menu → QR code / Share profile) is
+        fine for face-to-face follows, but it is profile-only, PNG at fixed
+        resolution, no custom logo or scan analytics, and it is not a login QR -
+        never scan an “Instagram” code that asks for your password. For print
+        branding, SVG, posts/Reels/Highlights, and tracking, encode a normal
+        HTTPS URL in Studio instead.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">
@@ -126,8 +114,10 @@ export default function InstagramGuidePage() {
           - best for ongoing follower growth
         </li>
         <li>
-          <strong className="text-[var(--foreground)]">Single post or reel:</strong>{" "}
-          tap Share on the post → Copy link - ideal for launch-day signage
+          <strong className="text-[var(--foreground)]">
+            Post, Reel, or Highlight:
+          </strong>{" "}
+          Share → Copy link - ideal for launch-day signage
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Avoid:</strong>{" "}
@@ -142,30 +132,34 @@ export default function InstagramGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
-          Open Instagram → your profile → Copy the profile URL, or copy a
-          post/reel link for a campaign-specific code.
+          Copy your profile URL, or a post / Reel / Highlight share link for a
+          campaign-specific code.
         </li>
         <li>
-          Paste the URL into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field and confirm it opens correctly on your phone.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong>, paste into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>, and
+          confirm it opens on your phone.
         </li>
         <li>
-          Optional: enable{" "}
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          to track scans or swap destinations later (
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
           >
-            Dynamic QR
-          </Link>{" "}
-          to track scans or change the destination later (e.g. swap from a
-          launch reel to your main profile after the campaign).
+            dynamic QR guide
+          </Link>
+          ).
         </li>
         <li>
-          Open <strong className="text-[var(--foreground)]">Design</strong> to
-          match brand colors or add a small logo - see{" "}
+          Open the <strong className="text-[var(--foreground)]">design</strong>{" "}
+          tab for brand colors or a small logo - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -175,8 +169,10 @@ export default function InstagramGuidePage() {
           for contrast tips.
         </li>
         <li>
-          Download PNG for stickers and packaging, or SVG for large posters.
-          Size for viewing distance using our{" "}
+          Download <strong className="text-[var(--foreground)]">PNG</strong> for
+          stickers and packaging, or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for large
+          posters. Size for viewing distance using our{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
