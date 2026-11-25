@@ -181,14 +181,8 @@ export default function RealEstateGuidePage() {
         <li>Brokerage branding optional; scannability beats decoration outdoors.</li>
         <li>Comply with local sign regulations - QR does not exempt size rules.</li>
         <li>
-          See also the{" "}
-          <Link
-            href="/qr-code-for/real-estate"
-            className="text-[var(--brand-2)] underline"
-          >
-            real estate use-case page
-          </Link>{" "}
-          for product-specific tips.
+          Prefer a dedicated landing page you control so you can swap MLS links,
+          tours, and lead forms without reprinting the sign.
         </li>
       </ul>
 
