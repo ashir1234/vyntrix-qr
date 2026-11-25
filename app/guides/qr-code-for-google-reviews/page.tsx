@@ -87,34 +87,45 @@ export default function GoogleReviewsGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">Get the right link</h2>
       <p className="mt-3 text-[var(--muted)]">
-        In Google Business Profile, use{" "}
-        <strong className="text-[var(--foreground)]">Ask for reviews</strong> to
-        copy your unique review URL. That deep link opens the review composer
-        more reliably than a generic Maps search. Confirm it on your phone before
-        you print.
+        In Google Business Profile (desktop), open{" "}
+        <strong className="text-[var(--foreground)]">Ask for reviews</strong>{" "}
+        (or Read reviews → Get more reviews) and{" "}
+        <strong className="text-[var(--foreground)]">Copy</strong> your unique
+        review URL. That deep link opens the review composer more reliably than
+        a generic Maps search. Confirm it on your phone before you print.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Steps</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>Copy your Google review link from Business Profile.</li>
         <li>
-          Paste it into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
         </li>
         <li>
-          Enable a{" "}
+          Turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          to track scans and edit the link later (
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
           >
-            dynamic QR
-          </Link>{" "}
-          to track scans and edit the link later.
+            dynamic QR guide
+          </Link>
+          ).
         </li>
-        <li>Brand it with your colors and download PNG or SVG.</li>
+        <li>
+          Brand it on the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab and
+          download <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>.
+        </li>
         <li>
           Size for the placement -{" "}
           <Link

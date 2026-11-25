@@ -116,7 +116,7 @@ export default function YoutubeGuidePage() {
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">
-        Video, channel, or playlist?
+        Video, Short, channel, or playlist?
       </h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>
@@ -125,8 +125,20 @@ export default function YoutubeGuidePage() {
           link from YouTube
         </li>
         <li>
+          <strong className="text-[var(--foreground)]">Shorts:</strong> use{" "}
+          <span className="font-mono text-sm text-[var(--foreground)]">
+            youtube.com/shorts/VIDEO_ID
+          </span>{" "}
+          when the vertical Short is the destination
+        </li>
+        <li>
           <strong className="text-[var(--foreground)]">Channel (@handle):</strong>{" "}
-          business cards, banner stands - best when you publish regularly
+          business cards, banner stands - best when you publish regularly. For
+          subscribe-focused print, append{" "}
+          <span className="font-mono text-sm text-[var(--foreground)]">
+            ?sub_confirmation=1
+          </span>{" "}
+          (prompts Subscribe; does not auto-subscribe)
         </li>
         <li>
           <strong className="text-[var(--foreground)]">Playlist:</strong> course

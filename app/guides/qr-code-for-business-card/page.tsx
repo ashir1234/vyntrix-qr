@@ -138,29 +138,41 @@ export default function BusinessCardGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
-          Decide:{" "}
+          In the{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            Studio
+          </Link>
+          , choose{" "}
           <Link
             href="/guides/vcard-qr-code"
             className="text-[var(--brand-2)] underline"
           >
             vCard
           </Link>{" "}
-          (offline contact save) or URL (updatable landing page).
+          (scan to save contact) or{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> (landing
+          page / LinkedIn).
         </li>
         <li>
-          Open the{" "}
-          <Link href="/studio" className="text-[var(--brand-2)] underline">
-            Studio
-          </Link>{" "}
-          and enter your contact fields or paste your link.
+          For vCard, fill{" "}
+          <strong className="text-[var(--foreground)]">First name</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Last name</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Organization</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Title</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Phone</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Email</strong>, and{" "}
+          <strong className="text-[var(--foreground)]">Website</strong>. For URL,
+          paste into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
         </li>
         <li>
-          Optional: enable dynamic mode if you want to edit the link or count
-          scans later.
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          is available for URL only (not vCard) - use it to edit the link or
+          count scans later.
         </li>
         <li>
-          In Design, match brand colors. Keep dark modules on a light background
-          - see{" "}
+          On the <strong className="text-[var(--foreground)]">design</strong>{" "}
+          tab, match brand colors. Keep dark modules on a light background - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -170,8 +182,10 @@ export default function BusinessCardGuidePage() {
           if you add a mark.
         </li>
         <li>
-          Download SVG for your printer (or PNG at 300 DPI). Size at least 2 × 2
-          cm -{" "}
+          Download <strong className="text-[var(--foreground)]">SVG</strong> for
+          your printer (or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> at 300 DPI).
+          Size about ~2×2 cm minimum -{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -180,7 +194,10 @@ export default function BusinessCardGuidePage() {
           </Link>
           .
         </li>
-        <li>Test-scan on iPhone and Android before ordering a batch.</li>
+        <li>
+          Test-scan with real phone cameras (iPhone and Android) before ordering
+          a batch.
+        </li>
       </ol>
 
       <h2 className="mt-10 text-2xl font-semibold">Design and placement tips</h2>

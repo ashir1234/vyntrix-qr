@@ -120,31 +120,43 @@ export default function PdfGuidePage() {
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
-          Upload the PDF to a stable, public URL. Copy the direct link - not a
-          folder view that requires clicks.
+          Upload the PDF to a stable, public URL (your site or Google Drive with
+          “anyone with the link”). Compress for mobile when you can. Copy the
+          direct link - not a folder view that requires clicks.
         </li>
         <li>
           Open the link in a private browser tab. Confirm it downloads or opens
-          without signing in.
+          without signing in. Do not encode confidential files - anyone who
+          scans can open them.
         </li>
         <li>
-          Paste the URL into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
         </li>
         <li>
-          Enable a{" "}
+          Turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          if you may replace the file later (
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
           >
-            dynamic QR
-          </Link>{" "}
-          if you may replace the file or redirect to a newer version later.
+            dynamic QR guide
+          </Link>
+          ).
         </li>
-        <li>Style the code, then download PNG for quick print or SVG for large runs.</li>
+        <li>
+          Style on the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab, then
+          download <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>.
+        </li>
         <li>
           Size for viewing distance - see{" "}
           <Link

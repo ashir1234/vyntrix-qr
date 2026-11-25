@@ -135,26 +135,41 @@ export default function LinkedInGuidePage() {
         </li>
       </ul>
 
+      <h2 className="mt-10 text-2xl font-semibold">
+        In-app LinkedIn QR vs Studio
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        LinkedIn&apos;s My QR menu works for face-to-face connects inside the
+        app. For print, email signatures, and brand colors, encode your public
+        profile or company URL in Studio instead.
+      </p>
+
       <h2 className="mt-10 text-2xl font-semibold">Steps to create one</h2>
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>
           LinkedIn → Me → View profile → Public profile → Edit public profile
-          URL. Copy the full https link.
+          URL. Copy the full https link (or your company page URL).
         </li>
         <li>
-          Paste into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field. Open the link logged out to confirm it is publicly visible.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
+          Open the link logged out to confirm it is publicly visible.
         </li>
         <li>
-          Optional: enable dynamic QR if you might switch from personal to
-          company page mid-campaign, or want scan counts per event.
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          if you might switch destinations or want scan counts per event.
         </li>
         <li>
-          Add a subtle logo or brand color in Design - keep modules dark on
-          light stock for reliability; see{" "}
+          Add a subtle logo or brand color on the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab -
+          keep modules dark on light stock; see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -164,20 +179,33 @@ export default function LinkedInGuidePage() {
           .
         </li>
         <li>
-          Download PNG for badges or SVG for large backdrop printing. Follow{" "}
+          Download <strong className="text-[var(--foreground)]">PNG</strong> for
+          badges and email signatures, or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for large
+          backdrop printing. Follow{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
           >
             sizing guidance
-          </Link>{" "}
-          - lanyard cards need smaller but still scannable modules.
+          </Link>
+          .
         </li>
       </ol>
 
       <h2 className="mt-10 text-2xl font-semibold">Where to place the code</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Business card backs and conference name badges</li>
+        <li>
+          Email signatures - keep the PNG small (~100–130 px) and pair with a
+          visible link; see the{" "}
+          <Link
+            href="/guides/qr-code-for-email-signature"
+            className="text-[var(--brand-2)] underline"
+          >
+            email signature guide
+          </Link>
+        </li>
         <li>Booth headers, roll-up banners, and tabletop stands</li>
         <li>Presentation closing slides (“Let’s connect”)</li>
         <li>Office reception plaques for visitor networking</li>

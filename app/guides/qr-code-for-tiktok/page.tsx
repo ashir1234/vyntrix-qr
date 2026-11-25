@@ -88,30 +88,35 @@ export default function TikTokGuidePage() {
       <GuideCta label="Create a TikTok QR code" />
 
       <h2 className="mt-10 text-2xl font-semibold">
-        How TikTok QR codes work
+        Built-in TikTok QR vs Studio
       </h2>
       <p className="mt-3 text-[var(--muted)]">
-        TikTok profile and video pages have public HTTPS URLs - typically{" "}
-        <span className="font-mono text-sm text-[var(--foreground)]">
-          https://www.tiktok.com/@username
-        </span>{" "}
-        or a link copied from Share on a specific video. A URL QR encodes that
-        address. The phone camera opens it; TikTok&apos;s app intercepts the link
-        when installed, otherwise the mobile web player loads.
-      </p>
-      <p className="mt-3 text-[var(--muted)]">
-        That is simpler and more flexible than screenshotting TikTok&apos;s
-        in-app profile QR, which is meant for face-to-face follows and does not
-        embed cleanly in Illustrator or Canva layouts. With Studio you also
-        choose whether the code is fixed forever or managed through a{" "}
+        TikTok&apos;s in-app profile QR (Profile → menu → QR code) is profile-only,
+        TikTok-styled, PNG at fixed resolution, and has no scan analytics.
+        Encode a public HTTPS URL in Studio for brand colors, SVG print, video
+        destinations, and optional{" "}
         <Link
           href="/guides/dynamic-qr-code"
           className="text-[var(--brand-2)] underline"
         >
-          dynamic redirect
-        </Link>{" "}
-        - useful when the same shelf talker should promote different hashtag
-        challenges each quarter.
+          dynamic redirects
+        </Link>
+        .
+      </p>
+      <p className="mt-3 text-[var(--muted)]">
+        Prefer{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          tiktok.com/@username
+        </span>{" "}
+        or{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          …/video/ID
+        </span>{" "}
+        over fragile{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          vm.tiktok.com
+        </span>{" "}
+        short links when you can.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">
@@ -145,19 +150,25 @@ export default function TikTokGuidePage() {
           the handle matches what you display in print.
         </li>
         <li>
-          Paste into the{" "}
+          In the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field. Scan once before spending on print.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> and paste
+          into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
+          Scan once before spending on print.
         </li>
         <li>
-          Turn on dynamic QR if you want scan stats or plan to rotate which
-          video the code promotes.
+          Turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          if you want scan stats or plan to rotate which video the code
+          promotes.
         </li>
         <li>
-          Design pass: bold contrast beats trendy low-contrast palettes on small
-          labels. Optional logo - see{" "}
+          On the <strong className="text-[var(--foreground)]">design</strong>{" "}
+          tab, keep bold contrast on small labels. Optional logo - see{" "}
           <Link
             href="/guides/qr-code-with-logo"
             className="text-[var(--brand-2)] underline"
@@ -167,8 +178,9 @@ export default function TikTokGuidePage() {
           .
         </li>
         <li>
-          Export PNG or SVG. On narrow packaging keep the code at least ~2 cm
-          (0.8 in) wide; see{" "}
+          Export <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>. On narrow
+          packaging keep the code at least ~2 cm (0.8 in) wide; see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
