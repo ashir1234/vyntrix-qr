@@ -10,6 +10,8 @@ export type BlogPost = {
   keywords: string[];
   /** Short eyebrow label for cards */
   topic: string;
+  /** Matching /guides/[slug] when the post topic has a dedicated guide */
+  relatedGuideSlug?: string;
 };
 
 /** Original editorial posts - keep these substantial and unique. */
@@ -36,6 +38,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-07-22",
     readingMinutes: 9,
     topic: "Print",
+    relatedGuideSlug: "qr-code-size-for-print",
     keywords: [
       "QR code print checklist",
       "QR code not scanning",
@@ -50,6 +53,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-07-25",
     readingMinutes: 7,
     topic: "Strategy",
+    relatedGuideSlug: "static-vs-dynamic-qr-code",
     keywords: [
       "static vs dynamic QR cost",
       "QR code reprinting",
@@ -64,6 +68,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-05",
     readingMinutes: 8,
     topic: "Design",
+    relatedGuideSlug: "qr-code-with-logo",
     keywords: [
       "QR code error correction",
       "QR code with logo scanning",
@@ -106,6 +111,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-09",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-linkedin",
     keywords: [
       "linkedin qr code",
       "business card qr code",
@@ -122,6 +128,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-13",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-youtube",
     keywords: [
       "youtube qr code",
       "youtube channel qr code",
@@ -138,6 +145,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-16",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-with-logo",
     keywords: [
       "qr code with logo",
       "qr codes with logo",
@@ -155,6 +163,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-20",
     readingMinutes: 10,
     topic: "Design",
+    relatedGuideSlug: "qr-code-with-logo",
     keywords: [
       "qr code logo design",
       "logo in qr code",
@@ -173,6 +182,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-23",
     readingMinutes: 7,
     topic: "Handleiding",
+    relatedGuideSlug: "qr-code-with-logo",
     keywords: [
       "qr code met logo",
       "qr code met logo maken",
@@ -190,6 +200,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-27",
     readingMinutes: 8,
     topic: "Research",
+    relatedGuideSlug: "qr-code-with-logo",
     keywords: [
       "qr codes with logo",
       "qr code with logo",
@@ -208,6 +219,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-10-30",
     readingMinutes: 11,
     topic: "Packaging",
+    relatedGuideSlug: "qr-code-for-product-packaging",
     keywords: [
       "gs1 sunrise 2027",
       "qr code on packaging",
@@ -243,6 +255,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-03",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-facebook",
     keywords: [
       "how to generate a qr code for facebook",
       "how to make qr code for facebook page",
@@ -260,6 +273,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-06",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-instagram",
     keywords: [
       "how to make a qr code for instagram",
       "how to create a qr code for instagram",
@@ -279,6 +293,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-10",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-whatsapp",
     keywords: [
       "how to make a whatsapp qr code",
       "whatsapp qr code generator",
@@ -296,6 +311,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-11",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-tiktok",
     keywords: [
       "how to make a qr code for tiktok",
       "tiktok qr code",
@@ -313,6 +329,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-12",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-google-form",
     keywords: [
       "how to make a qr code for a google form",
       "google form qr code",
@@ -330,6 +347,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-13",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "wifi-qr-code",
     keywords: [
       "how to make a wifi qr code",
       "wifi qr code generator",
@@ -347,6 +365,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-16",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-google-reviews",
     keywords: [
       "how to make a qr code for google reviews",
       "google review qr code",
@@ -365,6 +384,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-17",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "vcard-qr-code",
     keywords: [
       "how to make a vcard qr code",
       "contact qr code",
@@ -382,6 +402,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-18",
     readingMinutes: 11,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-facebook",
     keywords: [
       "how to make qr code for facebook page",
       "how to create a qr code for facebook page",
@@ -432,6 +453,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-19",
     readingMinutes: 10,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-pdf",
     keywords: [
       "how to make a qr code for a pdf",
       "pdf qr code",
@@ -480,6 +502,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-23",
     readingMinutes: 11,
     topic: "Guide",
+    relatedGuideSlug: "qr-code-for-business-card",
     keywords: [
       "qr code business card",
       "business card qr code",
@@ -505,6 +528,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-23",
     readingMinutes: 8,
     topic: "How-to",
+    relatedGuideSlug: "qr-code-for-restaurant-menu",
     keywords: [
       "qr code menu",
       "restaurant menu qr code",
@@ -525,6 +549,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-11-24",
     readingMinutes: 11,
     topic: "Packaging",
+    relatedGuideSlug: "qr-code-for-product-packaging",
     keywords: [
       "upc codes and qr codes",
       "gs1 upc barcode",
@@ -546,6 +571,10 @@ export const blogPosts: BlogPost[] = [
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((p) => p.slug === slug);
+}
+
+export function getBlogPostsForGuide(guideSlug: string) {
+  return blogPosts.filter((p) => p.relatedGuideSlug === guideSlug);
 }
 
 export function blogPostUrl(slug: string) {

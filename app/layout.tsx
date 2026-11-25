@@ -40,7 +40,6 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "technology",
   alternates: {
-    canonical: "/",
     languages: {
       "en": siteConfig.url,
       "x-default": siteConfig.url,

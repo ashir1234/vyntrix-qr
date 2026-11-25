@@ -41,6 +41,7 @@ import {
   absoluteUrl,
   articleJsonLd,
   breadcrumbJsonLd,
+  getGuide,
 } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -117,6 +118,9 @@ export default async function BlogPostPage({ params }: Props) {
   const index = sorted.findIndex((p) => p.slug === slug);
   const newer = index > 0 ? sorted[index - 1] : null;
   const older = index >= 0 && index < sorted.length - 1 ? sorted[index + 1] : null;
+  const relatedGuide = post.relatedGuideSlug
+    ? getGuide(post.relatedGuideSlug)
+    : undefined;
 
   return (
     <>
@@ -175,6 +179,20 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mt-10">
           <Body />
         </div>
+
+        {relatedGuide && post.relatedGuideSlug ? (
+          <p className="mt-10 text-sm text-[var(--muted)]">
+            <span className="font-medium text-[var(--foreground)]">
+              Related guide:{" "}
+            </span>
+            <Link
+              href={`/guides/${post.relatedGuideSlug}`}
+              className="text-[var(--brand-2)] underline"
+            >
+              {relatedGuide.title}
+            </Link>
+          </p>
+        ) : null}
 
         <nav
           aria-label="More posts"

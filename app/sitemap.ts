@@ -4,30 +4,32 @@ import { guides } from "@/lib/seo";
 import { qrPlatforms } from "@/lib/qr-platforms";
 import { blogPosts } from "@/lib/blog";
 
+/** Stable lastmod for static/guide/platform URLs (not build time). */
+const STATIC_LAST_MODIFIED = new Date("2026-07-16");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: siteConfig.url,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${siteConfig.url}/studio`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${siteConfig.url}/gallery`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteConfig.url}/guides`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -39,43 +41,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/qr-code-for`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${siteConfig.url}/pricing`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${siteConfig.url}/about`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteConfig.url}/contact`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${siteConfig.url}/privacy`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${siteConfig.url}/terms`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${siteConfig.url}/site-map`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.4,
     },
@@ -83,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const guideRoutes: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${siteConfig.url}/guides/${g.slug}`,
-    lastModified: now,
+    lastModified: STATIC_LAST_MODIFIED,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
@@ -221,7 +223,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((p) => !p.relatedGuideSlug)
     .map((p) => ({
       url: `${siteConfig.url}/qr-code-for/${p.slug}`,
-      lastModified: now,
+      lastModified: STATIC_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
     }));

@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { GuideAd } from "@/components/ads/GuideAd";
+import { getBlogPostsForGuide } from "@/lib/blog";
 
 export function GuideLayout({
   breadcrumbs,
@@ -14,6 +15,11 @@ export function GuideLayout({
   jsonLd?: object | object[];
 }) {
   const scripts = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+  const guideCrumb = breadcrumbs.find(
+    (b) => b.href.startsWith("/guides/") && b.href !== "/guides"
+  );
+  const guideSlug = guideCrumb?.href.replace(/^\/guides\//, "");
+  const relatedArticles = guideSlug ? getBlogPostsForGuide(guideSlug) : [];
 
   return (
     <>
@@ -43,6 +49,23 @@ export function GuideLayout({
           </ol>
         </nav>
         {children}
+        {relatedArticles.length > 0 ? (
+          <aside className="mt-12 border-t border-[var(--border)] pt-6">
+            <h2 className="text-lg font-semibold">Related articles</h2>
+            <ul className="mt-3 space-y-2 text-sm">
+              {relatedArticles.map((post) => (
+                <li key={post.slug}>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-[var(--brand-2)] underline"
+                  >
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        ) : null}
         <GuideAd />
       </main>
       <Footer />

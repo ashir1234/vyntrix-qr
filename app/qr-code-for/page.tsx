@@ -85,7 +85,11 @@ export default function QrCodeForHubPage() {
                 {items.map((p) => (
                   <li key={p.slug}>
                     <Link
-                      href={`/qr-code-for/${p.slug}`}
+                      href={
+                        p.relatedGuideSlug
+                          ? `/guides/${p.relatedGuideSlug}`
+                          : `/qr-code-for/${p.slug}`
+                      }
                       className="glass block rounded-xl px-4 py-3 transition hover:border-[var(--brand)]"
                     >
                       <span className="font-medium text-[var(--foreground)]">
