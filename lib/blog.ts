@@ -269,7 +269,33 @@ export const blogPosts: BlogPost[] = [
       "qr code for product packaging",
       "custom qr code generator",
     ],
-  }
+  },
+  {
+    slug: "how-to-make-qr-code-for-waze-location",
+    title: "How to Make a QR Code for a Waze Location (Free, Step-by-Step)",
+    description:
+      "How to make a QR code for a Waze location - copy a Waze share drive link from Live Map, or build a waze.com/ul deep link with ll=lat,lon&navigate=yes, then create a free Waze location QR code in Vyntrix QR Studio for events, storefronts, and directions.",
+    date: "2026-11-25",
+    readingMinutes: 10,
+    topic: "Guide",
+    relatedGuideSlug: "qr-code-for-real-estate",
+    keywords: [
+      "waze qr code",
+      "qr code for waze location",
+      "waze location qr code generator",
+      "how to make qr code for waze location",
+      "waze share drive link",
+      "how to share a location on waze",
+      "waze live map link",
+      "waze deep link",
+      "waze.com/ul",
+      "qr code to open waze",
+      "qr code for directions",
+      "gps coordinates qr code",
+      "waze vs google maps qr code",
+      "location qr code for events",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

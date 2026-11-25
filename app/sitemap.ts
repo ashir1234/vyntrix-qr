@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-11-25"), // cannibalization consolidation - removed competing how-to posts
+      lastModified: new Date("2026-11-25"), // Waze location how-to + prior consolidation
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -95,8 +95,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Kept blog posts only (competing how-tos redirect to guides and are omitted).
-  // Includes: which-agency-issues-upc-codes-and-branded-qr-codes, how-to-make-qr-code-for-google-maps-location,
-  // how-to-create-qr-code-for-website, quishing-fake-qr-code-scams, gs1-sunrise-2027-qr-codes-packaging,
+  // Includes: how-to-make-qr-code-for-waze-location, which-agency-issues-upc-codes-and-branded-qr-codes,
+  // how-to-make-qr-code-for-google-maps-location, how-to-create-qr-code-for-website,
+  // quishing-fake-qr-code-scams, gs1-sunrise-2027-qr-codes-packaging,
   // qr-codes-with-logo-more-scans, qr-code-met-logo-maken, qr-code-logo-design-best-practices,
   // error-correction-logos-pretty-qr-fail, print-qr-codes-that-scan, static-vs-dynamic-qr-cost,
   // static-qr-privacy-in-the-browser, small-business-qr-playbook, finish-the-qr-workflow.
@@ -108,6 +109,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const explicitKeptBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-waze-location`,
+      lastModified: new Date("2026-11-25"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/which-agency-issues-upc-codes-and-branded-qr-codes`,
       lastModified: new Date("2026-11-24"),

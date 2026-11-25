@@ -19,6 +19,7 @@ import {
   WebsiteUrlQrCodeGuidePost,
   GoogleMapsLocationQrCodeGuidePost,
   WhichAgencyIssuesUpcAndBrandedQrPost,
+  WazeLocationQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -49,6 +50,9 @@ const BODY: Record<string, () => ReactNode> = {
   ),
   "which-agency-issues-upc-codes-and-branded-qr-codes": () => (
     <WhichAgencyIssuesUpcAndBrandedQrPost />
+  ),
+  "how-to-make-qr-code-for-waze-location": () => (
+    <WazeLocationQrCodeGuidePost />
   ),
 };
 

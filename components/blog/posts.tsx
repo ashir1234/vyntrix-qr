@@ -4382,3 +4382,695 @@ export function WhichAgencyIssuesUpcAndBrandedQrPost() {
     </article>
   );
 }
+
+export function WazeLocationQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        Searching for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make qr code for waze location
+        </strong>
+        ? A{" "}
+        <strong className="text-[var(--foreground)]">Waze QR code</strong> is a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for a Waze location
+        </strong>{" "}
+        that encodes a Waze share or deep link. When someone scans it, their
+        phone opens Waze (or the Waze web map if the app is missing) at your
+        pin so they can start driving without typing an address. This guide
+        covers how to share a location on Waze, the documented{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          waze.com/ul
+        </code>{" "}
+        deep-link format, and a free{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze location QR code generator
+        </strong>{" "}
+        workflow in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        .
+      </p>
+      <p>
+        Prefer Google Maps for a broader audience? See{" "}
+        <Link
+          href="/blog/how-to-make-qr-code-for-google-maps-location"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Make a QR Code for a Google Maps Location
+        </Link>
+        . Below we focus on a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code to open Waze
+        </strong>
+        , when a{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze share drive link
+        </strong>{" "}
+        is enough, and when to build a{" "}
+        <strong className="text-[var(--foreground)]">Waze deep link</strong>{" "}
+        yourself for a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for directions
+        </strong>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What a Waze location QR code actually opens
+      </h2>
+      <p>
+        Phones do not store your destination inside the QR pattern alone. They
+        open the URL you encoded. For a{" "}
+        <strong className="text-[var(--foreground)]">
+          qr code for waze location
+        </strong>
+        , that is almost always one of:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          A{" "}
+          <strong className="text-[var(--foreground)]">
+            Waze Live Map link
+          </strong>{" "}
+          / share driving-directions URL copied from Waze Live Map
+        </li>
+        <li>
+          A documented{" "}
+          <strong className="text-[var(--foreground)]">Waze deep link</strong>{" "}
+          on{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://waze.com/ul
+          </code>{" "}
+          with coordinates (
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            ll=
+          </code>
+          ) and optional{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            navigate=yes
+          </code>
+        </li>
+        <li>
+          A search-style deep link with{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            q=
+          </code>{" "}
+          for an address or place name
+        </li>
+      </ul>
+      <p>
+        Per Waze&apos;s official Deep Links docs: on desktop the link opens as a
+        web page; on mobile it opens the Waze app when installed, otherwise the
+        Waze website. Prefer{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://waze.com/ul
+        </code>{" "}
+        for printed codes. The{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          waze://
+        </code>{" "}
+        scheme only works when you are sure every scanner already has the app -
+        otherwise the scan can do nothing.
+      </p>
+      <p>
+        In Studio, encode Waze with the{" "}
+        <strong className="text-[var(--foreground)]">URL</strong> content type
+        and paste your Waze link into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong>. The{" "}
+        <strong className="text-[var(--foreground)]">Location</strong> type
+        (Latitude / Longitude / Place name) builds a Google Maps query URL - use
+        that for Maps destinations, not Waze. For a{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze vs Google Maps QR code
+        </strong>{" "}
+        choice: pick the app your guests actually use, or print both if your
+        audience is mixed.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1: Get a Waze share drive link from Live Map
+      </h2>
+      <p>
+        The simplest path for{" "}
+        <strong className="text-[var(--foreground)]">
+          how to share a location on Waze
+        </strong>{" "}
+        for a QR code is Waze Live Map (documented under Navigate to location
+        in the Deep Links guide):
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open the{" "}
+          <strong className="text-[var(--foreground)]">Waze Live Map</strong>{" "}
+          in a browser and search for your place, or zoom in and click the map
+          segment you want.
+        </li>
+        <li>
+          Click the{" "}
+          <strong className="text-[var(--foreground)]">share</strong> icon in
+          the bottom-right corner of the map.
+        </li>
+        <li>
+          In the dialog, click{" "}
+          <strong className="text-[var(--foreground)]">
+            Share driving directions
+          </strong>
+          , then copy the link - that is your{" "}
+          <strong className="text-[var(--foreground)]">
+            Waze share drive link
+          </strong>
+          .
+        </li>
+      </ol>
+      <p>
+        Open the copied{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze Live Map link
+        </strong>{" "}
+        on a second device and confirm it lands on the right pin before you
+        encode anything. A wrong share is the most common failure for a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code for directions
+        </strong>
+        - not the generator.
+      </p>
+      <p>
+        You can also share from the Waze mobile app (place → Share). Paste that
+        URL the same way. For print, stick to{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://
+        </code>{" "}
+        links so cameras and browsers can open them reliably.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 1b: Build a Waze deep link (waze.com/ul) yourself
+      </h2>
+      <p>
+        When you already know GPS coordinates - trailheads, parking lots,
+        festival fields, or a precise curb for a{" "}
+        <strong className="text-[var(--foreground)]">
+          location QR code for events
+        </strong>{" "}
+        - build a documented deep link. Base URL:
+      </p>
+      <p>
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+          https://waze.com/ul?ll=LATITUDE,LONGITUDE&amp;navigate=yes
+        </code>
+      </p>
+      <p>
+        Official parameters used for navigation destinations (do not invent
+        extras):
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            ll
+          </code>{" "}
+          - latitude,longitude (comma-separated; URL-encode the comma as{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            %2C
+          </code>{" "}
+          if needed)
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            navigate=yes
+          </code>{" "}
+          - start a navigation session to that destination
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            zoom
+          </code>{" "}
+          - optional map zoom (Live Map share examples include it; for example{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            zoom=17
+          </code>
+          )
+        </li>
+        <li>
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            q
+          </code>{" "}
+          - optional search terms (URL-encode spaces as{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            %20
+          </code>
+          )
+        </li>
+      </ul>
+      <p>
+        Documented example (Times Square):
+      </p>
+      <p>
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all text-sm">
+          https://www.waze.com/ul?ll=40.75889500%2C-73.98513100&amp;navigate=yes&amp;zoom=17
+        </code>
+      </p>
+      <p>
+        Search-only example from the same docs:
+      </p>
+      <p>
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all text-sm">
+          https://waze.com/ul?q=66%20Acacia%20Avenue
+        </code>
+      </p>
+      <p>
+        That is how you turn a{" "}
+        <strong className="text-[var(--foreground)]">
+          GPS coordinates QR code
+        </strong>{" "}
+        into a{" "}
+        <strong className="text-[var(--foreground)]">QR code to open Waze</strong>{" "}
+        with turn-by-turn ready when{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          navigate=yes
+        </code>{" "}
+        is set. Optional routing prefs documented by Waze (
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          avoid_tolls
+        </code>
+        ,{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          avoid_ferries
+        </code>
+        ,{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          avoid_freeways
+        </code>
+        , and related flags) can be appended with{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          &amp;
+        </code>{" "}
+        - only use values from the official parameter table.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step 2: Create the code in {siteConfig.name} Studio
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Open{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          In the content-type row, choose{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> (link icon -
+          &quot;Link to any website&quot;).
+        </li>
+        <li>
+          Stay on the{" "}
+          <strong className="text-[var(--foreground)]">content</strong> tab.
+          Paste your Waze share or{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            waze.com/ul
+          </code>{" "}
+          deep link into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>{" "}
+          (placeholder{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://example.com
+          </code>
+          ).
+        </li>
+        <li>
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">
+            Enable dynamic QR
+          </strong>{" "}
+          if the destination might change after print (rotating venues, open
+          houses). Leave it off for a permanent static pin.
+        </li>
+        <li>
+          Switch to the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab.
+          Adjust{" "}
+          <strong className="text-[var(--foreground)]">Foreground</strong> /{" "}
+          <strong className="text-[var(--foreground)]">Background</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Dot style</strong>,{" "}
+          <strong className="text-[var(--foreground)]">Error correction</strong>
+          , and{" "}
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>
+          . Keep contrast high; keep logos modest.
+        </li>
+        <li>
+          Use{" "}
+          <strong className="text-[var(--foreground)]">Test scan</strong> in
+          the preview, then download{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          (scales cleanly) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for slides
+          and social. Static one-off downloads run in your browser - no watermark
+          on the free static path.
+        </li>
+      </ol>
+      <p>
+        That is the full free{" "}
+        <strong className="text-[var(--foreground)]">
+          waze location qr code generator
+        </strong>{" "}
+        path: get the Waze link, paste as URL, style, test, download.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Waze vs Google Maps QR code
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze vs Google Maps QR code
+        </strong>{" "}
+        decision is audience-first:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Waze</strong> - Strong
+          for drivers who already live in Waze (commutes, ride-share, event
+          parking). Deep links can jump straight into navigation with{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            navigate=yes
+          </code>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Google Maps</strong> -
+          Broader default on many phones; better when scanners may walk or take
+          transit. Use the{" "}
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-maps-location"
+            className="text-[var(--brand-2)] underline"
+          >
+            Google Maps location guide
+          </Link>{" "}
+          (or Studio&apos;s{" "}
+          <strong className="text-[var(--foreground)]">Location</strong> type)
+          for that path.
+        </li>
+      </ul>
+      <p>
+        For yard signs and open houses that rotate weekly, a dynamic URL code
+        (editable destination) beats reprinting - see{" "}
+        <Link
+          href="/blog/static-vs-dynamic-qr-cost"
+          className="text-[var(--brand-2)] underline"
+        >
+          When Free QR Codes Become Expensive
+        </Link>{" "}
+        and the{" "}
+        <Link
+          href="/guides/qr-code-for-real-estate"
+          className="text-[var(--brand-2)] underline"
+        >
+          real estate QR guide
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Printing and testing tips
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> Aim for at
+          least ~2 cm (about 0.8 in) on cards; go larger on door stickers and
+          yard signs scanned from farther away. Print sizing detail lives in{" "}
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR code size for print
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light background. Skip busy photo fills behind the code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong> Leave
+          empty margin around the square so borders and frames do not crop edge
+          modules (Studio&apos;s Quiet-zone margin control).
+        </li>
+        <li>
+          Prefer matte laminate outdoors; glossy stickers glare in sun and under
+          phone flashlights.
+        </li>
+        <li>
+          Prefer shorter{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            waze.com/ul?ll=…
+          </code>{" "}
+          links over enormous share URLs when you control the string - denser
+          payloads make denser QR patterns.
+        </li>
+      </ul>
+      <p>
+        Walk the full pre-press checklist in{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          Print QR Codes That Actually Scan
+        </Link>
+        .
+      </p>
+      <p>
+        Before any print run: scan with at least one iPhone Camera and one
+        Android camera app; confirm Waze (or the Waze web map) opens the correct
+        pin; try the drive prompt from where a guest would actually stand
+        (parking lot, sidewalk). Re-test after every logo or color change.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where a Waze location QR helps
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Location QR code for events
+          </strong>{" "}
+          - Weddings, festivals, pop-ups, and parking lots where guests arrive
+          by car.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Storefront door</strong>{" "}
+          - &quot;Scan for Waze directions&quot; when the entrance is hard to
+          spot from the street.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Real-estate signs</strong>{" "}
+          - Open-house pins (prefer dynamic if listings rotate).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Delivery / pickup points
+          </strong>{" "}
+          - Exact curb, alley, or dock for drivers who already use Waze.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I make a free Waze QR code?
+      </h3>
+      <p>
+        Yes. Copy a{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze share drive link
+        </strong>{" "}
+        or build a{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          waze.com/ul
+        </code>{" "}
+        deep link, then create a static{" "}
+        <strong className="text-[var(--foreground)]">URL</strong> code in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . That is a free{" "}
+        <strong className="text-[var(--foreground)]">
+          waze location qr code generator
+        </strong>{" "}
+        path for one-off PNG/SVG downloads.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What is the correct Waze deep link format?
+      </h3>
+      <p>
+        Official base:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://waze.com/ul
+        </code>
+        . For coordinates with navigation:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+          https://waze.com/ul?ll=lat,lon&amp;navigate=yes
+        </code>
+        . For address search:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://waze.com/ul?q=…
+        </code>
+        . Stick to parameters documented by Waze - do not invent query keys.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use Studio&apos;s Location type for Waze?
+      </h3>
+      <p>
+        No.{" "}
+        <strong className="text-[var(--foreground)]">Location</strong> builds a
+        Google Maps URL from Latitude / Longitude / Place name. For a{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code to open Waze
+        </strong>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">URL</strong> and paste the
+        Waze link into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong>.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Waze vs Google Maps - which QR should I print?
+      </h3>
+      <p>
+        Print the app your audience already opens. Mixed crowds (cities with
+        both Waze and Maps users) sometimes get both codes, or one Maps code as
+        the broader default. Compare workflows in the{" "}
+        <Link
+          href="/blog/how-to-make-qr-code-for-google-maps-location"
+          className="text-[var(--brand-2)] underline"
+        >
+          Google Maps location post
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        What if the venue moves after I print?
+      </h3>
+      <p>
+        A static code cannot change destination. Reprint with the new Waze link,
+        or use{" "}
+        <strong className="text-[var(--foreground)]">
+          Enable dynamic QR
+        </strong>{" "}
+        so the sticker stays the same while you update the redirect - useful for
+        a rotating{" "}
+        <strong className="text-[var(--foreground)]">
+          location QR code for events
+        </strong>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Why won&apos;t my printed Waze QR scan outdoors?
+      </h3>
+      <p>
+        Usually size, glare, or contrast - not the deep link. Retest on iPhone
+        and Android, then fix print basics with the{" "}
+        <Link
+          href="/blog/print-qr-codes-that-scan"
+          className="text-[var(--brand-2)] underline"
+        >
+          print checklist
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free Waze location QR code now
+      </h2>
+      <p>
+        Ready to make a{" "}
+        <strong className="text-[var(--foreground)]">Waze QR code</strong>?
+        Copy your{" "}
+        <strong className="text-[var(--foreground)]">
+          Waze share drive link
+        </strong>{" "}
+        (or build{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://waze.com/ul?ll=…&amp;navigate=yes
+        </code>
+        ), then{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          open {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, paste it
+        into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong>,
+        style the code, test-scan on iPhone and Android, and download a
+        print-ready SVG or PNG.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/how-to-make-qr-code-for-google-maps-location"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Make a QR Code for a Google Maps Location
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/guides/qr-code-for-real-estate"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code for Real Estate
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/guides/qr-code-size-for-print"
+            className="text-[var(--brand-2)] underline"
+          >
+            QR Code Size for Print
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about location QR codes in Studio?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.{" "}
+        {siteConfig.parentCompany.name} builds software only and does not
+        provide insurance advice.
+      </p>
+    </article>
+  );
+}
