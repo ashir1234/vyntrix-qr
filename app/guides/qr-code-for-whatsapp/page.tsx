@@ -36,6 +36,14 @@ const FAQS = [
     q: "Can I track scans?",
     a: "Yes - create a dynamic QR that redirects to your wa.me link. You will see scan counts while the printed code stays the same.",
   },
+  {
+    q: "Is this the same as the WhatsApp Web login QR?",
+    a: "No. The WhatsApp Web / desktop login QR links a device to your account. A click-to-chat QR encodes a wa.me (or group invite) URL so scanners open a chat - it never signs anyone into your account.",
+  },
+  {
+    q: "What if I change my WhatsApp number?",
+    a: "A static QR still opens the old number. Use Enable dynamic QR so you can point the same printed code at a new wa.me link without reprinting.",
+  },
 ];
 
 export const metadata: Metadata = {
@@ -116,23 +124,33 @@ export default function WhatsappGuidePage() {
       <ol className="mt-4 list-decimal space-y-3 pl-5 text-[var(--muted)]">
         <li>Build and test your wa.me link in a phone browser first.</li>
         <li>
-          Paste it into the{" "}
+          Open the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          URL field.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong>, and paste
+          the link into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
         </li>
         <li>
-          Optional: enable a{" "}
+          Optional: turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+          for analytics or future number changes (
           <Link
             href="/guides/dynamic-qr-code"
             className="text-[var(--brand-2)] underline"
           >
-            dynamic QR
-          </Link>{" "}
-          for analytics or future number changes.
+            dynamic QR guide
+          </Link>
+          ).
         </li>
-        <li>Add brand colors or a logo, then download PNG or SVG.</li>
+        <li>
+          Style on the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab, then
+          download <strong className="text-[var(--foreground)]">PNG</strong> or{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>.
+        </li>
         <li>
           Size for print distance -{" "}
           <Link
@@ -144,6 +162,29 @@ export default function WhatsappGuidePage() {
           .
         </li>
       </ol>
+
+      <h2 className="mt-10 text-2xl font-semibold">
+        WhatsApp group invite QR codes
+      </h2>
+      <p className="mt-3 text-[var(--muted)]">
+        Group invites use{" "}
+        <span className="font-mono text-sm text-[var(--foreground)]">
+          https://chat.whatsapp.com/…
+        </span>{" "}
+        links (Group info → Invite via link). Paste that URL into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong> the
+        same way. If an admin resets the invite link, every printed QR for the
+        old link breaks - use{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+        so you can swap the destination without reprinting.
+      </p>
+
+      <h2 className="mt-10 text-2xl font-semibold">Privacy</h2>
+      <p className="mt-3 text-[var(--muted)]">
+        A WhatsApp QR exposes your phone number in the encoded link. Prefer a
+        Business number for public posters and packaging; avoid putting a
+        personal line on materials anyone can photograph.
+      </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Best practices</h2>
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">

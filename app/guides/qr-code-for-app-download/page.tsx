@@ -135,21 +135,15 @@ export default function AppDownloadGuidePage() {
         </li>
         <li>Label clearly on print: Apple / Google icons plus short text.</li>
         <li>
-          See also{" "}
-          <Link
-            href="/qr-code-for/app-store"
-            className="text-[var(--brand-2)] underline"
-          >
-            App Store
-          </Link>{" "}
+          Prefer official{" "}
+          <span className="font-mono text-sm text-[var(--foreground)]">
+            apps.apple.com
+          </span>{" "}
           and{" "}
-          <Link
-            href="/qr-code-for/google-play"
-            className="text-[var(--brand-2)] underline"
-          >
-            Google Play
-          </Link>{" "}
-          use-case pages.
+          <span className="font-mono text-sm text-[var(--foreground)]">
+            play.google.com
+          </span>{" "}
+          store URLs - not shortened third-party links.
         </li>
         <li>Test each code on the matching device before mass print.</li>
       </ol>

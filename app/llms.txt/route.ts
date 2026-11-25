@@ -20,6 +20,7 @@ export function GET() {
     .join("\n");
 
   const platformSample = qrPlatforms
+    .filter((p) => !p.relatedGuideSlug)
     .slice(0, 12)
     .map((p) => `- [${p.name}](${siteConfig.url}/qr-code-for/${p.slug})`)
     .join("\n");
@@ -58,7 +59,7 @@ export function GET() {
 - [Dashboard](${siteConfig.url}/dashboard): Manage dynamic codes and projects (signed-in)
 - [Gallery](${siteConfig.url}/gallery): Design templates
 - [Guides](${siteConfig.url}/guides): How-to articles
-- [QR code for…](${siteConfig.url}/qr-code-for): ${qrPlatforms.length}+ use-case pages (Spotify, TikTok, LinkedIn, Google Forms, packaging, etc.)
+- [QR code for…](${siteConfig.url}/qr-code-for): use-case pages for destinations without a dedicated guide; deeper tutorials live under /guides
 
 ## Blog
 ${blogList}

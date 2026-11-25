@@ -7,7 +7,6 @@ import {
 } from "@/lib/seo";
 import {
   qrPlatformCategoryLabels,
-  qrPlatforms,
   qrPlatformsByCategory,
   type QrPlatformCategory,
 } from "@/lib/qr-platforms";
@@ -15,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "QR Code for… - Free Generators by Use Case",
   description:
-    "Create a free QR code for Spotify, TikTok, LinkedIn, Google Forms, App Store, packaging, real estate, and dozens more use cases. Download PNG or SVG instantly.",
+    "Create a free QR code for Apple Music, Discord, Google Maps, Calendly, and dozens more use cases. Deeper tutorials live in our guides. Download PNG or SVG instantly.",
   keywords: [
     "QR code for",
     "QR code generator by use case",
@@ -61,11 +60,7 @@ export default function QrCodeForHubPage() {
       </h1>
       <p className="mt-3 text-[var(--muted)]">
         Pick a destination, open the studio, and download a branded PNG or SVG.
-        {qrPlatforms.length}+ use cases - each with steps, tips, and FAQs.
-      </p>
-
-      <p className="mt-4 text-sm text-[var(--muted)]">
-        Looking for longer tutorials? Visit our{" "}
+        Each use case includes steps, tips, and FAQs. Longer tutorials live in{" "}
         <Link href="/guides" className="text-[var(--brand-2)] underline">
           QR code guides
         </Link>
@@ -74,8 +69,10 @@ export default function QrCodeForHubPage() {
 
       <div className="mt-10 space-y-10">
         {categoryOrder.map((cat) => {
-          const items = byCategory.get(cat);
-          if (!items?.length) return null;
+          const items = (byCategory.get(cat) ?? []).filter(
+            (p) => !p.relatedGuideSlug
+          );
+          if (!items.length) return null;
           return (
             <section key={cat}>
               <h2 className="text-xl font-semibold">
@@ -85,11 +82,7 @@ export default function QrCodeForHubPage() {
                 {items.map((p) => (
                   <li key={p.slug}>
                     <Link
-                      href={
-                        p.relatedGuideSlug
-                          ? `/guides/${p.relatedGuideSlug}`
-                          : `/qr-code-for/${p.slug}`
-                      }
+                      href={`/qr-code-for/${p.slug}`}
                       className="glass block rounded-xl px-4 py-3 transition hover:border-[var(--brand)]"
                     >
                       <span className="font-medium text-[var(--foreground)]">

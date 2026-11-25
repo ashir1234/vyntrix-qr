@@ -4,8 +4,11 @@ import { guides } from "@/lib/seo";
 import { qrPlatforms } from "@/lib/qr-platforms";
 import { blogPosts } from "@/lib/blog";
 
-/** Stable lastmod for static/guide/platform URLs (not build time). */
+/** Stable lastmod for static/platform URLs (not build time). */
 const STATIC_LAST_MODIFIED = new Date("2026-07-16");
+
+/** Bumped when guide content was consolidated (2026-11-25). */
+const GUIDE_LAST_MODIFIED = new Date("2026-11-25");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -29,19 +32,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/guides`,
-      lastModified: STATIC_LAST_MODIFIED,
+      lastModified: GUIDE_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-11-24"), // bumped for which-agency-issues-upc-codes-and-branded-qr-codes
+      lastModified: new Date("2026-11-25"), // cannibalization consolidation - removed competing how-to posts
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${siteConfig.url}/qr-code-for`,
-      lastModified: STATIC_LAST_MODIFIED,
+      lastModified: new Date("2026-11-25"), // removed platforms that redirect to guides
       changeFrequency: "weekly",
       priority: 0.9,
     },
@@ -77,20 +80,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/site-map`,
-      lastModified: STATIC_LAST_MODIFIED,
+      lastModified: new Date("2026-11-25"),
       changeFrequency: "weekly",
       priority: 0.4,
     },
   ];
 
+  // Guides lastModified bumped 2026-11-25 after folding competing blog content.
   const guideRoutes: MetadataRoute.Sitemap = guides.map((g) => ({
     url: `${siteConfig.url}/guides/${g.slug}`,
-    lastModified: STATIC_LAST_MODIFIED,
+    lastModified: GUIDE_LAST_MODIFIED,
     changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  // blogPosts includes: which-agency-issues-upc-codes-and-branded-qr-codes (2026-11-24), how-to-make-qr-code-for-restaurant-menu (2026-11-23), how-to-make-qr-code-business-card (2026-11-23), how-to-make-qr-code-for-google-maps-location (2026-11-20), how-to-make-qr-code-for-pdf (2026-11-19), how-to-create-qr-code-for-website (2026-11-18), how-to-make-qr-code-for-facebook-page (2026-11-18), how-to-make-vcard-qr-code (2026-11-17), how-to-make-qr-code-for-google-reviews (2026-11-16), how-to-make-wifi-qr-code (2026-11-13), how-to-make-qr-code-for-google-form (2026-11-12), how-to-make-qr-code-for-tiktok (2026-11-11), how-to-make-whatsapp-qr-code (2026-11-10), how-to-make-qr-code-for-instagram (2026-11-06), how-to-generate-qr-code-for-facebook (2026-11-03), quishing-fake-qr-code-scams (2026-11-03), gs1-sunrise-2027-qr-codes-packaging (2026-10-30), qr-codes-with-logo-more-scans (2026-10-27), qr-code-met-logo-maken (2026-10-23, Dutch), qr-code-with-logo-guide (2026-10-16), youtube-qr-code-guide (2026-10-13), linkedin-qr-code-guide, etc.
+  // Kept blog posts only (competing how-tos redirect to guides and are omitted).
+  // Includes: which-agency-issues-upc-codes-and-branded-qr-codes, how-to-make-qr-code-for-google-maps-location,
+  // how-to-create-qr-code-for-website, quishing-fake-qr-code-scams, gs1-sunrise-2027-qr-codes-packaging,
+  // qr-codes-with-logo-more-scans, qr-code-met-logo-maken, qr-code-logo-design-best-practices,
+  // error-correction-logos-pretty-qr-fail, print-qr-codes-that-scan, static-vs-dynamic-qr-cost,
+  // static-qr-privacy-in-the-browser, small-business-qr-playbook, finish-the-qr-workflow.
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${siteConfig.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
@@ -98,23 +107,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // Explicitly include the latest blog post URLs for clarity
-  const explicitBlogPosts: MetadataRoute.Sitemap = [
+  const explicitKeptBlogPosts: MetadataRoute.Sitemap = [
     {
       url: `${siteConfig.url}/blog/which-agency-issues-upc-codes-and-branded-qr-codes`,
       lastModified: new Date("2026-11-24"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-restaurant-menu`,
-      lastModified: new Date("2026-11-23"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-business-card`,
-      lastModified: new Date("2026-11-23"),
       changeFrequency: "monthly",
       priority: 0.75,
     },
@@ -125,68 +121,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-pdf`,
-      lastModified: new Date("2026-11-19"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
       url: `${siteConfig.url}/blog/how-to-create-qr-code-for-website`,
       lastModified: new Date("2026-11-18"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-facebook-page`,
-      lastModified: new Date("2026-11-18"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-vcard-qr-code`,
-      lastModified: new Date("2026-11-17"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-google-reviews`,
-      lastModified: new Date("2026-11-16"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-wifi-qr-code`,
-      lastModified: new Date("2026-11-13"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-google-form`,
-      lastModified: new Date("2026-11-12"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-tiktok`,
-      lastModified: new Date("2026-11-11"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-whatsapp-qr-code`,
-      lastModified: new Date("2026-11-10"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-make-qr-code-for-instagram`,
-      lastModified: new Date("2026-11-06"),
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
-    {
-      url: `${siteConfig.url}/blog/how-to-generate-qr-code-for-facebook`,
-      lastModified: new Date("2026-11-03"),
       changeFrequency: "monthly",
       priority: 0.75,
     },
@@ -210,15 +146,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Merge explicit posts with auto-generated, avoiding duplicates
   const allBlogRoutes = [
-    ...explicitBlogPosts,
+    ...explicitKeptBlogPosts,
     ...blogRoutes.filter(
-      (r) => !explicitBlogPosts.some((e) => e.url === r.url)
+      (r) => !explicitKeptBlogPosts.some((e) => e.url === r.url)
     ),
   ];
 
-  // Only index platform URLs that do not already have a deeper /guides article.
+  // Only index platform URLs that do not redirect to a deeper /guides article.
   const platformRoutes: MetadataRoute.Sitemap = qrPlatforms
     .filter((p) => !p.relatedGuideSlug)
     .map((p) => ({

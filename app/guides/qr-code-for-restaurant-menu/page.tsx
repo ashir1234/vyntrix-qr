@@ -106,16 +106,27 @@ export default function RestaurantMenuGuidePage() {
           Open the{" "}
           <Link href="/studio" className="text-[var(--brand-2)] underline">
             Studio
-          </Link>{" "}
-          and paste the menu URL.
+          </Link>
+          , choose type{" "}
+          <strong className="text-[var(--foreground)]">URL</strong>, and paste
+          the menu link into{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>.
         </li>
         <li>
-          Turn on <strong className="text-[var(--foreground)]">Dynamic QR</strong>{" "}
+          Turn on{" "}
+          <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
           so you can update the menu later without reprinting.
         </li>
-        <li>Add your brand colors or logo in the Design panel.</li>
         <li>
-          Download PNG for table tents or SVG for large signage. Follow{" "}
+          On the <strong className="text-[var(--foreground)]">design</strong>{" "}
+          tab, set colors/logo and an optional{" "}
+          <strong className="text-[var(--foreground)]">Frame caption</strong>{" "}
+          such as “Scan for our menu.”
+        </li>
+        <li>
+          Download <strong className="text-[var(--foreground)]">PNG</strong> for
+          table tents or <strong className="text-[var(--foreground)]">SVG</strong>{" "}
+          for large signage. Follow{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -142,7 +153,11 @@ export default function RestaurantMenuGuidePage() {
       <ul className="mt-4 list-disc space-y-2 pl-5 text-[var(--muted)]">
         <li>Caption the code: “Scan for today’s menu.”</li>
         <li>Print at least 2×2 cm for table use; larger for windows.</li>
-        <li>Laminate table codes so they survive spills and cleaning.</li>
+        <li>
+          Laminate table tents (matte preferred) so spills and cleaning are
+          survivable - and so fake overlay stickers (quishing) are harder to
+          apply unnoticed.
+        </li>
         <li>Keep high contrast - dark code on light pad, not on food photos.</li>
         <li>Offer paper menus as a backup for guests who prefer them.</li>
       </ul>

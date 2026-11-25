@@ -88,11 +88,17 @@ export default function VcardGuidePage() {
 
       <h2 className="mt-10 text-2xl font-semibold">What gets saved</h2>
       <p className="mt-3 text-[var(--muted)]">
-        A vCard (or MECARD-style) payload can include name, organization, title,
-        phone, email, website, and address. Phones map those fields into the
-        Contacts app. Unlike a website QR, the recipient does not need a data
-        connection after the scan to store the card - useful at conferences with
-        weak WiFi.
+        Studio&apos;s vCard form maps to{" "}
+        <strong className="text-[var(--foreground)]">First name</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Last name</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Organization</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Title</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Phone</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Email</strong>, and{" "}
+        <strong className="text-[var(--foreground)]">Website</strong>. Phones
+        map those fields into Contacts. Unlike a website QR, the recipient does
+        not need a data connection after the scan to store the card - useful at
+        conferences with weak WiFi.
       </p>
 
       <h2 className="mt-10 text-2xl font-semibold">Steps</h2>
@@ -105,14 +111,20 @@ export default function VcardGuidePage() {
           and choose <strong className="text-[var(--foreground)]">vCard</strong>.
         </li>
         <li>
-          Fill in the fields people actually need. Use{" "}
-          <strong className="text-[var(--foreground)]">+country code</strong>{" "}
-          phone format when you network internationally.
+          Fill only the fields people need. Use{" "}
+          <strong className="text-[var(--foreground)]">+country code</strong> in{" "}
+          <strong className="text-[var(--foreground)]">Phone</strong> when you
+          network internationally.
         </li>
-        <li>Customize colors or add a logo under Design.</li>
         <li>
-          Download PNG/SVG. For cards, keep the code around 2×2 cm minimum -
-          see{" "}
+          Customize colors or{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong> on
+          the <strong className="text-[var(--foreground)]">design</strong> tab.
+        </li>
+        <li>
+          Download <strong className="text-[var(--foreground)]">PNG</strong> /{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong>. For cards,
+          keep the code around 2×2 cm minimum - see{" "}
           <Link
             href="/guides/qr-code-size-for-print"
             className="text-[var(--brand-2)] underline"
@@ -129,16 +141,11 @@ export default function VcardGuidePage() {
       </h2>
       <p className="mt-3 text-[var(--muted)]">
         Choose <strong className="text-[var(--foreground)]">vCard</strong> when
-        the goal is “save my contact now.” Choose a{" "}
-        <Link
-          href="/guides/dynamic-qr-code"
-          className="text-[var(--brand-2)] underline"
-        >
-          dynamic URL
-        </Link>{" "}
-        when you want a personal landing page you can update, or scan analytics.
-        Many people print both: vCard for contacts, separate link for portfolio.
-        More context:{" "}
+        the goal is “save my contact now.”{" "}
+        <strong className="text-[var(--foreground)]">Enable dynamic QR</strong>{" "}
+        is for URL and WiFi only - not vCard. For an updatable landing page or
+        scan analytics, use a URL code instead. Many people print both: vCard
+        for contacts, separate link for portfolio. More context:{" "}
         <Link
           href="/guides/qr-code-for-business-card"
           className="text-[var(--brand-2)] underline"
