@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-11-25"), // Waze location how-to + prior consolidation
+      lastModified: new Date("2026-11-26"), // PayPal how-to
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -109,6 +109,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const explicitKeptBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/how-to-make-paypal-qr-code`,
+      lastModified: new Date("2026-11-26"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/how-to-make-qr-code-for-waze-location`,
       lastModified: new Date("2026-11-25"),

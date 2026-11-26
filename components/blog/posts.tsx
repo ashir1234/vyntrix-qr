@@ -5074,3 +5074,516 @@ export function WazeLocationQrCodeGuidePost() {
     </article>
   );
 }
+
+export function PayPalQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">PayPal QR code</strong>{" "}
+        lets customers pay you with one scan - no cash handling, no card
+        terminal required. This guide covers two ways to get one:{" "}
+        <strong className="text-[var(--foreground)]">
+          PayPal&apos;s own business QR code
+        </strong>{" "}
+        from the PayPal Business app, and creating a{" "}
+        <strong className="text-[var(--foreground)]">
+          branded PayPal.Me QR code
+        </strong>{" "}
+        in {siteConfig.name} Studio. Each fits different situations - market
+        stalls, tip jars, event booths, invoices, and product packaging.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Option A: PayPal&apos;s built-in business QR code
+      </h2>
+      <p>
+        PayPal offers a native{" "}
+        <strong className="text-[var(--foreground)]">
+          PayPal Business app QR code
+        </strong>{" "}
+        for merchants with a PayPal Business account. The general flow:
+      </p>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          Download the{" "}
+          <strong className="text-[var(--foreground)]">PayPal Business</strong>{" "}
+          app (iOS or Android).
+        </li>
+        <li>
+          Sign in with your Business account credentials.
+        </li>
+        <li>
+          Look for the QR code option in the app menu or on your dashboard - the
+          exact location may vary by app version and region.
+        </li>
+        <li>
+          Display the code on your device screen, or save and print it for a
+          checkout counter or pop-up stall.
+        </li>
+      </ol>
+      <p>
+        <strong className="text-[var(--foreground)]">When it fits:</strong>{" "}
+        PayPal&apos;s native code integrates directly with your Business
+        account transaction history. It is a solid choice when you want PayPal
+        to handle the full flow and you do not need custom branding or styling.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">
+          Fees and account requirements:
+        </strong>{" "}
+        Transaction fees for QR code payments depend on your account type,
+        region, and PayPal&apos;s current pricing. Check PayPal&apos;s official
+        fee page for your market before relying on any specific numbers.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Option B: Turn your PayPal.Me link into a branded QR code
+      </h2>
+      <p>
+        A{" "}
+        <strong className="text-[var(--foreground)]">PayPal.Me link</strong>{" "}
+        (e.g.{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          https://www.paypal.me/yourname
+        </code>
+        ) is a simple payment page anyone can send you money through. You can
+        optionally add an amount:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+          https://www.paypal.me/yourname/10
+        </code>{" "}
+        pre-fills a $10 (or local currency equivalent) request. Turn that link
+        into a{" "}
+        <strong className="text-[var(--foreground)]">
+          branded, print-ready static QR code
+        </strong>{" "}
+        in {siteConfig.name} Studio with full control over colors, logo, and
+        download format.
+      </p>
+      <p>
+        <strong className="text-[var(--foreground)]">When it fits:</strong>{" "}
+        Tip jars with a fixed suggested amount, event donations, craft-fair
+        booths, packaging inserts (scan to reorder), and anywhere you want a
+        styled code that matches your brand rather than PayPal&apos;s default
+        black-and-white.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: Create a PayPal.Me QR code in {siteConfig.name} Studio
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Copy your PayPal.Me link.
+          </strong>{" "}
+          Go to{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            paypal.me
+          </code>{" "}
+          while signed in and copy your personal link. For a{" "}
+          <strong className="text-[var(--foreground)]">
+            fixed amount PayPal link
+          </strong>
+          , append the number:{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+            https://www.paypal.me/yourname/5
+          </code>{" "}
+          (5 units of your default currency).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Open {siteConfig.name} Studio.
+          </strong>{" "}
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Choose the URL content type.
+          </strong>{" "}
+          In the content-type row at the top of the left panel, click{" "}
+          <strong className="text-[var(--foreground)]">URL</strong> (the link
+          icon with the hint &quot;Link to any website&quot;).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Paste your PayPal.Me link.
+          </strong>{" "}
+          Stay on the{" "}
+          <strong className="text-[var(--foreground)]">content</strong> tab.
+          Paste your full{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            https://www.paypal.me/…
+          </code>{" "}
+          link into the{" "}
+          <strong className="text-[var(--foreground)]">Website URL</strong>{" "}
+          field.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Customize colors and add a logo.
+          </strong>{" "}
+          Switch to the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab.
+          Adjust{" "}
+          <strong className="text-[var(--foreground)]">Foreground</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Background</strong>{" "}
+          colors to match your brand. Keep dark modules on a light background
+          for reliable scanning. Use{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong> to
+          add your logo to the center. Logos eat into error-correction budget -
+          keep them modest and bump{" "}
+          <strong className="text-[var(--foreground)]">Error correction</strong>{" "}
+          to <strong className="text-[var(--foreground)]">H</strong> (the
+          highest level) if you add one. See{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>{" "}
+          for the details.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Test before downloading.
+          </strong>{" "}
+          Use the{" "}
+          <strong className="text-[var(--foreground)]">Test scan</strong>{" "}
+          button in the preview area, then scan with your phone&apos;s camera.
+          Confirm the PayPal.Me page opens and shows the correct name (and
+          amount, if you included one).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download.</strong> Click{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          (scales cleanly to any size) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          use (slides, social, email). Static one-off downloads run in your
+          browser with no watermark on the free path.
+        </li>
+      </ol>
+      <p>
+        That is the full free{" "}
+        <strong className="text-[var(--foreground)]">
+          how to make qr code payment with paypal
+        </strong>{" "}
+        path using a PayPal.Me link: get the link, paste as URL, style, test,
+        download.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        When to use each option
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            PayPal Business app QR:
+          </strong>{" "}
+          Best when you need PayPal&apos;s native transaction flow and do not
+          need custom styling. Quick setup for in-person checkout at a register
+          or tablet.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            PayPal.Me QR via {siteConfig.name}:
+          </strong>{" "}
+          Best when you want brand colors, a logo, or a fixed suggested amount
+          baked into the code. Ideal for printed materials - tip jars, donation
+          stands, packaging inserts, event tables.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Printing and placement tips
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Size:</strong> Aim for at
+          least ~2 cm (about 0.8 in) for close scans at a checkout counter.
+          Go larger for posters or signage scanned from a distance. Full sizing
+          guidance lives in{" "}
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Contrast:</strong> Dark
+          modules on a light, solid background. Skip busy photo fills or low-
+          contrast brand colors behind the code.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Quiet zone:</strong>{" "}
+          Leave empty margin around the QR (Studio&apos;s{" "}
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>{" "}
+          slider). Borders, frames, and logos should not encroach on edge
+          modules.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Laminate wisely:</strong>{" "}
+          Matte laminate outdoors or under bright lights; glossy surfaces
+          cause glare that blocks phone cameras.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Test on real phones before printing:
+          </strong>{" "}
+          Scan with at least one iPhone and one Android camera app. Confirm the
+          PayPal.Me page loads with the correct recipient and amount.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Anti-quishing tips: keeping your payment QR safe
+      </h2>
+      <p>
+        <strong className="text-[var(--foreground)]">Quishing</strong> (QR code
+        phishing) is real, especially for payment codes. Scammers stick their
+        own code over yours to redirect funds. Protect your customers and
+        yourself:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Show your business name next to the code.
+          </strong>{" "}
+          Customers should see who they are paying before they scan.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Use tamper-evident stickers or printed signage.
+          </strong>{" "}
+          Avoid plain paper taped to a surface - it is too easy to swap.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Never share code screenshots publicly.
+          </strong>{" "}
+          A screenshot lets anyone reprint and place your code with a different
+          destination underneath.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Inspect codes regularly.
+          </strong>{" "}
+          Check that stickers are not layered and that the code still leads to
+          your PayPal page.
+        </li>
+      </ul>
+      <p>
+        More on spotting and preventing QR scams:{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          Quishing Season: How to Spot a Fake QR Code
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where a PayPal QR code helps
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Market stalls and craft fairs:
+          </strong>{" "}
+          No card reader needed - customers scan and pay.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Tip jars and busking:
+          </strong>{" "}
+          A{" "}
+          <strong className="text-[var(--foreground)]">
+            QR code for tips and donations
+          </strong>{" "}
+          with a suggested amount makes tipping frictionless.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Event booths and pop-ups:
+          </strong>{" "}
+          Quick checkout without handling cash or waiting for card authorizations.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            QR code for invoices:
+          </strong>{" "}
+          Embed a PayPal.Me link with the invoice amount so clients pay in one
+          scan.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Product packaging:
+          </strong>{" "}
+          Scan to reorder or scan to tip the creator.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Are PayPal QR codes free?
+      </h3>
+      <p>
+        Creating the QR code itself is free - either through PayPal&apos;s app
+        or by turning a PayPal.Me link into a QR in{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        . PayPal charges transaction fees when someone actually pays; those
+        fees depend on your account type and region.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does a PayPal QR code expire?
+      </h3>
+      <p>
+        A PayPal.Me link does not have an expiration date as long as your PayPal
+        account remains active. A static QR code encoding that link will
+        continue to work indefinitely. If PayPal changes your link or you close
+        the account, the code will stop working.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is it safe to pay with a QR code?
+      </h3>
+      <p>
+        Scanning a{" "}
+        <strong className="text-[var(--foreground)]">
+          contactless payment QR code
+        </strong>{" "}
+        is as safe as clicking a link - the risk is where that link goes.
+        Before paying, confirm the destination shows the correct PayPal.Me
+        username and amount. Watch for tampered stickers or codes placed over
+        originals. For more:{" "}
+        <Link
+          href="/blog/quishing-fake-qr-code-scams"
+          className="text-[var(--brand-2)] underline"
+        >
+          how to tell if a QR code is safe
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I change the amount after printing?
+      </h3>
+      <p>
+        A static QR code locks in the URL at creation time. If you encoded a
+        fixed amount (e.g.{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          /10
+        </code>
+        ), you cannot change it without reprinting. Use a PayPal.Me link
+        without an amount if prices vary, or consider a dynamic QR that
+        redirects - see{" "}
+        <Link
+          href="/guides/static-vs-dynamic-qr-code"
+          className="text-[var(--brand-2)] underline"
+        >
+          Static vs Dynamic QR Codes
+        </Link>
+        .
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Should I use PayPal&apos;s QR or a PayPal.Me QR?
+      </h3>
+      <p>
+        PayPal&apos;s native Business QR ties into their app experience and
+        transaction tools. A PayPal.Me QR via {siteConfig.name} gives you full
+        control over styling and lets you pre-fill an amount. Pick based on
+        whether you value integration or branding more.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free PayPal QR code now
+      </h2>
+      <p>
+        Ready to{" "}
+        <strong className="text-[var(--foreground)]">
+          accept payments with QR code
+        </strong>
+        ? Copy your PayPal.Me link (optionally with an amount), then{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          open {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">URL</strong>, paste it into{" "}
+        <strong className="text-[var(--foreground)]">Website URL</strong>, style
+        the code with your brand colors and logo, test-scan on iPhone and
+        Android, and download a print-ready SVG or PNG.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/blog/quishing-fake-qr-code-scams"
+            className="text-[var(--brand-2)] underline"
+          >
+            Quishing Season: How to Spot a Fake QR Code
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/guides/static-vs-dynamic-qr-code"
+            className="text-[var(--brand-2)] underline"
+          >
+            Static vs Dynamic QR Codes
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/small-business-qr-playbook"
+            className="text-[var(--brand-2)] underline"
+          >
+            A Small-Business QR Playbook: Five Codes That Matter
+          </Link>
+        </li>
+      </ul>
+
+      <p className="mt-8">
+        Questions about payment QR codes in Studio?{" "}
+        <Link href="/contact" className="text-[var(--brand-2)] underline">
+          Contact
+        </Link>{" "}
+        {siteConfig.parentCompany.name} at {siteConfig.emails.hello}.{" "}
+        {siteConfig.parentCompany.name} builds software only and does not
+        provide financial, tax, legal, or insurance advice.
+      </p>
+    </article>
+  );
+}
