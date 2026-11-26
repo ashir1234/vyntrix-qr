@@ -296,6 +296,28 @@ export const blogPosts: BlogPost[] = [
       "location qr code for events",
     ],
   },
+  {
+    slug: "how-to-make-paypal-qr-code",
+    title: "How to Make a PayPal QR Code for Payments (Free, Step-by-Step)",
+    description:
+      "How to make a QR code for PayPal payments - use PayPal's business app QR or turn your PayPal.Me link into a branded, print-ready static QR code in Vyntrix QR Studio. Covers market stalls, tip jars, invoices, testing, and anti-quishing tips.",
+    date: "2026-11-26",
+    readingMinutes: 10,
+    topic: "Guide",
+    relatedGuideSlug: "static-vs-dynamic-qr-code",
+    keywords: [
+      "PayPal QR code",
+      "PayPal payment QR code",
+      "how to make qr code payment with paypal",
+      "PayPal.Me QR code",
+      "QR code for PayPal payments",
+      "accept payments with QR code",
+      "contactless payment QR code",
+      "PayPal Business app QR code",
+      "QR code for tips and donations",
+      "is it safe to pay with a QR code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {

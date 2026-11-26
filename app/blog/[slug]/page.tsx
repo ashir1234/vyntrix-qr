@@ -20,6 +20,7 @@ import {
   GoogleMapsLocationQrCodeGuidePost,
   WhichAgencyIssuesUpcAndBrandedQrPost,
   WazeLocationQrCodeGuidePost,
+  PayPalQrCodeGuidePost,
 } from "@/components/blog/posts";
 import { blogPosts, getBlogPost } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
@@ -54,6 +55,7 @@ const BODY: Record<string, () => ReactNode> = {
   "how-to-make-qr-code-for-waze-location": () => (
     <WazeLocationQrCodeGuidePost />
   ),
+  "how-to-make-paypal-qr-code": () => <PayPalQrCodeGuidePost />,
 };
 
 export function generateStaticParams() {
