@@ -5587,3 +5587,473 @@ export function PayPalQrCodeGuidePost() {
     </article>
   );
 }
+
+export function EmailQrCodeGuidePost() {
+  return (
+    <article className="space-y-6 text-[var(--muted)] leading-relaxed">
+      <p>
+        An{" "}
+        <strong className="text-[var(--foreground)]">email QR code</strong> lets
+        anyone scan and instantly open a pre-filled email draft - with the
+        recipient address, subject line, and body already filled in. It is one
+        of the fastest ways to collect feedback, support requests, RSVPs, or
+        quote inquiries without making people type.
+      </p>
+      <p>
+        This guide explains what an email QR code encodes, walks through
+        creating one step by step in {siteConfig.name} Studio, and covers
+        testing, printing, and when a static code is enough versus when you
+        might want dynamic.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        What an email QR code encodes
+      </h2>
+      <p>
+        Behind the scenes, an email QR code is just a{" "}
+        <strong className="text-[var(--foreground)]">mailto: link</strong>{" "}
+        encoded into a QR pattern. The{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          mailto:
+        </code>{" "}
+        URI scheme (defined in RFC 6068) tells the phone&apos;s camera to open
+        the default mail app with pre-filled fields:
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Address:</strong> The
+          recipient email address (e.g.{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            mailto:feedback@example.com
+          </code>
+          ).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Subject:</strong> Added
+          as a query parameter (e.g.{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            ?subject=Feedback
+          </code>
+          ).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Body:</strong> Also a
+          query parameter (e.g.{" "}
+          <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+            &body=Hello%2C%20I%20scanned%20your%20QR
+          </code>
+          ).
+        </li>
+      </ul>
+      <p>
+        Special characters in the subject and body get percent-encoded so the
+        link works reliably across mail clients. The result looks like:{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded break-all">
+          mailto:support@example.com?subject=Question&body=Hi%2C%20...
+        </code>
+      </p>
+      <p>
+        When a phone scans the QR code, it opens the user&apos;s mail app (Apple
+        Mail, Gmail, Outlook, etc.) with those fields already populated. The
+        user reviews, edits if needed, and taps Send.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Step-by-step: Create an email QR code in {siteConfig.name} Studio
+      </h2>
+      <ol className="list-decimal space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Open {siteConfig.name} Studio.
+          </strong>{" "}
+          Go to{" "}
+          <Link href="/studio" className="text-[var(--brand-2)] underline">
+            {siteConfig.name} Studio
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Choose the Email content type.
+          </strong>{" "}
+          In the content-type row at the top of the left panel, click{" "}
+          <strong className="text-[var(--foreground)]">Email</strong> (the
+          envelope icon with the hint &quot;Pre-filled email&quot;).
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Fill in the email fields.
+          </strong>{" "}
+          Stay on the{" "}
+          <strong className="text-[var(--foreground)]">content</strong> tab and
+          enter:
+          <ul className="list-disc space-y-1 pl-5 mt-2">
+            <li>
+              <strong className="text-[var(--foreground)]">To</strong> - the
+              recipient email address (e.g.{" "}
+              <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+                hello@example.com
+              </code>
+              ).
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Subject</strong> - a
+              short, clear subject line (e.g. &quot;Product feedback&quot; or
+              &quot;Event RSVP&quot;).
+            </li>
+            <li>
+              <strong className="text-[var(--foreground)]">Body</strong> - an
+              optional pre-filled message body (e.g. &quot;Hi, I scanned your
+              QR code and wanted to...&quot;).
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Customize colors and add a logo.
+          </strong>{" "}
+          Switch to the{" "}
+          <strong className="text-[var(--foreground)]">design</strong> tab.
+          Adjust{" "}
+          <strong className="text-[var(--foreground)]">Foreground</strong> and{" "}
+          <strong className="text-[var(--foreground)]">Background</strong>{" "}
+          colors to match your brand. For reliable scanning, keep dark modules
+          on a light background. Use{" "}
+          <strong className="text-[var(--foreground)]">Upload logo</strong> to
+          add your logo to the center. Logos use error-correction capacity -
+          bump{" "}
+          <strong className="text-[var(--foreground)]">Error correction</strong>{" "}
+          to <strong className="text-[var(--foreground)]">H</strong> (highest)
+          when you add one. See{" "}
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>{" "}
+          for the details.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Adjust the quiet zone.
+          </strong>{" "}
+          Use the{" "}
+          <strong className="text-[var(--foreground)]">
+            Quiet-zone margin
+          </strong>{" "}
+          slider to add empty margin around the code. This matters for print -
+          crowded edges cause scan failures.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Test before downloading.
+          </strong>{" "}
+          Use the{" "}
+          <strong className="text-[var(--foreground)]">Test scan</strong>{" "}
+          button in the preview area, then scan with your phone&apos;s camera.
+          Confirm the email draft opens with the correct address, subject, and
+          body. Test on both iPhone and Android if possible - mail app behavior
+          can vary.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">Download.</strong> Click{" "}
+          <strong className="text-[var(--foreground)]">SVG</strong> for print
+          (scales cleanly to any size) or{" "}
+          <strong className="text-[var(--foreground)]">PNG</strong> for digital
+          use. Static one-off downloads run in your browser with no watermark
+          on the free path.
+        </li>
+      </ol>
+      <p>
+        That is the full free{" "}
+        <strong className="text-[var(--foreground)]">
+          email QR code generator
+        </strong>{" "}
+        path: pick Email, fill in To/Subject/Body, style, test, download.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Tips for effective email QR codes
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Keep the subject and body short.
+          </strong>{" "}
+          Longer text means more data encoded, which creates a denser QR
+          pattern that is harder to scan at small sizes. A concise subject
+          (&quot;Feedback&quot;) and a one-line body work best.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Test on both iPhone and Android.
+          </strong>{" "}
+          iOS Mail and Gmail handle mailto links slightly differently. Check
+          that the subject and body appear correctly on both platforms before
+          printing thousands of flyers.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Size for the viewing distance.
+          </strong>{" "}
+          Use the ~10:1 rule - code width should be roughly 1/10 of the viewing
+          distance. For a table tent scanned at 30 cm, aim for at least 3 cm.
+          Full guidance in{" "}
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+          .
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Protect the quiet zone.
+          </strong>{" "}
+          Leave empty margin around the QR. Borders, frames, and busy
+          backgrounds should not encroach on the edge modules.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Static vs dynamic email QR codes
+      </h2>
+      <p>
+        The email QR you create in Studio is{" "}
+        <strong className="text-[var(--foreground)]">static</strong> by default
+        - the mailto link is baked directly into the QR pattern.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">Static is enough</strong>{" "}
+          when the email address, subject, and body will never change and you
+          do not need scan analytics. Feedback codes on a product, lost-and-found
+          labels, event RSVPs with a fixed host email - all fine as static.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Consider dynamic
+          </strong>{" "}
+          if you might need to change the destination email after printing, or
+          you want scan counts. A dynamic QR encodes a short redirect link;
+          updating the destination does not require reprinting. See{" "}
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>{" "}
+          for the trade-offs.
+        </li>
+      </ul>
+      <p>
+        For most email QR use cases - support, feedback, contact - a static
+        code is simpler and free.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Where email QR codes help
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Feedback collection:
+          </strong>{" "}
+          Print a{" "}
+          <strong className="text-[var(--foreground)]">
+            QR code for email address
+          </strong>{" "}
+          on receipts, packaging, or in-store signage so customers can send
+          comments in one scan.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Support requests:
+          </strong>{" "}
+          Add an email QR to product manuals or warranty cards. Users scan to
+          email support with the product name already in the subject.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            RSVPs and event registration:
+          </strong>{" "}
+          A{" "}
+          <strong className="text-[var(--foreground)]">
+            pre-filled email QR code
+          </strong>{" "}
+          on invitations lets guests RSVP without typing your email address.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Quote and inquiry requests:
+          </strong>{" "}
+          Business cards or brochures with an email QR that pre-fills
+          &quot;Request a quote&quot; in the subject line.
+        </li>
+        <li>
+          <strong className="text-[var(--foreground)]">
+            Lost and found:
+          </strong>{" "}
+          Stick an email QR on luggage, laptops, or keys. Finders scan to
+          email you directly.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Email QR vs QR code in email signature
+      </h2>
+      <p>
+        These are different use cases. An{" "}
+        <strong className="text-[var(--foreground)]">email QR code</strong>{" "}
+        (what this guide covers) is a scannable code that opens a pre-filled
+        email draft when scanned - for collecting feedback, support requests,
+        or RSVPs. A{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code in an email signature
+        </strong>{" "}
+        is a small code you embed in your outgoing emails so recipients can
+        scan to visit your website, save your contact, or book a meeting. For
+        that, see{" "}
+        <Link
+          href="/guides/qr-code-for-email-signature"
+          className="text-[var(--brand-2)] underline"
+        >
+          How to Add a QR Code to Your Email Signature
+        </Link>
+        .
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        FAQ
+      </h2>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does an email QR code work on iPhone and Android?
+      </h3>
+      <p>
+        Yes. Both iOS and Android recognize{" "}
+        <code className="text-[var(--foreground)] bg-[var(--surface)] px-1 rounded">
+          mailto:
+        </code>{" "}
+        links scanned via the camera app. The phone opens the default mail app
+        with the address, subject, and body pre-filled. If the user has
+        multiple mail apps, the system may prompt them to choose.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        How do I create a QR code that opens an email?
+      </h3>
+      <p>
+        Open{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          {siteConfig.name} Studio
+        </Link>
+        , select the{" "}
+        <strong className="text-[var(--foreground)]">Email</strong> content
+        type, fill in the{" "}
+        <strong className="text-[var(--foreground)]">To</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Subject</strong>, and{" "}
+        <strong className="text-[var(--foreground)]">Body</strong> fields,
+        customize the design, test-scan, and download. The code encodes a
+        mailto link that opens a pre-filled email when scanned.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Can I add a subject and body to an email QR code?
+      </h3>
+      <p>
+        Yes. The{" "}
+        <strong className="text-[var(--foreground)]">
+          QR code with email subject and body
+        </strong>{" "}
+        is exactly what the Email content type in {siteConfig.name} Studio
+        creates. Fill in all three fields (To, Subject, Body) and they get
+        encoded into the mailto link.
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Is a free email QR code generator enough for business use?
+      </h3>
+      <p>
+        For most{" "}
+        <strong className="text-[var(--foreground)]">
+          email QR code for feedback
+        </strong>{" "}
+        or support scenarios, a static code is plenty. {siteConfig.name} static
+        downloads are free with no watermark. If you need scan analytics or the
+        ability to change the destination later, consider a dynamic code (Free
+        includes 1 dynamic; Pro unlocks unlimited).
+      </p>
+
+      <h3 className="text-xl font-semibold text-[var(--foreground)] mt-4">
+        Does the recipient need a specific email app?
+      </h3>
+      <p>
+        No. The mailto link is a standard that any mail app recognizes. Apple
+        Mail, Gmail, Outlook, and third-party apps all handle it. The user
+        sends from whatever email account is configured on their device.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Create your free email QR code now
+      </h2>
+      <p>
+        Ready to let people{" "}
+        <strong className="text-[var(--foreground)]">
+          scan QR code to send email
+        </strong>
+        ?{" "}
+        <Link href="/studio" className="text-[var(--brand-2)] underline">
+          Open {siteConfig.name} Studio
+        </Link>
+        , choose{" "}
+        <strong className="text-[var(--foreground)]">Email</strong>, fill in
+        the <strong className="text-[var(--foreground)]">To</strong>,{" "}
+        <strong className="text-[var(--foreground)]">Subject</strong>, and{" "}
+        <strong className="text-[var(--foreground)]">Body</strong> fields,
+        style the code with your brand colors and logo, test-scan on iPhone and
+        Android, and download a print-ready SVG or PNG - free, no signup
+        required.
+      </p>
+
+      <h2 className="text-2xl font-semibold text-[var(--foreground)]">
+        Related posts
+      </h2>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <Link
+            href="/guides/qr-code-for-email-signature"
+            className="text-[var(--brand-2)] underline"
+          >
+            How to Add a QR Code to Your Email Signature
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/print-qr-codes-that-scan"
+            className="text-[var(--brand-2)] underline"
+          >
+            Print QR Codes That Actually Scan
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/static-vs-dynamic-qr-cost"
+            className="text-[var(--brand-2)] underline"
+          >
+            When Free QR Codes Become Expensive
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/blog/error-correction-logos-pretty-qr-fail"
+            className="text-[var(--brand-2)] underline"
+          >
+            Error Correction, Logos, and Why Pretty QR Codes Fail
+          </Link>
+        </li>
+      </ul>
+    </article>
+  );
+}

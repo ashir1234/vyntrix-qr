@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteConfig.url}/blog`,
-      lastModified: new Date("2026-11-26"), // PayPal how-to
+      lastModified: new Date("2026-11-27"), // Email QR how-to
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -109,6 +109,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const explicitKeptBlogPosts: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.url}/blog/how-to-make-email-qr-code`,
+      lastModified: new Date("2026-11-27"),
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
     {
       url: `${siteConfig.url}/blog/how-to-make-paypal-qr-code`,
       lastModified: new Date("2026-11-26"),
