@@ -318,6 +318,28 @@ export const blogPosts: BlogPost[] = [
       "is it safe to pay with a QR code",
     ],
   },
+  {
+    slug: "how-to-make-email-qr-code",
+    title: "How to Make an Email QR Code (Free, Step-by-Step)",
+    description:
+      "How to make an email QR code that opens a pre-filled email draft when scanned. Create a free mailto QR code with address, subject, and body in Vyntrix QR Studio - works on iPhone and Android for feedback forms, support requests, RSVPs, and more.",
+    date: "2026-11-27",
+    readingMinutes: 8,
+    topic: "How-to",
+    relatedGuideSlug: "qr-code-for-email-signature",
+    keywords: [
+      "email QR code",
+      "email QR code generator",
+      "how to make an email QR code",
+      "mailto QR code",
+      "QR code for email address",
+      "pre-filled email QR code",
+      "scan QR code to send email",
+      "free email QR code generator",
+      "QR code with email subject and body",
+      "static vs dynamic email QR code",
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string) {
